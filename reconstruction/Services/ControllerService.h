@@ -20,87 +20,91 @@ namespace Services {
 	class ControllerService
 	{
 
-		private:
-		
-			// Algorithms
-			OpenCV * _openCv;
+	private:
 
-			// Services
-			CalibrationService* _calibrationService;
-			CannyService* _cannyService;
-			ConnectedComponentsService* _connectedComponentsService;
-			DelaunayService* _delaunayService;
-			FindRegionsService* _findRegionsService;
-			FireflyService* _fireflyService;
-			RansacService* _ransacService;
-			SiftService* _siftService;
-			InputImageService* _inputImageService;
+		// Algorithms
+		OpenCV * _openCv;
 
-			// General Properties
-			Mat _firstImage;
-			Mat _secondImage;
-			Mat _firstImageModified;
-			Mat _secondImageModified;
+		// Services
+		CalibrationService* _calibrationService;
+		CannyService* _cannyService;
+		ConnectedComponentsService* _connectedComponentsService;
+		DelaunayService* _delaunayService;
+		FindRegionsService* _findRegionsService;
+		FireflyService* _fireflyService;
+		RansacService* _ransacService;
+		SiftService* _siftService;
+		InputImageService* _inputImageService;
 
-			// Delaunay Properties
-			vector<Vec6f> _resultDelaunay;
-			Mat _inputImageToRender;
+		// General Properties
+		Mat _firstImage;
+		Mat _secondImage;
+		Mat _firstImageModified;
+		Mat _secondImageModified;
 
-			// Sift Properties
-			int _siftThreshold;
-			vector<PointPair> _resultSift;
+		// Delaunay Properties
+		vector<Vec6f> _resultDelaunay;
+		Mat _inputImageToRender;
 
-			//Ransac Properties
-			vector<Point3f> _resultRansac;
+		// Sift Properties
+		int _siftThreshold;
+		vector<PointPair> _resultSift;
 
-			// Canny Properties
-			double _cannyLowThresh;
-			double _cannyHighTresh;
-			int _cannyKernelSize;
-			Mat _pointsCanny;
+		//Ransac Properties
+		vector<Point3f> _resultRansac;
 
-			// Connected Components Properties
-			int _connectedComponentsThreshVal;
-			Mat _InterestRegionsFirstImage;
-			Mat _InterestRegionsSecondImage;
+		// Canny Properties
+		double _cannyLowThresh;
+		double _cannyHighTresh;
+		int _cannyKernelSize;
+		Mat _pointsCanny;
 
-			// Calibration Properties
-			float _calibrationB;
-			float _calibrationLambda;
-			int _calibrationK;
-			vector<CustomPoint> _resultCalibration;
+		// Connected Components Properties
+		int _connectedComponentsThreshVal;
+		Mat _InterestRegionsFirstImage;
+		Mat _InterestRegionsSecondImage;
 
-			// Fireflies Properties
-			int _thresholds;
-			int _number_fireflies;
-			int _number_generations;
+		// Calibration Properties
+		float _calibrationB;
+		float _calibrationLambda;
+		int _calibrationK;
+		vector<CustomPoint> _resultCalibration;
 
-			void LoadServices();
+		// Fireflies Properties
+		int _thresholds;
+		int _number_fireflies;
+		int _number_generations;
 
-		public:
-			ControllerService();
-			ControllerService(Mat firstImage, Mat secondImage);
-			ControllerService(string pathFirstImage, string pathSecondImage);
-			~ControllerService();
+		void LoadServices();
 
-			bool CalibrationApply();
-			bool CannyApply();
-			bool ConnectedComponentsApply();
-			bool DelaunayApply();
-			bool FindRegionsApply();
-			bool RansacApply();
-			bool SiftApply();
-			bool RenderApply();
-			bool FireflyApply();
-			bool ReadImages(string pathFirstImage, string pathSecondImage);
+	public:
+		ControllerService();
+		ControllerService(Mat firstImage, Mat secondImage);
+		ControllerService(string pathFirstImage, string pathSecondImage);
+		~ControllerService();
 
-			void SetCannyProperties(double cannyLowThresh, double cannyHighTresh, int cannyKernelSize);
-			void SetSiftProperties(int siftThreshold);
-			void SetConnectedComponentsProperties(int connectedComponentsThreshVal);
-			void SetCalibrationProperties(float calibrationB, float calibrationLambda, int calibrationK);
-			void SetGeneralProperties();
-			void SetFireflyProperties(int thresholds, int number_fireflies, int number_generations);
+		bool CalibrationApply();
+		bool CannyApply();
+		bool ConnectedComponentsApply();
+		bool DelaunayApply();
+		bool FindRegionsApply();
+		bool RansacApply();
+		bool SiftApply();
+		bool RenderApply();
+		bool FireflyApply();
+		bool ReadImages(string pathFirstImage, string pathSecondImage);
 
+		void SetCannyProperties(double cannyLowThresh, double cannyHighTresh, int cannyKernelSize);
+		void SetSiftProperties(int siftThreshold);
+		void SetConnectedComponentsProperties(int connectedComponentsThreshVal);
+		void SetCalibrationProperties(float calibrationB, float calibrationLambda, int calibrationK);
+		void SetGeneralProperties();
+		void SetFireflyProperties(int thresholds, int number_fireflies, int number_generations);
+
+		void SaveFirstImage(string Path = ".\\Others Files\\FirstImage.jpg");
+		void SaveSecondImage(string Path = ".\\Others Files\\SecondImage.jpg");
+		void SaveFirstImageModified(string Path = ".\\Others Files\\FirstImageModified.jpg");
+		void SaveSecondImageModified(string Path = ".\\Others Files\\SecondImageModified.jpg");
 	};
 
 }
