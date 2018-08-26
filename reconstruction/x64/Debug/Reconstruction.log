@@ -1,8 +1,4 @@
 ﻿  DelaunayService.cpp
-d:\medei\documents\3dreconstruction\reconstruction\services\delaunayservice.cpp(64): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\services\delaunayservice.cpp(137): warning C4244: 'argumento': conversão de 'float' para '_Tp', possível perda de dados
-          with
-          [
-              _Tp=int
-          ]
-  Reconstruction.vcxproj -> D:\Medei\Documents\3DReconstruction\x64\Debug\Reconstruction.exe
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\delaunayservice.cpp(64): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\delaunayservice.cpp(138): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
+  Reconstruction.vcxproj -> C:\SD\Arquivos\Documentos\3DReconstruction\x64\Debug\Reconstruction.exe
