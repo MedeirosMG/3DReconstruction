@@ -18,26 +18,51 @@ namespace Services {
 
 	vector<CustomPoint> DelaunayService::MockPoints() 
 	{
-		return vector<CustomPoint>();
+		// Temps for reading file
+		float _x = 0, _y = 0, _z = 0;
+		string temp;
+		ifstream InFile;
+		InFile.open(".\\Others Files\\MockPoints.obj");
+
+		//Vector temp to return
+		vector<CustomPoint> _return;
+
+		while (!InFile.eof()) // To get you all the lines.
+		{
+			// Get the points 
+			InFile >> _x;
+			InFile >> _y;
+			InFile >> _z;
+
+			// Add in return
+			_return.push_back(CustomPoint(_x * 100, _y * 100, _z * 100));
+		}
+
+		InFile.close();
+		return _return;
 	}
 
 	void DelaunayService::TestExecute()
 	{
-		Mat image = _openCv->ReadImage("D:\\Medei\\Desktop\\imagens\\img.jpg");
+		vector<CustomPoint> points = MockPoints();
 
-		vector<CustomPoint> points;
-		points.push_back(CustomPoint(1360, 6, 0));
-		points.push_back(CustomPoint(1360, 760, 0));
-		points.push_back(CustomPoint(6, 6, 0));
-		points.push_back(CustomPoint(6, 760, 0));
-		points.push_back(CustomPoint(570, 400, 0));
-		points.push_back(CustomPoint(570, 400, 0));
-		points.push_back(CustomPoint(400, 302, 0));
-		points.push_back(CustomPoint(390, 2, 0));
-		points.push_back(CustomPoint(1000, 76, 0));
-		points.push_back(CustomPoint(998, 720, 0));
-		points.push_back(CustomPoint(4, 387 , 0));
+		//Convert Points
+		CustomPoint *converter = new CustomPoint();
+		vector<Point3f> _points = converter->ReturnPoint3f(points);
 
+		// Get max width and max height of points
+		// Get max width and max height of points
+		float maxWidth = MaxAbsValue(_points, "x");
+		float maxHeight = MaxAbsValue(_points, "y");
+		float maxAbs = 0.0;
+
+		if (maxWidth > maxHeight)
+			maxAbs = maxWidth;
+		else if (maxHeight > maxWidth)
+			maxAbs = maxHeight;
+
+		Mat image = cvCreateImage(cvSize(maxWidth + maxAbs, maxHeight + maxAbs), 8, 3);
+		
 		vector<Vec6f> triangleList = Execute(points);
 
 		for (size_t i = 0; i < triangleList.size(); i++) {
@@ -51,7 +76,42 @@ namespace Services {
 			_openCv->DrawLine(image, pt3, pt1);
 		}
 
-		_openCv->SaveImage("D:\\Medei\\Desktop\\imagens\\img_.jpg",image);
+		_openCv->SaveImage(".\\Others Files\\MockPoints.jpg",image);
+	}
+
+	float DelaunayService::MaxAbsValue(vector<Point3f> points, string coordinate)
+	{
+		float maxValue = 0.0;
+
+		for each (Point3f point in points)
+		{
+			float numTemp = 0.0;
+			if (coordinate == "x")
+				numTemp = point.x;
+			else if (coordinate == "y")
+				numTemp = point.y;
+			else if (coordinate == "z")
+				numTemp = point.z;
+			else
+				throw exception("Coordenada não existe.");
+
+
+			if (abs(numTemp) > maxValue)
+				maxValue = abs(numTemp);
+		}
+
+		return maxValue;
+	}
+
+	vector<Point3f> DelaunayService::AddMaxValue(vector<Point3f> points, float maxValue) {
+		vector<Point3f> _points;
+
+		for each (Point3f point in points)
+		{
+			_points.push_back(Point3f(point.x + maxValue, point.y + maxValue, point.z + maxValue));
+		}
+
+		return _points;
 	}
 
 	vector<Vec6f> DelaunayService::Execute(vector<CustomPoint> points)
@@ -61,18 +121,20 @@ namespace Services {
 		vector<Point3f> _points = converter->ReturnPoint3f(points);
 
 		// Get max width and max height of points
-		float maxWidth = 0.0, maxHeight = 0.0;
-		for each (Point3f point in _points)
-		{
-			if (point.x > maxWidth)
-				maxWidth = point.x;
+		float maxWidth = MaxAbsValue(_points, "x");
+		float maxHeight = MaxAbsValue(_points, "y");
+		float maxAbs = 0.0;
 
-			if (point.y > maxHeight)
-				maxHeight = point.y;
-		}
+		if (maxWidth > maxHeight)
+			maxAbs = maxWidth;
+		else if (maxHeight > maxWidth)
+			maxAbs = maxHeight;
+
+		// Update values of points
+		_points = AddMaxValue(_points, maxAbs);
 
 		// Rectangle to be used with Subdiv2D
-		Rect rect(0, 0, maxWidth + 5.0, maxHeight + 5.0);
+		Rect rect(0, 0, MaxAbsValue(_points, "x") + 10, MaxAbsValue(_points, "y") + 10);
 
 		// Create an instance of Subdiv2D
 		Subdiv2D subdiv(rect);
