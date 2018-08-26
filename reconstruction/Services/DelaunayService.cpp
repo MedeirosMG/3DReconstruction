@@ -35,7 +35,7 @@ namespace Services {
 			InFile >> _z;
 
 			// Add in return
-			_return.push_back(CustomPoint(_x * 100, _y * 100, _z * 100));
+			_return.push_back(CustomPoint(_x * 1000, _y * 1000, _z * 1000));
 		}
 
 		InFile.close();
@@ -61,7 +61,8 @@ namespace Services {
 		else if (maxHeight > maxWidth)
 			maxAbs = maxHeight;
 
-		Mat image = cvCreateImage(cvSize(maxWidth + maxAbs, maxHeight + maxAbs), 8, 3);
+		Mat image = cvCreateImage(cvSize(maxWidth + maxAbs, maxHeight + maxAbs), 8, 1);
+		
 		
 		vector<Vec6f> triangleList = Execute(points);
 
