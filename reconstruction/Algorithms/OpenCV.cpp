@@ -5,7 +5,7 @@ namespace Algorithms {
 
 	OpenCV::OpenCV()
 	{
-		line_color = Scalar(15.0, 100.0, 15.0);
+		line_color = Scalar(255.0, 255.0, 255.0);
 	}
 
 	OpenCV::~OpenCV()
