@@ -1,0 +1,14 @@
+﻿  OpenCV.cpp
+  OpenGL.cpp
+  CalibrationService.cpp
+  CannyService.cpp
+  ComponentsConnectedService.cpp
+  DelaunayService.cpp
+  FindRegionsService.cpp
+  FireflyService.cpp
+  InputService.cpp
+  RansacService.cpp
+  ReconstructionService.cpp
+  SiftService.cpp
+  Generating Code...
+  Reconstruction.vcxproj -> C:\Users\ssbgaz\Desktop\Reconstruction\Debug\Reconstruction.exe
