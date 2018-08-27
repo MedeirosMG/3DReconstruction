@@ -236,4 +236,19 @@ namespace Services {
 	{
 		_openCv->SaveImage(Path, _secondImageModified);
 	}
+
+	void ControllerService::DisplayImages() 
+	{
+		namedWindow("First Image - Original");
+		namedWindow("Second Image - Original");
+		namedWindow("First Image - Modified");
+		namedWindow("Second Image - Modified");
+
+		imshow("First Image - Original", _firstImage);
+		imshow("Second Image - Original", _secondImage);
+		imshow("First Image - Modified", _firstImageModified);
+		imshow("Second Image - Modified", _secondImageModified);
+
+		waitKey();
+	}
 }

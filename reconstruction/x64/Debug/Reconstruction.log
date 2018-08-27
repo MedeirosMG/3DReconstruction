@@ -1,2 +1,3 @@
-﻿  Main.cpp
-  Reconstruction.vcxproj -> C:\SD\Arquivos\Documentos\3DReconstruction\x64\Debug\Reconstruction.exe
+﻿  CannyService.cpp
+e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\services\cannyservice.cpp(66): warning C4244: 'argumento': conversão de 'double' para 'float', possível perda de dados
+  Reconstruction.vcxproj -> E:\FEI\TCC\Reconstruction (1)\Reconstruction\x64\Debug\Reconstruction.exe

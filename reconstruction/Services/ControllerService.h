@@ -57,7 +57,7 @@ namespace Services {
 		double _cannyLowThresh;
 		double _cannyHighTresh;
 		int _cannyKernelSize;
-		Mat _pointsCanny;
+		vector<Entities::CustomPoint> _pointsCanny;
 
 		// Connected Components Properties
 		int _connectedComponentsThreshVal;
@@ -105,6 +105,8 @@ namespace Services {
 		void SaveSecondImage(string Path = ".\\Others Files\\SecondImage.jpg");
 		void SaveFirstImageModified(string Path = ".\\Others Files\\FirstImageModified.jpg");
 		void SaveSecondImageModified(string Path = ".\\Others Files\\SecondImageModified.jpg");
+
+		void DisplayImages();
 	};
 
 }

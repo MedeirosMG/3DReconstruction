@@ -22,6 +22,8 @@ namespace Services {
 			FireflyService(OpenCV* openCv);
 			~FireflyService();
 			Mat Execute(Mat img, int n_thresholds, int n_fireflies, int n_generations);
+			void TestExecute(Mat img, int n_thresholds, int n_fireflies, int n_generations);
+			void TestExecute(string imgPath, int n_thresholds, int n_fireflies, int n_generations);
 	};
 
 }

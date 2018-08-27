@@ -4,7 +4,7 @@
 
 #include "../Algorithms/OpenCV.h"
 #include "../Algorithms/OpenGL.h"
-
+#include "../Entities/CustomPoint.h"
 using namespace std;
 using namespace Algorithms;
 
@@ -20,7 +20,8 @@ namespace Services {
 			CannyService();
 			CannyService(OpenCV* openCv);
 			~CannyService();
-			Mat Execute(Mat inputImage, double lowThresh, double highThresh, int kernelSize);
+			vector<Entities::CustomPoint> Execute(Mat inputImage, double lowThresh, double highThresh, int kernelSize);
+			void TestExecute(const Mat inputImage, double lowThresh, double highThresh, int kernelSize);
 	};
 
 }
