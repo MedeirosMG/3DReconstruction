@@ -26,7 +26,7 @@ namespace Services {
 			~DelaunayService();
 			vector<Vec6f> Execute(vector<CustomPoint> points);
 			vector<CustomPoint> MockPoints();
-			void TestExecute();
+			void TestExecute(vector<CustomPoint> points = vector<CustomPoint>());
 			float MaxAbsValue(vector<Point3f> points, string coordinate);
 			vector<Point3f> AddMaxValue(vector<Point3f> points, float maxValue);
 	};
