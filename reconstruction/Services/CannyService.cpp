@@ -22,8 +22,6 @@ namespace Services {
 	{
 		Mat contour = _openCv->CannyAlgorithm(inputImage, lowThresh, highThresh, kernelSize);
 
-		cout << contour << endl;
-
 		return contour;
 	}
 

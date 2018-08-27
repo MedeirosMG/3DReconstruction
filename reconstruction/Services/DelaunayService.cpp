@@ -35,7 +35,7 @@ namespace Services {
 			InFile >> _z;
 
 			// Add in return
-			_return.push_back(CustomPoint(_x * 1000, _y * 1000, _z * 1000));
+			_return.push_back(CustomPoint(_x * 100, _y * 100, _z * 100));
 		}
 
 		InFile.close();

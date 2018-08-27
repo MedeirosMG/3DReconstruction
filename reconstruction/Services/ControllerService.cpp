@@ -216,4 +216,24 @@ namespace Services {
 		_siftService = new SiftService(_openCv);
 		_inputImageService = new InputImageService(_openCv);
 	}
+
+	void ControllerService::SaveFirstImage(string Path)
+	{
+		_openCv->SaveImage(Path, _firstImage);
+	}
+
+	void ControllerService::SaveSecondImage(string Path)
+	{
+		_openCv->SaveImage(Path, _secondImage);
+	}
+
+	void ControllerService::SaveFirstImageModified(string Path)
+	{
+		_openCv->SaveImage(Path, _firstImageModified);
+	}
+
+	void ControllerService::SaveSecondImageModified(string Path)
+	{
+		_openCv->SaveImage(Path, _secondImageModified);
+	}
 }
