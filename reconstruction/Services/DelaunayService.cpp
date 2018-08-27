@@ -47,12 +47,6 @@ namespace Services {
 		if(points.size() == 0)
 			vector<CustomPoint> points = MockPoints();
 
-		for (int i = 0; i < points.size(); i++)
-		{
-			points[i].X *= 100;
-			points[i].Y *= 100;
-		}
-
 		//Convert Points
 		CustomPoint *converter = new CustomPoint();
 		vector<Point3f> _points = converter->ReturnPoint3f(points);
@@ -71,7 +65,7 @@ namespace Services {
 		Mat image = cvCreateImage(cvSize(maxWidth + maxAbs, maxHeight + maxAbs), 8, 1);
 		
 		
-		vector<Vec6f> triangleList = Execute(points);
+		vector<Vec6f> triangleList = Execute(points, 100);
 
 		for (size_t i = 0; i < triangleList.size(); i++) {
 			Vec6f triangle = triangleList[i];
@@ -122,11 +116,17 @@ namespace Services {
 		return _points;
 	}
 
-	vector<Vec6f> DelaunayService::Execute(vector<CustomPoint> points)
+	vector<Vec6f> DelaunayService::Execute(vector<CustomPoint> points, int zoom)
 	{
 		//Convert Points
 		CustomPoint *converter = new CustomPoint();
 		vector<Point3f> _points = converter->ReturnPoint3f(points);
+
+		for (int i = 0; i < _points.size(); i++)
+		{
+			points[i].X *= zoom;
+			points[i].Y *= zoom;
+		}
 
 		// Get max width and max height of points
 		float maxWidth = MaxAbsValue(_points, "x");

@@ -24,7 +24,7 @@ namespace Services {
 			DelaunayService(OpenCV* openCv);
 			DelaunayService();
 			~DelaunayService();
-			vector<Vec6f> Execute(vector<CustomPoint> points);
+			vector<Vec6f> Execute(vector<CustomPoint> points, int zoom);
 			vector<CustomPoint> MockPoints();
 			void TestExecute(vector<CustomPoint> points = vector<CustomPoint>());
 			float MaxAbsValue(vector<Point3f> points, string coordinate);

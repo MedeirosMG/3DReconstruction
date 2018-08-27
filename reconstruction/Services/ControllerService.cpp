@@ -80,7 +80,7 @@ namespace Services {
 	{
 		try
 		{
-			_resultDelaunay = _delaunayService->Execute(_resultCalibration);
+			_resultDelaunay = _delaunayService->Execute(_resultCalibration, _zoom);
 			return true;
 		}
 		catch (const std::exception& ex)
@@ -130,7 +130,7 @@ namespace Services {
 	{
 		try
 		{
-			//_renderService->Execute();
+			_renderService->Execute(_argc, _argv, _resultDelaunay, _resultCalibration);
 		}
 		catch (const std::exception& ex)
 		{
@@ -209,6 +209,17 @@ namespace Services {
 		_number_generations = number_generations;
 	}
 
+	void ControllerService::SetRenderProperties(int *argc, char **argv)
+	{
+		_argc = argc;
+		_argv = argv;
+	}
+
+	void ControllerService::SetDelaunayProperties(int zoom) 
+	{
+		_zoom = zoom;
+	}
+
 #pragma endregion
 
 	void ControllerService::LoadServices()
@@ -222,6 +233,7 @@ namespace Services {
 		_ransacService = new RansacService(_openCv);
 		_siftService = new SiftService(_openCv);
 		_inputImageService = new InputImageService(_openCv);
+		_renderService = new RenderService(_openCv);
 	}
 
 	void ControllerService::SaveFirstImage(string Path)

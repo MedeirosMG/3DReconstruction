@@ -46,7 +46,7 @@ namespace Services {
 
 		// Delaunay Properties
 		vector<Vec6f> _resultDelaunay;
-		Mat _inputImageToRender;
+		int _zoom;
 
 		// Sift Properties
 		int _siftThreshold;
@@ -77,6 +77,10 @@ namespace Services {
 		int _number_fireflies;
 		int _number_generations;
 
+		// Render Properties
+		int *_argc;
+		char **_argv;
+
 		void LoadServices();
 
 	public:
@@ -102,6 +106,8 @@ namespace Services {
 		void SetCalibrationProperties(float calibrationB, float calibrationLambda, int calibrationK);
 		void SetGeneralProperties();
 		void SetFireflyProperties(int thresholds, int number_fireflies, int number_generations);
+		void SetRenderProperties(int *argc, char **argv);
+		void SetDelaunayProperties(int zoom);
 
 		void SaveFirstImage(string Path = ".\\Others Files\\FirstImage.jpg");
 		void SaveSecondImage(string Path = ".\\Others Files\\SecondImage.jpg");

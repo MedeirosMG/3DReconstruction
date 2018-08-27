@@ -1,3 +1,9 @@
-﻿  RenderService.cpp
-c:\users\murillo\c++\3dreconstruction\reconstruction\services\renderservice.cpp(30): warning C4305: 'argumento': truncamento de 'double' para 'GLfloat'
-  Reconstruction.vcxproj -> C:\Users\Murillo\C++\3DReconstruction\x64\Debug\Reconstruction.exe
+﻿  Main.cpp
+  ControllerService.cpp
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\controllerservice.cpp(110): warning C4615: Aviso de #pragma: tipo de aviso de usuário desconhecido
+  DelaunayService.cpp
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\delaunayservice.cpp(65): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\delaunayservice.cpp(145): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
+  Gerando Código...
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\controllerservice.cpp(140): warning C4715: 'Services::ControllerService::RenderApply': nem todos os caminhos de controle retornam um valor
+  Reconstruction.vcxproj -> C:\SD\Arquivos\Documentos\3DReconstruction\x64\Debug\Reconstruction.exe
