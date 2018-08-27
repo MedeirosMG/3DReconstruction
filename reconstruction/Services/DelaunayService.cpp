@@ -42,9 +42,10 @@ namespace Services {
 		return _return;
 	}
 
-	void DelaunayService::TestExecute()
+	void DelaunayService::TestExecute(vector<CustomPoint> points)
 	{
-		vector<CustomPoint> points = MockPoints();
+		if(points.size == 0)
+			vector<CustomPoint> points = MockPoints();
 
 		//Convert Points
 		CustomPoint *converter = new CustomPoint();
