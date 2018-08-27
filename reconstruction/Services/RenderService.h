@@ -20,6 +20,7 @@ namespace Services {
 			RenderService(OpenCV* openCv);
 			RenderService();
 			~RenderService();
+			void Execute(int *argc, char **argv);
 	};
 
 }

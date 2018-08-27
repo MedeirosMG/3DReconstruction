@@ -1,4 +1,2 @@
-﻿  DelaunayService.cpp
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\services\delaunayservice.cpp(71): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\services\delaunayservice.cpp(145): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
-  Reconstruction.vcxproj -> E:\FEI\TCC\Reconstruction (1)\Reconstruction\x64\Debug\Reconstruction.exe
+﻿  RenderService.cpp
+  Reconstruction.vcxproj -> C:\SD\Arquivos\Documentos\3DReconstruction\x64\Debug\Reconstruction.exe

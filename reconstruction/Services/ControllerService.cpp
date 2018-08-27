@@ -128,8 +128,15 @@ namespace Services {
 
 	bool ControllerService::RenderApply() 
 	{
-#pragma warning("RenderApply Not implemented Yet")
-		return false;
+		try
+		{
+			//_renderService->Execute();
+		}
+		catch (const std::exception& ex)
+		{
+			cout << ">> Error on rendering. " << endl << endl << ex.what() << endl;
+			return false;
+		}
 	}
 
 	bool ControllerService::FireflyApply()

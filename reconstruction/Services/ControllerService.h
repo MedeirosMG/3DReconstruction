@@ -12,6 +12,7 @@
 #include "RansacService.h"
 #include "SiftService.h"
 #include "InputImageService.h"
+#include "RenderService.h"
 
 #pragma endregion
 
@@ -35,6 +36,7 @@ namespace Services {
 		RansacService* _ransacService;
 		SiftService* _siftService;
 		InputImageService* _inputImageService;
+		RenderService* _renderService;
 
 		// General Properties
 		Mat _firstImage;
