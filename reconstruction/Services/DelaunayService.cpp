@@ -44,8 +44,14 @@ namespace Services {
 
 	void DelaunayService::TestExecute(vector<CustomPoint> points)
 	{
-		if(points.size == 0)
+		if(points.size() == 0)
 			vector<CustomPoint> points = MockPoints();
+
+		for (int i = 0; i < points.size(); i++)
+		{
+			points[i].X *= 100;
+			points[i].Y *= 100;
+		}
 
 		//Convert Points
 		CustomPoint *converter = new CustomPoint();
