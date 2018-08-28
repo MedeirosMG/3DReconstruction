@@ -1,12 +1,5 @@
-#ifndef MULTILIMIARIZACAO
-#define MULTILIMIARIZACAO
-
-enum flag{
-
-    backwards = 1,
-    notbackwards = 0
-
-};
+#include "stdafx.h"
+#include "../Helpers/multilimiarizacao.h"
 
 std::vector<double> sortBackwards(std::vector<double> lim){
 
@@ -24,8 +17,6 @@ std::vector<double> sortBackwards(std::vector<double> lim){
 
     return lim;
 }
-
-
 
 Mat MultiLim(Mat im, std::vector<unsigned int> bests, int flag) {
 
@@ -115,8 +106,6 @@ Mat MultiLim2(Mat im, std::vector<unsigned int> bests, int flag) {
 	std::vector<unsigned int> limiares;
 
 	int n_gray_values = bests.size() + 1;
-
-	cout << "gray values = " << n_gray_values;
 
 	limiares.push_back(0);
 
@@ -273,6 +262,3 @@ std::vector<Mat> SplitSegmentedRegions(Mat im, std::vector<unsigned int> bests, 
 
 	return set_of_segmented_regions;
 }
-
-#endif // MULTILIMIARIZACAO
-
