@@ -53,8 +53,8 @@ namespace Services {
 
 		// Get max width and max height of points
 		// Get max width and max height of points
-		float maxWidth = MaxAbsValue(_points, "x");
-		float maxHeight = MaxAbsValue(_points, "y");
+		float maxWidth = converter->GetMaxAbsCoord(_points, "x");
+		float maxHeight = converter->GetMaxAbsCoord(_points, "y");
 		float maxAbs = 0.0;
 
 		if (maxWidth > maxHeight)
@@ -81,41 +81,6 @@ namespace Services {
 		_openCv->SaveImage(".\\Others Files\\MockPoints.jpg",image);
 	}
 
-	float DelaunayService::MaxAbsValue(vector<Point3f> points, string coordinate)
-	{
-		float maxValue = 0.0;
-
-		for each (Point3f point in points)
-		{
-			float numTemp = 0.0;
-			if (coordinate == "x")
-				numTemp = point.x;
-			else if (coordinate == "y")
-				numTemp = point.y;
-			else if (coordinate == "z")
-				numTemp = point.z;
-			else
-				throw exception("Coordenada não existe.");
-
-
-			if (abs(numTemp) > maxValue)
-				maxValue = abs(numTemp);
-		}
-
-		return maxValue;
-	}
-
-	vector<Point3f> DelaunayService::AddMaxValue(vector<Point3f> points, float maxValue) {
-		vector<Point3f> _points;
-
-		for each (Point3f point in points)
-		{
-			_points.push_back(Point3f(point.x + maxValue, point.y + maxValue, point.z + maxValue));
-		}
-
-		return _points;
-	}
-
 	vector<Vec6f> DelaunayService::Execute(vector<CustomPoint> points, int zoom)
 	{
 		//Convert Points
@@ -129,8 +94,8 @@ namespace Services {
 		}
 
 		// Get max width and max height of points
-		float maxWidth = MaxAbsValue(_points, "x");
-		float maxHeight = MaxAbsValue(_points, "y");
+		float maxWidth = converter->GetMaxAbsCoord(_points, "x");
+		float maxHeight = converter->GetMaxAbsCoord(_points, "y");
 		float maxAbs = 0.0;
 
 		if (maxWidth > maxHeight)
@@ -139,10 +104,10 @@ namespace Services {
 			maxAbs = maxHeight;
 
 		// Update values of points
-		_points = AddMaxValue(_points, maxAbs);
+		_points = converter->AddValueToPoints(_points, maxAbs);
 
 		// Rectangle to be used with Subdiv2D
-		Rect rect(0, 0, MaxAbsValue(_points, "x") + 10, MaxAbsValue(_points, "y") + 10);
+		Rect rect(0, 0, converter->GetMaxAbsCoord(_points, "x") + 10, converter->GetMaxAbsCoord(_points, "y") + 10);
 
 		// Create an instance of Subdiv2D
 		Subdiv2D subdiv(rect);
