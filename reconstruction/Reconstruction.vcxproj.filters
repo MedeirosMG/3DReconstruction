@@ -99,6 +99,9 @@
     <ClInclude Include="Services\InputImageService.h">
       <Filter>Header Files\H_Services</Filter>
     </ClInclude>
+    <ClInclude Include="Helpers\PointsUtilities.h">
+      <Filter>Header Files\H_Helpers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -151,6 +154,18 @@
     </ClCompile>
     <ClCompile Include="Services\InputImageService.cpp">
       <Filter>Source Files\S_Services</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers\PointsUtilities.cpp">
+      <Filter>Source Files\S_Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers\Firefly_Optimization.cpp">
+      <Filter>Source Files\S_Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers\multilimiarizacao.cpp">
+      <Filter>Source Files\S_Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers\tsallis.cpp">
+      <Filter>Source Files\S_Helpers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

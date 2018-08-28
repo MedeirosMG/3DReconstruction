@@ -3,6 +3,7 @@
   OpenCV.cpp
   CustomPoint.cpp
   PointPair.cpp
+  PointsUtilities.cpp
   Main.cpp
   CalibrationService.cpp
 c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\calibrationservice.cpp(132): warning C4244: 'inicializando': conversão de 'double' para 'int', possível perda de dados

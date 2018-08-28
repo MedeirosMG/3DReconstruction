@@ -163,6 +163,7 @@
     <ClInclude Include="Entities\PointPair.h" />
     <ClInclude Include="Helpers\Firefly_Optimization.h" />
     <ClInclude Include="Helpers\multilimiarizacao.h" />
+    <ClInclude Include="Helpers\PointsUtilities.h" />
     <ClInclude Include="Helpers\tsallis.h" />
     <ClInclude Include="Services\CalibrationService.h" />
     <ClInclude Include="Services\CannyService.h" />
@@ -183,6 +184,10 @@
     <ClCompile Include="Algorithms\OpenCV.cpp" />
     <ClCompile Include="Entities\CustomPoint.cpp" />
     <ClCompile Include="Entities\PointPair.cpp" />
+    <ClCompile Include="Helpers\Firefly_Optimization.cpp" />
+    <ClCompile Include="Helpers\multilimiarizacao.cpp" />
+    <ClCompile Include="Helpers\PointsUtilities.cpp" />
+    <ClCompile Include="Helpers\tsallis.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Services\CalibrationService.cpp" />
     <ClCompile Include="Services\CannyService.cpp" />
