@@ -7,10 +7,12 @@
 #include "../Algorithms/OpenGL.h"
 #include "../Entities/PointPair.h"
 #include "../Entities/CustomPoint.h"
+#include "../Helpers/PointsUtilities.h"
 
 using namespace std;
 using namespace Algorithms;
 using namespace Entities;
+using namespace Utilities;
 
 namespace Services {
 
