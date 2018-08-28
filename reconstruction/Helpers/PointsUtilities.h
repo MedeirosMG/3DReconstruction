@@ -9,17 +9,23 @@
 
 using namespace std;
 using namespace Algorithms;
+using namespace Entities;
 
 namespace Utilities {
-	class CustomPoint
+	class PointUtilities
 	{
 		private:
 			OpenCV * _openCv;
 
 		public:
-			CustomPoint(OpenCV* openCv);
-			CustomPoint();
-			~CustomPoint();
+			PointUtilities(OpenCV* openCv);
+			PointUtilities();
+			~PointUtilities();
+
+			Point3f ReturnPoint3f(CustomPoint point);
+			vector<Point3f> ReturnPoint3f(vector<CustomPoint> points);
+			vector<Point3f> AddValueToPoints(vector<Point3f> points, float maxValue);
+			float GetMaxAbsCoord(vector<Point3f> points, string coordinate);
 	};
 }
 

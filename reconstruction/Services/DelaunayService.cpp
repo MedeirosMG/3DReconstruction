@@ -48,7 +48,7 @@ namespace Services {
 			vector<CustomPoint> points = MockPoints();
 
 		//Convert Points
-		CustomPoint *converter = new CustomPoint();
+		PointUtilities *converter = new PointUtilities();
 		vector<Point3f> _points = converter->ReturnPoint3f(points);
 
 		// Get max width and max height of points
@@ -84,7 +84,7 @@ namespace Services {
 	vector<Vec6f> DelaunayService::Execute(vector<CustomPoint> points, int zoom)
 	{
 		//Convert Points
-		CustomPoint *converter = new CustomPoint();
+		PointUtilities *converter = new PointUtilities();
 		vector<Point3f> _points = converter->ReturnPoint3f(points);
 
 		for (int i = 0; i < _points.size(); i++)

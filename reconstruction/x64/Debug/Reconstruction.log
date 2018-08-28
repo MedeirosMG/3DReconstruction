@@ -3,7 +3,13 @@
   OpenCV.cpp
   CustomPoint.cpp
   PointPair.cpp
+  Firefly_Optimization.cpp
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\firefly_optimization.cpp(284): fatal error C1010: fim de arquivo inesperado durante procura por cabeçalho pré-compilado. Você esqueceu de adicionar '#include "stdafx.h"' à sua fonte?
+  multilimiarizacao.cpp
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\multilimiarizacao.cpp(279): fatal error C1010: fim de arquivo inesperado durante procura por cabeçalho pré-compilado. Você esqueceu de adicionar '#include "stdafx.h"' à sua fonte?
   PointsUtilities.cpp
+  tsallis.cpp
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\tsallis.cpp(155): fatal error C1010: fim de arquivo inesperado durante procura por cabeçalho pré-compilado. Você esqueceu de adicionar '#include "stdafx.h"' à sua fonte?
   Main.cpp
   CalibrationService.cpp
 c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\calibrationservice.cpp(132): warning C4244: 'inicializando': conversão de 'double' para 'int', possível perda de dados
@@ -69,4 +75,3 @@ c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\siftservice.c
   Gerando Código...
 c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\controllerservice.cpp(140): warning C4715: 'Services::ControllerService::RenderApply': nem todos os caminhos de controle retornam um valor
 c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\calibrationservice.cpp(358): warning C4715: 'Services::CalibrationService::FilterByShape': nem todos os caminhos de controle retornam um valor
-  Reconstruction.vcxproj -> C:\SD\Arquivos\Documentos\3DReconstruction\x64\Debug\Reconstruction.exe
