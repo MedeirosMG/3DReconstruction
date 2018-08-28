@@ -1,6 +1,5 @@
+#include "stdafx.h"
 
-#ifndef TSALLIS
-#define TSALLIS
 #include <vector>
 #include <stdlib.h>
 #include <stdio.h>
@@ -9,8 +8,6 @@
 #include <iostream>
 
 using namespace std;
-
-double sumt = 0;
 
 double qValue(double *h, int buff_size){
 
@@ -149,6 +146,3 @@ int mainTsallis(double *v){
 
     return 0;
 }
-
-#endif // TSALLIS
-

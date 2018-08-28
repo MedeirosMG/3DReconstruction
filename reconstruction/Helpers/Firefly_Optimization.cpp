@@ -1,9 +1,6 @@
-#include <set>
+#include "stdafx.h"
+#include "../Helpers/Firefly_Optimization.h"
 #include "tsallis.h"
-
-#ifndef FIREFLY_OPTIMIZATION_H
-#define FIREFLY_OPTIMIZATION_H
-
 using namespace std;
 using namespace cv;
 
@@ -96,7 +93,6 @@ std::vector<std::vector<double> > distancias(std::vector<std::vector<unsigned in
 	return all_dist;
 }
 
-
 // Init fireflies matrix
 void init_ffa(int n, int thresholds, int range, std::vector<std::vector<unsigned int> > &fireflies) {
 	//n - number of fireflies
@@ -130,7 +126,6 @@ void init_ffa(int n, int thresholds, int range, std::vector<std::vector<unsigned
 	}
 	validaThresholds(fireflies);
 }
-
 
 // Moving fireflies towards the brightest one
 void ff_move(double &beta, std::vector<std::vector<unsigned int> > &fireflies, std::vector<double> &lightn, double alpha, double gamma, int range, std::vector<std::vector<double> > a) 
@@ -279,5 +274,3 @@ std::vector<unsigned int> beststhresholds(Mat img, int thresholds, int n_fires, 
 
 	return bests;
 }
-
-#endif
