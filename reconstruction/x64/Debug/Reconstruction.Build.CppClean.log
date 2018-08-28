@@ -1,35 +1,33 @@
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\reconstruction.pch
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\vc141.pdb
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\vc141.idb
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\stdafx.obj
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\main.obj
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\tsallis.obj
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\pointsutilities.obj
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\multilimiarizacao.obj
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\firefly_optimization.obj
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\pointpair.obj
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\custompoint.obj
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\opencv.obj
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\opengl.obj
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\controllerservice.obj
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\ransacservice.obj
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\inputimageservice.obj
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\fireflyservice.obj
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\findregionsservice.obj
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\delaunayservice.obj
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\componentsconnectedservice.obj
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\cannyservice.obj
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\calibrationservice.obj
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\siftservice.obj
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\renderservice.obj
-e:\fei\tcc\reconstruction (1)\reconstruction\x64\debug\reconstruction.pdb
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\reconstruction.tlog\cl.read.1.tlog
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\reconstruction.tlog\cl.write.1.tlog
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\reconstruction.tlog\cl.command.1.tlog
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\reconstruction.tlog\link-rc.read.1.tlog
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\reconstruction.tlog\link-rc.write.1.tlog
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\reconstruction.tlog\link-cvtres.read.1.tlog
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\reconstruction.tlog\link-cvtres.write.1.tlog
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\reconstruction.tlog\link.read.1.tlog
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\reconstruction.tlog\link.write.1.tlog
-e:\fei\tcc\reconstruction (1)\reconstruction\reconstruction\x64\debug\reconstruction.tlog\link.command.1.tlog
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\reconstruction.pch
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\vc141.pdb
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\vc141.idb
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\stdafx.obj
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\siftservice.obj
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\renderservice.obj
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\controllerservice.obj
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\ransacservice.obj
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\inputimageservice.obj
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\fireflyservice.obj
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\findregionsservice.obj
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\delaunayservice.obj
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\componentsconnectedservice.obj
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\cannyservice.obj
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\calibrationservice.obj
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\main.obj
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\tsallis.obj
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\pointsutilities.obj
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\multilimiarizacao.obj
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\firefly_optimization.obj
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\pointpair.obj
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\custompoint.obj
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\opencv.obj
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\opengl.obj
+c:\sd\arquivos\documentos\3dreconstruction\x64\debug\reconstruction.ilk
+c:\sd\arquivos\documentos\3dreconstruction\x64\debug\reconstruction.exe
+c:\sd\arquivos\documentos\3dreconstruction\x64\debug\reconstruction.pdb
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\reconstruction.tlog\cl.command.1.tlog
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\reconstruction.tlog\cl.read.1.tlog
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\reconstruction.tlog\cl.write.1.tlog
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\reconstruction.tlog\link.command.1.tlog
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\reconstruction.tlog\link.read.1.tlog
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\x64\debug\reconstruction.tlog\link.write.1.tlog
