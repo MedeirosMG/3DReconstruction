@@ -1,7 +1,6 @@
 #ifndef SERVICES_DELAUNAY
 #define SERVICES_DELAUNAY
 #include <iostream>
-#include <fstream>
 
 #include "../Algorithms/OpenCV.h"
 #include "../Algorithms/OpenGL.h"
@@ -27,8 +26,7 @@ namespace Services {
 			DelaunayService();
 			~DelaunayService();
 			vector<Vec6f> Execute(vector<CustomPoint> points, int zoom);
-			vector<CustomPoint> MockPoints();
-			void TestExecute(vector<CustomPoint> points = vector<CustomPoint>());
+			void TestExecute(vector<CustomPoint> points = vector<CustomPoint>(), int zoom = 100);
 	};
 
 }

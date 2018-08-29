@@ -1,6 +1,7 @@
 #ifndef UTILITIES_CUSTOM_POINT
 #define UTILITIES_CUSTOM_POINT
 #include <iostream>
+#include <fstream>
 
 #include "../Algorithms/OpenCV.h"
 #include "../Algorithms/OpenGL.h"
@@ -24,8 +25,10 @@ namespace Utilities {
 
 			Point3f ReturnPoint3f(CustomPoint point);
 			vector<Point3f> ReturnPoint3f(vector<CustomPoint> points);
-			vector<Point3f> AddValueToPoints(vector<Point3f> points, float maxValue);
+			vector<Point3f> PointsTranslocate(vector<Point3f> points, float maxValue);
+			vector<Point3f> PointsZoom(vector<Point3f> points, int zoom);
 			float GetMaxAbsCoord(vector<Point3f> points, string coordinate);
+			vector<CustomPoint> GetMockPoints(string fileRead = ".\\Others Files\\MockPoints.obj");
 	};
 }
 

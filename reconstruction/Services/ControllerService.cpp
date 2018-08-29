@@ -130,7 +130,7 @@ namespace Services {
 	{
 		try
 		{
-			_renderService->Execute(_argc, _argv, _resultDelaunay, _resultCalibration);
+			_renderService->Execute(_argc, _argv, _resultDelaunay, _resultCalibration, _zoom);
 		}
 		catch (const std::exception& ex)
 		{
@@ -215,7 +215,7 @@ namespace Services {
 		_argv = argv;
 	}
 
-	void ControllerService::SetDelaunayProperties(int zoom) 
+	void ControllerService::setGeneralProperties(int zoom)
 	{
 		_zoom = zoom;
 	}

@@ -16,39 +16,14 @@ namespace Services {
 	{
 	}
 
-	vector<CustomPoint> DelaunayService::MockPoints() 
+	void DelaunayService::TestExecute(vector<CustomPoint> points, int zoom)
 	{
-		// Temps for reading file
-		float _x = 0, _y = 0, _z = 0;
-		string temp;
-		ifstream InFile;
-		InFile.open(".\\Others Files\\MockPoints.obj");
+		PointUtilities *converter = new PointUtilities();
 
-		//Vector temp to return
-		vector<CustomPoint> _return;
-
-		while (!InFile.eof()) // To get you all the lines.
-		{
-			// Get the points 
-			InFile >> _x;
-			InFile >> _y;
-			InFile >> _z;
-
-			// Add in return
-			_return.push_back(CustomPoint(_x * 100, _y * 100, _z * 100));
-		}
-
-		InFile.close();
-		return _return;
-	}
-
-	void DelaunayService::TestExecute(vector<CustomPoint> points)
-	{
 		if(points.size() == 0)
-			vector<CustomPoint> points = MockPoints();
+			vector<CustomPoint> points = converter->GetMockPoints();
 
 		//Convert Points
-		PointUtilities *converter = new PointUtilities();
 		vector<Point3f> _points = converter->ReturnPoint3f(points);
 
 		// Get max width and max height of points
@@ -65,7 +40,7 @@ namespace Services {
 		Mat image = cvCreateImage(cvSize(maxWidth + maxAbs, maxHeight + maxAbs), 8, 1);
 		
 		
-		vector<Vec6f> triangleList = Execute(points, 100);
+		vector<Vec6f> triangleList = Execute(points, zoom);
 
 		for (size_t i = 0; i < triangleList.size(); i++) {
 			Vec6f triangle = triangleList[i];
@@ -87,11 +62,7 @@ namespace Services {
 		PointUtilities *converter = new PointUtilities();
 		vector<Point3f> _points = converter->ReturnPoint3f(points);
 
-		for (int i = 0; i < _points.size(); i++)
-		{
-			points[i].X *= zoom;
-			points[i].Y *= zoom;
-		}
+		_points = converter->PointsZoom(_points, zoom);
 
 		// Get max width and max height of points
 		float maxWidth = converter->GetMaxAbsCoord(_points, "x");
@@ -104,7 +75,7 @@ namespace Services {
 			maxAbs = maxHeight;
 
 		// Update values of points
-		_points = converter->AddValueToPoints(_points, maxAbs);
+		_points = converter->PointsTranslocate(_points, maxAbs);
 
 		// Rectangle to be used with Subdiv2D
 		Rect rect(0, 0, converter->GetMaxAbsCoord(_points, "x") + 10, converter->GetMaxAbsCoord(_points, "y") + 10);

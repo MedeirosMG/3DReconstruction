@@ -1,1 +1,4 @@
-﻿
+﻿  RenderService.cpp
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\renderservice.cpp(25): warning C4305: 'argumento': truncamento de 'double' para 'GLfloat'
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\renderservice.cpp(125): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
+  Reconstruction.vcxproj -> C:\SD\Arquivos\Documentos\3DReconstruction\x64\Debug\Reconstruction.exe

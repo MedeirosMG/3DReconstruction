@@ -43,10 +43,10 @@ namespace Services {
 		Mat _secondImage;
 		Mat _firstImageModified;
 		Mat _secondImageModified;
+		int _zoom;
 
 		// Delaunay Properties
 		vector<Vec6f> _resultDelaunay;
-		int _zoom;
 
 		// Sift Properties
 		int _siftThreshold;
@@ -107,7 +107,7 @@ namespace Services {
 		void SetGeneralProperties();
 		void SetFireflyProperties(int thresholds, int number_fireflies, int number_generations);
 		void SetRenderProperties(int *argc, char **argv);
-		void SetDelaunayProperties(int zoom);
+		void setGeneralProperties(int zoom);
 
 		void SaveFirstImage(string Path = ".\\Others Files\\FirstImage.jpg");
 		void SaveSecondImage(string Path = ".\\Others Files\\SecondImage.jpg");
