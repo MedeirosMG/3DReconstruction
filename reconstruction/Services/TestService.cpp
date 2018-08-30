@@ -83,6 +83,11 @@ namespace Services {
 		//canny->TestExecute(imread(".\\Others Files\\TestImage.jpg"), 50, 700, 3);
 
 		// ---------- TestRansac -------------
+		SiftService *sift = new SiftService();
+		RansacService *ransac = new RansacService();
+		Mat img1 = imread(".\\Others Files\\im0.png");
+		Mat img2 = imread(".\\Others Files\\im1.png");
+		ransac->Execute(sift->Execute(img1, img2, 400));
 
 		cout << "======== End Test ======== " << endl;
 	}
