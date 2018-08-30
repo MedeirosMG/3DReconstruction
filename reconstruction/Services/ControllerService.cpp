@@ -80,7 +80,7 @@ namespace Services {
 	{
 		try
 		{
-			_resultDelaunay = _delaunayService->Execute(_resultCalibration, _zoom);
+			_resultDelaunay = _delaunayService->Execute(_resultCalibration);
 			return true;
 		}
 		catch (const std::exception& ex)
@@ -130,7 +130,7 @@ namespace Services {
 	{
 		try
 		{
-			_renderService->Execute(_argc, _argv, _resultDelaunay, _resultCalibration, _zoom);
+			_renderService->Execute(_argc, _argv, _resultDelaunay, _resultCalibration);
 		}
 		catch (const std::exception& ex)
 		{
@@ -213,11 +213,6 @@ namespace Services {
 	{
 		_argc = argc;
 		_argv = argv;
-	}
-
-	void ControllerService::setGeneralProperties(int zoom)
-	{
-		_zoom = zoom;
 	}
 
 #pragma endregion

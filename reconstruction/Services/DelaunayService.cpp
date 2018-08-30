@@ -16,7 +16,7 @@ namespace Services {
 	{
 	}
 
-	void DelaunayService::TestExecute(vector<CustomPoint> points, int zoom)
+	void DelaunayService::TestExecute(vector<CustomPoint> points)
 	{
 		PointUtilities *converter = new PointUtilities();
 
@@ -40,7 +40,7 @@ namespace Services {
 		Mat image = cvCreateImage(cvSize(maxWidth + maxAbs, maxHeight + maxAbs), 8, 1);
 		
 		
-		vector<Vec6f> triangleList = Execute(points, zoom);
+		vector<Vec6f> triangleList = Execute(points);
 
 		for (size_t i = 0; i < triangleList.size(); i++) {
 			Vec6f triangle = triangleList[i];
@@ -56,13 +56,51 @@ namespace Services {
 		_openCv->SaveImage(".\\Others Files\\MockPoints.jpg",image);
 	}
 
-	vector<Vec6f> DelaunayService::Execute(vector<CustomPoint> points, int zoom)
+	bool DelaunayService::CheckRectangle(int coord, Vec6f triangle)
+	{
+		Point _pt1{ cvRound(triangle[0]), cvRound(triangle[1]) };
+		Point _pt2{ cvRound(triangle[2]), cvRound(triangle[3]) };
+		Point _pt3{ cvRound(triangle[4]), cvRound(triangle[5]) };
+
+		if (coord == _pt1.x || coord == _pt1.y)
+			return true;
+		else if (coord == _pt2.x || coord == _pt2.y)
+			return true;
+		else if (coord == _pt3.x || coord == _pt3.y)
+			return true;
+		else
+			return false;
+	}
+
+	vector<Vec6f> DelaunayService::RemoveRectangle(vector<Vec6f> triangles) 
+	{
+		vector<Vec6f> retorno;
+		Vec6f _triangle = triangles[1];
+
+		for (size_t i = 0; i < triangles.size(); i++) {
+			Vec6f triangle = triangles[i];
+			Point pt1{ cvRound(triangle[0]), cvRound(triangle[1]) };
+			Point pt2{ cvRound(triangle[2]), cvRound(triangle[3]) };
+			Point pt3{ cvRound(triangle[4]), cvRound(triangle[5]) };
+			
+			if (CheckRectangle(pt1.x, _triangle) || CheckRectangle(pt1.y, _triangle))
+				continue;
+			else if (CheckRectangle(pt2.x, _triangle) || CheckRectangle(pt2.y, _triangle))
+				continue;
+			else if (CheckRectangle(pt3.x, _triangle) || CheckRectangle(pt3.y, _triangle))
+				continue;
+			else
+				retorno.push_back(triangle);
+		}
+
+		return retorno;
+	}
+
+	vector<Vec6f> DelaunayService::Execute(vector<CustomPoint> points)
 	{
 		//Convert Points
 		PointUtilities *converter = new PointUtilities();
 		vector<Point3f> _points = converter->ReturnPoint3f(points);
-
-		_points = converter->PointsZoom(_points, zoom);
 
 		// Get max width and max height of points
 		float maxWidth = converter->GetMaxAbsCoord(_points, "x");
@@ -93,6 +131,6 @@ namespace Services {
 		vector<Vec6f> triangleList;
 		subdiv.getTriangleList(triangleList);
 
-		return triangleList;
+		return RemoveRectangle(triangleList);
 	}
 }

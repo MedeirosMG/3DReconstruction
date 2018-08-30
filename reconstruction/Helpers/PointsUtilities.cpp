@@ -111,4 +111,36 @@ namespace Utilities {
 		InFile.close();
 		return _return;
 	}
+
+	float PointUtilities::GetMaxAbsCoord(vector<Vec6f> points) 
+	{
+		float maxValue = 0.0;
+
+		for (size_t i = 0; i < points.size(); i++) {
+			Vec6f triangle = points[i];
+			Point pt1{ cvRound(triangle[0]), cvRound(triangle[1]) };
+			Point pt2{ cvRound(triangle[2]), cvRound(triangle[3]) };
+			Point pt3{ cvRound(triangle[4]), cvRound(triangle[5]) };
+
+			if (abs(pt1.x) > maxValue)
+				maxValue = abs(pt1.x);
+
+			if (abs(pt1.y) > maxValue)
+				maxValue = abs(pt1.y);
+
+			if (abs(pt2.x) > maxValue)
+				maxValue = abs(pt2.x);
+
+			if (abs(pt2.y) > maxValue)
+				maxValue = abs(pt2.y);
+
+			if (abs(pt3.x) > maxValue)
+				maxValue = abs(pt3.x);
+
+			if (abs(pt3.y) > maxValue)
+				maxValue = abs(pt3.y);
+		}
+
+		return maxValue;
+	}
 }

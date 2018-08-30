@@ -24,27 +24,36 @@ namespace Services {
 		
 		glColor3f(0.1, 0.2, 0.3);
 		RenderService *service = new RenderService();
+		PointUtilities *converter = new PointUtilities();
 
 		// Get triangles and points setted
 		vector<Vec6f> triangleList = service->GetTriangles();
 		vector<Point3f> points = service->GetPoints();
+		
+		float maxAbs = converter->GetMaxAbsCoord(triangleList);
 
+		
 		// Draw triangles
-		for (size_t i = 0; i < triangleList.size(); i++) {
+		for (size_t i = 3; i < triangleList.size(); i++) {
 			Vec6f triangle = triangleList[i];
 			Point pt1{ cvRound(triangle[0]), cvRound(triangle[1]) };
 			Point pt2{ cvRound(triangle[2]), cvRound(triangle[3]) };
 			Point pt3{ cvRound(triangle[4]), cvRound(triangle[5]) };
-
-			glBegin(GL_TRIANGLES);
-				glVertex3f(0, 0, 0);
-				glVertex3f(500, 0, 0);
-				glVertex3f(500, 500, 0);
-				//glVertex3f(pt1.x, pt1.y, 0);
-				//glVertex3f(pt2.x, pt2.y, 0);
-				//glVertex3f(pt3.x, pt3.y, 0);
+			
+			glBegin(GL_LINES);
+				glVertex3f(pt1.x/maxAbs, pt1.y/maxAbs, 0);
+				glVertex3f(pt2.x/maxAbs, pt2.y/maxAbs, 0);
 			glEnd();
 
+			glBegin(GL_LINES);
+				glVertex3f(pt2.x / maxAbs, pt2.y / maxAbs, 0);
+				glVertex3f(pt3.x / maxAbs, pt3.y / maxAbs, 0);
+			glEnd();
+
+			glBegin(GL_LINES);
+				glVertex3f(pt3.x / maxAbs, pt3.y / maxAbs, 0);
+				glVertex3f(pt1.x / maxAbs, pt1.y / maxAbs, 0);
+			glEnd();
 		}
 
 		glFlush();
@@ -69,7 +78,6 @@ namespace Services {
 		glutInitWindowSize(width, height);
 		glutInitWindowPosition(0, 0);
 		glutInitDisplayMode(GLUT_RGB);
-		glViewport(0, 0, width, height);
 
 		/* create and set up a window */
 		glutCreateWindow("3D Reconstruction");
@@ -78,15 +86,15 @@ namespace Services {
 		/* define the projection transformation */
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		glOrtho(0.0, width, 0.0, height, 0.0, 0.0);
+		//glOrtho(0.0, 1.0, 0.0, 1, 0.0, 0.0);
 
 		/* define the viewing transformation */
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
-		gluLookAt(1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+		//gluLookAt(1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 	}
 
-	void RenderService::TestExecute(int *argc, char **argv, vector<CustomPoint> points, int zoom)
+	void RenderService::TestExecute(int *argc, char **argv, vector<CustomPoint> points)
 	{
 		PointUtilities *converter = new PointUtilities();
 
@@ -95,34 +103,19 @@ namespace Services {
 
 		DelaunayService *delaunay = new DelaunayService();
 
-		Execute(argc, argv, delaunay->Execute(points, zoom), points, zoom);
+		Execute(argc, argv, delaunay->Execute(points), points);
 	}
 
-	void RenderService::Execute(int *argc, char **argv, vector<Vec6f> triangles, vector<CustomPoint> points3D, int zoom)
+	void RenderService::Execute(int *argc, char **argv, vector<Vec6f> triangles, vector<CustomPoint> points3D)
 	{
 		glutInit(argc, argv);
 	
 		//Convert Points
 		PointUtilities *converter = new PointUtilities();
 		vector<Point3f> _points = converter->ReturnPoint3f(points3D);
-
-		_points = converter->PointsZoom(_points, zoom);
-
-		// Get max width and max height of points
-		float maxWidth = converter->GetMaxAbsCoord(_points, "x");
-		float maxHeight = converter->GetMaxAbsCoord(_points, "y");
-		float maxAbs = 0.0;
-
-		if (maxWidth > maxHeight)
-			maxAbs = maxWidth;
-		else if (maxHeight > maxWidth)
-			maxAbs = maxHeight;
-
-		// Update values of points
-		_points = converter->PointsTranslocate(_points, maxAbs);
-
+			
 		//Init configuratons of screen
-		Init(converter->GetMaxAbsCoord(_points, "x") + 10, converter->GetMaxAbsCoord(_points, "y") + 10, triangles, _points);
+		Init(1000, 1000, triangles, _points);
 
 		/* tell GLUT to wait for events */
 		glutMainLoop();

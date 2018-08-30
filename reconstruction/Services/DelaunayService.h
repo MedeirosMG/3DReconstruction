@@ -25,8 +25,10 @@ namespace Services {
 			DelaunayService(OpenCV* openCv);
 			DelaunayService();
 			~DelaunayService();
-			vector<Vec6f> Execute(vector<CustomPoint> points, int zoom);
-			void TestExecute(vector<CustomPoint> points = vector<CustomPoint>(), int zoom = 100);
+			vector<Vec6f> Execute(vector<CustomPoint> points);
+			void TestExecute(vector<CustomPoint> points = vector<CustomPoint>());
+			vector<Vec6f> RemoveRectangle(vector<Vec6f> triangles);
+			bool CheckRectangle(int coord, Vec6f triangle);
 	};
 
 }

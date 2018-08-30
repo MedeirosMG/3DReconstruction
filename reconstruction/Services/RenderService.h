@@ -28,8 +28,8 @@ namespace Services {
 			RenderService(OpenCV* openCv);
 			RenderService();
 			~RenderService();
-			void TestExecute(int *argc, char **argv, vector<CustomPoint> points = vector<CustomPoint>(), int zoom = 100);
-			void Execute(int *argc, char **argv, vector<Vec6f> triangles, vector<CustomPoint> points3D, int zoom);
+			void TestExecute(int *argc, char **argv, vector<CustomPoint> points = vector<CustomPoint>());
+			void Execute(int *argc, char **argv, vector<Vec6f> triangles, vector<CustomPoint> points3D);
 			vector<Vec6f> GetTriangles();
 			vector<Point3f> GetPoints();
 	};
