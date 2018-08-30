@@ -111,6 +111,9 @@
     <ClInclude Include="Helpers\Time.h">
       <Filter>Header Files\H_Helpers</Filter>
     </ClInclude>
+    <ClInclude Include="Helpers\Convert.h">
+      <Filter>Header Files\H_Helpers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -184,6 +187,9 @@
     </ClCompile>
     <ClCompile Include="Entities\TimeExecution.cpp">
       <Filter>Source Files\S_Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers\Convert.cpp">
+      <Filter>Source Files\S_Helpers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

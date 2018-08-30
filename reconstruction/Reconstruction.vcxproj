@@ -162,6 +162,7 @@
     <ClInclude Include="Entities\CustomPoint.h" />
     <ClInclude Include="Entities\PointPair.h" />
     <ClInclude Include="Entities\TimeExecution.h" />
+    <ClInclude Include="Helpers\Convert.h" />
     <ClInclude Include="Helpers\Firefly_Optimization.h" />
     <ClInclude Include="Helpers\multilimiarizacao.h" />
     <ClInclude Include="Helpers\PointsUtilities.h" />
@@ -188,6 +189,7 @@
     <ClCompile Include="Entities\CustomPoint.cpp" />
     <ClCompile Include="Entities\PointPair.cpp" />
     <ClCompile Include="Entities\TimeExecution.cpp" />
+    <ClCompile Include="Helpers\Convert.cpp" />
     <ClCompile Include="Helpers\Firefly_Optimization.cpp" />
     <ClCompile Include="Helpers\multilimiarizacao.cpp" />
     <ClCompile Include="Helpers\PointsUtilities.cpp" />

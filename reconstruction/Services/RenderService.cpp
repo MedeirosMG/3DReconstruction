@@ -112,7 +112,7 @@ namespace Services {
 	
 		//Convert Points
 		PointUtilities *converter = new PointUtilities();
-		vector<Point3f> _points = converter->ReturnPoint3f(points3D);
+		vector<Point3f> _points = Convert().CustomPointTo3f(points3D);
 			
 		//Init configuratons of screen
 		Init(1000, 1000, triangles, _points);
