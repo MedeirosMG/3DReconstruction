@@ -1,8 +1,2 @@
 ﻿  Main.cpp
-  ControllerService.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\controllerservice.cpp(110): warning C4615: Aviso de #pragma: tipo de aviso de usuário desconhecido
-  RenderService.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\renderservice.cpp(25): warning C4305: 'argumento': truncamento de 'double' para 'GLfloat'
-  Gerando Código...
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\controllerservice.cpp(140): warning C4715: 'Services::ControllerService::RenderApply': nem todos os caminhos de controle retornam um valor
-  Reconstruction.vcxproj -> C:\SD\Arquivos\Documentos\3DReconstruction\x64\Debug\Reconstruction.exe
+  Reconstruction.vcxproj -> D:\Medei\Documents\3DReconstruction\x64\Debug\Reconstruction.exe

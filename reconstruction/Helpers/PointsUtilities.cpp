@@ -49,6 +49,28 @@ namespace Utilities {
 		return _points;
 	}
 
+	// Add value to list of points and return new list
+	vector<Vec6f> PointUtilities::PointsTranslocate(vector<Vec6f> triangles, float maxValue)
+	{
+		vector<Vec6f> _triangles;
+
+		for (size_t i = 0; i < triangles.size(); i++) {
+			Vec6f triangle = triangles[i];
+			Point pt1{ cvRound(triangle[0]), cvRound(triangle[1]) };
+			Point pt2{ cvRound(triangle[2]), cvRound(triangle[3]) };
+			Point pt3{ cvRound(triangle[4]), cvRound(triangle[5]) };
+
+			_triangles.push_back(Vec6f(triangle[0] + maxValue,
+										triangle[1] + maxValue,
+										triangle[2] + maxValue,
+										triangle[3] + maxValue,
+										triangle[4] + maxValue,
+										triangle[5] + maxValue));
+		}
+
+		return _triangles;
+	}
+
 	// Mult all point to apply zoom 
 	vector<Point3f> PointUtilities::PointsZoom(vector<Point3f> points, int zoom)
 	{

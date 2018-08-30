@@ -131,6 +131,9 @@ namespace Services {
 		vector<Vec6f> triangleList;
 		subdiv.getTriangleList(triangleList);
 
+		//Return points in triangle to original value
+		triangleList = converter->PointsTranslocate(triangleList, -maxAbs);
+
 		return RemoveRectangle(triangleList);
 	}
 }
