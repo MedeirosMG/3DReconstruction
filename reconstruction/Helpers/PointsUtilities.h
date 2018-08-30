@@ -1,5 +1,5 @@
-#ifndef UTILITIES_CUSTOM_POINT
-#define UTILITIES_CUSTOM_POINT
+#ifndef HELPERS_POINT_UTILITIES
+#define HELPERS_POINT_UTILITIES
 #include <iostream>
 #include <fstream>
 
@@ -12,7 +12,8 @@ using namespace std;
 using namespace Algorithms;
 using namespace Entities;
 
-namespace Utilities {
+namespace Helpers {
+
 	class PointUtilities
 	{
 		private:
@@ -32,6 +33,7 @@ namespace Utilities {
 			float GetMaxAbsCoord(vector<Vec6f> points);
 			vector<CustomPoint> GetMockPoints(string fileRead = ".\\Others Files\\MockPoints.obj");
 	};
+
 }
 
 #endif

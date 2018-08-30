@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "PointsUtilities.h"
 
-namespace Utilities {
+namespace Helpers {
+
 	PointUtilities::PointUtilities()
 	{
 		_openCv = new OpenCV();

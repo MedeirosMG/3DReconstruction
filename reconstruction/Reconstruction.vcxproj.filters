@@ -102,6 +102,15 @@
     <ClInclude Include="Helpers\PointsUtilities.h">
       <Filter>Header Files\H_Helpers</Filter>
     </ClInclude>
+    <ClInclude Include="Entities\TimeExecution.h">
+      <Filter>Header Files\H_Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Services\TestService.h">
+      <Filter>Header Files\H_Services</Filter>
+    </ClInclude>
+    <ClInclude Include="Helpers\Time.h">
+      <Filter>Header Files\H_Helpers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -166,6 +175,15 @@
     </ClCompile>
     <ClCompile Include="Helpers\tsallis.cpp">
       <Filter>Source Files\S_Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Services\TestService.cpp">
+      <Filter>Source Files\S_Services</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers\Time.cpp">
+      <Filter>Source Files\S_Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\TimeExecution.cpp">
+      <Filter>Source Files\S_Entities</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

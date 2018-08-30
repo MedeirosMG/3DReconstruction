@@ -11,7 +11,7 @@
 using namespace std;
 using namespace Algorithms;
 using namespace Entities;
-using namespace Utilities;
+using namespace Helpers;
 
 namespace Services {
 

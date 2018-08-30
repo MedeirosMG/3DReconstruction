@@ -161,9 +161,11 @@
     <ClInclude Include="Algorithms\OpenCV.h" />
     <ClInclude Include="Entities\CustomPoint.h" />
     <ClInclude Include="Entities\PointPair.h" />
+    <ClInclude Include="Entities\TimeExecution.h" />
     <ClInclude Include="Helpers\Firefly_Optimization.h" />
     <ClInclude Include="Helpers\multilimiarizacao.h" />
     <ClInclude Include="Helpers\PointsUtilities.h" />
+    <ClInclude Include="Helpers\Time.h" />
     <ClInclude Include="Helpers\tsallis.h" />
     <ClInclude Include="Services\CalibrationService.h" />
     <ClInclude Include="Services\CannyService.h" />
@@ -176,6 +178,7 @@
     <ClInclude Include="Services\ControllerService.h" />
     <ClInclude Include="Services\RenderService.h" />
     <ClInclude Include="Services\SiftService.h" />
+    <ClInclude Include="Services\TestService.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -184,9 +187,11 @@
     <ClCompile Include="Algorithms\OpenCV.cpp" />
     <ClCompile Include="Entities\CustomPoint.cpp" />
     <ClCompile Include="Entities\PointPair.cpp" />
+    <ClCompile Include="Entities\TimeExecution.cpp" />
     <ClCompile Include="Helpers\Firefly_Optimization.cpp" />
     <ClCompile Include="Helpers\multilimiarizacao.cpp" />
     <ClCompile Include="Helpers\PointsUtilities.cpp" />
+    <ClCompile Include="Helpers\Time.cpp" />
     <ClCompile Include="Helpers\tsallis.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Services\CalibrationService.cpp" />
@@ -200,6 +205,7 @@
     <ClCompile Include="Services\ControllerService.cpp" />
     <ClCompile Include="Services\RenderService.cpp" />
     <ClCompile Include="Services\SiftService.cpp" />
+    <ClCompile Include="Services\TestService.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
