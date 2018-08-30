@@ -35,7 +35,7 @@ namespace Services {
 		vector< PointPair > ransacMatches;
 		for (int i = 0; i < mask.rows; i++) {
 			if ((unsigned int)mask.at<uchar>(i))
-				ransacMatches.push_back(points);
+				ransacMatches.push_back(points[i]);
 		}
 
 		return ransacMatches;

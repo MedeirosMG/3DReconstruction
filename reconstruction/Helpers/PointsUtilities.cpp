@@ -13,28 +13,8 @@ namespace Helpers {
 		_openCv = openCv;
 	}
 
-
 	PointUtilities::~PointUtilities()
 	{
-	}
-
-	// Return object Point3f, used by OpenCV
-	Point3f PointUtilities::ReturnPoint3f(CustomPoint point)
-	{
-		return Point3f(point.X, point.Y, point.Z);
-	}
-
-	// Return list of Point3f conversion
-	vector<Point3f> PointUtilities::ReturnPoint3f(vector<CustomPoint> points)
-	{
-		vector<Point3f> _points;
-
-		for each (CustomPoint point in points)
-		{
-			_points.push_back(Point3f(point.X, point.Y, point.Z));
-		}
-
-		return _points;
 	}
 
 	// Add value to list of points and return new list
