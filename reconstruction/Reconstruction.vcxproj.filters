@@ -87,9 +87,6 @@
     <ClInclude Include="Helpers\tsallis.h">
       <Filter>Header Files\H_Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="Entities\CustomPoint.h">
-      <Filter>Header Files\H_Entities</Filter>
-    </ClInclude>
     <ClInclude Include="Entities\PointPair.h">
       <Filter>Header Files\H_Entities</Filter>
     </ClInclude>
@@ -157,9 +154,6 @@
     </ClCompile>
     <ClCompile Include="Services\RenderService.cpp">
       <Filter>Source Files\S_Services</Filter>
-    </ClCompile>
-    <ClCompile Include="Entities\CustomPoint.cpp">
-      <Filter>Source Files\S_Entities</Filter>
     </ClCompile>
     <ClCompile Include="Entities\PointPair.cpp">
       <Filter>Source Files\S_Entities</Filter>

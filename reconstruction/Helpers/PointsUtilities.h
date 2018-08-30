@@ -6,7 +6,6 @@
 #include "../Algorithms/OpenCV.h"
 #include "../Algorithms/OpenGL.h"
 #include "../Entities/PointPair.h"
-#include "../Entities/CustomPoint.h"
 
 using namespace std;
 using namespace Algorithms;
@@ -29,7 +28,7 @@ namespace Helpers {
 			vector<Point3f> PointsZoom(vector<Point3f> points, int zoom);
 			float GetMaxAbsCoord(vector<Point3f> points, string coordinate);
 			float GetMaxAbsCoord(vector<Vec6f> points);
-			vector<CustomPoint> GetMockPoints(string fileRead = ".\\Others Files\\MockPoints.obj");
+			vector<Point3f> GetMockPoints(string fileRead = ".\\Others Files\\MockPoints.obj");
 	};
 
 }

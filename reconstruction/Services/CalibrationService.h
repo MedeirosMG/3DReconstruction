@@ -5,7 +5,6 @@
 #include "../Algorithms/OpenCV.h"
 #include "../Algorithms/OpenGL.h"
 #include "../Entities/PointPair.h"
-#include "../Entities/CustomPoint.h"
 #include <vector>
 #include <fstream>
 #include <iostream>
@@ -36,30 +35,30 @@ namespace Services {
 		protected:
 			float WorldPointX(float firstPointX, float Z);
 			float WorldPointY(float firstPointY, float Z);
-			float WorldPointZ(CustomPoint firstPoint, CustomPoint secondPoint);
-			CustomPoint BestNeighbour(CustomPoint checkPoint, vector<CustomPoint> listNeighbourPoint);
-			vector<CustomPoint> GetNeighbourPoints(vector<CustomPoint>listPointsFrame, int positionPointFrame);
-			vector<CustomPoint> CalculateListRealPoints(vector<PointPair> listPoints);
-			float CalculateEuclideanDistance(CustomPoint firstPoint, CustomPoint secondPoint);
+			float WorldPointZ(Point3f firstPoint, Point3f secondPoint);
+			Point3f BestNeighbour(Point3f checkPoint, vector<Point3f> listNeighbourPoint);
+			vector<Point3f> GetNeighbourPoints(vector<Point3f>listPointsFrame, int positionPointFrame);
+			vector<Point3f> CalculateListRealPoints(vector<PointPair> listPoints);
+			float CalculateEuclideanDistance(Point3f firstPoint, Point3f secondPoint);
 
 		public:
 			CalibrationService(float b, float lambda, OpenCV* openCv, int k = 1);
 			CalibrationService(OpenCV* openCv);
 			~CalibrationService();
 
-			vector<CustomPoint> CalculateStereoCameraCalibration(vector<PointPair> listMatchPoints);
-			vector<CustomPoint> CalculateStereoCameraCalibrationUsingNeighbours(vector<CustomPoint> listPointsFrame1, vector<CustomPoint> listPointsFrame2);
-			CustomPoint* CalculateRealPoint(CustomPoint firstPoint, CustomPoint secondPoint);
-			void PrintResult(vector<CustomPoint> listPoints);
-			void PrintResult(CustomPoint point);
+			vector<Point3f> CalculateStereoCameraCalibration(vector<PointPair> listMatchPoints);
+			vector<Point3f> CalculateStereoCameraCalibrationUsingNeighbours(vector<Point3f> listPointsFrame1, vector<Point3f> listPointsFrame2);
+			Point3f* CalculateRealPoint(Point3f firstPoint, Point3f secondPoint);
+			void PrintResult(vector<Point3f> listPoints);
+			void PrintResult(Point3f point);
 			void PrintResult(vector<PointPair> listPoints);
-			bool ExportToJson(vector<CustomPoint> listPoints, string pathDirectory);
-			bool ExportToObj(vector<CustomPoint> listPoints, string pathDirectory);
-			void OrderPointsByAsc(vector<CustomPoint>& listPoints);
+			bool ExportToJson(vector<Point3f> listPoints, string pathDirectory);
+			bool ExportToObj(vector<Point3f> listPoints, string pathDirectory);
+			void OrderPointsByAsc(vector<Point3f>& listPoints);
 			void PivelToCoordinate(vector<PointPair>& listPoints);
-			void ChangeScale(vector<CustomPoint>& listPoints);
+			void ChangeScale(vector<Point3f>& listPoints);
 			void ChangeScale(vector<PointPair>& listPoints);
-			vector<CustomPoint> FilterByShape(vector<CustomPoint> listPoints, vector<CustomPoint> listShapePoints);
+			vector<Point3f> FilterByShape(vector<Point3f> listPoints, vector<Point3f> listShapePoints);
 	};
 
 }

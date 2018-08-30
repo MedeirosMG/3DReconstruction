@@ -3,7 +3,7 @@
 
 namespace Entities {
 
-	PointPair::PointPair(CustomPoint firstPoint, CustomPoint secondPoint) : FirstPoint(firstPoint), SecondPoint(secondPoint) {}
+	PointPair::PointPair(Point3f firstPoint, Point3f secondPoint) : FirstPoint(firstPoint), SecondPoint(secondPoint) {}
 
 	PointPair::~PointPair()
 	{

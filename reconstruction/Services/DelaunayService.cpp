@@ -16,15 +16,15 @@ namespace Services {
 	{
 	}
 
-	void DelaunayService::TestExecute(vector<CustomPoint> points)
+	void DelaunayService::TestExecute(vector<Point3f> points)
 	{
 		PointUtilities *converter = new PointUtilities();
 
 		if(points.size() == 0)
-			vector<CustomPoint> points = converter->GetMockPoints();
+			vector<Point3f> points = converter->GetMockPoints();
 
 		//Convert Points
-		vector<Point3f> _points = Convert().CustomPointTo3f(points);
+		vector<Point3f> _points = Convert().Point3fTo3f(points);
 
 		// Get max width and max height of points
 		// Get max width and max height of points
@@ -96,11 +96,11 @@ namespace Services {
 		return retorno;
 	}
 
-	vector<Vec6f> DelaunayService::Execute(vector<CustomPoint> points)
+	vector<Vec6f> DelaunayService::Execute(vector<Point3f> points)
 	{
 		//Convert Points
 		PointUtilities *converter = new PointUtilities();
-		vector<Point3f> _points = Convert().CustomPointTo3f(points);
+		vector<Point3f> _points = Convert().Point3fTo3f(points);
 
 		// Get max width and max height of points
 		float maxWidth = converter->GetMaxAbsCoord(_points, "x");

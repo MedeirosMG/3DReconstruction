@@ -88,7 +88,7 @@ namespace Helpers {
 		return maxValue;
 	}
 
-	vector<CustomPoint> PointUtilities::GetMockPoints(string fileRead)
+	vector<Point3f> PointUtilities::GetMockPoints(string fileRead)
 	{
 		// Temps for reading file
 		float _x = 0, _y = 0, _z = 0;
@@ -98,7 +98,7 @@ namespace Helpers {
 		InFile.open(fileRead);
 
 		//Vector temp to return
-		vector<CustomPoint> _return;
+		vector<Point3f> _return;
 
 		while (!InFile.eof()) // To get you all the lines.
 		{
@@ -108,7 +108,7 @@ namespace Helpers {
 			InFile >> _z;
 
 			// Add in return
-			_return.push_back(CustomPoint(_x * 100, _y * 100, _z * 100));
+			_return.push_back(Point3f(_x * 100, _y * 100, _z * 100));
 		}
 
 		InFile.close();

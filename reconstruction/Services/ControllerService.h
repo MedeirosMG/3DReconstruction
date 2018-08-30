@@ -59,7 +59,7 @@ namespace Services {
 		double _cannyLowThresh;
 		double _cannyHighTresh;
 		int _cannyKernelSize;
-		vector<Entities::CustomPoint> _pointsCanny;
+		vector<Point3f> _pointsCanny;
 
 		// Connected Components Properties
 		int _connectedComponentsThreshVal;
@@ -70,7 +70,7 @@ namespace Services {
 		float _calibrationB;
 		float _calibrationLambda;
 		int _calibrationK;
-		vector<CustomPoint> _resultCalibration;
+		vector<Point3f> _resultCalibration;
 
 		// Fireflies Properties
 		int _thresholds;

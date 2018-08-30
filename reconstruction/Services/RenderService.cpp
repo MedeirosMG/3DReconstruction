@@ -94,7 +94,7 @@ namespace Services {
 		//gluLookAt(1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 	}
 
-	void RenderService::TestExecute(int *argc, char **argv, vector<CustomPoint> points)
+	void RenderService::TestExecute(int *argc, char **argv, vector<Point3f> points)
 	{
 		PointUtilities *converter = new PointUtilities();
 
@@ -106,13 +106,13 @@ namespace Services {
 		Execute(argc, argv, delaunay->Execute(points), points);
 	}
 
-	void RenderService::Execute(int *argc, char **argv, vector<Vec6f> triangles, vector<CustomPoint> points3D)
+	void RenderService::Execute(int *argc, char **argv, vector<Vec6f> triangles, vector<Point3f> points3D)
 	{
 		glutInit(argc, argv);
 	
 		//Convert Points
 		PointUtilities *converter = new PointUtilities();
-		vector<Point3f> _points = Convert().CustomPointTo3f(points3D);
+		vector<Point3f> _points = Convert().Point3fTo3f(points3D);
 			
 		//Init configuratons of screen
 		Init(1000, 1000, triangles, _points);
