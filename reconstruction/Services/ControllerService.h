@@ -52,7 +52,8 @@ namespace Services {
 		vector<PointPair> _resultSift;
 
 		//Ransac Properties
-		vector<Point3f> _resultRansac;
+		vector<PointPair> _resultRansac;
+		double _ransacThresh;
 
 		// Canny Properties
 		double _cannyLowThresh;
@@ -106,6 +107,7 @@ namespace Services {
 		void SetGeneralProperties();
 		void SetFireflyProperties(int thresholds, int number_fireflies, int number_generations);
 		void SetRenderProperties(int *argc, char **argv);
+		void SetRansacProperties(double ransacThreshold);
 
 		void SaveFirstImage(string Path = ".\\Others Files\\FirstImage.jpg");
 		void SaveSecondImage(string Path = ".\\Others Files\\SecondImage.jpg");

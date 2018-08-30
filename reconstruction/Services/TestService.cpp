@@ -82,6 +82,8 @@ namespace Services {
 		//CannyService *canny = new CannyService();
 		//canny->TestExecute(imread(".\\Others Files\\TestImage.jpg"), 50, 700, 3);
 
+		// ---------- TestRansac -------------
+
 		cout << "======== End Test ======== " << endl;
 	}
 }

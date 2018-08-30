@@ -107,8 +107,15 @@ namespace Services {
 
 	bool ControllerService::RansacApply() 
 	{
-#pragma warning("RansacApply Not implemented Yet")
-		return false;
+		try
+		{
+			_resultRansac = _ransacService->Execute(_resultSift, _ransacThresh);
+		}
+		catch (const std::exception& ex)
+		{
+			cout << ">> Error on Ransac. " << endl << endl << ex.what() << endl;
+			return false;
+		}
 	}
 
 	bool ControllerService::SiftApply() 
@@ -213,6 +220,11 @@ namespace Services {
 	{
 		_argc = argc;
 		_argv = argv;
+	}
+
+	void ControllerService::SetRansacProperties(double ransacThreshold)
+	{
+		_ransacThresh = ransacThreshold;
 	}
 
 #pragma endregion
