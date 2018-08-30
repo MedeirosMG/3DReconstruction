@@ -6,6 +6,7 @@
 #include "../Algorithms/OpenGL.h"
 #include "../Entities/CustomPoint.h"
 #include "../Helpers/PointsUtilities.h"
+#include "../Helpers/Convert.h"
 #include "../Services/DelaunayService.h"
 
 using namespace std;

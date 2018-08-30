@@ -24,7 +24,7 @@ namespace Services {
 			vector<CustomPoint> points = converter->GetMockPoints();
 
 		//Convert Points
-		vector<Point3f> _points = converter->ReturnPoint3f(points);
+		vector<Point3f> _points = Convert().CustomPointTo3f(points);
 
 		// Get max width and max height of points
 		// Get max width and max height of points
@@ -100,7 +100,7 @@ namespace Services {
 	{
 		//Convert Points
 		PointUtilities *converter = new PointUtilities();
-		vector<Point3f> _points = converter->ReturnPoint3f(points);
+		vector<Point3f> _points = Convert().CustomPointTo3f(points);
 
 		// Get max width and max height of points
 		float maxWidth = converter->GetMaxAbsCoord(_points, "x");

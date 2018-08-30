@@ -7,6 +7,7 @@
 #include "../Entities/PointPair.h"
 #include "../Entities/CustomPoint.h"
 #include "../Helpers/PointsUtilities.h"
+#include "../Helpers/Convert.h"
 
 using namespace std;
 using namespace Algorithms;

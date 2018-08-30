@@ -24,8 +24,6 @@ namespace Helpers {
 			PointUtilities();
 			~PointUtilities();
 
-			Point3f ReturnPoint3f(CustomPoint point);
-			vector<Point3f> ReturnPoint3f(vector<CustomPoint> points);
 			vector<Point3f> PointsTranslocate(vector<Point3f> points, float maxValue);
 			vector<Vec6f> PointsTranslocate(vector<Vec6f> points, float maxValue);
 			vector<Point3f> PointsZoom(vector<Point3f> points, int zoom);
