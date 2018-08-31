@@ -23,9 +23,6 @@ namespace Helpers {
 			Convert();
 			~Convert();
 
-			static Point3f Point3fTo3f(Point3f point);
-			static vector<Point3f> Point3fTo3f(vector<Point3f> points);
-
 			static Point2f Point3fTo2f(Point3f point);
 			static vector<Point2f> Point3fTo2f(vector<Point3f> points);
 

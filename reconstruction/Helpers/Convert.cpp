@@ -16,26 +16,7 @@ namespace Helpers {
 
 	Convert::~Convert()
 	{
-	}
-
-	// Return object Point3f, used by OpenCV
-	Point3f Convert::Point3fTo3f(Point3f point)
-	{
-		return Point3f(point.x, point.y, point.z);
-	}
-
-	// Return list of Point3f conversion
-	vector<Point3f> Convert::Point3fTo3f(vector<Point3f> points)
-	{
-		vector<Point3f> _points;
-
-		for each (Point3f point in points)
-		{
-			_points.push_back(Point3fTo3f(point));
-		}
-
-		return _points;
-	}
+	}	
 
 	// Return object Point2f, used by OpenCV
 	Point2f Convert::Point3fTo2f(Point3f point)
@@ -80,10 +61,6 @@ namespace Helpers {
 			auxPair.SecondPoint.x = secondImageKeyPoints[matches[i].trainIdx].pt.x;
 			auxPair.SecondPoint.y = secondImageKeyPoints[matches[i].trainIdx].pt.y;
 			auxPair.SecondPoint.z = 0;
-
-			//Simple filter by Y axis
-			if (abs(auxPair.FirstPoint.y - auxPair.SecondPoint.y) > 0.2)
-				continue;
 
 			result.push_back(auxPair);
 		}

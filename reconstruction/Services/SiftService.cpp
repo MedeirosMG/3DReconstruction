@@ -52,6 +52,11 @@ namespace Services {
 		//Finding matches with Brute Force Matcher
 		matches = _openCv->BFMatcher(firstImgDescription, secondImgDescription);
 
-		return ResultSift(matches, firstImgKeyPoints, secondImgDescription);
+		ResultSift result;
+		result.Matches = matches;
+		result.FirstImageKeyPoints = firstImgKeyPoints;
+		result.SecondImageKeyPoints = secondImgKeyPoints;
+
+		return result;
 	}
 }

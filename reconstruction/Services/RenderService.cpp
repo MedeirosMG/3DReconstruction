@@ -109,13 +109,9 @@ namespace Services {
 	void RenderService::Execute(int *argc, char **argv, vector<Vec6f> triangles, vector<Point3f> points3D)
 	{
 		glutInit(argc, argv);
-	
-		//Convert Points
-		PointUtilities *converter = new PointUtilities();
-		vector<Point3f> _points = Convert().Point3fTo3f(points3D);
-			
+
 		//Init configuratons of screen
-		Init(1000, 1000, triangles, _points);
+		Init(1000, 1000, triangles, points3D);
 
 		/* tell GLUT to wait for events */
 		glutMainLoop();
