@@ -13,6 +13,8 @@
 #include "SiftService.h"
 #include "InputImageService.h"
 #include "RenderService.h"
+#include "..\Helpers\Console.h"
+#include "..\Helpers\Convert.h"
 
 #pragma endregion
 
