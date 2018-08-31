@@ -5,14 +5,14 @@
 
 namespace Entities {
 
-	class ResultSift {
+	class SiftResult {
 		public:
 			vector<DMatch> Matches;
 			vector<KeyPoint> FirstImageKeyPoints;
 			vector<KeyPoint> SecondImageKeyPoints;
-			ResultSift();
-			ResultSift(vector<DMatch> matches, vector<KeyPoint> firstImageKeyPoints, vector<KeyPoint> secondImageKeyPoints);
-			~ResultSift();
+			SiftResult();
+			SiftResult(vector<DMatch> matches, vector<KeyPoint> firstImageKeyPoints, vector<KeyPoint> secondImageKeyPoints);
+			~SiftResult();
 	};
 
 }

@@ -1,2 +1,3 @@
 ﻿  TestService.cpp
-  Reconstruction.vcxproj -> C:\SD\Arquivos\Documentos\3DReconstruction\x64\Debug\Reconstruction.exe
+c:\users\murillo\c++\3dreconstruction\reconstruction\helpers\console.h(25): warning C4091: 'static ': ignorado à esquerda de 'Helpers::Console' quando nenhuma variável é declarada
+  Reconstruction.vcxproj -> C:\Users\Murillo\C++\3DReconstruction\x64\Debug\Reconstruction.exe

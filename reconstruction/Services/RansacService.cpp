@@ -17,21 +17,18 @@ namespace Services {
 	{
 	}
 
-	vector<PointPair> RansacService::Execute(vector<PointPair> points, double ransacThresh)
+	vector<PointPair> RansacService::Execute(SiftResult sift_result, double ransacThresh)
 	{
-		vector<Point2f> leftPoints;
-		vector<Point2f> rightPoints;
+		vector<PointPair> points = Convert().DMatchToPointPair(sift_result.Matches, sift_result.FirstImageKeyPoints, sift_result.SecondImageKeyPoints);
+		vector<Point2f> firstPoints;
+		vector<Point2f> secondPoints;
 		for each (PointPair item in points)
 		{
-			Point2f first(item.FirstPoint.x, item.FirstPoint.y);
-			Point2f second(item.SecondPoint.x, item.SecondPoint.y);
-
-			leftPoints.push_back(first);
-			rightPoints.push_back(second);
+			firstPoints.push_back(Convert().Point3fTo2f(item.FirstPoint));
+			secondPoints.push_back(Convert().Point3fTo2f(item.SecondPoint));
 		}
-
 		Mat mask;
-		Mat H = findHomography(leftPoints, rightPoints, CV_RANSAC, 3.0, mask);
+		Mat H = findHomography(firstPoints, secondPoints, CV_RANSAC, 3.0, mask);
 		vector< PointPair > ransacMatches;
 		for (int i = 0; i < mask.rows; i++) {
 			if ((unsigned int)mask.at<uchar>(i))

@@ -5,10 +5,13 @@
 #include "../Algorithms/OpenCV.h"
 #include "../Algorithms/OpenGL.h"
 #include "../Entities/PointPair.h"
+#include "../Entities/SiftResult.h"
+#include "../Helpers/Convert.h"
 
 using namespace std;
 using namespace Algorithms;
 using namespace Entities;
+using namespace Helpers;
 
 namespace Services {
 
@@ -22,7 +25,7 @@ namespace Services {
 			RansacService();
 			RansacService(OpenCV* openCv);
 			~RansacService();
-			vector<PointPair> Execute(vector<PointPair> points, double ransacThresh = 3.0);
+			vector<PointPair> Execute(SiftResult sift_result, double ransacThresh = 3.0);
 	};
 
 }

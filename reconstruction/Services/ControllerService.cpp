@@ -35,7 +35,7 @@ namespace Services {
 	{		
 		try
 		{
-			//_resultCalibration = _calibrationService->CalculateStereoCameraCalibration(_resultSift);
+			_resultCalibration = _calibrationService->CalculateStereoCameraCalibration(_resultRansac);
 			Console().Print(_resultCalibration);
 			_calibrationService->OrderPointsByAsc(_resultCalibration);
 		}
@@ -109,7 +109,7 @@ namespace Services {
 	{
 		try
 		{
-			//_resultRansac = _ransacService->Execute(_resultSift, _ransacThresh);
+			_resultRansac = _ransacService->Execute(_resultSift, _ransacThresh);
 		}
 		catch (const std::exception& ex)
 		{

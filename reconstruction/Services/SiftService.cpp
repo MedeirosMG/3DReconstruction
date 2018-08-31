@@ -18,7 +18,7 @@ namespace Services {
 	}
 
 	//Detect fiducial points on the image
-	ResultSift SiftService::Execute(Mat img1, Mat img2, int threshold) 
+	SiftResult SiftService::Execute(Mat img1, Mat img2, int threshold) 
 	{
 		//Sift Detector
 		cv::SiftFeatureDetector detector(threshold);
@@ -52,7 +52,7 @@ namespace Services {
 		//Finding matches with Brute Force Matcher
 		matches = _openCv->BFMatcher(firstImgDescription, secondImgDescription);
 
-		ResultSift result;
+		SiftResult result;
 		result.Matches = matches;
 		result.FirstImageKeyPoints = firstImgKeyPoints;
 		result.SecondImageKeyPoints = secondImgKeyPoints;

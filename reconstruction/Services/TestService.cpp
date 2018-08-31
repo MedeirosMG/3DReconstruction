@@ -68,7 +68,7 @@ namespace Services {
 		CalibrationService *calibracao = new CalibrationService(1, 1, new OpenCV());
 		imread(".\\Others Files\\cabeca_1.png");
 		imread(".\\Others Files\\cabeca_2.png");
-		ResultSift result = sift->Execute(imread(".\\Others Files\\cabeca_1.png"), imread(".\\Others Files\\cabeca_2.png"), 1000);
+		SiftResult result = sift->Execute(imread(".\\Others Files\\cabeca_1.png"), imread(".\\Others Files\\cabeca_2.png"), 1000);
 		Convert *convert = new Convert();
 
 		//vector<Point3f> calibra = calibracao->CalculateStereoCameraCalibration(convert->DMatchToPointPair(result.Matches, result.FirstImageKeyPoints, result.SecondImageKeyPoints));
@@ -105,7 +105,6 @@ namespace Services {
 		//canny->TestExecute(imread(".\\Others Files\\TestImage.jpg"), 50, 700, 3);
 
 		// ---------- TestRansac -------------
-		SiftService *sift = new SiftService();
 		RansacService *ransac = new RansacService();
 		Mat img1 = imread(".\\Others Files\\im0.png");
 		Mat img2 = imread(".\\Others Files\\im1.png");
