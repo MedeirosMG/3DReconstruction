@@ -55,4 +55,39 @@ namespace Helpers {
 
 		return _points;
 	}
+
+	vector<PointPair> Convert::DMatchToPointPair(vector<DMatch> matches, vector<KeyPoint> firstImageKeyPoints, vector<KeyPoint> secondImageKeyPoints) 
+	{
+		//Result of matches
+		vector<PointPair> result;
+
+		//Auxiliar Custom Points
+		Point3f auxPoint1(0, 0, 0);
+		Point3f auxPoint2(0, 0, 0);
+
+		//Auxiliar PointPair
+		PointPair auxPair(auxPoint1, auxPoint2);
+
+		//Loop that build the point pair vector  
+		for (int i = 0; i< matches.size(); i++) {
+
+			//Calculations to keep points inside the resolution of the image
+			auxPair.FirstPoint.x = firstImageKeyPoints[i].pt.x;
+			auxPair.FirstPoint.y = firstImageKeyPoints[i].pt.y;
+			auxPair.FirstPoint.z = 0;
+
+			//Calculations to keep points inside the resolution of the image
+			auxPair.SecondPoint.x = secondImageKeyPoints[matches[i].trainIdx].pt.x;
+			auxPair.SecondPoint.y = secondImageKeyPoints[matches[i].trainIdx].pt.y;
+			auxPair.SecondPoint.z = 0;
+
+			//Simple filter by Y axis
+			if (abs(auxPair.FirstPoint.y - auxPair.SecondPoint.y) > 0.2)
+				continue;
+
+			result.push_back(auxPair);
+		}
+
+		return result;
+	}
 }

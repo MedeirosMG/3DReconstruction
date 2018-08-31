@@ -28,6 +28,8 @@ namespace Helpers {
 
 			static Point2f Point3fTo2f(Point3f point);
 			static vector<Point2f> Point3fTo2f(vector<Point3f> points);
+
+			static vector<PointPair> DMatchToPointPair(vector<DMatch> matches, vector<KeyPoint> firstImageKeyPoints, vector<KeyPoint> secondImageKeyPoints);
 	};
 
 }

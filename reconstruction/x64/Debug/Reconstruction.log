@@ -1,8 +1,5 @@
-﻿  Convert.cpp
-  Main.cpp
-  ControllerService.cpp
-  TestService.cpp
-  Gerando Código...
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\controllerservice.cpp(119): warning C4715: 'Services::ControllerService::RansacApply': nem todos os caminhos de controle retornam um valor
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\controllerservice.cpp(147): warning C4715: 'Services::ControllerService::RenderApply': nem todos os caminhos de controle retornam um valor
-  Reconstruction.vcxproj -> C:\SD\Arquivos\Documentos\3DReconstruction\x64\Debug\Reconstruction.exe
+﻿  ControllerService.cpp
+d:\projetos\reconstruction\reconstruction\services\controllerservice.cpp(119): warning C4715: 'Services::ControllerService::RansacApply': not all control paths return a value
+d:\projetos\reconstruction\reconstruction\services\controllerservice.cpp(147): warning C4715: 'Services::ControllerService::RenderApply': not all control paths return a value
+  LINK : D:\Projetos\Reconstruction\x64\Debug\Reconstruction.exe not found or not built by the last incremental link; performing full link
+  Reconstruction.vcxproj -> D:\Projetos\Reconstruction\x64\Debug\Reconstruction.exe

@@ -160,6 +160,7 @@
     <ClInclude Include="Algorithms\OpenGL.h" />
     <ClInclude Include="Algorithms\OpenCV.h" />
     <ClInclude Include="Entities\PointPair.h" />
+    <ClInclude Include="Entities\ResultSift.h" />
     <ClInclude Include="Entities\TimeExecution.h" />
     <ClInclude Include="Helpers\Convert.h" />
     <ClInclude Include="Helpers\Firefly_Optimization.h" />
@@ -186,6 +187,7 @@
     <ClCompile Include="Algorithms\OpenGL.cpp" />
     <ClCompile Include="Algorithms\OpenCV.cpp" />
     <ClCompile Include="Entities\PointPair.cpp" />
+    <ClCompile Include="Entities\ResultSift.cpp" />
     <ClCompile Include="Entities\TimeExecution.cpp" />
     <ClCompile Include="Helpers\Convert.cpp" />
     <ClCompile Include="Helpers\Firefly_Optimization.cpp" />

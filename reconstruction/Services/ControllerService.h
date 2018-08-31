@@ -49,7 +49,7 @@ namespace Services {
 
 		// Sift Properties
 		int _siftThreshold;
-		vector<PointPair> _resultSift;
+		ResultSift _resultSift;
 
 		//Ransac Properties
 		vector<PointPair> _resultRansac;
