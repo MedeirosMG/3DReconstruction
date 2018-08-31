@@ -114,6 +114,12 @@
     <ClInclude Include="Entities\ResultSift.h">
       <Filter>Header Files\H_Entities</Filter>
     </ClInclude>
+    <ClInclude Include="Helpers\Console.h">
+      <Filter>Header Files\H_Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Helpers\Export.h">
+      <Filter>Header Files\H_Helpers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -190,6 +196,12 @@
     </ClCompile>
     <ClCompile Include="Entities\ResultSift.cpp">
       <Filter>Source Files\S_Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers\Console.cpp">
+      <Filter>Source Files\S_Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers\Export.cpp">
+      <Filter>Source Files\S_Helpers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
