@@ -5,6 +5,7 @@
 #include "../Algorithms/OpenCV.h"
 #include "../Algorithms/OpenGL.h"
 #include "../Entities/PointPair.h"
+#include "../Entities/ResultSift.h"
 
 using namespace std;
 using namespace Algorithms;
@@ -21,7 +22,7 @@ namespace Services {
 			SiftService();
 			SiftService(OpenCV* openCv);
 			~SiftService();
-			vector<PointPair> Execute(Mat img1, Mat img2, int threshold);
+			ResultSift Execute(Mat img1, Mat img2, int threshold);
 	};
 	
 }

@@ -4,7 +4,6 @@
 
 #include "../Algorithms/OpenCV.h"
 #include "../Algorithms/OpenGL.h"
-#include "../Entities/CustomPoint.h"
 #include "../Helpers/PointsUtilities.h"
 #include "../Helpers/Convert.h"
 #include "../Services/DelaunayService.h"
@@ -29,8 +28,8 @@ namespace Services {
 			RenderService(OpenCV* openCv);
 			RenderService();
 			~RenderService();
-			void TestExecute(int *argc, char **argv, vector<CustomPoint> points = vector<CustomPoint>());
-			void Execute(int *argc, char **argv, vector<Vec6f> triangles, vector<CustomPoint> points3D);
+			void TestExecute(int *argc, char **argv, vector<Point3f> points = vector<Point3f>());
+			void Execute(int *argc, char **argv, vector<Vec6f> triangles, vector<Point3f> points3D);
 			vector<Vec6f> GetTriangles();
 			vector<Point3f> GetPoints();
 	};

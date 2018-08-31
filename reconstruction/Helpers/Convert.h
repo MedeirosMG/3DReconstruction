@@ -6,7 +6,6 @@
 #include "../Algorithms/OpenCV.h"
 #include "../Algorithms/OpenGL.h"
 #include "../Entities/PointPair.h"
-#include "../Entities/CustomPoint.h"
 
 using namespace std;
 using namespace Algorithms;
@@ -24,11 +23,10 @@ namespace Helpers {
 			Convert();
 			~Convert();
 
-			static Point3f CustomPointTo3f(CustomPoint point);
-			static vector<Point3f> CustomPointTo3f(vector<CustomPoint> points);
+			static Point2f Point3fTo2f(Point3f point);
+			static vector<Point2f> Point3fTo2f(vector<Point3f> points);
 
-			static Point2f CustomPointTo2f(CustomPoint point);
-			static vector<Point2f> CustomPointTo2f(vector<CustomPoint> points);
+			static vector<PointPair> DMatchToPointPair(vector<DMatch> matches, vector<KeyPoint> firstImageKeyPoints, vector<KeyPoint> secondImageKeyPoints);
 	};
 
 }

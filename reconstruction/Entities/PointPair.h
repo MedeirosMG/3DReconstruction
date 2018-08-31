@@ -1,15 +1,15 @@
 #ifndef ENTITIES_POINT_PAIR
 #define ENTITIES_POINT_PAIR
 
-#include "CustomPoint.h"
+#include "../Algorithms/OpenCV.h"
 
 namespace Entities {
 
 	class PointPair {
 		public:
-			CustomPoint FirstPoint;
-			CustomPoint SecondPoint;
-			PointPair(CustomPoint firstPoint, CustomPoint secondPoint);
+			Point3f FirstPoint;
+			Point3f SecondPoint;
+			PointPair(Point3f firstPoint, Point3f secondPoint);
 			~PointPair();
 	};
 

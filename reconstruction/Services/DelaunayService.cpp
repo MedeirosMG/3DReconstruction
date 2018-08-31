@@ -16,20 +16,17 @@ namespace Services {
 	{
 	}
 
-	void DelaunayService::TestExecute(vector<CustomPoint> points)
+	void DelaunayService::TestExecute(vector<Point3f> points)
 	{
 		PointUtilities *converter = new PointUtilities();
 
 		if(points.size() == 0)
-			vector<CustomPoint> points = converter->GetMockPoints();
-
-		//Convert Points
-		vector<Point3f> _points = Convert().CustomPointTo3f(points);
+			vector<Point3f> points = converter->GetMockPoints();
 
 		// Get max width and max height of points
 		// Get max width and max height of points
-		float maxWidth = converter->GetMaxAbsCoord(_points, "x");
-		float maxHeight = converter->GetMaxAbsCoord(_points, "y");
+		float maxWidth = converter->GetMaxAbsCoord(points, "x");
+		float maxHeight = converter->GetMaxAbsCoord(points, "y");
 		float maxAbs = 0.0;
 
 		if (maxWidth > maxHeight)
@@ -96,15 +93,14 @@ namespace Services {
 		return retorno;
 	}
 
-	vector<Vec6f> DelaunayService::Execute(vector<CustomPoint> points)
+	vector<Vec6f> DelaunayService::Execute(vector<Point3f> points)
 	{
 		//Convert Points
 		PointUtilities *converter = new PointUtilities();
-		vector<Point3f> _points = Convert().CustomPointTo3f(points);
 
 		// Get max width and max height of points
-		float maxWidth = converter->GetMaxAbsCoord(_points, "x");
-		float maxHeight = converter->GetMaxAbsCoord(_points, "y");
+		float maxWidth = converter->GetMaxAbsCoord(points, "x");
+		float maxHeight = converter->GetMaxAbsCoord(points, "y");
 		float maxAbs = 0.0;
 
 		if (maxWidth > maxHeight)
@@ -113,16 +109,16 @@ namespace Services {
 			maxAbs = maxHeight;
 
 		// Update values of points
-		_points = converter->PointsTranslocate(_points, maxAbs);
+		points = converter->PointsTranslocate(points, maxAbs);
 
 		// Rectangle to be used with Subdiv2D
-		Rect rect(0, 0, converter->GetMaxAbsCoord(_points, "x") + 10, converter->GetMaxAbsCoord(_points, "y") + 10);
+		Rect rect(0, 0, converter->GetMaxAbsCoord(points, "x") + 10, converter->GetMaxAbsCoord(points, "y") + 10);
 
 		// Create an instance of Subdiv2D
 		Subdiv2D subdiv(rect);
 
 		// Insert points into subdiv
-		for each (Point3f point in _points)
+		for each (Point3f point in points)
 		{
 			subdiv.insert(Point2f(point.x, point.y));
 		}

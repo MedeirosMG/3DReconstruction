@@ -36,7 +36,7 @@ namespace Services {
 	{
 		cout << "======= Start Test ======= " << endl;
 
-		ControllerService* controller = new ControllerService(".\\Others Files\\TestImage.jpg", ".\\Others Files\\TestImage.jpg");
+		ControllerService* controller = new ControllerService(".\\Others Files\\cabeca_1.png", ".\\Others Files\\cabeca_2.png");
 
 		controller->SetFireflyProperties(1, 50, 100);
 		controller->SetCannyProperties(50, 700, 3);
@@ -60,6 +60,28 @@ namespace Services {
 		//controller->DelaunayApply();
 		//controller->RenderApply();
 
+		//-------------- Test all ---------------------
+
+		CannyService *canny = new CannyService();
+		RenderService *teste = new RenderService();
+		SiftService *sift = new SiftService();
+		CalibrationService *calibracao = new CalibrationService(1, 1, new OpenCV());
+		imread(".\\Others Files\\cabeca_1.png");
+		imread(".\\Others Files\\cabeca_2.png");
+		ResultSift result = sift->Execute(imread(".\\Others Files\\cabeca_1.png"), imread(".\\Others Files\\cabeca_2.png"), 1000);
+		Convert *convert = new Convert();
+
+		//vector<Point3f> calibra = calibracao->CalculateStereoCameraCalibration(convert->DMatchToPointPair(result.Matches, result.FirstImageKeyPoints, result.SecondImageKeyPoints));
+		vector<PointPair> points = convert->DMatchToPointPair(result.Matches, result.FirstImageKeyPoints, result.SecondImageKeyPoints);
+
+		vector<Point3f> _pts;
+		for each (PointPair point_ in points)
+		{
+			_pts.push_back(point_.FirstPoint);
+		}
+
+		teste->TestExecute(&argc, argv, _pts);
+
 
 		//---------- TestsDelauney -----------------
 
@@ -73,10 +95,10 @@ namespace Services {
 		//test->TestExecute(".\\Others Files\\TestImage.jpg", 1, 50, 100);
 
 		//---------- TestRender ------------------
-		CannyService *canny = new CannyService();
-		RenderService *teste = new RenderService();
+		//CannyService *canny = new CannyService();
+		//RenderService *teste = new RenderService();
 		//teste->TestExecute(&argc, argv);
-		teste->TestExecute(&argc, argv, canny->Execute(imread(".\\Others Files\\TestImage.jpg"), 50, 700, 3));
+		//teste->TestExecute(&argc, argv, canny->Execute(imread(".\\Others Files\\TestImage.jpg"), 50, 700, 3));
 
 		// ---------- TestCanny -------------
 		//CannyService *canny = new CannyService();

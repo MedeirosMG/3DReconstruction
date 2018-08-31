@@ -23,8 +23,8 @@ namespace Services {
 		vector<Point2f> rightPoints;
 		for each (PointPair item in points)
 		{
-			Point2f first(item.FirstPoint.X, item.FirstPoint.Y);
-			Point2f second(item.SecondPoint.X, item.SecondPoint.Y);
+			Point2f first(item.FirstPoint.x, item.FirstPoint.y);
+			Point2f second(item.SecondPoint.x, item.SecondPoint.y);
 
 			leftPoints.push_back(first);
 			rightPoints.push_back(second);

@@ -18,9 +18,9 @@ namespace Services {
 	{
 	}	
 
-	vector<Entities::CustomPoint> CannyService::Execute(const Mat inputImage, double lowThresh, double highThresh, int kernelSize)
+	vector<Point3f> CannyService::Execute(const Mat inputImage, double lowThresh, double highThresh, int kernelSize)
 	{
-		vector<Entities::CustomPoint> result;
+		vector<Point3f> result;
 		vector<cv::Point> locations;
 
 		//Apply canny
@@ -40,7 +40,7 @@ namespace Services {
 
 		//Push on result vector the points that will actually be used on delauney
 		for (int i = 0; i < locations.size(); i = i + 3) {
-			Entities::CustomPoint temp(-4.0 + (locations[i].x / (contours.cols / 8.0)), 4.0 - (locations[i].y / (contours.rows / 8.0)), 0);
+			Point3f temp(-4.0 + (locations[i].x / (contours.cols / 8.0)), 4.0 - (locations[i].y / (contours.rows / 8.0)), 0);
 			result.push_back(temp);
 		}
 

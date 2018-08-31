@@ -18,12 +18,8 @@ namespace Services {
 	}
 
 	//Detect fiducial points on the image
-	vector<PointPair> SiftService::Execute(Mat img1, Mat img2, int threshold) {
-#pragma warning("Rever codigo, verificar resultado da funcao utilizando uma imagem dos pontos ligados")
-
-		//Result of matches
-		vector<PointPair> result;
-
+	ResultSift SiftService::Execute(Mat img1, Mat img2, int threshold) 
+	{
 		//Sift Detector
 		cv::SiftFeatureDetector detector(threshold);
 
@@ -35,13 +31,6 @@ namespace Services {
 
 		//Matches found in images
 		vector<DMatch> matches;
-
-		//Auxiliar Custom Points
-		CustomPoint auxPoint1(0, 0, 0);
-		CustomPoint auxPoint2(0, 0, 0);
-
-		//Auxiliar PointPair
-		PointPair auxPair(auxPoint1, auxPoint2);
 
 		//Number of lines and columns of the image
 		float lin = img1.rows;
@@ -63,25 +52,10 @@ namespace Services {
 		//Finding matches with Brute Force Matcher
 		matches = _openCv->BFMatcher(firstImgDescription, secondImgDescription);
 
-		//Loop that build the matches vector  
-		for (int i = 0; i< matches.size(); i++) {
-
-			//Calculations to keep points inside the resolution of the image
-			auxPair.FirstPoint.X = -4.0 + (firstImgKeyPoints[i].pt.x / (col / 8.0));
-			auxPair.FirstPoint.Y =	4.0 - (firstImgKeyPoints[i].pt.y / (lin / 8.0));
-			auxPair.FirstPoint.Z = 0;
-
-			//Calculations to keep points inside the resolution of the image
-			auxPair.SecondPoint.X = -4.0 + (secondImgKeyPoints[matches[i].trainIdx].pt.x / (col / 8.0));
-			auxPair.SecondPoint.Y = 4.0 - (secondImgKeyPoints[matches[i].trainIdx].pt.y / (lin / 8.0));
-			auxPair.SecondPoint.Z = 0;
-
-			//Simple filter by Y axis
-			if (abs(auxPair.FirstPoint.Y - auxPair.SecondPoint.Y) > 0.2)
-				continue;
-
-			result.push_back(auxPair);
-		}
+		ResultSift result;
+		result.Matches = matches;
+		result.FirstImageKeyPoints = firstImgKeyPoints;
+		result.SecondImageKeyPoints = secondImgKeyPoints;
 
 		return result;
 	}

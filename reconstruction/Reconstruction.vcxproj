@@ -159,10 +159,12 @@
   <ItemGroup>
     <ClInclude Include="Algorithms\OpenGL.h" />
     <ClInclude Include="Algorithms\OpenCV.h" />
-    <ClInclude Include="Entities\CustomPoint.h" />
     <ClInclude Include="Entities\PointPair.h" />
+    <ClInclude Include="Entities\ResultSift.h" />
     <ClInclude Include="Entities\TimeExecution.h" />
+    <ClInclude Include="Helpers\Console.h" />
     <ClInclude Include="Helpers\Convert.h" />
+    <ClInclude Include="Helpers\Export.h" />
     <ClInclude Include="Helpers\Firefly_Optimization.h" />
     <ClInclude Include="Helpers\multilimiarizacao.h" />
     <ClInclude Include="Helpers\PointsUtilities.h" />
@@ -186,10 +188,12 @@
   <ItemGroup>
     <ClCompile Include="Algorithms\OpenGL.cpp" />
     <ClCompile Include="Algorithms\OpenCV.cpp" />
-    <ClCompile Include="Entities\CustomPoint.cpp" />
     <ClCompile Include="Entities\PointPair.cpp" />
+    <ClCompile Include="Entities\ResultSift.cpp" />
     <ClCompile Include="Entities\TimeExecution.cpp" />
+    <ClCompile Include="Helpers\Console.cpp" />
     <ClCompile Include="Helpers\Convert.cpp" />
+    <ClCompile Include="Helpers\Export.cpp" />
     <ClCompile Include="Helpers\Firefly_Optimization.cpp" />
     <ClCompile Include="Helpers\multilimiarizacao.cpp" />
     <ClCompile Include="Helpers\PointsUtilities.cpp" />

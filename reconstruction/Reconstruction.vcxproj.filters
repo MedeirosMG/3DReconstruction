@@ -87,9 +87,6 @@
     <ClInclude Include="Helpers\tsallis.h">
       <Filter>Header Files\H_Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="Entities\CustomPoint.h">
-      <Filter>Header Files\H_Entities</Filter>
-    </ClInclude>
     <ClInclude Include="Entities\PointPair.h">
       <Filter>Header Files\H_Entities</Filter>
     </ClInclude>
@@ -112,6 +109,15 @@
       <Filter>Header Files\H_Helpers</Filter>
     </ClInclude>
     <ClInclude Include="Helpers\Convert.h">
+      <Filter>Header Files\H_Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\ResultSift.h">
+      <Filter>Header Files\H_Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Helpers\Console.h">
+      <Filter>Header Files\H_Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Helpers\Export.h">
       <Filter>Header Files\H_Helpers</Filter>
     </ClInclude>
   </ItemGroup>
@@ -158,9 +164,6 @@
     <ClCompile Include="Services\RenderService.cpp">
       <Filter>Source Files\S_Services</Filter>
     </ClCompile>
-    <ClCompile Include="Entities\CustomPoint.cpp">
-      <Filter>Source Files\S_Entities</Filter>
-    </ClCompile>
     <ClCompile Include="Entities\PointPair.cpp">
       <Filter>Source Files\S_Entities</Filter>
     </ClCompile>
@@ -189,6 +192,15 @@
       <Filter>Source Files\S_Entities</Filter>
     </ClCompile>
     <ClCompile Include="Helpers\Convert.cpp">
+      <Filter>Source Files\S_Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\ResultSift.cpp">
+      <Filter>Source Files\S_Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers\Console.cpp">
+      <Filter>Source Files\S_Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers\Export.cpp">
       <Filter>Source Files\S_Helpers</Filter>
     </ClCompile>
   </ItemGroup>
