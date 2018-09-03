@@ -11,16 +11,17 @@ namespace Services {
 
 	ControllerService::ControllerService(Mat firstImage, Mat secondImage)
 	{
-		_firstImage = firstImage;
-		_secondImage = secondImage;
+		resize(firstImage, _firstImage, Size(800, 600));
+		resize(secondImage, _secondImage, Size(800, 600));
 		_openCv = new OpenCV();
 		LoadServices();
 	}
 
 	ControllerService::ControllerService(string pathFirstImage, string pathSecondImage)
 	{
-		_firstImage = imread(pathFirstImage);
-		_secondImage = imread(pathSecondImage);
+		resize(imread(pathFirstImage), _firstImage, Size(800, 600));
+		resize(imread(pathSecondImage), _secondImage, Size(800, 600));
+
 		_openCv = new OpenCV();
 		LoadServices();
 	}
@@ -36,7 +37,6 @@ namespace Services {
 		try
 		{
 			_resultCalibration = _calibrationService->CalculateStereoCameraCalibration(_resultRansac);
-			Console().Print(_resultCalibration);
 			_calibrationService->OrderPointsByAsc(_resultCalibration);
 		}
 		catch (const std::exception& ex)
@@ -67,6 +67,14 @@ namespace Services {
 		{
 			_InterestRegionsFirstImage = _connectedComponentsService->Execute(_firstImageModified, _connectedComponentsThreshVal);
 			_InterestRegionsSecondImage = _connectedComponentsService->Execute(_secondImageModified, _connectedComponentsThreshVal);
+
+			namedWindow("aaaa");
+			namedWindow("bbbb");
+
+			imshow("aaaa", _InterestRegionsFirstImage);
+			imshow("bbbb", _InterestRegionsSecondImage);
+			waitKey();
+
 			return true;
 		}
 		catch (const std::exception& ex)
@@ -96,6 +104,7 @@ namespace Services {
 		{
 			_firstImageModified = _findRegionsService->Execute(_InterestRegionsFirstImage, _firstImage);
 			_secondImageModified = _findRegionsService->Execute(_InterestRegionsSecondImage, _secondImage);
+
 			return true;
 		}
 		catch (const std::exception& ex)
@@ -265,15 +274,22 @@ namespace Services {
 
 	void ControllerService::DisplayImages() 
 	{
+		Mat tempFirstImage, tempSecondImage, tempFirstImageModified, tempSecondImageModified;
+
+		resize(_firstImage, tempFirstImage, Size(800, 600));
+		resize(_secondImage, tempSecondImage, Size(800, 600));
+		resize(_firstImageModified, tempFirstImageModified, Size(800, 600));
+		resize(_secondImageModified, tempSecondImageModified, Size(800, 600));
+
 		namedWindow("First Image - Original");
 		namedWindow("Second Image - Original");
 		namedWindow("First Image - Modified");
 		namedWindow("Second Image - Modified");
 
-		imshow("First Image - Original", _firstImage);
-		imshow("Second Image - Original", _secondImage);
-		imshow("First Image - Modified", _firstImageModified);
-		imshow("Second Image - Modified", _secondImageModified);
+		imshow("First Image - Original", tempFirstImage);
+		imshow("Second Image - Original", tempSecondImage);
+		imshow("First Image - Modified", tempFirstImageModified);
+		imshow("Second Image - Modified", tempSecondImageModified);
 
 		waitKey();
 	}

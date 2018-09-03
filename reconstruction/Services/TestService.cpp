@@ -36,80 +36,62 @@ namespace Services {
 	{
 		cout << "======= Start Test ======= " << endl;
 
-		ControllerService* controller = new ControllerService(".\\Others Files\\cabeca_1.png", ".\\Others Files\\cabeca_2.png");
+		ControllerService* controller = new ControllerService(".\\Others Files\\im0.png", ".\\Others Files\\im1.png");
 
 		controller->SetFireflyProperties(1, 50, 100);
 		controller->SetCannyProperties(50, 700, 3);
-		controller->SetConnectedComponentsProperties(0);
+		controller->SetConnectedComponentsProperties(128);
 		controller->SetGeneralProperties();
-		controller->SetSiftProperties(0);
+		controller->SetSiftProperties(400);
 		controller->SetCalibrationProperties(0, 0, 1);
 		controller->SetRenderProperties(&argc, argv);
 
-		//controller->FireflyApply();	
-		//controller->DisplayImages();
+		controller->CannyApply();
+		controller->FireflyApply();	
+		controller->DisplayImages();
 
-		/*------------------------------------------------------*/
+		controller->ConnectedComponentsApply();
 
-		//controller->ConnectedComponentsApply();
-		//controller->FindRegionsApply();
-		//controller->SiftApply();
-		//controller->RansacApply();
-		//controller->CalibrationApply();
-		//controller->CannyApply();
-		//controller->DelaunayApply();
-		//controller->RenderApply();
+		controller->FindRegionsApply();
+		controller->DisplayImages();
 
-		//-------------- Test all ---------------------
-
-		CannyService *canny = new CannyService();
-		RenderService *teste = new RenderService();
-		SiftService *sift = new SiftService();
-		CalibrationService *calibracao = new CalibrationService(1, 1, new OpenCV());
-		imread(".\\Others Files\\cabeca_1.png");
-		imread(".\\Others Files\\cabeca_2.png");
-		SiftResult result = sift->Execute(imread(".\\Others Files\\im0.png"), imread(".\\Others Files\\im1.png"), 100000);
-		Convert *convert = new Convert();
-
-		//vector<Point3f> calibra = calibracao->CalculateStereoCameraCalibration(convert->DMatchToPointPair(result.Matches, result.FirstImageKeyPoints, result.SecondImageKeyPoints));
-		vector<PointPair> points = convert->DMatchToPointPair(result.Matches, result.FirstImageKeyPoints, result.SecondImageKeyPoints);
-
-		vector<Point3f> _pts;
-		for each (PointPair point_ in points)
-		{
-			_pts.push_back(point_.FirstPoint);
-		}
-
-		teste->TestExecute(&argc, argv, _pts);
-
-
-		//---------- TestsDelauney -----------------
-
-		//CannyService *canny = new CannyService();
-		//DelaunayService *teste = new DelaunayService();
-		//teste->TestExecute(canny->Execute(imread(".\\Others Files\\TestImage.jpg"), 50, 700, 3));
-
-		//---------- TestsFirefly ------------------
-
-		//FireflyService *test = new FireflyService();
-		//test->TestExecute(".\\Others Files\\TestImage.jpg", 1, 50, 100);
-
-		//---------- TestRender ------------------
-		//CannyService *canny = new CannyService();
-		//RenderService *teste = new RenderService();
-		//teste->TestExecute(&argc, argv);
-		//teste->TestExecute(&argc, argv, canny->Execute(imread(".\\Others Files\\TestImage.jpg"), 50, 700, 3));
-
-		// ---------- TestCanny -------------
-		//CannyService *canny = new CannyService();
-		//canny->TestExecute(imread(".\\Others Files\\TestImage.jpg"), 50, 700, 3);
-
-		// ---------- TestRansac -------------
+		controller->SiftApply();
+		controller->RansacApply();
+		controller->CalibrationApply();
+		controller->DelaunayApply();
+		controller->RenderApply();
 		
 		cout << "======== End Test ======== " << endl;
 	}
 
-	void TestService::RANSAC() {
+	void TestService::Delaunay()
+	{
+		CannyService *canny = new CannyService();
+		DelaunayService *teste = new DelaunayService();
+		teste->TestExecute(canny->Execute(imread(".\\Others Files\\TestImage.jpg"), 50, 700, 3));
+	}
+
+	void TestService::Firefly() 
+	{
+		FireflyService *test = new FireflyService();
+		test->TestExecute(".\\Others Files\\TestImage.jpg", 1, 50, 100);
+	}
+
+	void TestService::Render(int argc, char **argv)
+	{
+		CannyService *canny = new CannyService();
+		RenderService *teste = new RenderService();
+		teste->TestExecute(&argc, argv);
+		teste->TestExecute(&argc, argv, canny->Execute(imread(".\\Others Files\\TestImage.jpg"), 50, 700, 3));
+	}
+
+	void TestService::Canny() 
+	{
+		CannyService *canny = new CannyService();
+		canny->TestExecute(imread(".\\Others Files\\TestImage.jpg"), 50, 700, 3);
+	}
+
+	void TestService::Ransac() {
 
 		SiftService *sift = new SiftService();
 		RansacService *ransac = new RansacService();
@@ -119,17 +101,18 @@ namespace Services {
 		resize(img1, img1, Size(600, 400));
 		resize(img2, img2, Size(600, 400));
 
-		/*imshow("img1", img1);
-		imshow("img2", img2);
-		waitKey();
 		SiftResult sift_result = sift->Execute(img1, img2, 400);
-		vector<DMatch> ransacResult = ransac->Execute(sift_result);
-		cout << ransacResult.size()<<endl;
+		Mat mask = ransac->FindRansacMask(sift_result, 400);
+		vector<DMatch> matchesRansac;
+		
+		for (int i = 0; i < mask.rows; i++) {
+			if ((unsigned int)mask.at<uchar>(i))
+				matchesRansac.push_back(sift_result.Matches[i]);
+		}
 		Mat img;
-		drawMatches(img1, sift_result.FirstImageKeyPoints, img2, sift_result.SecondImageKeyPoints, ransacResult, img);
+		drawMatches(img1, sift_result.FirstImageKeyPoints, img2, sift_result.SecondImageKeyPoints, matchesRansac, img);
 		imshow("RANSAC", img);
-		imwrite("ransac.png", img);
-		waitKey();*/
+		waitKey();
 	}
 }
 

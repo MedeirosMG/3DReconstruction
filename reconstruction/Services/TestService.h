@@ -21,7 +21,11 @@ namespace Services {
 			~TestService();
 			void TimeExecution();
 			void Reconstruction(int argc, char **argv);
-			void RANSAC();
+			void Canny();
+			void Firefly();
+			void Render(int argc, char **argv);
+			void Delaunay();
+			void Ransac();
 	};
 
 }

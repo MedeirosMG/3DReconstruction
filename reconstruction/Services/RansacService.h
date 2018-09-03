@@ -25,6 +25,7 @@ namespace Services {
 			RansacService();
 			RansacService(OpenCV* openCv);
 			~RansacService();
+			Mat FindRansacMask(SiftResult sift_result, double ransacThresh);
 			vector<PointPair> Execute(SiftResult sift_result, double ransacThresh = 3.0);
 	};
 
