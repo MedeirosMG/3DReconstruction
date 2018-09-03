@@ -105,11 +105,31 @@ namespace Services {
 		//canny->TestExecute(imread(".\\Others Files\\TestImage.jpg"), 50, 700, 3);
 
 		// ---------- TestRansac -------------
-		RansacService *ransac = new RansacService();
-		Mat img1 = imread(".\\Others Files\\im0.png");
-		Mat img2 = imread(".\\Others Files\\im1.png");
-		ransac->Execute(sift->Execute(img1, img2, 400));
-
+		
 		cout << "======== End Test ======== " << endl;
 	}
+
+	void TestService::RANSAC() {
+
+		SiftService *sift = new SiftService();
+		RansacService *ransac = new RansacService();
+		Mat img1 = imread(".\\Others Files\\im0.png", 0);
+		Mat img2 = imread(".\\Others Files\\im1.png", 0);
+		
+		resize(img1, img1, Size(600, 400));
+		resize(img2, img2, Size(600, 400));
+
+		/*imshow("img1", img1);
+		imshow("img2", img2);
+		waitKey();
+		SiftResult sift_result = sift->Execute(img1, img2, 400);
+		vector<DMatch> ransacResult = ransac->Execute(sift_result);
+		cout << ransacResult.size()<<endl;
+		Mat img;
+		drawMatches(img1, sift_result.FirstImageKeyPoints, img2, sift_result.SecondImageKeyPoints, ransacResult, img);
+		imshow("RANSAC", img);
+		imwrite("ransac.png", img);
+		waitKey();*/
+	}
 }
+

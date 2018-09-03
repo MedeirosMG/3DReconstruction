@@ -3,6 +3,8 @@
 #include <iostream>
 #include "ControllerService.h"
 #include "..\Helpers\Time.h"
+#include "..\Helpers\Console.h"
+
 
 using namespace std;
 using namespace Helpers;
@@ -19,6 +21,7 @@ namespace Services {
 			~TestService();
 			void TimeExecution();
 			void Reconstruction(int argc, char **argv);
+			void RANSAC();
 	};
 
 }

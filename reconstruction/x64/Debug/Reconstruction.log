@@ -1,3 +1,11 @@
-﻿  RenderService.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\renderservice.cpp(25): warning C4305: 'argumento': truncamento de 'double' para 'GLfloat'
-  Reconstruction.vcxproj -> C:\SD\Arquivos\Documentos\3DReconstruction\x64\Debug\Reconstruction.exe
+﻿  TestService.cpp
+c:\users\murillo\c++\3dreconstruction\reconstruction\helpers\console.h(25): warning C4091: 'static ': ignorado à esquerda de 'Helpers::Console' quando nenhuma variável é declarada
+  RansacService.cpp
+  ControllerService.cpp
+c:\users\murillo\c++\3dreconstruction\reconstruction\helpers\console.h(25): warning C4091: 'static ': ignorado à esquerda de 'Helpers::Console' quando nenhuma variável é declarada
+  Gerando Código...
+c:\users\murillo\c++\3dreconstruction\reconstruction\services\controllerservice.cpp(119): warning C4715: 'Services::ControllerService::RansacApply': nem todos os caminhos de controle retornam um valor
+c:\users\murillo\c++\3dreconstruction\reconstruction\services\controllerservice.cpp(147): warning C4715: 'Services::ControllerService::RenderApply': nem todos os caminhos de controle retornam um valor
+  Ignorando... (nenhuma alteração relevante detectada)
+  Main.cpp
+  Reconstruction.vcxproj -> C:\Users\Murillo\C++\3DReconstruction\x64\Debug\Reconstruction.exe
