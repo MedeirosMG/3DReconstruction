@@ -119,24 +119,17 @@ namespace Services {
 		resize(img1, img1, Size(600, 400));
 		resize(img2, img2, Size(600, 400));
 
-		imshow("img1", img1);
+		/*imshow("img1", img1);
 		imshow("img2", img2);
 		waitKey();
 		SiftResult sift_result = sift->Execute(img1, img2, 400);
-		vector<PointPair> ransacResult = ransac->Execute(sift_result);
+		vector<DMatch> ransacResult = ransac->Execute(sift_result);
 		cout << ransacResult.size()<<endl;
-		Mat img(Size(1200, 800), CV_8UC3);
-		Console().Print(ransacResult);
-		circle(img, Point(300, 300), 10, Scalar(0, 0, 255), 5);
-		/*for (int i = 0; i < ransacResult.size(); i++) {
-			
-			circle(img, Point(ransacResult[i].FirstPoint.x, ransacResult[i].FirstPoint.y), 10, Scalar(255, 255, 0), 2);
-			circle(img, Point(ransacResult[i].SecondPoint.x, ransacResult[i].SecondPoint.y), 10, Scalar(255, 255, 0), 2);
-			line(img, Convert().Point3fTo2f(ransacResult[i].FirstPoint), Convert().Point3fTo2f(ransacResult[i].SecondPoint), Scalar(0, 255, 0), 2);
-
-		}*/
+		Mat img;
+		drawMatches(img1, sift_result.FirstImageKeyPoints, img2, sift_result.SecondImageKeyPoints, ransacResult, img);
 		imshow("RANSAC", img);
-		waitKey();
+		imwrite("ransac.png", img);
+		waitKey();*/
 	}
 }
 
