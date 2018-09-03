@@ -68,7 +68,7 @@ namespace Services {
 		CalibrationService *calibracao = new CalibrationService(1, 1, new OpenCV());
 		imread(".\\Others Files\\cabeca_1.png");
 		imread(".\\Others Files\\cabeca_2.png");
-		SiftResult result = sift->Execute(imread(".\\Others Files\\cabeca_1.png"), imread(".\\Others Files\\cabeca_2.png"), 1000);
+		SiftResult result = sift->Execute(imread(".\\Others Files\\im0.png"), imread(".\\Others Files\\im1.png"), 100000);
 		Convert *convert = new Convert();
 
 		//vector<Point3f> calibra = calibracao->CalculateStereoCameraCalibration(convert->DMatchToPointPair(result.Matches, result.FirstImageKeyPoints, result.SecondImageKeyPoints));

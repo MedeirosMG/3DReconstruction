@@ -115,6 +115,16 @@ namespace Helpers {
 		return _return;
 	}
 
+	Point2f PointUtilities::GetMiddlePoint(Point2f pt1, Point2f pt2)
+	{
+		Point2f point;
+
+		point.x = (pt1.x + pt2.x) / 2;
+		point.y = (pt1.y + pt2.y) / 2;
+
+		return point;
+	}
+
 	float PointUtilities::GetMaxAbsCoord(vector<Vec6f> points) 
 	{
 		float maxValue = 0.0;

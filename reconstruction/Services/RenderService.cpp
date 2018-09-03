@@ -40,7 +40,7 @@ namespace Services {
 			Point pt2{ cvRound(triangle[2]), cvRound(triangle[3]) };
 			Point pt3{ cvRound(triangle[4]), cvRound(triangle[5]) };
 			
-			/*
+			
 			glBegin(GL_LINES);
 				glVertex3f(pt1.x/maxAbs, pt1.y/maxAbs, 0);
 				glVertex3f(pt2.x/maxAbs, pt2.y/maxAbs, 0);
@@ -54,10 +54,17 @@ namespace Services {
 			glBegin(GL_LINES);
 				glVertex3f(pt3.x / maxAbs, pt3.y / maxAbs, 0);
 				glVertex3f(pt1.x / maxAbs, pt1.y / maxAbs, 0);
+			glEnd();
+			/*
+			glPointSize(5.0);
+			glBegin(GL_POINTS);
+				glVertex3f(pt1.x / maxAbs, pt1.y / maxAbs, 0);
+				glVertex3f(pt2.x / maxAbs, pt2.y / maxAbs, 0);
+				glVertex3f(pt3.x / maxAbs, pt3.y / maxAbs, 0);
 			glEnd();*/
 		}
 
-		Mat image = imread(".\\Others Files\\cabeca_1.png", CV_8UC3);
+		/*Mat image = imread(".\\Others Files\\im0.png", CV_8UC3);
 		vector<Vec4i> hierarchy;
 		vector<vector<Point> > contours;
 		findContours(image, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE);
@@ -95,9 +102,8 @@ namespace Services {
 		}
 		const char* source_window = "Source";
 		namedWindow(source_window, WINDOW_AUTOSIZE);
-		imshow(source_window, image);
-		namedWindow("Distance", WINDOW_AUTOSIZE);
-		imshow("Distance", drawing);
+		imshow(source_window, image);*/
+		
 
 		glFlush();
 	}

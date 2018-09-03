@@ -29,6 +29,7 @@ namespace Helpers {
 			float GetMaxAbsCoord(vector<Point3f> points, string coordinate);
 			float GetMaxAbsCoord(vector<Vec6f> points);
 			vector<Point3f> GetMockPoints(string fileRead = ".\\Others Files\\MockPoints.obj");
+			Point2f GetMiddlePoint(Point2f pt1, Point2f pt2);
 	};
 
 }
