@@ -105,11 +105,38 @@ namespace Services {
 		//canny->TestExecute(imread(".\\Others Files\\TestImage.jpg"), 50, 700, 3);
 
 		// ---------- TestRansac -------------
-		RansacService *ransac = new RansacService();
-		Mat img1 = imread(".\\Others Files\\im0.png");
-		Mat img2 = imread(".\\Others Files\\im1.png");
-		ransac->Execute(sift->Execute(img1, img2, 400));
-
+		
 		cout << "======== End Test ======== " << endl;
 	}
+
+	void TestService::RANSAC() {
+
+		SiftService *sift = new SiftService();
+		RansacService *ransac = new RansacService();
+		Mat img1 = imread(".\\Others Files\\im0.png", 0);
+		Mat img2 = imread(".\\Others Files\\im1.png", 0);
+		
+		resize(img1, img1, Size(600, 400));
+		resize(img2, img2, Size(600, 400));
+
+		imshow("img1", img1);
+		imshow("img2", img2);
+		waitKey();
+		SiftResult sift_result = sift->Execute(img1, img2, 400);
+		vector<PointPair> ransacResult = ransac->Execute(sift_result);
+		cout << ransacResult.size()<<endl;
+		Mat img(Size(1200, 800), CV_8UC3);
+		Console().Print(ransacResult);
+		circle(img, Point(300, 300), 10, Scalar(0, 0, 255), 5);
+		/*for (int i = 0; i < ransacResult.size(); i++) {
+			
+			circle(img, Point(ransacResult[i].FirstPoint.x, ransacResult[i].FirstPoint.y), 10, Scalar(255, 255, 0), 2);
+			circle(img, Point(ransacResult[i].SecondPoint.x, ransacResult[i].SecondPoint.y), 10, Scalar(255, 255, 0), 2);
+			line(img, Convert().Point3fTo2f(ransacResult[i].FirstPoint), Convert().Point3fTo2f(ransacResult[i].SecondPoint), Scalar(0, 255, 0), 2);
+
+		}*/
+		imshow("RANSAC", img);
+		waitKey();
+	}
 }
+
