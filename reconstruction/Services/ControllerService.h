@@ -15,6 +15,7 @@
 #include "RenderService.h"
 #include "..\Helpers\Console.h"
 #include "..\Helpers\Convert.h"
+#include "..\Helpers\Visualizer.h"
 
 #pragma endregion
 
@@ -39,6 +40,9 @@ namespace Services {
 		SiftService* _siftService;
 		InputImageService* _inputImageService;
 		RenderService* _renderService;
+
+		// Utilities
+		Visualizer* _visualizer = new Visualizer();
 
 		// General Properties
 		Mat _firstImage;
@@ -83,6 +87,9 @@ namespace Services {
 		int *_argc;
 		char **_argv;
 
+		// Visualizer properties
+		string _visualizerName;
+
 		void LoadServices();
 
 	public:
@@ -110,6 +117,7 @@ namespace Services {
 		void SetFireflyProperties(int thresholds, int number_fireflies, int number_generations);
 		void SetRenderProperties(int *argc, char **argv);
 		void SetRansacProperties(double ransacThreshold);
+		void SetVisuaizerProperties(bool execute, string nameWindow = "Default Name");
 
 		void SaveFirstImage(string Path = ".\\Others Files\\FirstImage.jpg");
 		void SaveSecondImage(string Path = ".\\Others Files\\SecondImage.jpg");

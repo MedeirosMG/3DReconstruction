@@ -45,16 +45,12 @@ namespace Services {
 		controller->SetSiftProperties(400);
 		controller->SetCalibrationProperties(0, 0, 1);
 		controller->SetRenderProperties(&argc, argv);
+		controller->SetVisuaizerProperties(true);
 
 		controller->CannyApply();
 		controller->FireflyApply();	
-		controller->DisplayImages();
-
 		controller->ConnectedComponentsApply();
-
 		controller->FindRegionsApply();
-		controller->DisplayImages();
-
 		controller->SiftApply();
 		controller->RansacApply();
 		controller->CalibrationApply();

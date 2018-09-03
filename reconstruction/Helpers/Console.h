@@ -6,6 +6,7 @@
 #include "../Algorithms/OpenCV.h"
 #include "../Algorithms/OpenGL.h"
 #include "../Entities/PointPair.h"
+#include "../Entities/SiftResult.h"
 
 using namespace std;
 using namespace Algorithms;
@@ -22,6 +23,8 @@ namespace Helpers {
 			static void Print(vector<Point3f> listPoints);
 			static void Print(Point3f point);
 			static void Print(vector<PointPair> listPoints);
+			static void Print(SiftResult result);
+			static void Print(vector<Vec6f> triangles);
 	};
 
 }

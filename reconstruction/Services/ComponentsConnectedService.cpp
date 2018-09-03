@@ -24,13 +24,6 @@ namespace Services {
 		Mat labelImage(img.size(), CV_32S);
 		vector<Vec4i> hierarchy;
 
-		namedWindow("aaaa");
-		namedWindow("bbbb");
-
-		imshow("aaaa", bw);
-		imshow("bbbb", img);
-		waitKey();
-
 		vector<vector<Point>> contours = _openCv->ConnectedComponentsAlgorithm(img, hierarchy, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
 
 		Mat result = Mat::zeros(img.size(), CV_8UC3);

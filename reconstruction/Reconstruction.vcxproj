@@ -170,6 +170,7 @@
     <ClInclude Include="Helpers\PointsUtilities.h" />
     <ClInclude Include="Helpers\Time.h" />
     <ClInclude Include="Helpers\tsallis.h" />
+    <ClInclude Include="Helpers\Visualizer.h" />
     <ClInclude Include="Services\CalibrationService.h" />
     <ClInclude Include="Services\CannyService.h" />
     <ClInclude Include="Services\ConnectedComponentsService.h" />
@@ -199,6 +200,7 @@
     <ClCompile Include="Helpers\PointsUtilities.cpp" />
     <ClCompile Include="Helpers\Time.cpp" />
     <ClCompile Include="Helpers\tsallis.cpp" />
+    <ClCompile Include="Helpers\Visualizer.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Services\CalibrationService.cpp" />
     <ClCompile Include="Services\CannyService.cpp" />

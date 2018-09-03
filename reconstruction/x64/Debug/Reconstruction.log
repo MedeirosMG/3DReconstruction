@@ -1,5 +1,4 @@
 ﻿  ControllerService.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\console.h(25): warning C4091: 'static ': ignorado à esquerda de 'Helpers::Console' quando nenhuma variável é declarada
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\controllerservice.cpp(128): warning C4715: 'Services::ControllerService::RansacApply': nem todos os caminhos de controle retornam um valor
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\controllerservice.cpp(156): warning C4715: 'Services::ControllerService::RenderApply': nem todos os caminhos de controle retornam um valor
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\console.h(28): warning C4091: 'static ': ignorado à esquerda de 'Helpers::Console' quando nenhuma variável é declarada
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\controllerservice.cpp(180): warning C4715: 'Services::ControllerService::RenderApply': nem todos os caminhos de controle retornam um valor
   Reconstruction.vcxproj -> C:\SD\Arquivos\Documentos\3DReconstruction\x64\Debug\Reconstruction.exe

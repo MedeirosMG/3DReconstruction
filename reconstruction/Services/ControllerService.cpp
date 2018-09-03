@@ -14,6 +14,7 @@ namespace Services {
 		resize(firstImage, _firstImage, Size(800, 600));
 		resize(secondImage, _secondImage, Size(800, 600));
 		_openCv = new OpenCV();
+
 		LoadServices();
 	}
 
@@ -36,8 +37,13 @@ namespace Services {
 	{		
 		try
 		{
+			cout << endl << "=== Init Calibration ===" << endl << endl;
 			_resultCalibration = _calibrationService->CalculateStereoCameraCalibration(_resultRansac);
 			_calibrationService->OrderPointsByAsc(_resultCalibration);
+
+			_visualizer->Show(_resultCalibration);
+
+			return true;
 		}
 		catch (const std::exception& ex)
 		{
@@ -51,7 +57,11 @@ namespace Services {
 	{
 		try
 		{
+			cout << endl << "=== Init Canny ===" << endl << endl;
 			_pointsCanny = _cannyService->Execute(_firstImage, _cannyLowThresh, _cannyHighTresh, _cannyKernelSize);
+
+			_visualizer->Show(_pointsCanny);
+
 			return true;
 		}
 		catch (const std::exception& ex)
@@ -65,15 +75,12 @@ namespace Services {
 	{
 		try
 		{
+			cout << endl << "=== Init Connected Components ===" << endl << endl;
 			_InterestRegionsFirstImage = _connectedComponentsService->Execute(_firstImageModified, _connectedComponentsThreshVal);
 			_InterestRegionsSecondImage = _connectedComponentsService->Execute(_secondImageModified, _connectedComponentsThreshVal);
 
-			namedWindow("aaaa");
-			namedWindow("bbbb");
-
-			imshow("aaaa", _InterestRegionsFirstImage);
-			imshow("bbbb", _InterestRegionsSecondImage);
-			waitKey();
+			_visualizer->Show(_InterestRegionsFirstImage, _visualizerName);
+			_visualizer->Show(_InterestRegionsSecondImage, _visualizerName);
 
 			return true;
 		}
@@ -88,7 +95,11 @@ namespace Services {
 	{
 		try
 		{
+			cout << endl << "=== Init Delaunay ===" << endl << endl;
 			_resultDelaunay = _delaunayService->Execute(_resultCalibration);
+
+			_visualizer->Show(_resultDelaunay);
+
 			return true;
 		}
 		catch (const std::exception& ex)
@@ -102,8 +113,12 @@ namespace Services {
 	{
 		try
 		{
+			cout << endl << "=== Init Find Regions ===" << endl << endl;
 			_firstImageModified = _findRegionsService->Execute(_InterestRegionsFirstImage, _firstImage);
 			_secondImageModified = _findRegionsService->Execute(_InterestRegionsSecondImage, _secondImage);
+
+			_visualizer->Show(_firstImageModified, _visualizerName);
+			_visualizer->Show(_secondImageModified, _visualizerName);
 
 			return true;
 		}
@@ -118,7 +133,12 @@ namespace Services {
 	{
 		try
 		{
+			cout << endl << "=== Init Ransac ===" << endl << endl;
 			_resultRansac = _ransacService->Execute(_resultSift, _ransacThresh);
+
+			_visualizer->Show(_resultRansac);
+
+			return true;
 		}
 		catch (const std::exception& ex)
 		{
@@ -131,7 +151,10 @@ namespace Services {
 	{
 		try
 		{
+			cout << endl << "=== Init Sift ===" << endl << endl;
 			_resultSift = _siftService->Execute(_firstImageModified, _secondImageModified, _siftThreshold);
+
+			_visualizer->Show(_resultSift);
 
 			return true;
 		}
@@ -146,6 +169,7 @@ namespace Services {
 	{
 		try
 		{
+			cout << endl << "=== Init Rendering ===" << endl << endl;
 			_renderService->Execute(_argc, _argv, _resultDelaunay, _resultCalibration);
 		}
 		catch (const std::exception& ex)
@@ -159,8 +183,13 @@ namespace Services {
 	{
 		try
 		{
+			cout << endl << "=== Init Firefly ===" << endl << endl;
 			_firstImageModified = _fireflyService->Execute(_firstImage, _thresholds, _number_fireflies, _number_generations);
 			_secondImageModified = _fireflyService->Execute(_secondImage, _thresholds, _number_fireflies, _number_generations);
+
+			_visualizer->Show(_firstImageModified, _visualizerName);
+			_visualizer->Show(_secondImageModified, _visualizerName);
+
 			return true;
 		}
 		catch (const std::exception& ex)
@@ -174,8 +203,12 @@ namespace Services {
 	{
 		try
 		{
+			cout << endl << "=== Reading Images ===" << endl << endl;
 			_firstImage = _inputImageService->Execute(pathFirstImage);
 			_secondImage = _inputImageService->Execute(pathSecondImage);
+
+			_visualizer->Show(_firstImage, _visualizerName);
+			_visualizer->Show(_secondImage, _visualizerName);
 
 			return true;
 		}
@@ -236,6 +269,21 @@ namespace Services {
 		_ransacThresh = ransacThreshold;
 	}
 
+	void ControllerService::SetVisuaizerProperties(bool execute, string nameWindow)
+	{
+		if (!execute)
+		{
+			_visualizerName = nameWindow;
+			return;
+		}
+
+		// Default name
+		_visualizerName = nameWindow;
+
+		// Init window
+		_visualizer->NewWindow(_visualizerName);
+	}
+
 #pragma endregion
 
 	void ControllerService::LoadServices()
@@ -250,6 +298,8 @@ namespace Services {
 		_siftService = new SiftService(_openCv);
 		_inputImageService = new InputImageService(_openCv);
 		_renderService = new RenderService(_openCv);
+		_renderService = new RenderService(_openCv);
+		_visualizer = new Visualizer(_openCv);
 	}
 
 	void ControllerService::SaveFirstImage(string Path)
@@ -281,16 +331,14 @@ namespace Services {
 		resize(_firstImageModified, tempFirstImageModified, Size(800, 600));
 		resize(_secondImageModified, tempSecondImageModified, Size(800, 600));
 
-		namedWindow("First Image - Original");
-		namedWindow("Second Image - Original");
-		namedWindow("First Image - Modified");
-		namedWindow("Second Image - Modified");
+		_visualizer->NewWindow("First Image - Original");
+		_visualizer->NewWindow("Second Image - Original");
+		_visualizer->NewWindow("First Image - Modified");
+		_visualizer->NewWindow("Second Image - Modified");
 
-		imshow("First Image - Original", tempFirstImage);
-		imshow("Second Image - Original", tempSecondImage);
-		imshow("First Image - Modified", tempFirstImageModified);
-		imshow("Second Image - Modified", tempSecondImageModified);
-
-		waitKey();
+		_visualizer->Show(tempFirstImage, "First Image - Original");
+		_visualizer->Show(tempSecondImage, "Second Image - Original");
+		_visualizer->Show(tempFirstImageModified, "First Image - Modified");
+		_visualizer->Show(tempSecondImageModified, "Second Image - Modified");
 	}
 }

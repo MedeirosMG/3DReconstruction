@@ -23,8 +23,11 @@ namespace Helpers {
 			else
 				cout << "P[" << count << "] = { " << item.x << " ; " << item.y << " ; " << item.z << " } " << endl;
 			count++;
+
+			if (count == 100)
+				break;
 		}
-		cout << "==================================================================" << endl;
+		cout << "=============================== Only top 100 ===================================" << endl << endl;
 	}
 
 	void Console::Print(vector<PointPair> listPoints)
@@ -38,8 +41,19 @@ namespace Helpers {
 			else
 				cout << "[" << count << "] FirstPoint : { " << item.FirstPoint.x << " ; " << item.FirstPoint.y << " } - SecondPoint : { " << item.SecondPoint.x << " ; " << item.SecondPoint.y << " }" << endl;
 			count++;
+
+			if (count == 100)
+				break;
 		}
-		cout << "===========================================================================================" << endl;
+		cout << "==================================== Only top 100 ============================================" << endl;
+	}
+
+	void Console::Print(SiftResult result)
+	{
+	}
+
+	void Console::Print(vector<Vec6f> triangles) 
+	{
 	}
 
 	void Console::Print(Point3f point)
