@@ -43,7 +43,7 @@ namespace Services {
 		controller->SetConnectedComponentsProperties(128);
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(400);
-		controller->SetCalibrationProperties(0, 0, 1);
+		controller->SetCalibrationProperties(1, 2, 1);
 		controller->SetRenderProperties(&argc, argv);
 		controller->SetVisuaizerProperties(true);
 

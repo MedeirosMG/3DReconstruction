@@ -16,6 +16,9 @@ namespace Helpers {
 
 	static class Console
 	{
+		private:
+			static string Print(Point point);
+
 		public:
 			Console();
 			~Console();

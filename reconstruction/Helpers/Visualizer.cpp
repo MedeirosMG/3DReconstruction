@@ -18,6 +18,11 @@ namespace Helpers {
 
 	Visualizer::~Visualizer() {}
 
+	void Visualizer::SetExecute(bool execute)
+	{
+		_execute = execute;
+	}
+
 	void Visualizer::NewWindow(string WindowName)
 	{
 		_openCv->NewWindow(WindowName);
@@ -25,7 +30,7 @@ namespace Helpers {
 
 	void Visualizer::Show(Mat Img, string WindowName)
 	{
-		if (WindowName == "")
+		if (!_execute)
 			return;
 
 		cout << "---- Showing image, press any key to continue ----" << endl;
@@ -34,21 +39,33 @@ namespace Helpers {
 
 	void Visualizer::Show(vector<Point3f> points)
 	{
+		if (!_execute)
+			return;
+
 		Console().Print(points);
 	}
 
 	void Visualizer::Show(vector<Vec6f> triangles)
 	{
+		if (!_execute)
+			return;
+
 		Console().Print(triangles);
 	}
 
 	void Visualizer::Show(SiftResult result)
 	{
+		if (!_execute)
+			return;
+
 		Console().Print(result);
 	}
 
 	void Visualizer::Show(vector<PointPair> points)
 	{
+		if (!_execute)
+			return;
+
 		Console().Print(points);
 	}
 }

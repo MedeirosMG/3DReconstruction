@@ -18,12 +18,14 @@ namespace Helpers {
 	{
 		private:
 			OpenCV * _openCv;
+			bool _execute;
 
 		public:
 			Visualizer(string WindowName, OpenCV* opencv = new OpenCV());
 			Visualizer(OpenCV* opencv = new OpenCV());
 			~Visualizer();
 
+			void SetExecute(bool execute);
 			void NewWindow(string WindowName);
 			void Show(Mat Img, string WindowName);
 			void Show(vector<Point3f> points);

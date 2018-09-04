@@ -50,10 +50,30 @@ namespace Helpers {
 
 	void Console::Print(SiftResult result)
 	{
+
 	}
 
 	void Console::Print(vector<Vec6f> triangles) 
 	{
+		cout << "============================= Result =============================" << endl;
+		for (size_t i = 0; i < triangles.size(); i++) {
+			Vec6f triangle = triangles[i];
+			Point pt1{ cvRound(triangle[0]), cvRound(triangle[1]) };
+			Point pt2{ cvRound(triangle[2]), cvRound(triangle[3]) };
+			Point pt3{ cvRound(triangle[4]), cvRound(triangle[5]) };
+
+			cout << "Triangle = { " << Print(pt1) << " ; " << Print(pt2) << " ; " << Print(pt3) << " }" << endl;
+
+			if (i == 99)
+				break;
+		}
+
+		cout << "============================= Only top 100 =====================================" << endl;
+	}
+
+	string Console::Print(Point point)
+	{
+		return "P(" + to_string(point.x) + "," + to_string(point.y) + ")";
 	}
 
 	void Console::Print(Point3f point)

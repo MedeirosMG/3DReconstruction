@@ -271,17 +271,14 @@ namespace Services {
 
 	void ControllerService::SetVisuaizerProperties(bool execute, string nameWindow)
 	{
-		if (!execute)
-		{
-			_visualizerName = nameWindow;
-			return;
-		}
+		_visualizer->SetExecute(execute);
 
 		// Default name
 		_visualizerName = nameWindow;
 
 		// Init window
-		_visualizer->NewWindow(_visualizerName);
+		if(execute)
+			_visualizer->NewWindow(_visualizerName);
 	}
 
 #pragma endregion
