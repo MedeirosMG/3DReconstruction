@@ -50,7 +50,24 @@ namespace Helpers {
 
 	void Console::Print(SiftResult result)
 	{
+		cout << "========================= Result Sift ==================================" << endl << endl;
+		
+		// Print matches
+		Print(result.Matches);
+		
+		// temp vector points for keypoints
+		vector<Point2f> firstPoints, secondPoints;
 
+		// get vector first points
+		for each (KeyPoint pt in result.FirstImageKeyPoints)
+			firstPoints.push_back(pt.pt);
+		
+		// get vector second points
+		for each (KeyPoint pt in result.FirstImageKeyPoints)
+			secondPoints.push_back(pt.pt);
+
+		Print(firstPoints);
+		Print(secondPoints);
 	}
 
 	void Console::Print(vector<Vec6f> triangles) 
@@ -71,9 +88,39 @@ namespace Helpers {
 		cout << "============================= Only top 100 =====================================" << endl;
 	}
 
+	void Console::Print(vector<DMatch> matches) {
+		cout << "============================= Result =============================" << endl;
+		for (int i = 0; i < matches.size(); i++) {
+			cout << "{ ImgIndex: " << matches[i].imgIdx << " | ";
+			cout << "QueryIndex: " << matches[i].queryIdx << " | ";
+			cout << "TrainIndex: " << matches[i].trainIdx << " | ";
+			cout << "Distance: " << matches[i].distance << " }" << endl;
+
+			if (i == 99)
+				break;
+		}
+		cout << "=============================== Only top 100 ===================================" << endl << endl;
+	}
+
 	string Console::Print(Point point)
 	{
 		return "P(" + to_string(point.x) + "," + to_string(point.y) + ")";
+	}
+
+	void Console::Print(vector<Point2f> point)
+	{
+		cout << "============================= Result =============================" << endl;
+		for (int i = 0; i < point.size(); i++) {
+
+			if (i < 10)
+				cout << "P[0" << i << "] = { " << point[i].x << " ; " << point[i].y << " } " << endl;
+			else
+				cout << "P[" << i << "] = { " << point[i].x << " ; " << point[i].y << " } " << endl;
+
+			if (i == 99)
+				break;
+		}
+		cout << "=============================== Only top 100 ===================================" << endl << endl;
 	}
 
 	void Console::Print(Point3f point)

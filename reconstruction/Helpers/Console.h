@@ -24,10 +24,12 @@ namespace Helpers {
 			~Console();
 
 			static void Print(vector<Point3f> listPoints);
+			static void Print(vector<Point2f> point);
 			static void Print(Point3f point);
 			static void Print(vector<PointPair> listPoints);
 			static void Print(SiftResult result);
 			static void Print(vector<Vec6f> triangles);
+			static void Print(vector<DMatch> matches);
 	};
 
 }
