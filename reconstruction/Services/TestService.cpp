@@ -49,8 +49,8 @@ namespace Services {
 
 		controller->CannyApply();
 		controller->FireflyApply();	
-		//controller->ConnectedComponentsApply();
-		//controller->FindRegionsApply();
+		controller->ConnectedComponentsApply();
+		controller->FindRegionsApply();
 		controller->SiftApply();
 		controller->RansacApply();
 		controller->CalibrationApply();

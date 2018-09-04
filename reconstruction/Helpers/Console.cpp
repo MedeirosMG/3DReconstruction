@@ -28,6 +28,7 @@ namespace Helpers {
 				break;
 		}
 		cout << "=============================== Only top 100 ===================================" << endl << endl;
+		system("pause");
 	}
 
 	void Console::Print(vector<PointPair> listPoints)
@@ -46,6 +47,7 @@ namespace Helpers {
 				break;
 		}
 		cout << "==================================== Only top 100 ============================================" << endl;
+		system("pause");
 	}
 
 	void Console::Print(SiftResult result)
@@ -86,6 +88,7 @@ namespace Helpers {
 		}
 
 		cout << "============================= Only top 100 =====================================" << endl;
+		system("pause");
 	}
 
 	void Console::Print(vector<DMatch> matches) {
@@ -100,6 +103,7 @@ namespace Helpers {
 				break;
 		}
 		cout << "=============================== Only top 100 ===================================" << endl << endl;
+		system("pause");
 	}
 
 	string Console::Print(Point point)
@@ -121,6 +125,7 @@ namespace Helpers {
 				break;
 		}
 		cout << "=============================== Only top 100 ===================================" << endl << endl;
+		system("pause");
 	}
 
 	void Console::Print(Point3f point)
@@ -128,5 +133,6 @@ namespace Helpers {
 		cout << "============================= Result =============================" << endl;
 		cout << "Point = { " << point.x << " ; " << point.y << " ; " << point.z << " } " << endl;
 		cout << "==================================================================" << endl;
+		system("pause");
 	}
 }
