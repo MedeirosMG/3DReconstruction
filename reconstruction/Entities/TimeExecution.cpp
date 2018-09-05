@@ -13,7 +13,7 @@ namespace Entities {
 
 	void TimeExecution::Add(long timeMilliseconds)
 	{
-		_listTimeExecution.push_back(timeMilliseconds);
+		_bufferTimeExecution.push_back(timeMilliseconds);
 	}
 
 	string TimeExecution::GetName()
@@ -24,10 +24,10 @@ namespace Entities {
 	void TimeExecution::PrintTimeExecution()
 	{
 		cout << "============== Time Execution ============ " << endl;
-		cout << ">> Method: " << _name << " | Attempts: " << _listTimeExecution.size() << endl;
+		cout << ">> Method: " << _name << " | Attempts: " << _bufferTimeExecution.size() << endl;
 		
 		int cont = 0;
-		for each (long time in _listTimeExecution)
+		for each (long time in _bufferTimeExecution)
 		{
 			cout << "[" << cont <<"] Time Execution: " << time << " ms" << endl;
 		}

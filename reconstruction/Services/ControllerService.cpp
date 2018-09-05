@@ -6,6 +6,7 @@ namespace Services {
 	ControllerService::ControllerService()
 	{
 		_openCv = new OpenCV();
+		_time = new Time();
 		LoadServices();
 	}
 
@@ -37,9 +38,11 @@ namespace Services {
 	{		
 		try
 		{
+			_time->Start("CalibrationApply");
 			cout << endl << "=== Init Calibration ===" << endl << endl;
 			_resultCalibration = _calibrationService->CalculateStereoCameraCalibration(_resultRansac);
 			_calibrationService->OrderPointsByAsc(_resultCalibration);
+			_time->Stop("CalibrationApply");
 
 			_visualizer->Show(_resultCalibration);
 
@@ -57,8 +60,10 @@ namespace Services {
 	{
 		try
 		{
+			_time->Start("CannyApply");
 			cout << endl << "=== Init Canny ===" << endl << endl;
 			_pointsCanny = _cannyService->Execute(_firstImage, _cannyLowThresh, _cannyHighTresh, _cannyKernelSize);
+			_time->Stop("CannyApply");
 
 			_visualizer->Show(_pointsCanny);
 
@@ -75,9 +80,11 @@ namespace Services {
 	{
 		try
 		{
+			_time->Start("ConnectedComponentsApply");
 			cout << endl << "=== Init Connected Components ===" << endl << endl;
 			_InterestRegionsFirstImage = _connectedComponentsService->Execute(_firstImageModified, _connectedComponentsThreshVal);
 			_InterestRegionsSecondImage = _connectedComponentsService->Execute(_secondImageModified, _connectedComponentsThreshVal);
+			_time->Stop("ConnectedComponentsApply");
 
 			_visualizer->Show(_InterestRegionsFirstImage, _visualizerName);
 			_visualizer->Show(_InterestRegionsSecondImage, _visualizerName);
@@ -95,8 +102,10 @@ namespace Services {
 	{
 		try
 		{
+			_time->Start("DelaunayApply");
 			cout << endl << "=== Init Delaunay ===" << endl << endl;
 			_resultDelaunay = _delaunayService->Execute(_resultCalibration);
+			_time->Stop("DelaunayApply");
 
 			_visualizer->Show(_resultDelaunay);
 
@@ -113,9 +122,11 @@ namespace Services {
 	{
 		try
 		{
+			_time->Start("FindRegionsApply");
 			cout << endl << "=== Init Find Regions ===" << endl << endl;
 			_firstImageModified = _findRegionsService->Execute(_InterestRegionsFirstImage, _firstImage);
 			_secondImageModified = _findRegionsService->Execute(_InterestRegionsSecondImage, _secondImage);
+			_time->Stop("FindRegionsApply");
 
 			_visualizer->Show(_firstImageModified, _visualizerName);
 			_visualizer->Show(_secondImageModified, _visualizerName);
@@ -133,8 +144,10 @@ namespace Services {
 	{
 		try
 		{
+			_time->Start("RansacApply");
 			cout << endl << "=== Init Ransac ===" << endl << endl;
 			_resultRansac = _ransacService->Execute(_resultSift, _ransacThresh);
+			_time->Stop("RansacApply");
 
 			_visualizer->Show(_resultRansac);
 
@@ -151,8 +164,10 @@ namespace Services {
 	{
 		try
 		{
+			_time->Start("SiftApply");
 			cout << endl << "=== Init Sift ===" << endl << endl;
 			_resultSift = _siftService->Execute(_firstImageModified, _secondImageModified, _siftThreshold);
+			_time->Stop("SiftApply");
 
 			_visualizer->Show(_resultSift);
 
@@ -169,8 +184,10 @@ namespace Services {
 	{
 		try
 		{
+			_time->Start("RenderApply");
 			cout << endl << "=== Init Rendering ===" << endl << endl;
 			_renderService->Execute(_argc, _argv, _resultDelaunay, _resultCalibration);
+			_time->Stop("RenderApply");
 		}
 		catch (const std::exception& ex)
 		{
@@ -183,9 +200,11 @@ namespace Services {
 	{
 		try
 		{
+			_time->Start("FireflyApply");
 			cout << endl << "=== Init Firefly ===" << endl << endl;
 			_firstImageModified = _fireflyService->Execute(_firstImage, _thresholds, _number_fireflies, _number_generations);
 			_secondImageModified = _fireflyService->Execute(_secondImage, _thresholds, _number_fireflies, _number_generations);
+			_time->Stop("FireflyApply");
 
 			_visualizer->Show(_firstImageModified, _visualizerName);
 			_visualizer->Show(_secondImageModified, _visualizerName);
@@ -203,9 +222,11 @@ namespace Services {
 	{
 		try
 		{
+			_time->Start("ReadImages");
 			cout << endl << "=== Reading Images ===" << endl << endl;
 			_firstImage = _inputImageService->Execute(pathFirstImage);
 			_secondImage = _inputImageService->Execute(pathSecondImage);
+			_time->Stop("ReadImages");
 
 			_visualizer->Show(_firstImage, _visualizerName);
 			_visualizer->Show(_secondImage, _visualizerName);

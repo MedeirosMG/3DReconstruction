@@ -18,6 +18,7 @@ namespace Helpers {
 			if (method.GetName() == methodName) {
 				existMethod = true;
 				method.Add(time);
+				break;
 			}
 		}
 
@@ -28,32 +29,43 @@ namespace Helpers {
 		}
 	}
 
-	void Time::Run(void(*callback)())
-	{		
-		throw new exception("Not Implemented");
+	void Time::AddBuffer(high_resolution_clock::time_point time, string methodName) {
+		bool existMethod = false;
+		for each (TimeBuffer method in _bufferMethodExecuted) 
+		{
+			if (method.GetName() == methodName) {
+				existMethod = true;
+				method.Add(time);
+				break;
+			}
+		}
+
+		if (!existMethod) {
+			TimeBuffer* obj = new TimeBuffer(methodName);
+			obj->Add(time);
+			_bufferMethodExecuted.push_back(*obj);
+		}
 	}
 
-	void Time::Run(bool(*callback)())
-	{
-		throw new exception("Not Implemented");
-	}
-
-	void Time::Run(void(*callback)(), string methodName)
-	{
-		high_resolution_clock::time_point start = high_resolution_clock::now();
-		callback();
-		high_resolution_clock::time_point end = high_resolution_clock::now();
-
-		long duration = duration_cast<microseconds>(end - start).count();
-		
-		Add(duration, methodName);
-	}
-
-	void Time::Run(bool(*callback)(), string methodName)
+	void Time::Start(string methodName)
 	{
 		high_resolution_clock::time_point start = high_resolution_clock::now();
-		callback();
+
+		AddBuffer(start, methodName);
+	}
+
+	void Time::Stop(string methodName)
+	{
 		high_resolution_clock::time_point end = high_resolution_clock::now();
+		high_resolution_clock::time_point start;
+
+		for each (TimeBuffer method in _bufferMethodExecuted)
+		{
+			if (method.GetName() == methodName) {
+				start = method.GetLast();
+				break;
+			}
+		}
 
 		long duration = duration_cast<microseconds>(end - start).count();
 
@@ -80,6 +92,5 @@ namespace Helpers {
 				method.PrintTimeExecution();
 			}
 		}
-	}
-	
+	}	
 }

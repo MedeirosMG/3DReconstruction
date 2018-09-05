@@ -19,7 +19,6 @@ namespace Services {
 		public:
 			TestService();
 			~TestService();
-			void TimeExecution();
 			void Reconstruction(int argc, char **argv);
 			void Canny();
 			void Firefly();

@@ -16,8 +16,11 @@
 #include "..\Helpers\Console.h"
 #include "..\Helpers\Convert.h"
 #include "..\Helpers\Visualizer.h"
+#include "..\Helpers\Time.h"
 
 #pragma endregion
+
+using namespace Helpers;
 
 namespace Services {
 
@@ -28,6 +31,9 @@ namespace Services {
 
 		// Algorithms
 		OpenCV * _openCv;
+		
+		// Time Execution
+		Time * _time;
 
 		// Services
 		CalibrationService* _calibrationService;

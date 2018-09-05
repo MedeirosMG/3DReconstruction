@@ -12,7 +12,7 @@ namespace Entities {
 	{
 		private:
 			string _name;
-			vector<long> _listTimeExecution;
+			vector<long> _bufferTimeExecution;
 
 		public:
 			TimeExecution(string name);

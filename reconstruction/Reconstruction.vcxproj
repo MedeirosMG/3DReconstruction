@@ -161,6 +161,7 @@
     <ClInclude Include="Algorithms\OpenCV.h" />
     <ClInclude Include="Entities\PointPair.h" />
     <ClInclude Include="Entities\SiftResult.h" />
+    <ClInclude Include="Entities\TimeBuffer.h" />
     <ClInclude Include="Entities\TimeExecution.h" />
     <ClInclude Include="Helpers\Console.h" />
     <ClInclude Include="Helpers\Convert.h" />
@@ -191,6 +192,7 @@
     <ClCompile Include="Algorithms\OpenCV.cpp" />
     <ClCompile Include="Entities\PointPair.cpp" />
     <ClCompile Include="Entities\SiftResult.cpp" />
+    <ClCompile Include="Entities\TimeBuffer.cpp" />
     <ClCompile Include="Entities\TimeExecution.cpp" />
     <ClCompile Include="Helpers\Console.cpp" />
     <ClCompile Include="Helpers\Convert.cpp" />

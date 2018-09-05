@@ -12,26 +12,6 @@ namespace Services {
 	{
 	}
 
-	void lala() {
-		ControllerService* controller = new ControllerService(".\\Others Files\\TestImage.jpg", ".\\Others Files\\TestImage.jpg");
-
-		controller->DisplayImages();
-	}
-
-	void TestService::TimeExecution()
-	{
-		cout << "======= Start Test Execution ======= " << endl;
-
-		ControllerService* controller = new ControllerService(".\\Others Files\\TestImage.jpg", ".\\Others Files\\TestImage.jpg");
-
-		cout << &ControllerService::DisplayImages << endl;
-
-		_time->Run(lala, "DisplayImages");
-
-		cout << "======== End Test Execution ======== " << endl;
-	}
-
-
 	void TestService::Reconstruction(int argc, char **argv)
 	{
 		cout << "======= Start Test ======= " << endl;

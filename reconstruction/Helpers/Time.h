@@ -5,6 +5,7 @@
 #include <chrono>
 
 #include "../Entities/TimeExecution.h"
+#include "../Entities/TimeBuffer.h"
 
 using namespace std;
 using namespace Entities;
@@ -16,16 +17,16 @@ namespace Helpers {
 	{
 		private:
 			vector<TimeExecution> _listMethodExecuted;
+			vector<TimeBuffer> _bufferMethodExecuted;
 			void Add(long time, string methodName);
+			void AddBuffer(high_resolution_clock::time_point time, string methodName);
 
 		public:
 			Time();
 			~Time();
 
-			void Run(void(*callback)());
-			void Run(bool(*callback)());
-			void Run(void(*callback)(), string methodName);
-			void Run(bool(*callback)(), string methodName);
+			void Start(string methodName);
+			void Stop(string methodName);
 			void PrintResult();
 			void PrintResult(string methodName);
 	};
