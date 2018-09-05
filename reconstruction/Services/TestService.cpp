@@ -90,5 +90,14 @@ namespace Services {
 		imshow("RANSAC", img);
 		waitKey();
 	}
+
+	void TestService::ConnectedComponents()
+	{
+		ConnectedComponentsService *CC = new ConnectedComponentsService();
+		Mat img = CC->Execute(imread(".\\Others Files\\cabeca_1.png", 0), 128);
+		imshow("Componentes", img);
+		waitKey();
+	}
+	
 }
 

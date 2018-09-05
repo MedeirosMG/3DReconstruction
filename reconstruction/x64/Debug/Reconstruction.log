@@ -1,7 +1,3 @@
-﻿  Main.cpp
-d:\projetos\reconstruction\reconstruction\helpers\console.h(33): warning C4091: 'static ': ignored on left of 'Helpers::Console' when no variable is declared
-  TestService.cpp
-d:\projetos\reconstruction\reconstruction\helpers\console.h(33): warning C4091: 'static ': ignored on left of 'Helpers::Console' when no variable is declared
-  Generating Code...
-  LINK : D:\Projetos\Reconstruction\x64\Debug\Reconstruction.exe not found or not built by the last incremental link; performing full link
-  Reconstruction.vcxproj -> D:\Projetos\Reconstruction\x64\Debug\Reconstruction.exe
+﻿  TestService.cpp
+c:\users\murillo\c++\3dreconstruction\reconstruction\helpers\console.h(33): warning C4091: 'static ': ignorado à esquerda de 'Helpers::Console' quando nenhuma variável é declarada
+  Reconstruction.vcxproj -> C:\Users\Murillo\C++\3DReconstruction\x64\Debug\Reconstruction.exe
