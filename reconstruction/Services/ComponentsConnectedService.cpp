@@ -18,7 +18,7 @@ namespace Services {
 	{
 	}
 
-	Mat ConnectedComponentsService::Execute(Mat img, int threshVal)
+	Mat ConnectedComponentsService::Execute(Mat img)
 	{
 		vector<vector<Point> > contours;
 		vector<Vec4i> hierarchy;

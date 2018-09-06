@@ -77,8 +77,8 @@ namespace Services {
 		try
 		{
 			cout << endl << "=== Init Connected Components ===" << endl << endl;
-			_InterestRegionsFirstImage = _connectedComponentsService->Execute(_firstImageModified, _connectedComponentsThreshVal);
-			_InterestRegionsSecondImage = _connectedComponentsService->Execute(_secondImageModified, _connectedComponentsThreshVal);
+			_InterestRegionsFirstImage = _connectedComponentsService->Execute(_firstImageModified);
+			_InterestRegionsSecondImage = _connectedComponentsService->Execute(_secondImageModified);
 
 			_visualizer->Show(_InterestRegionsFirstImage, _visualizerName);
 			_visualizer->Show(_InterestRegionsSecondImage, _visualizerName);
@@ -236,11 +236,6 @@ namespace Services {
 		_siftThreshold = siftThreshold;
 	}
 
-	void ControllerService::SetConnectedComponentsProperties(int connectedComponentsThreshVal)
-	{
-		_connectedComponentsThreshVal = connectedComponentsThreshVal;
-	}
-
 	void ControllerService::SetCalibrationProperties(float calibrationB, float calibrationLambda, int calibrationK)
 	{
 		_calibrationB = calibrationB;
@@ -270,7 +265,7 @@ namespace Services {
 		_ransacThresh = ransacThreshold;
 	}
 
-	void ControllerService::SetVisuaizerProperties(bool execute, string nameWindow)
+	void ControllerService::SetVisualizerProperties(bool execute, string nameWindow)
 	{
 		_visualizer->SetExecute(execute);
 

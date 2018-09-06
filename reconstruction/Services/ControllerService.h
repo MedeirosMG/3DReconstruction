@@ -74,7 +74,6 @@ namespace Services {
 		vector<Point3f> _pointsCanny;
 
 		// Connected Components Properties
-		int _connectedComponentsThreshVal;
 		Mat _InterestRegionsFirstImage;
 		Mat _InterestRegionsSecondImage;
 
@@ -117,13 +116,12 @@ namespace Services {
 
 		void SetCannyProperties(double cannyLowThresh, double cannyHighTresh, int cannyKernelSize);
 		void SetSiftProperties(int siftThreshold);
-		void SetConnectedComponentsProperties(int connectedComponentsThreshVal);
 		void SetCalibrationProperties(float calibrationB, float calibrationLambda, int calibrationK);
 		void SetGeneralProperties();
 		void SetFireflyProperties(int thresholds, int number_fireflies, int number_generations);
 		void SetRenderProperties(int *argc, char **argv);
 		void SetRansacProperties(double ransacThreshold);
-		void SetVisuaizerProperties(bool execute, string nameWindow = "Default Name");
+		void SetVisualizerProperties(bool execute, string nameWindow = "Default Name");
 
 		void SaveFirstImage(string Path = ".\\Others Files\\FirstImage.jpg");
 		void SaveSecondImage(string Path = ".\\Others Files\\SecondImage.jpg");

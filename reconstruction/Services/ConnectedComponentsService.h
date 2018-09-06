@@ -20,7 +20,7 @@ namespace Services {
 			ConnectedComponentsService();
 			ConnectedComponentsService(OpenCV* openCV);
 			~ConnectedComponentsService();
-			Mat Execute(Mat img, int threshVal);
+			Mat Execute(Mat img);
 	};
 
 }

@@ -20,12 +20,11 @@ namespace Services {
 
 		controller->SetFireflyProperties(1, 50, 100);
 		controller->SetCannyProperties(50, 700, 3);
-		controller->SetConnectedComponentsProperties(128);
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(400);
 		controller->SetCalibrationProperties(1, 2, 1);
 		controller->SetRenderProperties(&argc, argv);
-		controller->SetVisuaizerProperties(true);
+		controller->SetVisualizerProperties(true);
 
 		controller->CannyApply();
 		controller->FireflyApply();	
@@ -48,12 +47,11 @@ namespace Services {
 
 		controller->SetFireflyProperties(1, 50, 100);
 		controller->SetCannyProperties(50, 700, 3);
-		controller->SetConnectedComponentsProperties(128);
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(400);
 		controller->SetCalibrationProperties(1, 2, 1);
 		controller->SetRenderProperties(&argc, argv);
-		controller->SetVisuaizerProperties(true);
+		controller->SetVisualizerProperties(false);
 
 
 		_time->Run(std::bind(&ControllerService::CannyApply, controller), "CannyApply");
@@ -125,7 +123,7 @@ namespace Services {
 	void TestService::ConnectedComponents()
 	{
 		ConnectedComponentsService *CC = new ConnectedComponentsService();
-		Mat img = CC->Execute(imread(".\\Others Files\\im0.png", 0), 128);
+		Mat img = CC->Execute(imread(".\\Others Files\\im0.png", 0));
 		resize(img, img, Size(800, 600));
 
 		imshow("Componentes", img);
