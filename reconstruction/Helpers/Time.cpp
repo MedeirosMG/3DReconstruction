@@ -49,6 +49,7 @@ namespace Helpers {
 
 	void Time::Start(string methodName)
 	{
+		return;
 		high_resolution_clock::time_point start = high_resolution_clock::now();
 
 		AddBuffer(start, methodName);
@@ -56,6 +57,7 @@ namespace Helpers {
 
 	void Time::Stop(string methodName)
 	{
+		return;
 		high_resolution_clock::time_point end = high_resolution_clock::now();
 		high_resolution_clock::time_point start;
 

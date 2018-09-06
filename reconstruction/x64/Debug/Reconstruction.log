@@ -1,3 +1,7 @@
-﻿  TestService.cpp
-c:\users\murillo\c++\3dreconstruction\reconstruction\helpers\console.h(33): warning C4091: 'static ': ignorado à esquerda de 'Helpers::Console' quando nenhuma variável é declarada
-  Reconstruction.vcxproj -> C:\Users\Murillo\C++\3DReconstruction\x64\Debug\Reconstruction.exe
+﻿  Main.cpp
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\console.h(33): warning C4091: 'static ': ignorado à esquerda de 'Helpers::Console' quando nenhuma variável é declarada
+  ComponentsConnectedService.cpp
+  TestService.cpp
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\console.h(33): warning C4091: 'static ': ignorado à esquerda de 'Helpers::Console' quando nenhuma variável é declarada
+  Gerando Código...
+  Reconstruction.vcxproj -> C:\SD\Arquivos\Documentos\3DReconstruction\x64\Debug\Reconstruction.exe

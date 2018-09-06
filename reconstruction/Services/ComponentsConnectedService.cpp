@@ -20,13 +20,10 @@ namespace Services {
 
 	Mat ConnectedComponentsService::Execute(Mat img, int threshVal)
 	{
-		//Mat bw = (img < threshVal); 
-		Mat bw = (img > threshVal); 
-
 		vector<vector<Point> > contours;
 		vector<Vec4i> hierarchy;
 
-		findContours(bw, contours, hierarchy, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
+		findContours(img, contours, hierarchy, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
 
 		Mat result = Mat::zeros(img.size(), CV_8UC3);
 
