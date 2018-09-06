@@ -20,6 +20,7 @@ namespace Services {
 			TestService();
 			~TestService();
 			void Reconstruction(int argc, char **argv);
+			void ReconstructionWithTimeExecution(int argc, char **argv);
 			void Canny();
 			void Firefly();
 			void Render(int argc, char **argv);

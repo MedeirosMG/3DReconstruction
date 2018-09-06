@@ -34,7 +34,7 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\H_Helpers\H_Services">
+    <Filter Include="Header Files\H_Services">
       <UniqueIdentifier>{59042b0f-401c-4d9a-a5f0-15e12f4f8f77}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -46,25 +46,25 @@
       <Filter>Default Files</Filter>
     </ClInclude>
     <ClInclude Include="Services\CalibrationService.h">
-      <Filter>Header Files\H_Helpers\H_Services</Filter>
+      <Filter>Header Files\H_Services</Filter>
     </ClInclude>
     <ClInclude Include="Services\CannyService.h">
-      <Filter>Header Files\H_Helpers\H_Services</Filter>
+      <Filter>Header Files\H_Services</Filter>
     </ClInclude>
     <ClInclude Include="Services\DelaunayService.h">
-      <Filter>Header Files\H_Helpers\H_Services</Filter>
+      <Filter>Header Files\H_Services</Filter>
     </ClInclude>
     <ClInclude Include="Services\FindRegionsService.h">
-      <Filter>Header Files\H_Helpers\H_Services</Filter>
+      <Filter>Header Files\H_Services</Filter>
     </ClInclude>
     <ClInclude Include="Services\FireflyService.h">
-      <Filter>Header Files\H_Helpers\H_Services</Filter>
+      <Filter>Header Files\H_Services</Filter>
     </ClInclude>
     <ClInclude Include="Services\RansacService.h">
-      <Filter>Header Files\H_Helpers\H_Services</Filter>
+      <Filter>Header Files\H_Services</Filter>
     </ClInclude>
     <ClInclude Include="Services\SiftService.h">
-      <Filter>Header Files\H_Helpers\H_Services</Filter>
+      <Filter>Header Files\H_Services</Filter>
     </ClInclude>
     <ClInclude Include="Algorithms\OpenCV.h">
       <Filter>Header Files\H_Algorithms</Filter>
@@ -73,10 +73,10 @@
       <Filter>Header Files\H_Algorithms</Filter>
     </ClInclude>
     <ClInclude Include="Services\ControllerService.h">
-      <Filter>Header Files\H_Helpers\H_Services</Filter>
+      <Filter>Header Files\H_Services</Filter>
     </ClInclude>
     <ClInclude Include="Services\RenderService.h">
-      <Filter>Header Files\H_Helpers\H_Services</Filter>
+      <Filter>Header Files\H_Services</Filter>
     </ClInclude>
     <ClInclude Include="Helpers\Firefly_Optimization.h">
       <Filter>Header Files\H_Helpers</Filter>
@@ -91,10 +91,10 @@
       <Filter>Header Files\H_Entities</Filter>
     </ClInclude>
     <ClInclude Include="Services\ConnectedComponentsService.h">
-      <Filter>Header Files\H_Helpers\H_Services</Filter>
+      <Filter>Header Files\H_Services</Filter>
     </ClInclude>
     <ClInclude Include="Services\InputImageService.h">
-      <Filter>Header Files\H_Helpers\H_Services</Filter>
+      <Filter>Header Files\H_Services</Filter>
     </ClInclude>
     <ClInclude Include="Helpers\PointsUtilities.h">
       <Filter>Header Files\H_Helpers</Filter>
@@ -103,7 +103,7 @@
       <Filter>Header Files\H_Entities</Filter>
     </ClInclude>
     <ClInclude Include="Services\TestService.h">
-      <Filter>Header Files\H_Helpers\H_Services</Filter>
+      <Filter>Header Files\H_Services</Filter>
     </ClInclude>
     <ClInclude Include="Helpers\Time.h">
       <Filter>Header Files\H_Helpers</Filter>
@@ -122,9 +122,6 @@
     </ClInclude>
     <ClInclude Include="Helpers\Visualizer.h">
       <Filter>Header Files\H_Helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="Entities\TimeBuffer.h">
-      <Filter>Header Files\H_Entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -211,9 +208,6 @@
     </ClCompile>
     <ClCompile Include="Helpers\Visualizer.cpp">
       <Filter>Source Files\S_Helpers</Filter>
-    </ClCompile>
-    <ClCompile Include="Entities\TimeBuffer.cpp">
-      <Filter>Source Files\S_Entities</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

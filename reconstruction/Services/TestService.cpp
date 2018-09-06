@@ -11,7 +11,7 @@ namespace Services {
 	TestService::~TestService()
 	{
 	}
-
+	
 	void TestService::Reconstruction(int argc, char **argv)
 	{
 		cout << "======= Start Test ======= " << endl;
@@ -37,6 +37,36 @@ namespace Services {
 		controller->DelaunayApply();
 		controller->RenderApply();
 		
+		cout << "======== End Test ======== " << endl;
+	}
+
+	void TestService::ReconstructionWithTimeExecution(int argc, char **argv)
+	{
+		cout << "======= Start Test ======= " << endl;
+
+		ControllerService* controller = new ControllerService(".\\Others Files\\im0.png", ".\\Others Files\\im1.png");
+
+		controller->SetFireflyProperties(1, 50, 100);
+		controller->SetCannyProperties(50, 700, 3);
+		controller->SetConnectedComponentsProperties(128);
+		controller->SetGeneralProperties();
+		controller->SetSiftProperties(400);
+		controller->SetCalibrationProperties(1, 2, 1);
+		controller->SetRenderProperties(&argc, argv);
+		controller->SetVisuaizerProperties(true);
+
+
+		_time->Run(std::bind(&ControllerService::CannyApply, controller), "CannyApply");
+		_time->Run(std::bind(&ControllerService::FireflyApply, controller), "FireflyApply");
+		_time->Run(std::bind(&ControllerService::ConnectedComponentsApply, controller), "ConnectedComponentsApply");
+		_time->Run(std::bind(&ControllerService::FindRegionsApply, controller), "FindRegionsApply");
+		_time->Run(std::bind(&ControllerService::SiftApply, controller), "SiftApply");
+		_time->Run(std::bind(&ControllerService::RansacApply, controller), "RansacApply");
+		_time->Run(std::bind(&ControllerService::CalibrationApply, controller), "CalibrationApply");
+		_time->Run(std::bind(&ControllerService::DelaunayApply, controller), "DelaunayApply");
+		_time->Run(std::bind(&ControllerService::RenderApply, controller), "RenderApply");
+
+		_time->PrintResult();
 		cout << "======== End Test ======== " << endl;
 	}
 

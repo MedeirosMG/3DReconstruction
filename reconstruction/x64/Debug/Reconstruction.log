@@ -1,7 +1,11 @@
-﻿  Main.cpp
+﻿  Time.cpp
+d:\projetos\reconstruction\reconstruction\helpers\time.cpp(37): warning C4244: 'initializing': conversion from '__int64' to 'long', possible loss of data
+  Main.cpp
+d:\projetos\reconstruction\reconstruction\helpers\console.h(33): warning C4091: 'static ': ignored on left of 'Helpers::Console' when no variable is declared
+  ControllerService.cpp
 d:\projetos\reconstruction\reconstruction\helpers\console.h(33): warning C4091: 'static ': ignored on left of 'Helpers::Console' when no variable is declared
   TestService.cpp
 d:\projetos\reconstruction\reconstruction\helpers\console.h(33): warning C4091: 'static ': ignored on left of 'Helpers::Console' when no variable is declared
   Generating Code...
-  LINK : D:\Projetos\Reconstruction\x64\Debug\Reconstruction.exe not found or not built by the last incremental link; performing full link
+d:\projetos\reconstruction\reconstruction\services\controllerservice.cpp(181): warning C4715: 'Services::ControllerService::RenderApply': not all control paths return a value
   Reconstruction.vcxproj -> D:\Projetos\Reconstruction\x64\Debug\Reconstruction.exe
