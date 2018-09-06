@@ -26,6 +26,7 @@ namespace Services {
 			void Render(int argc, char **argv);
 			void Delaunay();
 			void Ransac();
+			void ConnectedComponents();
 	};
 
 }

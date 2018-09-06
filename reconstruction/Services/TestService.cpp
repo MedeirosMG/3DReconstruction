@@ -120,5 +120,16 @@ namespace Services {
 		imshow("RANSAC", img);
 		waitKey();
 	}
+
+	void TestService::ConnectedComponents()
+	{
+		ConnectedComponentsService *CC = new ConnectedComponentsService();
+		Mat img = CC->Execute(imread(".\\Others Files\\im0.png", 0), 128);
+		resize(img, img, Size(800, 600));
+
+		imshow("Componentes", img);
+		waitKey();
+	}
+	
 }
 

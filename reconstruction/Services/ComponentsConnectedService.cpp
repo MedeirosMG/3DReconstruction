@@ -20,13 +20,13 @@ namespace Services {
 
 	Mat ConnectedComponentsService::Execute(Mat img, int threshVal)
 	{
-		Mat bw = img > threshVal;
-		Mat labelImage(img.size(), CV_32S);
+		vector<vector<Point> > contours;
 		vector<Vec4i> hierarchy;
 
-		vector<vector<Point>> contours = _openCv->ConnectedComponentsAlgorithm(img, hierarchy, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
+		findContours(img, contours, hierarchy, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
 
 		Mat result = Mat::zeros(img.size(), CV_8UC3);
+
 		if (!contours.empty() && !hierarchy.empty())
 		{
 			// iterate through all the top-level contours,
@@ -35,7 +35,7 @@ namespace Services {
 			for (; idx >= 0; idx = hierarchy[idx][0])
 			{
 				Scalar color((rand() & 255), (rand() & 255), (rand() & 255));
-				_openCv->DrawContour(result, idx, color, CV_FILLED, 8, hierarchy);
+				drawContours(result, contours, idx, color, CV_FILLED, 8, hierarchy);
 			}
 		}
 
