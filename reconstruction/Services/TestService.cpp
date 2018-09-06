@@ -64,6 +64,7 @@ namespace Services {
 		_time->Run(std::bind(&ControllerService::RansacApply, controller), "RansacApply");
 		_time->Run(std::bind(&ControllerService::CalibrationApply, controller), "CalibrationApply");
 		_time->Run(std::bind(&ControllerService::DelaunayApply, controller), "DelaunayApply");
+		_time->PrintResult();
 		_time->Run(std::bind(&ControllerService::RenderApply, controller), "RenderApply");
 
 		_time->PrintResult();

@@ -30,9 +30,9 @@ namespace Helpers {
 	}
 	
 	void Time::Run(std::function<void()> callback, string methodName) {
-		high_resolution_clock::time_point end = high_resolution_clock::now();
-		callback();
 		high_resolution_clock::time_point start = high_resolution_clock::now();
+		callback();
+		high_resolution_clock::time_point end = high_resolution_clock::now();
 
 		long duration = duration_cast<microseconds>(end - start).count();
 
