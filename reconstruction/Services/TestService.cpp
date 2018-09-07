@@ -41,6 +41,7 @@ namespace Services {
 
 	void TestService::ReconstructionWithTimeExecution(int argc, char **argv)
 	{
+		string pathFile = ".\\Reports";
 		cout << "======= Start Test ======= " << endl;
 
 		ControllerService* controller = new ControllerService(".\\Others Files\\im0.png", ".\\Others Files\\im1.png");
@@ -53,6 +54,7 @@ namespace Services {
 		controller->SetRenderProperties(&argc, argv);
 		controller->SetVisualizerProperties(false);
 
+		_time->Import(pathFile);
 
 		_time->Run(std::bind(&ControllerService::CannyApply, controller), "CannyApply");
 		_time->Run(std::bind(&ControllerService::FireflyApply, controller), "FireflyApply");
@@ -60,12 +62,13 @@ namespace Services {
 		_time->Run(std::bind(&ControllerService::FindRegionsApply, controller), "FindRegionsApply");
 		_time->Run(std::bind(&ControllerService::SiftApply, controller), "SiftApply");
 		_time->Run(std::bind(&ControllerService::RansacApply, controller), "RansacApply");
-		_time->Run(std::bind(&ControllerService::CalibrationApply, controller), "CalibrationApply");
+		//_time->Run(std::bind(&ControllerService::CalibrationApply, controller), "CalibrationApply");
 		_time->Run(std::bind(&ControllerService::DelaunayApply, controller), "DelaunayApply");
 		_time->PrintResult();
-		_time->Run(std::bind(&ControllerService::RenderApply, controller), "RenderApply");
+		_time->Export(pathFile);
 
-		_time->PrintResult();
+		// _time->Run(std::bind(&ControllerService::RenderApply, controller), "RenderApply");
+
 		cout << "======== End Test ======== " << endl;
 	}
 

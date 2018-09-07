@@ -6,21 +6,25 @@
 #include "../Algorithms/OpenCV.h"
 #include "../Algorithms/OpenGL.h"
 #include "../Entities/PointPair.h"
+#include "../Helpers/Time.h"
 
 using namespace std;
 using namespace Algorithms;
 using namespace Entities;
 
 namespace Helpers {
+	// Circular including
+	class Time;	
 
-	static class Export
+	class Export
 	{
 		public:
 			Export();
 			~Export();
 
-			bool Json(vector<Point3f> listPoints, string pathDirectory);
-			bool Obj(vector<Point3f> listPoints, string pathDirectory);
+			static bool Json(vector<Point3f> listPoints, string pathDirectory);
+			static bool Obj(vector<Point3f> listPoints, string pathDirectory);
+			static bool Csv(Time time, string pathDirectory);
 	};
 
 }

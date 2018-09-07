@@ -13,11 +13,12 @@ namespace Helpers {
 
 	void Time::Add(long time, string methodName) {
 		bool existMethod = false;
-		for each (TimeExecution method in _listMethodExecuted)
+
+		for (int i = 0; i < _listMethodExecuted.size(); i++)
 		{
-			if (method.GetName() == methodName) {
+			if (_listMethodExecuted[i].GetName() == methodName) {
 				existMethod = true;
-				method.Add(time);
+				_listMethodExecuted[i].Add(time);
 				break;
 			}
 		}
@@ -37,6 +38,11 @@ namespace Helpers {
 		long duration = duration_cast<microseconds>(end - start).count();
 
 		Add(duration, methodName);
+	}
+
+	vector<TimeExecution> Time::Get()
+	{
+		return _listMethodExecuted;
 	}
 
 	void Time::PrintResult()
@@ -59,5 +65,16 @@ namespace Helpers {
 				method.PrintTimeExecution();
 			}
 		}
-	}	
+	}
+
+	void Time::Export(string path)
+	{
+		Export::Csv(*(this), path);
+	}
+
+	void Time::Import(string path)
+	{
+		_listMethodExecuted = Import::Csv(path);
+	}
+
 }

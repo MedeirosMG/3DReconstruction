@@ -5,7 +5,6 @@
 #include "..\Helpers\Time.h"
 #include "..\Helpers\Console.h"
 
-
 using namespace std;
 using namespace Helpers;
 

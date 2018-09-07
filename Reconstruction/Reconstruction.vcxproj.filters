@@ -123,6 +123,12 @@
     <ClInclude Include="Helpers\Visualizer.h">
       <Filter>Header Files\H_Helpers</Filter>
     </ClInclude>
+    <ClInclude Include="Helpers\Import.h">
+      <Filter>Header Files\H_Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Helpers\StringHelper.h">
+      <Filter>Header Files\H_Helpers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -207,6 +213,12 @@
       <Filter>Source Files\S_Entities</Filter>
     </ClCompile>
     <ClCompile Include="Helpers\Visualizer.cpp">
+      <Filter>Source Files\S_Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers\Import.cpp">
+      <Filter>Source Files\S_Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers\StringHelper.cpp">
       <Filter>Source Files\S_Helpers</Filter>
     </ClCompile>
   </ItemGroup>

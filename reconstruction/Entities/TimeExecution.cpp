@@ -35,4 +35,8 @@ namespace Entities {
 		cout << "========================================== " << endl;
 	}
 
+	vector<long> TimeExecution::Get()
+	{
+		return _bufferTimeExecution;
+	}
 }

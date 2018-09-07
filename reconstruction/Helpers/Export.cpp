@@ -41,7 +41,6 @@ namespace Helpers {
 
 			ofstream file;
 			file.open(pathDirectory + "\\stereoCameraCalibration.json");
-			string test = "{\"Column\": " + to_string(column);
 			file << "{\"Column\": " + to_string(bestColumn);
 			file << ", ";
 			file << "\"Line\": " + to_string(bestLine);
@@ -107,5 +106,69 @@ namespace Helpers {
 		}
 
 		return true;
+	}
+
+	bool Export::Csv(Helpers::Time time, string pathDirectory)
+	{
+		try
+		{
+			vector<TimeExecution> list = time.Get();
+			vector<vector<string>> excelValues;
+			string exportText = "";
+			int maxQtd = 0;
+			ofstream file;
+			file.open(pathDirectory + "\\time_execution.csv");
+			if (file.is_open()) {
+				// setting columns name on csv
+				for (int i = 0; i < list.size(); i++)
+				{
+					exportText += list[i].GetName();
+					int sizeMethod = list[i].Get().size();
+					if (sizeMethod > maxQtd)
+						maxQtd = sizeMethod;
+
+					if ((i + 1) != list.size()) {
+						exportText += ";";
+					}
+				}
+				exportText += "\n";
+
+				// bulding matriz
+				for (int i = 0; i < list.size(); i++)
+				{
+					// each method
+					vector<long> listTimes = list[i].Get();
+					for (int j = 0; j < listTimes.size(); j++)
+					{
+						// each time inside each method
+						if (excelValues.size() <= j)
+							excelValues.push_back(*new vector<string>());
+
+						excelValues[j].push_back(to_string(listTimes[j]));
+					}
+				}
+
+				// setting values on csv
+				for each (vector<string> row in excelValues)
+				{
+					for each (string col in row)
+					{
+						exportText += col + ";";
+					}
+
+					exportText += "\n";
+				}
+
+				file << exportText;
+				
+				file.close();
+			}
+						
+			return true;
+		}
+		catch (const std::exception&)
+		{
+			return false;
+		}
 	}
 }

@@ -20,6 +20,7 @@ namespace Entities {
 			void Add(long timeMilliseconds);
 			string GetName();
 			void PrintTimeExecution();
+			vector<long> Get();
 	};
 }
 
