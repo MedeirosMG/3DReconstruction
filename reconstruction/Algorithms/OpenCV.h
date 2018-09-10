@@ -35,6 +35,7 @@ namespace Algorithms {
 			void ShowImage(cv::Mat image, string nameWindow);
 			void SaveImage(string path, Mat img);
 			void NewWindow(string nameWindow);
+			Mat Resize(Mat img, Size imgSize);
 	};
 
 }

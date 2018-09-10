@@ -40,70 +40,29 @@ namespace Services {
 			Point pt2{ cvRound(triangle[2]), cvRound(triangle[3]) };
 			Point pt3{ cvRound(triangle[4]), cvRound(triangle[5]) };
 			
-			
-			glBegin(GL_LINES);
-				glVertex3f(pt1.x/maxAbs, pt1.y/maxAbs, 0);
-				glVertex3f(pt2.x/maxAbs, pt2.y/maxAbs, 0);
-			glEnd();
-
-			glBegin(GL_LINES);
-				glVertex3f(pt2.x / maxAbs, pt2.y / maxAbs, 0);
-				glVertex3f(pt3.x / maxAbs, pt3.y / maxAbs, 0);
-			glEnd();
-
-			glBegin(GL_LINES);
-				glVertex3f(pt3.x / maxAbs, pt3.y / maxAbs, 0);
-				glVertex3f(pt1.x / maxAbs, pt1.y / maxAbs, 0);
-			glEnd();
 			/*
+			glBegin(GL_LINES);
+				glVertex3f(pt1.x/maxAbs, pt1.y/maxAbs * -1, 0);
+				glVertex3f(pt2.x/maxAbs, pt2.y/maxAbs * -1, 0);
+			glEnd();
+
+			glBegin(GL_LINES);
+				glVertex3f(pt2.x / maxAbs, pt2.y / maxAbs * -1, 0);
+				glVertex3f(pt3.x / maxAbs, pt3.y / maxAbs * -1, 0);
+			glEnd();
+
+			glBegin(GL_LINES);
+				glVertex3f(pt3.x / maxAbs, pt3.y / maxAbs * -1, 0);
+				glVertex3f(pt1.x / maxAbs, pt1.y / maxAbs * -1, 0);
+			glEnd();
+			*/
 			glPointSize(5.0);
 			glBegin(GL_POINTS);
 				glVertex3f(pt1.x / maxAbs, pt1.y / maxAbs, 0);
 				glVertex3f(pt2.x / maxAbs, pt2.y / maxAbs, 0);
 				glVertex3f(pt3.x / maxAbs, pt3.y / maxAbs, 0);
-			glEnd();*/
+			glEnd();
 		}
-
-		/*Mat image = imread(".\\Others Files\\im0.png", CV_8UC3);
-		vector<Vec4i> hierarchy;
-		vector<vector<Point> > contours;
-		findContours(image, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE);
-
-		Mat raw_dist(image.size(), CV_32FC1);
-		for (int j = 0; j < image.rows; j++)
-		{
-			for (int i = 0; i < image.cols; i++)
-			{
-				raw_dist.at<float>(j, i) = (float)pointPolygonTest(contours[0], Point2f((float)i, (float)j), true);
-			}
-		}
-
-		double minVal; double maxVal;
-		minMaxLoc(raw_dist, &minVal, &maxVal, 0, 0, Mat());
-		minVal = abs(minVal); maxVal = abs(maxVal);
-		Mat drawing = Mat::zeros(image.size(), CV_8UC3);
-		for (int j = 0; j < image.rows; j++)
-		{
-			for (int i = 0; i < image.cols; i++)
-			{
-				if (raw_dist.at<float>(j, i) < 0)
-				{
-					drawing.at<Vec3b>(j, i)[0] = (uchar)(255 - abs(raw_dist.at<float>(j, i)) * 255 / minVal);
-				}
-				else if (raw_dist.at<float>(j, i) > 0)
-				{
-					drawing.at<Vec3b>(j, i)[2] = (uchar)(255 - raw_dist.at<float>(j, i) * 255 / maxVal);
-				}
-				else
-				{
-					drawing.at<Vec3b>(j, i)[0] = 255; drawing.at<Vec3b>(j, i)[1] = 255; drawing.at<Vec3b>(j, i)[2] = 255;
-				}
-			}
-		}
-		const char* source_window = "Source";
-		namedWindow(source_window, WINDOW_AUTOSIZE);
-		imshow(source_window, image);*/
-		
 
 		glFlush();
 	}

@@ -39,8 +39,8 @@ namespace Services {
 		}
 
 		//Push on result vector the points that will actually be used on delauney
-		for (int i = 0; i < locations.size(); i = i + 3) {
-			Point3f temp(-4.0 + (locations[i].x / (contours.cols / 8.0)), 4.0 - (locations[i].y / (contours.rows / 8.0)), 0);
+		for (int i = 0; i < locations.size(); i++) {
+			Point3f temp(locations[i].x, locations[i].y, 0);
 			result.push_back(temp);
 		}
 

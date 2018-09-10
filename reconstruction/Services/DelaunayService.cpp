@@ -94,13 +94,13 @@ namespace Services {
 		return retorno;
 	}
 
-	vector<Vec6f> DelaunayService::Execute(vector<Point3f> pointsCalibration, vector<Point3f> contour)
+	vector<Vec6f> DelaunayService::Execute(vector<Point3f> pointsCalibration, vector<Point3f> contour, Size sizeImg)
 	{
 		//Convert Points
 		PointUtilities *converter = new PointUtilities();
 
 		//Merge points
-		vector<Point3f> points = converter->MergePoints(pointsCalibration, contour);
+		vector<Point3f> points = converter->MergePoints(pointsCalibration, converter->PixelToCoordenate(contour, sizeImg));
 
 		// Get max width and max height of points
 		float maxWidth = converter->GetMaxAbsCoord(points, "x");

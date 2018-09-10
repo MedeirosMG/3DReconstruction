@@ -25,7 +25,7 @@ namespace Services {
 			DelaunayService(OpenCV* openCv);
 			DelaunayService();
 			~DelaunayService();
-			vector<Vec6f> Execute(vector<Point3f> pointsCalibration, vector<Point3f> contour);
+			vector<Vec6f> Execute(vector<Point3f> pointsCalibration, vector<Point3f> contour, Size sizeImg = Size(1,1));
 			void TestExecute(vector<Point3f> points = vector<Point3f>());
 			vector<Vec6f> RemoveRectangle(vector<Vec6f> triangles);
 			bool CheckRectangle(int coord, Vec6f triangle);

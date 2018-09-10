@@ -55,6 +55,7 @@ namespace Services {
 		Mat _secondImage;
 		Mat _firstImageModified;
 		Mat _secondImageModified;
+		Size _imgSize = Size(800, 600);
 
 		// Delaunay Properties
 		vector<Vec6f> _resultDelaunay;
@@ -94,8 +95,7 @@ namespace Services {
 
 		// Visualizer properties
 		string _visualizerName;
-
-		void LoadServices();
+		bool _visualizerExecute;
 
 	public:
 		ControllerService();
@@ -122,6 +122,8 @@ namespace Services {
 		void SetRenderProperties(int *argc, char **argv);
 		void SetRansacProperties(double ransacThreshold);
 		void SetVisualizerProperties(bool execute, string nameWindow = "Default Name");
+		void SetScreenProperties(Size imgSize);
+		void LoadServices();
 
 		void SaveFirstImage(string Path = ".\\Others Files\\FirstImage.jpg");
 		void SaveSecondImage(string Path = ".\\Others Files\\SecondImage.jpg");

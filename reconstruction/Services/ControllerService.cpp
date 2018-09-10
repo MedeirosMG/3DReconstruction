@@ -7,25 +7,22 @@ namespace Services {
 	{
 		_openCv = new OpenCV();
 		_time = new Time();
-		LoadServices();
 	}
 
 	ControllerService::ControllerService(Mat firstImage, Mat secondImage)
 	{
-		resize(firstImage, _firstImage, Size(800, 600));
-		resize(secondImage, _secondImage, Size(800, 600));
 		_openCv = new OpenCV();
 
-		LoadServices();
+		_firstImage = _openCv->Resize(firstImage, _imgSize);
+		_secondImage = _openCv->Resize(secondImage, _imgSize);
 	}
 
 	ControllerService::ControllerService(string pathFirstImage, string pathSecondImage)
 	{
-		resize(imread(pathFirstImage), _firstImage, Size(800, 600));
-		resize(imread(pathSecondImage), _secondImage, Size(800, 600));
-
 		_openCv = new OpenCV();
-		LoadServices();
+
+		_firstImage = _openCv->Resize(_openCv->ReadImage(pathFirstImage), _imgSize);
+		_secondImage = _openCv->Resize(_openCv->ReadImage(pathSecondImage), _imgSize);
 	}
 
 	ControllerService::~ControllerService()
@@ -97,7 +94,7 @@ namespace Services {
 		try
 		{
 			cout << endl << "=== Init Delaunay ===" << endl << endl;
-			_resultDelaunay = _delaunayService->Execute(_resultCalibration, _resultCanny);
+			_resultDelaunay = _delaunayService->Execute(_resultCalibration, _resultCanny, _imgSize);
 
 			_visualizer->Show(_resultDelaunay);
 
@@ -271,17 +268,26 @@ namespace Services {
 
 		// Default name
 		_visualizerName = nameWindow;
+		_visualizerExecute = execute;
 
 		// Init window
 		if(execute)
 			_visualizer->NewWindow(_visualizerName);
 	}
 
+	void ControllerService::SetScreenProperties(Size imgSize)
+	{
+		_imgSize = imgSize;
+
+		_firstImage = _openCv->Resize(_firstImage, _imgSize);
+		_secondImage = _openCv->Resize(_secondImage, _imgSize);
+	}
+
 #pragma endregion
 
 	void ControllerService::LoadServices()
 	{
-		_calibrationService = new CalibrationService(_openCv);
+		_calibrationService = new CalibrationService(_calibrationB, _calibrationLambda, new OpenCV(), _calibrationK, _imgSize);
 		_cannyService = new CannyService(_openCv);
 		_connectedComponentsService = new ConnectedComponentsService(_openCv);
 		_delaunayService = new DelaunayService(_openCv);
@@ -292,7 +298,7 @@ namespace Services {
 		_inputImageService = new InputImageService(_openCv);
 		_renderService = new RenderService(_openCv);
 		_renderService = new RenderService(_openCv);
-		_visualizer = new Visualizer(_openCv);
+		_visualizer = new Visualizer(_visualizerName, _openCv, _visualizerExecute);
 	}
 
 	void ControllerService::SaveFirstImage(string Path)

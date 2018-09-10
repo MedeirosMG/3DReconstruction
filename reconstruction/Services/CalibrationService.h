@@ -5,6 +5,7 @@
 #include "../Algorithms/OpenCV.h"
 #include "../Algorithms/OpenGL.h"
 #include "../Entities/PointPair.h"
+#include "../Helpers/PointsUtilities.h"
 #include <vector>
 #include <fstream>
 #include <iostream>
@@ -20,6 +21,7 @@
 using namespace std;
 using namespace Algorithms;
 using namespace Entities;
+using namespace Helpers;
 
 namespace Services {
 
@@ -27,9 +29,10 @@ namespace Services {
 	{
 		private:
 			OpenCV * _openCv;
-			float _b;
-			float _lambda;
+			float _b = 1;
+			float _lambda = 1;
 			int _k = 1;
+			Size _imgSize = Size(1,1);
 
 		protected:
 			float WorldPointX(float firstPointX, float Z);
@@ -37,7 +40,7 @@ namespace Services {
 			float WorldPointZ(Point3f firstPoint, Point3f secondPoint);
 
 		public:
-			CalibrationService(float b, float lambda, OpenCV* openCv, int k = 1);
+			CalibrationService(float b, float lambda, OpenCV* openCv, int k = 1, Size imgSize = Size(1,1));
 			CalibrationService(OpenCV* openCv);
 			~CalibrationService();
 

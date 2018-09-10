@@ -3,8 +3,9 @@
 
 namespace Services {
 
-	CalibrationService::CalibrationService(float b, float lambda, OpenCV* openCv, int k) : _b(b), _lambda(lambda), _k(k) {
+	CalibrationService::CalibrationService(float b, float lambda, OpenCV* openCv, int k, Size imgSize) : _b(b), _lambda(lambda), _k(k) {
 		_openCv = openCv;
+		_imgSize = imgSize;
 	}
 
 	CalibrationService::CalibrationService(OpenCV* openCv)
@@ -34,7 +35,10 @@ namespace Services {
 
 	vector<Point3f> CalibrationService::CalculateStereoCameraCalibration(vector<PointPair> listMatchPoints)
 	{
+		PointUtilities *converter = new PointUtilities();
 		vector<Point3f> listRealPoints;
+
+		listMatchPoints = converter->PixelToCoordenate(listMatchPoints, _imgSize);
 
 		for each (PointPair item in listMatchPoints)
 		{

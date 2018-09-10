@@ -21,7 +21,7 @@ namespace Helpers {
 			bool _execute;
 
 		public:
-			Visualizer(string WindowName, OpenCV* opencv = new OpenCV());
+			Visualizer(string WindowName, OpenCV* opencv = new OpenCV(), bool execute = false);
 			Visualizer(OpenCV* opencv = new OpenCV());
 			~Visualizer();
 

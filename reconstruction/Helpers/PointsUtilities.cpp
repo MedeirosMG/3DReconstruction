@@ -136,6 +136,39 @@ namespace Helpers {
 		return _return;
 	}
 
+	vector<Point3f> PointUtilities::PixelToCoordenate(vector<Point3f> points, Size screenSize)
+	{
+		vector<Point3f> pointsReturn;
+
+		for each (Point3f point in points)
+		{
+			Point3f pt = PixelToCoordenate(point, screenSize);
+			pointsReturn.push_back(pt);
+		}
+
+		return pointsReturn;
+	}
+
+	vector<PointPair> PointUtilities::PixelToCoordenate(vector<PointPair> points, Size screenSize)
+	{
+		vector<PointPair> pointsReturn;
+
+		for each (PointPair point in points)
+		{
+			PointPair pt = PointPair(PixelToCoordenate(point.FirstPoint, screenSize), PixelToCoordenate(point.SecondPoint, screenSize));
+			pointsReturn.push_back(pt);
+		}
+
+		return pointsReturn;
+	}
+
+#pragma warning("Arrumar conversão")
+	Point3f PointUtilities::PixelToCoordenate(Point3f point, Size screenSize)
+	{
+		Point3f pt = Point3f((-(screenSize.width / 2) + (point.x / screenSize.width)), (-(screenSize.height / 2) + (point.y / screenSize.height)), point.z);
+		return pt;
+	}
+
 	float PointUtilities::GetMaxAbsCoord(vector<Vec6f> points) 
 	{
 		float maxValue = 0.0;

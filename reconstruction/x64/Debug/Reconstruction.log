@@ -1,7 +1,2 @@
-﻿  DelaunayService.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\delaunayservice.cpp(37): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\delaunayservice.cpp(119): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
-  RenderService.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\renderservice.cpp(25): warning C4305: 'argumento': truncamento de 'double' para 'GLfloat'
-  Gerando Código...
+﻿  CalibrationService.cpp
   Reconstruction.vcxproj -> C:\SD\Arquivos\Documentos\3DReconstruction\x64\Debug\Reconstruction.exe

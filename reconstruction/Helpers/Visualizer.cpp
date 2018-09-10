@@ -3,9 +3,10 @@
 
 namespace Helpers {
 
-	Visualizer::Visualizer(string WindowName, OpenCV * opencv)
+	Visualizer::Visualizer(string WindowName, OpenCV * opencv, bool execute)
 	{
 		_openCv = opencv;
+		_execute = execute;
 
 		if (WindowName != "")
 			namedWindow(WindowName);

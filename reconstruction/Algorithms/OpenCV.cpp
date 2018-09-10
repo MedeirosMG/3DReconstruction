@@ -112,4 +112,11 @@ namespace Algorithms {
 	{
 		namedWindow(nameWindow);
 	}
+	Mat OpenCV::Resize(Mat img, Size imgSize)
+	{
+		Mat temp;
+		resize(img, temp, imgSize);
+		
+		return temp;
+	}
 }

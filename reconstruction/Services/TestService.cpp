@@ -21,10 +21,11 @@ namespace Services {
 		controller->SetFireflyProperties(1, 50, 100);
 		controller->SetCannyProperties(50, 700, 3);
 		controller->SetGeneralProperties();
-		controller->SetSiftProperties(400);
-		controller->SetCalibrationProperties(1, 2, 1);
+		controller->SetSiftProperties(1000);
+		controller->SetCalibrationProperties(0.2, 0.5, 3);
 		controller->SetRenderProperties(&argc, argv);
 		controller->SetVisualizerProperties(true);
+		controller->LoadServices();
 
 		controller->CannyApply();
 		controller->FireflyApply();	
