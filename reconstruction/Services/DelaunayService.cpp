@@ -37,7 +37,7 @@ namespace Services {
 		Mat image = cvCreateImage(cvSize(maxWidth + maxAbs, maxHeight + maxAbs), 8, 1);
 		
 		
-		vector<Vec6f> triangleList = Execute(points);
+		vector<Vec6f> triangleList = Execute(points, points);
 
 		for (size_t i = 0; i < triangleList.size(); i++) {
 			Vec6f triangle = triangleList[i];
