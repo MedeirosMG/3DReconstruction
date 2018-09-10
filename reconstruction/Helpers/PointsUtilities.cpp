@@ -125,6 +125,17 @@ namespace Helpers {
 		return point;
 	}
 
+	vector<Point3f> PointUtilities::MergePoints(vector<Point3f> pts1, vector<Point3f> pts2)
+	{
+		vector<Point3f> _return;
+
+		_return.reserve(pts1.size() + pts2.size());
+		_return.insert(_return.end(), pts1.begin(), pts1.end());
+		_return.insert(_return.end(), pts2.begin(), pts2.end());
+	
+		return _return;
+	}
+
 	float PointUtilities::GetMaxAbsCoord(vector<Vec6f> points) 
 	{
 		float maxValue = 0.0;

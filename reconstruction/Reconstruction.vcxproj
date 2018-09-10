@@ -166,8 +166,10 @@
     <ClInclude Include="Helpers\Convert.h" />
     <ClInclude Include="Helpers\Export.h" />
     <ClInclude Include="Helpers\Firefly_Optimization.h" />
+    <ClInclude Include="Helpers\Import.h" />
     <ClInclude Include="Helpers\multilimiarizacao.h" />
     <ClInclude Include="Helpers\PointsUtilities.h" />
+    <ClInclude Include="Helpers\StringHelper.h" />
     <ClInclude Include="Helpers\Time.h" />
     <ClInclude Include="Helpers\tsallis.h" />
     <ClInclude Include="Helpers\Visualizer.h" />
@@ -196,8 +198,10 @@
     <ClCompile Include="Helpers\Convert.cpp" />
     <ClCompile Include="Helpers\Export.cpp" />
     <ClCompile Include="Helpers\Firefly_Optimization.cpp" />
+    <ClCompile Include="Helpers\Import.cpp" />
     <ClCompile Include="Helpers\multilimiarizacao.cpp" />
     <ClCompile Include="Helpers\PointsUtilities.cpp" />
+    <ClCompile Include="Helpers\StringHelper.cpp" />
     <ClCompile Include="Helpers\Time.cpp" />
     <ClCompile Include="Helpers\tsallis.cpp" />
     <ClCompile Include="Helpers\Visualizer.cpp" />

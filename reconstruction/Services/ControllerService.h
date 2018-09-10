@@ -71,7 +71,7 @@ namespace Services {
 		double _cannyLowThresh;
 		double _cannyHighTresh;
 		int _cannyKernelSize;
-		vector<Point3f> _pointsCanny;
+		vector<Point3f> _resultCanny;
 
 		// Connected Components Properties
 		Mat _InterestRegionsFirstImage;
