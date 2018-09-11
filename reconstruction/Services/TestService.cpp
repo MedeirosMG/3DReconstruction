@@ -22,7 +22,7 @@ namespace Services {
 		controller->SetCannyProperties(50, 700, 3);
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(1000);
-		controller->SetCalibrationProperties(0.2, 0.5, 3);
+		controller->SetCalibrationProperties(30.0, 5.0, 5);
 		controller->SetRenderProperties(&argc, argv);
 		controller->SetVisualizerProperties(true);
 		controller->LoadServices();

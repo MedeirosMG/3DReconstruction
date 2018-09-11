@@ -36,11 +36,11 @@ namespace Services {
 		// Draw triangles
 		for (size_t i = 3; i < triangleList.size(); i++) {
 			Vec6f triangle = triangleList[i];
-			Point pt1{ cvRound(triangle[0]), cvRound(triangle[1]) };
-			Point pt2{ cvRound(triangle[2]), cvRound(triangle[3]) };
-			Point pt3{ cvRound(triangle[4]), cvRound(triangle[5]) };
+			Point2f pt1{ triangle[0], triangle[1] };
+			Point2f pt2{ triangle[2], triangle[3] };
+			Point2f pt3{ triangle[4], triangle[5] };
 			
-			/*
+			
 			glBegin(GL_LINES);
 				glVertex3f(pt1.x/maxAbs, pt1.y/maxAbs * -1, 0);
 				glVertex3f(pt2.x/maxAbs, pt2.y/maxAbs * -1, 0);
@@ -55,13 +55,14 @@ namespace Services {
 				glVertex3f(pt3.x / maxAbs, pt3.y / maxAbs * -1, 0);
 				glVertex3f(pt1.x / maxAbs, pt1.y / maxAbs * -1, 0);
 			glEnd();
-			*/
+			/*
 			glPointSize(5.0);
 			glBegin(GL_POINTS);
 				glVertex3f(pt1.x / maxAbs, pt1.y / maxAbs, 0);
 				glVertex3f(pt2.x / maxAbs, pt2.y / maxAbs, 0);
 				glVertex3f(pt3.x / maxAbs, pt3.y / maxAbs, 0);
 			glEnd();
+			*/
 		}
 
 		glFlush();

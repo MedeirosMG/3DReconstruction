@@ -162,10 +162,9 @@ namespace Helpers {
 		return pointsReturn;
 	}
 
-#pragma warning("Arrumar conversão")
 	Point3f PointUtilities::PixelToCoordenate(Point3f point, Size screenSize)
 	{
-		Point3f pt = Point3f((-(screenSize.width / 2) + (point.x / screenSize.width)), (-(screenSize.height / 2) + (point.y / screenSize.height)), point.z);
+		Point3f pt = Point3f((point.x - screenSize.width/2), -1*(point.y - screenSize.height/2), point.z);
 		return pt;
 	}
 

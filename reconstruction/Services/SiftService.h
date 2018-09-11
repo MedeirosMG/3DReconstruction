@@ -6,6 +6,7 @@
 #include "../Algorithms/OpenGL.h"
 #include "../Entities/PointPair.h"
 #include "../Entities/SiftResult.h"
+#include "../Services/RansacService.h"
 
 using namespace std;
 using namespace Algorithms;
