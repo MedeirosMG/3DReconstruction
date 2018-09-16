@@ -91,7 +91,7 @@ namespace Services {
 		CannyService *canny = new CannyService();
 		RenderService *teste = new RenderService();
 		teste->TestExecute(&argc, argv);
-		teste->TestExecute(&argc, argv, canny->Execute(imread(".\\Others Files\\TestImage.jpg"), 50, 700, 3));
+		//teste->TestExecute(&argc, argv, canny->Execute(imread(".\\Others Files\\TestImage.jpg"), 50, 700, 3));
 	}
 
 	void TestService::Canny() 

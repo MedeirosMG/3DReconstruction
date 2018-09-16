@@ -160,6 +160,7 @@
     <ClInclude Include="Algorithms\OpenGL.h" />
     <ClInclude Include="Algorithms\OpenCV.h" />
     <ClInclude Include="Entities\PointPair.h" />
+    <ClInclude Include="Entities\RenderProperties.h" />
     <ClInclude Include="Entities\SiftResult.h" />
     <ClInclude Include="Entities\TimeExecution.h" />
     <ClInclude Include="Helpers\Console.h" />
@@ -192,6 +193,7 @@
     <ClCompile Include="Algorithms\OpenGL.cpp" />
     <ClCompile Include="Algorithms\OpenCV.cpp" />
     <ClCompile Include="Entities\PointPair.cpp" />
+    <ClCompile Include="Entities\RenderProperties.cpp" />
     <ClCompile Include="Entities\SiftResult.cpp" />
     <ClCompile Include="Entities\TimeExecution.cpp" />
     <ClCompile Include="Helpers\Console.cpp" />

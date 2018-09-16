@@ -5,6 +5,7 @@
 #include "../Algorithms/OpenCV.h"
 #include "../Algorithms/OpenGL.h"
 #include "../Helpers/PointsUtilities.h"
+#include "../Entities/RenderProperties.h"
 #include "../Helpers/Convert.h"
 #include "../Services/DelaunayService.h"
 
@@ -21,7 +22,7 @@ namespace Services {
 		private:
 			OpenCV * _openCv;
 			static vector<Vec6f> _triangles;
-			static vector<Point3f> _points3D;
+			static vector<Point3f> _points3D;			
 			void Init(int width, int height, vector<Vec6f> triangles, vector<Point3f> points3D);
 
 		public:
@@ -32,6 +33,8 @@ namespace Services {
 			void Execute(int *argc, char **argv, vector<Vec6f> triangles, vector<Point3f> points3D);
 			vector<Vec6f> GetTriangles();
 			vector<Point3f> GetPoints();
+
+			static RenderProperties *_renderProperties;
 	};
 
 }

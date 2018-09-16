@@ -129,6 +129,9 @@
     <ClInclude Include="Helpers\StringHelper.h">
       <Filter>Header Files\H_Helpers</Filter>
     </ClInclude>
+    <ClInclude Include="Entities\RenderProperties.h">
+      <Filter>Header Files\H_Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -220,6 +223,9 @@
     </ClCompile>
     <ClCompile Include="Helpers\StringHelper.cpp">
       <Filter>Source Files\S_Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\RenderProperties.cpp">
+      <Filter>Source Files\S_Entities</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
