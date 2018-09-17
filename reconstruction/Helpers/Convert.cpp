@@ -8,6 +8,11 @@ namespace Helpers {
 		_openCv = new OpenCV();
 	}
 
+	bool Convert::CheckInterval(float begin, float end, float val)
+	{
+		return (val >= begin && val <= end);
+	}
+
 	Convert::Convert(OpenCV* openCv)
 	{
 		_openCv = openCv;
@@ -71,6 +76,7 @@ namespace Helpers {
 	vector<Vec<Point3f, 3>> Convert::Tiangles2dTo3d(vector<Vec6f> triangles, vector<Point3f> points)
 	{
 		vector<Vec<Point3f, 3>> result;
+		float interval = 1.0;
 
 		for each (Vec6f triangle in triangles)
 		{
@@ -83,7 +89,7 @@ namespace Helpers {
 			// Point 1
 			for (int i = 0; i < points.size(); i++)
 			{
-				if (points[i].x == pt1.x && points[i].y == pt1.y) 
+				if (CheckInterval(points[i].x - interval, points[i].x + interval, pt1.x) && CheckInterval(points[i].y - interval, points[i].y + interval, pt1.y))
 				{
 					pt13D = Point3f(points[i].x, points[i].y, points[i].z);
 					//points.erase(points.begin() + i, points.begin() + i);
@@ -97,7 +103,7 @@ namespace Helpers {
 			// Point 2
 			for (int i = 0; i < points.size(); i++)
 			{
-				if (points[i].x == pt2.x && points[i].y == pt2.y)
+				if (CheckInterval(points[i].x - interval, points[i].x + interval, pt2.x) && CheckInterval(points[i].y - interval, points[i].y + interval, pt2.y))
 				{
 					pt23D = Point3f(points[i].x, points[i].y, points[i].z);
 					//points.erase(points.begin() + i, points.begin() + i);
@@ -111,7 +117,7 @@ namespace Helpers {
 			// Point 1
 			for (int i = 0; i < points.size(); i++)
 			{
-				if (points[i].x == pt3.x && points[i].y == pt3.y)
+				if (CheckInterval(points[i].x - interval, points[i].x + interval, pt3.x) && CheckInterval(points[i].y - interval, points[i].y + interval, pt3.y))
 				{
 					pt33D = Point3f(points[i].x, points[i].y, points[i].z);
 					//points.erase(points.begin() + i, points.begin() + i);

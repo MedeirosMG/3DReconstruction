@@ -17,6 +17,7 @@ namespace Helpers {
 	{
 		private:
 			OpenCV * _openCv;
+			static bool CheckInterval(float begin, float end, float val);
 
 		public:
 			Convert(OpenCV* openCv);
