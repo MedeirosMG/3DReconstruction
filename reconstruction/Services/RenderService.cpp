@@ -3,8 +3,6 @@
 
 namespace Services {
 	// Static variables
-	vector<Vec6f> RenderService::_triangles;
-	vector<Point3f> RenderService::_points3D;
 	RenderProperties *RenderService::_renderProperties;
 	//-//-//
 
@@ -63,11 +61,7 @@ namespace Services {
 		RenderService *service = new RenderService();
 		PointUtilities *converter = new PointUtilities();
 
-		// Get triangles and points setted
-		vector<Vec6f> triangleList = service->GetTriangles();
-		vector<Point3f> points = service->GetPoints();
-
-		float maxAbs = converter->GetMaxAbsCoord(triangleList);
+		float maxAbs = converter->GetMaxAbsCoord(service->_renderProperties->_triangles);
 
 		if (service->_renderProperties->_typeImage == 1)
 			glBegin(GL_LINES);
@@ -171,15 +165,6 @@ namespace Services {
 		glFlush();
 	}
 
-	vector<Vec6f> RenderService::GetTriangles() 
-	{
-		return _triangles;
-	}
-	vector<Point3f> RenderService::GetPoints()
-	{ 
-		return _points3D;
-	}
-
 	void RenderService::Init(int width, int height, vector<Vec6f> triangles, vector<Point3f> points3D)
 	{
 		// Set render properties
@@ -187,10 +172,6 @@ namespace Services {
 
 		// Convert points
 		_renderProperties->_triangles = Convert().Tiangles2dTo3d(triangles, points3D);
-
-		//Set the objects for render
-		_triangles = triangles;
-		_points3D = points3D;
 
 		/* setup the size, position, and display mode for new windows */
 		glutInitWindowSize(width, height);

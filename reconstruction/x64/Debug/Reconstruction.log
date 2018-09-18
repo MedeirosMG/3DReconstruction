@@ -1,25 +1,6 @@
-﻿  Convert.cpp
-  Main.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\console.h(33): warning C4091: 'static ': ignorado à esquerda de 'Helpers::Console' quando nenhuma variável é declarada
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignorado à esquerda de 'Helpers::StringHelper' quando nenhuma variável é declarada
-  ControllerService.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\console.h(33): warning C4091: 'static ': ignorado à esquerda de 'Helpers::Console' quando nenhuma variável é declarada
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignorado à esquerda de 'Helpers::StringHelper' quando nenhuma variável é declarada
-  DelaunayService.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\delaunayservice.cpp(37): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\delaunayservice.cpp(120): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
-  RansacService.cpp
-  RenderService.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\renderservice.cpp(108): warning C4267: 'argumento': conversão de 'size_t' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\renderservice.cpp(110): warning C4267: 'argumento': conversão de 'size_t' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\renderservice.cpp(167): warning C4267: 'argumento': conversão de 'size_t' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\renderservice.cpp(169): warning C4267: 'argumento': conversão de 'size_t' para 'int', possível perda de dados
-  SiftService.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\siftservice.cpp(36): warning C4244: 'inicializando': conversão de 'int' para 'float', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\siftservice.cpp(37): warning C4244: 'inicializando': conversão de 'int' para 'float', possível perda de dados
-  TestService.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\console.h(33): warning C4091: 'static ': ignorado à esquerda de 'Helpers::Console' quando nenhuma variável é declarada
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignorado à esquerda de 'Helpers::StringHelper' quando nenhuma variável é declarada
-  Gerando Código...
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\controllerservice.cpp(178): warning C4715: 'Services::ControllerService::RenderApply': nem todos os caminhos de controle retornam um valor
+﻿  RenderService.cpp
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\renderservice.cpp(102): warning C4267: 'argumento': conversão de 'size_t' para 'int', possível perda de dados
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\renderservice.cpp(104): warning C4267: 'argumento': conversão de 'size_t' para 'int', possível perda de dados
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\renderservice.cpp(161): warning C4267: 'argumento': conversão de 'size_t' para 'int', possível perda de dados
+c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\renderservice.cpp(163): warning C4267: 'argumento': conversão de 'size_t' para 'int', possível perda de dados
   Reconstruction.vcxproj -> C:\SD\Arquivos\Documentos\3DReconstruction\x64\Debug\Reconstruction.exe

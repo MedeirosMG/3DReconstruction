@@ -168,6 +168,34 @@ namespace Helpers {
 		return pt;
 	}
 
+	float PointUtilities::GetMaxAbsCoord(vector<Vec<Point3f, 3>> points)
+	{
+		float maxValue = 0.0;
+
+		for each (Vec<Point3f, 3> item in points)
+		{
+			if (item[0].x > maxValue)
+				maxValue = item[0].x;
+			
+			if (item[0].y > maxValue)
+				maxValue = item[0].y;
+
+			if (item[1].x > maxValue)
+				maxValue = item[1].x;
+
+			if (item[1].y > maxValue)
+				maxValue = item[1].y;
+
+			if (item[2].x > maxValue)
+				maxValue = item[2].x;
+
+			if (item[2].y > maxValue)
+				maxValue = item[2].y;
+		}
+
+		return maxValue;
+	}
+
 	float PointUtilities::GetMaxAbsCoord(vector<Vec6f> points) 
 	{
 		float maxValue = 0.0;
