@@ -21,8 +21,6 @@ namespace Services {
 	{
 		private:
 			OpenCV * _openCv;
-			static vector<Vec6f> _triangles;
-			static vector<Point3f> _points3D;			
 			void Init(int width, int height, vector<Vec6f> triangles, vector<Point3f> points3D);
 
 		public:
@@ -31,8 +29,6 @@ namespace Services {
 			~RenderService();
 			void TestExecute(int *argc, char **argv, vector<Point3f> points = vector<Point3f>());
 			void Execute(int *argc, char **argv, vector<Vec6f> triangles, vector<Point3f> points3D);
-			vector<Vec6f> GetTriangles();
-			vector<Point3f> GetPoints();
 
 			static RenderProperties *_renderProperties;
 	};
