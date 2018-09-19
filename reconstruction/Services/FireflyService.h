@@ -4,18 +4,21 @@
 
 #include "../Algorithms/OpenCV.h"
 #include "../Algorithms/OpenGL.h"
-
+#include "../Algorithms/Firefly.h"
+#include "../Helpers/MultiThreshold.h"
 
 using namespace std;
 using namespace Algorithms;
+using namespace Helpers;
 
 namespace Services {
 
-	// Implementar funções do Firefly utilizando os Algorithms
 	class FireflyService
 	{
 		private:
-			OpenCV * _openCv;
+			OpenCV* _openCv;
+			Firefly* _firefly;
+			MultiThreshold* _multiThreshold;
 
 		public:
 			FireflyService();

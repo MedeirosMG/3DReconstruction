@@ -1,17 +1,20 @@
 #include "stdafx.h"
 #include "FireflyService.h"
-#include "../Helpers/Firefly_Optimization.h"
-#include "../Helpers/multilimiarizacao.h"
+
 namespace Services {
 
 	FireflyService::FireflyService()
 	{
 		_openCv = new OpenCV();
+		_firefly = new Firefly();
+		_multiThreshold = new MultiThreshold();
 	}
 
 	FireflyService::FireflyService(OpenCV * openCv)
 	{
 		_openCv = openCv;
+		_firefly = new Firefly();
+		_multiThreshold = new MultiThreshold();
 	}
 
 	FireflyService::~FireflyService()
@@ -26,10 +29,10 @@ namespace Services {
 		Mat grayedImg = _openCv->ColorConverter(img, CV_RGB2GRAY);
 
 		//Find best thresholds with firefly algorithm
-		bests = beststhresholds(grayedImg, n_thresholds, n_fireflies, n_generations);
+		bests = _firefly->BestsThresholds(grayedImg, n_thresholds, n_fireflies, n_generations);
 
 		//Paint image using best thresholds
-		Mat seg = MultiLim2(grayedImg, bests, 0);
+		Mat seg = _multiThreshold->MultiLim2(grayedImg, bests, 0);
 
 		return seg;
 	}
@@ -42,10 +45,10 @@ namespace Services {
 		Mat grayedImg = _openCv->ColorConverter(img, CV_RGB2GRAY);
 
 		//Find best thresholds with firefly algorithm
-		bests = beststhresholds(grayedImg, n_thresholds, n_fireflies, n_generations);
+		bests = _firefly->BestsThresholds(grayedImg, n_thresholds, n_fireflies, n_generations);
 
 		//Paint image using best thresholds
-		Mat seg = MultiLim2(grayedImg, bests, 0);
+		Mat seg = _multiThreshold->MultiLim2(grayedImg, bests, 0);
 
 		namedWindow("Firefly Test", 2);
 
@@ -62,10 +65,10 @@ namespace Services {
 		grayedImg = _openCv->ColorConverter(grayedImg, CV_RGB2GRAY);
 
 		//Find best thresholds with firefly algorithm
-		bests = beststhresholds(grayedImg, n_thresholds, n_fireflies, n_generations);
+		bests = _firefly->BestsThresholds(grayedImg, n_thresholds, n_fireflies, n_generations);
 
 		//Paint image using best thresholds
-		Mat seg = MultiLim2(grayedImg, bests, 0);
+		Mat seg = _multiThreshold->MultiLim2(grayedImg, bests, 0);
 
 		namedWindow("Firefly Test", 2);
 

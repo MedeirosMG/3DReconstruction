@@ -23,7 +23,7 @@
     <ProjectGuid>{C5D3972B-C50A-4681-8309-73CFC94F388A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Reconstruction</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -157,21 +157,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Algorithms\Firefly.h" />
     <ClInclude Include="Algorithms\OpenGL.h" />
     <ClInclude Include="Algorithms\OpenCV.h" />
     <ClInclude Include="Entities\PointPair.h" />
+    <ClInclude Include="Entities\RenderProperties.h" />
     <ClInclude Include="Entities\SiftResult.h" />
     <ClInclude Include="Entities\TimeExecution.h" />
     <ClInclude Include="Helpers\Console.h" />
     <ClInclude Include="Helpers\Convert.h" />
     <ClInclude Include="Helpers\Export.h" />
-    <ClInclude Include="Helpers\Firefly_Optimization.h" />
     <ClInclude Include="Helpers\Import.h" />
-    <ClInclude Include="Helpers\multilimiarizacao.h" />
+    <ClInclude Include="Helpers\MultiThreshold.h" />
     <ClInclude Include="Helpers\PointsUtilities.h" />
     <ClInclude Include="Helpers\StringHelper.h" />
     <ClInclude Include="Helpers\Time.h" />
-    <ClInclude Include="Helpers\tsallis.h" />
+    <ClInclude Include="Helpers\Tsallis.h" />
     <ClInclude Include="Helpers\Visualizer.h" />
     <ClInclude Include="Services\CalibrationService.h" />
     <ClInclude Include="Services\CannyService.h" />
@@ -189,21 +190,22 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Algorithms\Firefly.cpp" />
     <ClCompile Include="Algorithms\OpenGL.cpp" />
     <ClCompile Include="Algorithms\OpenCV.cpp" />
     <ClCompile Include="Entities\PointPair.cpp" />
+    <ClCompile Include="Entities\RenderProperties.cpp" />
     <ClCompile Include="Entities\SiftResult.cpp" />
     <ClCompile Include="Entities\TimeExecution.cpp" />
     <ClCompile Include="Helpers\Console.cpp" />
     <ClCompile Include="Helpers\Convert.cpp" />
     <ClCompile Include="Helpers\Export.cpp" />
-    <ClCompile Include="Helpers\Firefly_Optimization.cpp" />
     <ClCompile Include="Helpers\Import.cpp" />
-    <ClCompile Include="Helpers\multilimiarizacao.cpp" />
+    <ClCompile Include="Helpers\MultiThreshold.cpp" />
     <ClCompile Include="Helpers\PointsUtilities.cpp" />
     <ClCompile Include="Helpers\StringHelper.cpp" />
     <ClCompile Include="Helpers\Time.cpp" />
-    <ClCompile Include="Helpers\tsallis.cpp" />
+    <ClCompile Include="Helpers\Tsallis.cpp" />
     <ClCompile Include="Helpers\Visualizer.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Services\CalibrationService.cpp" />
