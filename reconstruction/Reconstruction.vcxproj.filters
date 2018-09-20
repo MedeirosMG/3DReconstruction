@@ -78,15 +78,6 @@
     <ClInclude Include="Services\RenderService.h">
       <Filter>Header Files\H_Services</Filter>
     </ClInclude>
-    <ClInclude Include="Helpers\Firefly_Optimization.h">
-      <Filter>Header Files\H_Helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="Helpers\multilimiarizacao.h">
-      <Filter>Header Files\H_Helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="Helpers\tsallis.h">
-      <Filter>Header Files\H_Helpers</Filter>
-    </ClInclude>
     <ClInclude Include="Entities\PointPair.h">
       <Filter>Header Files\H_Entities</Filter>
     </ClInclude>
@@ -131,6 +122,15 @@
     </ClInclude>
     <ClInclude Include="Entities\RenderProperties.h">
       <Filter>Header Files\H_Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Helpers\Tsallis.h">
+      <Filter>Header Files\H_Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Helpers\MultiThreshold.h">
+      <Filter>Header Files\H_Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithms\Firefly.h">
+      <Filter>Header Files\H_Algorithms</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -185,15 +185,6 @@
     <ClCompile Include="Helpers\PointsUtilities.cpp">
       <Filter>Source Files\S_Helpers</Filter>
     </ClCompile>
-    <ClCompile Include="Helpers\Firefly_Optimization.cpp">
-      <Filter>Source Files\S_Helpers</Filter>
-    </ClCompile>
-    <ClCompile Include="Helpers\multilimiarizacao.cpp">
-      <Filter>Source Files\S_Helpers</Filter>
-    </ClCompile>
-    <ClCompile Include="Helpers\tsallis.cpp">
-      <Filter>Source Files\S_Helpers</Filter>
-    </ClCompile>
     <ClCompile Include="Services\TestService.cpp">
       <Filter>Source Files\S_Services</Filter>
     </ClCompile>
@@ -226,6 +217,15 @@
     </ClCompile>
     <ClCompile Include="Entities\RenderProperties.cpp">
       <Filter>Source Files\S_Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers\Tsallis.cpp">
+      <Filter>Source Files\S_Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers\MultiThreshold.cpp">
+      <Filter>Source Files\S_Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithms\Firefly.cpp">
+      <Filter>Source Files\S_Algorithms</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

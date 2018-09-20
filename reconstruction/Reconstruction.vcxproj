@@ -157,6 +157,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Algorithms\Firefly.h" />
     <ClInclude Include="Algorithms\OpenGL.h" />
     <ClInclude Include="Algorithms\OpenCV.h" />
     <ClInclude Include="Entities\PointPair.h" />
@@ -166,13 +167,12 @@
     <ClInclude Include="Helpers\Console.h" />
     <ClInclude Include="Helpers\Convert.h" />
     <ClInclude Include="Helpers\Export.h" />
-    <ClInclude Include="Helpers\Firefly_Optimization.h" />
     <ClInclude Include="Helpers\Import.h" />
-    <ClInclude Include="Helpers\multilimiarizacao.h" />
+    <ClInclude Include="Helpers\MultiThreshold.h" />
     <ClInclude Include="Helpers\PointsUtilities.h" />
     <ClInclude Include="Helpers\StringHelper.h" />
     <ClInclude Include="Helpers\Time.h" />
-    <ClInclude Include="Helpers\tsallis.h" />
+    <ClInclude Include="Helpers\Tsallis.h" />
     <ClInclude Include="Helpers\Visualizer.h" />
     <ClInclude Include="Services\CalibrationService.h" />
     <ClInclude Include="Services\CannyService.h" />
@@ -190,6 +190,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Algorithms\Firefly.cpp" />
     <ClCompile Include="Algorithms\OpenGL.cpp" />
     <ClCompile Include="Algorithms\OpenCV.cpp" />
     <ClCompile Include="Entities\PointPair.cpp" />
@@ -199,13 +200,12 @@
     <ClCompile Include="Helpers\Console.cpp" />
     <ClCompile Include="Helpers\Convert.cpp" />
     <ClCompile Include="Helpers\Export.cpp" />
-    <ClCompile Include="Helpers\Firefly_Optimization.cpp" />
     <ClCompile Include="Helpers\Import.cpp" />
-    <ClCompile Include="Helpers\multilimiarizacao.cpp" />
+    <ClCompile Include="Helpers\MultiThreshold.cpp" />
     <ClCompile Include="Helpers\PointsUtilities.cpp" />
     <ClCompile Include="Helpers\StringHelper.cpp" />
     <ClCompile Include="Helpers\Time.cpp" />
-    <ClCompile Include="Helpers\tsallis.cpp" />
+    <ClCompile Include="Helpers\Tsallis.cpp" />
     <ClCompile Include="Helpers\Visualizer.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Services\CalibrationService.cpp" />
