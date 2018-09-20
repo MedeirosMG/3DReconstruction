@@ -152,9 +152,6 @@
     <ClCompile Include="Services\DelaunayService.cpp">
       <Filter>Source Files\S_Services</Filter>
     </ClCompile>
-    <ClCompile Include="Services\ComponentsConnectedService.cpp">
-      <Filter>Source Files\S_Services</Filter>
-    </ClCompile>
     <ClCompile Include="Services\CannyService.cpp">
       <Filter>Source Files\S_Services</Filter>
     </ClCompile>
@@ -226,6 +223,9 @@
     </ClCompile>
     <ClCompile Include="Algorithms\Firefly.cpp">
       <Filter>Source Files\S_Algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="Services\ConnectedComponentsService.cpp">
+      <Filter>Source Files\S_Services</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

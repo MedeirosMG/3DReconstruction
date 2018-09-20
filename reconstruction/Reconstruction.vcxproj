@@ -23,7 +23,7 @@
     <ProjectGuid>{C5D3972B-C50A-4681-8309-73CFC94F388A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Reconstruction</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -210,7 +210,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Services\CalibrationService.cpp" />
     <ClCompile Include="Services\CannyService.cpp" />
-    <ClCompile Include="Services\ComponentsConnectedService.cpp" />
+    <ClCompile Include="Services\ConnectedComponentsService.cpp" />
     <ClCompile Include="Services\DelaunayService.cpp" />
     <ClCompile Include="Services\FindRegionsService.cpp" />
     <ClCompile Include="Services\FireflyService.cpp" />

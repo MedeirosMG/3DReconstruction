@@ -20,19 +20,9 @@ namespace Services {
 
 	Mat FindRegionsService::Execute(Mat regions, string ImageToApply)
 	{
-		Mat imgOriginal = imread(ImageToApply);
+		Mat imgOriginal = _openCv->ReadImage(ImageToApply);
 
-		if (regions.rows != imgOriginal.rows || regions.cols != imgOriginal.cols)
-			throw new exception("Imagens não tem o mesmo tamanho.");
-
-		for (int y = 0; y < regions.rows; y++) {
-			for (int x = 0; x < regions.cols; x++) {
-				if (regions.at<Vec3b>(Point(x, y)) == Vec3b(0, 0, 0))
-					imgOriginal.at<Vec3b>(Point(x, y)) = Vec3b(0, 0, 0);
-			}
-		}
-
-		return imgOriginal;
+		return Execute(regions, ImageToApply);
 	}
 
 	Mat FindRegionsService::Execute(Mat regions, Mat ImageToApply)
