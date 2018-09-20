@@ -107,6 +107,9 @@ namespace Services {
 		Mat img1 = imread(".\\Others Files\\im0.png", 0);
 		Mat img2 = imread(".\\Others Files\\im1.png", 0);
 		
+		resize(img1, img1, Size(600, 400));
+		resize(img2, img2, Size(600, 400));
+
 		SiftResult sift_result = sift->Execute(img1, img2, 200);
 		Mat mask = ransac->FindRansacMask(sift_result, 400);
 		vector<DMatch> matchesRansac;
