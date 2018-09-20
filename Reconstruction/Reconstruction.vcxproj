@@ -210,7 +210,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Services\CalibrationService.cpp" />
     <ClCompile Include="Services\CannyService.cpp" />
-    <ClCompile Include="Services\ComponentsConnectedService.cpp" />
+    <ClCompile Include="Services\ConnectedComponentsService.cpp" />
     <ClCompile Include="Services\DelaunayService.cpp" />
     <ClCompile Include="Services\FindRegionsService.cpp" />
     <ClCompile Include="Services\FireflyService.cpp" />
