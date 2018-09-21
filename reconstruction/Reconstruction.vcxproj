@@ -167,6 +167,7 @@
     <ClInclude Include="Helpers\Console.h" />
     <ClInclude Include="Helpers\Convert.h" />
     <ClInclude Include="Helpers\Export.h" />
+    <ClInclude Include="Helpers\ReconstructionDefine.h" />
     <ClInclude Include="Helpers\Import.h" />
     <ClInclude Include="Helpers\MultiThreshold.h" />
     <ClInclude Include="Helpers\PointsUtilities.h" />

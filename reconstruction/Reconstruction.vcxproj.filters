@@ -132,6 +132,9 @@
     <ClInclude Include="Algorithms\Firefly.h">
       <Filter>Header Files\H_Algorithms</Filter>
     </ClInclude>
+    <ClInclude Include="Helpers\ReconstructionDefine.h">
+      <Filter>Header Files\H_Helpers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
