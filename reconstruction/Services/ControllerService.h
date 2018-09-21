@@ -17,6 +17,7 @@
 #include "..\Helpers\Convert.h"
 #include "..\Helpers\Visualizer.h"
 #include "..\Helpers\Time.h"
+#include "..\Helpers\ReconstructionDefine.h"
 
 #pragma endregion
 
@@ -55,7 +56,7 @@ namespace Services {
 		Mat _secondImage;
 		Mat _firstImageModified;
 		Mat _secondImageModified;
-		Size _imgSize = Size(800, 600);
+		Size _screenSize = Size(REC_SCREEN_DEFAULT_WIDTH, REC_SCREEN_DEFAULT_HEIGHT);
 
 		// Delaunay Properties
 		vector<Vec6f> _resultDelaunay;
@@ -122,7 +123,7 @@ namespace Services {
 		void SetRenderProperties(int *argc, char **argv);
 		void SetRansacProperties(double ransacThreshold);
 		void SetVisualizerProperties(bool execute, string nameWindow = "Default Name");
-		void SetScreenProperties(Size imgSize);
+		void SetScreenProperties(Size screenSize);
 		void LoadServices();
 
 		void SaveFirstImage(string Path = ".\\Others Files\\FirstImage.jpg");

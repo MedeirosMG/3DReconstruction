@@ -13,16 +13,16 @@ namespace Services {
 	{
 		_openCv = new OpenCV();
 
-		_firstImage = _openCv->Resize(firstImage, _imgSize);
-		_secondImage = _openCv->Resize(secondImage, _imgSize);
+		_firstImage = _openCv->Resize(firstImage, _screenSize);
+		_secondImage = _openCv->Resize(secondImage, _screenSize);
 	}
 
 	ControllerService::ControllerService(string pathFirstImage, string pathSecondImage)
 	{
 		_openCv = new OpenCV();
 
-		_firstImage = _openCv->Resize(_openCv->ReadImage(pathFirstImage), _imgSize);
-		_secondImage = _openCv->Resize(_openCv->ReadImage(pathSecondImage), _imgSize);
+		_firstImage = _openCv->Resize(_openCv->ReadImage(pathFirstImage), _screenSize);
+		_secondImage = _openCv->Resize(_openCv->ReadImage(pathSecondImage), _screenSize);
 	}
 
 	ControllerService::~ControllerService()
@@ -94,7 +94,7 @@ namespace Services {
 		try
 		{
 			cout << endl << "=== Init Delaunay ===" << endl << endl;
-			_resultDelaunay = _delaunayService->Execute(_resultCalibration, _resultCanny, _imgSize);
+			_resultDelaunay = _delaunayService->Execute(_resultCalibration, _resultCanny, _screenSize);
 
 			_visualizer->Show(_resultDelaunay);
 
@@ -169,6 +169,7 @@ namespace Services {
 		{
 			cout << endl << "=== Init Rendering ===" << endl << endl;
 			_renderService->Execute(_argc, _argv, _resultDelaunay, _resultCalibration);
+			return true;
 		}
 		catch (const std::exception& ex)
 		{
@@ -277,17 +278,17 @@ namespace Services {
 
 	void ControllerService::SetScreenProperties(Size imgSize)
 	{
-		_imgSize = imgSize;
+		_screenSize = imgSize;
 
-		_firstImage = _openCv->Resize(_firstImage, _imgSize);
-		_secondImage = _openCv->Resize(_secondImage, _imgSize);
+		_firstImage = _openCv->Resize(_firstImage, _screenSize);
+		_secondImage = _openCv->Resize(_secondImage, _screenSize);
 	}
 
 #pragma endregion
 
 	void ControllerService::LoadServices()
 	{
-		_calibrationService = new CalibrationService(_calibrationB, _calibrationLambda, new OpenCV(), _calibrationK, _imgSize);
+		_calibrationService = new CalibrationService(_calibrationB, _calibrationLambda, new OpenCV(), _calibrationK, _screenSize);
 		_cannyService = new CannyService(_openCv);
 		_connectedComponentsService = new ConnectedComponentsService(_openCv);
 		_delaunayService = new DelaunayService(_openCv);

@@ -30,12 +30,12 @@ namespace Services {
 		controller->CannyApply();
 		controller->FireflyApply();	
 		controller->ConnectedComponentsApply();
-		controller->FindRegionsApply();
+		/*controller->FindRegionsApply();
 		controller->SiftApply();
 		controller->RansacApply();
 		controller->CalibrationApply();
 		controller->DelaunayApply();
-		controller->RenderApply();
+		controller->RenderApply();*/
 		
 		cout << "======== End Test ======== " << endl;
 	}

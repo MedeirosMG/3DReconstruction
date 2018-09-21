@@ -17,19 +17,23 @@ namespace Helpers {
 	static class Console
 	{
 		private:
-			static string Print(Point2f point);
+			static string PrintString(Point2f point);
+			static void Pause();
 
 		public:
 			Console();
 			~Console();
 
-			static void Print(vector<Point3f> listPoints);
-			static void Print(vector<Point2f> point);
-			static void Print(Point3f point);
-			static void Print(vector<PointPair> listPoints);
-			static void Print(SiftResult result);
-			static void Print(vector<Vec6f> triangles);
-			static void Print(vector<DMatch> matches);
+			static void Print(vector<Point3f> points, bool pause = false);
+			static void Print(Point3f point, bool pause = false);
+			static void Print(vector<Point2f> points, bool pause = false);
+			static void Print(Point2f point, bool pause = false);
+			static void Print(vector<vector<Point>> points, bool pause = false);
+			static void Print(vector<Point> points, bool pause = false);
+			static void Print(vector<PointPair> points, bool pause = false);
+			static void Print(SiftResult siftResult, bool pause = false);
+			static void Print(vector<Vec6f> triangles, bool pause = false);
+			static void Print(vector<DMatch> matches, bool pause = false);
 	};
 
 }

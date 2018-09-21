@@ -1,6 +1,6 @@
 ﻿  stdafx.cpp
   TestService.cpp
-c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\console.h(33): warning C4091: 'static ': ignored on left of 'Helpers::Console' when no variable is declared
+c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\console.h(37): warning C4091: 'static ': ignored on left of 'Helpers::Console' when no variable is declared
 c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignored on left of 'Helpers::StringHelper' when no variable is declared
   SiftService.cpp
 c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\services\siftservice.cpp(36): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
@@ -11,7 +11,7 @@ c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstr
 c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\services\renderservice.cpp(161): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
 c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\services\renderservice.cpp(163): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   ControllerService.cpp
-c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\console.h(33): warning C4091: 'static ': ignored on left of 'Helpers::Console' when no variable is declared
+c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\console.h(37): warning C4091: 'static ': ignored on left of 'Helpers::Console' when no variable is declared
 c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignored on left of 'Helpers::StringHelper' when no variable is declared
   RansacService.cpp
   InputImageService.cpp
@@ -21,14 +21,15 @@ c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstr
 c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\services\delaunayservice.cpp(37): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\services\delaunayservice.cpp(120): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   ConnectedComponentsService.cpp
+c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\console.h(37): warning C4091: 'static ': ignored on left of 'Helpers::Console' when no variable is declared
   CannyService.cpp
 c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\services\cannyservice.cpp(43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   CalibrationService.cpp
   Main.cpp
-c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\console.h(33): warning C4091: 'static ': ignored on left of 'Helpers::Console' when no variable is declared
+c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\console.h(37): warning C4091: 'static ': ignored on left of 'Helpers::Console' when no variable is declared
 c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignored on left of 'Helpers::StringHelper' when no variable is declared
   Visualizer.cpp
-c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\console.h(33): warning C4091: 'static ': ignored on left of 'Helpers::Console' when no variable is declared
+c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\console.h(37): warning C4091: 'static ': ignored on left of 'Helpers::Console' when no variable is declared
   Tsallis.cpp
 c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\tsallis.cpp(21): warning C4305: 'initializing': truncation from 'double' to 'float'
 c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\tsallis.cpp(21): warning C4305: '+=': truncation from 'double' to 'float'
@@ -40,12 +41,13 @@ c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstr
   StringHelper.cpp
 c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignored on left of 'Helpers::StringHelper' when no variable is declared
   PointsUtilities.cpp
-c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(210): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(213): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(216): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(219): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(222): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(225): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(172): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(228): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(231): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(234): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(237): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(240): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(243): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   MultiThreshold.cpp
 c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\multithreshold.cpp(16): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\multithreshold.cpp(35): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
@@ -64,7 +66,6 @@ c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstr
 c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignored on left of 'Helpers::StringHelper' when no variable is declared
   Generating Code...
 c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\services\findregionsservice.cpp(26): warning C4717: 'Services::FindRegionsService::Execute': recursive on all control paths, function will cause runtime stack overflow
-c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\services\controllerservice.cpp(178): warning C4715: 'Services::ControllerService::RenderApply': not all control paths return a value
   Compiling...
   Export.cpp
 c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignored on left of 'Helpers::StringHelper' when no variable is declared
@@ -83,7 +84,7 @@ c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstr
 c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\export.cpp(126): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   Convert.cpp
   Console.cpp
-c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\console.h(33): warning C4091: 'static ': ignored on left of 'Helpers::Console' when no variable is declared
+c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\console.h(37): warning C4091: 'static ': ignored on left of 'Helpers::Console' when no variable is declared
   TimeExecution.cpp
   SiftResult.cpp
   RenderProperties.cpp

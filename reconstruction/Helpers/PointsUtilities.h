@@ -35,6 +35,7 @@ namespace Helpers {
 			vector<Point3f> PixelToCoordenate(vector<Point3f> points, Size screenSize);
 			Point3f PixelToCoordenate(Point3f point, Size screenSize);
 			vector<PointPair> PixelToCoordenate(vector<PointPair> points, Size screenSize);
+			double GetArea(vector<Point> points);
 	};
 
 }

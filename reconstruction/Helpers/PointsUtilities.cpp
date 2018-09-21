@@ -162,6 +162,24 @@ namespace Helpers {
 		return pointsReturn;
 	}
 
+	double PointUtilities::GetArea(vector<Point> points)
+	{
+		// (X[i], Y[i]) are coordinates of i'th point.		
+		// Initialze area
+		double area = 0.0;
+
+		// Calculate value of shoelace formula
+		int j = points.size() - 1;
+		for (int i = 0; i < points.size(); i++)
+		{
+			area += (points[j].x + points[i].x) * (points[j].y - points[i].y);
+			j = i;  // j is previous vertex to i
+		}
+
+		// Return absolute value
+		return abs(area / 2.0);
+	}
+
 	Point3f PointUtilities::PixelToCoordenate(Point3f point, Size screenSize)
 	{
 		Point3f pt = Point3f((point.x - screenSize.width/2), -1*(point.y - screenSize.height/2), point.z);
