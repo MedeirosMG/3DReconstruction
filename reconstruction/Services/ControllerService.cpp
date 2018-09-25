@@ -152,7 +152,7 @@ namespace Services {
 			cout << endl << "=== Init Sift ===" << endl << endl;
 			_resultSift = _siftService->Execute(_firstImageModified, _secondImageModified, _siftThreshold);
 
-			_visualizer->Show(_resultSift);
+			_visualizer->Show(_resultSift, _visualizerName);
 
 			return true;
 		}

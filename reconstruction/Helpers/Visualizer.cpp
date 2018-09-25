@@ -54,11 +54,12 @@ namespace Helpers {
 		Console().Print(triangles);
 	}
 
-	void Visualizer::Show(SiftResult result)
+	void Visualizer::Show(SiftResult result, string WindowName)
 	{
 		if (!_execute)
 			return;
-
+		cout << "---- Showing image, press any key to continue ----" << endl;
+		_openCv->ShowImage(result.siftImg, WindowName);
 		Console().Print(result);
 	}
 

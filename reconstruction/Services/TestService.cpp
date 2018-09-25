@@ -16,9 +16,9 @@ namespace Services {
 	{
 		cout << "======= Start Test ======= " << endl;
 
-		ControllerService* controller = new ControllerService(".\\Others Files\\im0.png", ".\\Others Files\\im1.png");
+		ControllerService* controller = new ControllerService(".\\Others Files\\obj10__0.png", ".\\Others Files\\obj10__5.png");
 
-		controller->SetFireflyProperties(1, 50, 100);
+		controller->SetFireflyProperties(3, 50, 100);
 		controller->SetCannyProperties(50, 700, 3);
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(1000);
@@ -30,12 +30,12 @@ namespace Services {
 		controller->CannyApply();
 		controller->FireflyApply();	
 		controller->ConnectedComponentsApply();
-		/*controller->FindRegionsApply();
+		controller->FindRegionsApply();
 		controller->SiftApply();
 		controller->RansacApply();
 		controller->CalibrationApply();
 		controller->DelaunayApply();
-		controller->RenderApply();*/
+		controller->RenderApply();
 		
 		cout << "======== End Test ======== " << endl;
 	}

@@ -31,7 +31,7 @@ namespace Helpers {
 			void Show(vector<Point3f> points);
 			void Show(vector<PointPair> points);
 			void Show(vector<Vec6f> triangles);
-			void Show(SiftResult result);
+			void Show(SiftResult result, string WindowName);
 	};
 }
 
