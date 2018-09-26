@@ -1,9 +1,9 @@
-﻿  TestService.cpp
-c:\users\murillo\c++\3dreconstruction\reconstruction\helpers\console.h(37): warning C4091: 'static ': ignorado à esquerda de 'Helpers::Console' quando nenhuma variável é declarada
-c:\users\murillo\c++\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignorado à esquerda de 'Helpers::StringHelper' quando nenhuma variável é declarada
-  RansacService.cpp
-  ControllerService.cpp
-c:\users\murillo\c++\3dreconstruction\reconstruction\helpers\console.h(37): warning C4091: 'static ': ignorado à esquerda de 'Helpers::Console' quando nenhuma variável é declarada
-c:\users\murillo\c++\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignorado à esquerda de 'Helpers::StringHelper' quando nenhuma variável é declarada
-  Gerando Código...
+﻿  PointsUtilities.cpp
+c:\users\murillo\c++\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(172): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
+c:\users\murillo\c++\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(228): warning C4244: '=': conversão de 'int' para 'float', possível perda de dados
+c:\users\murillo\c++\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(231): warning C4244: '=': conversão de 'int' para 'float', possível perda de dados
+c:\users\murillo\c++\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(234): warning C4244: '=': conversão de 'int' para 'float', possível perda de dados
+c:\users\murillo\c++\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(237): warning C4244: '=': conversão de 'int' para 'float', possível perda de dados
+c:\users\murillo\c++\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(240): warning C4244: '=': conversão de 'int' para 'float', possível perda de dados
+c:\users\murillo\c++\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(243): warning C4244: '=': conversão de 'int' para 'float', possível perda de dados
   Reconstruction.vcxproj -> C:\Users\Murillo\C++\3DReconstruction\x64\Debug\Reconstruction.exe
