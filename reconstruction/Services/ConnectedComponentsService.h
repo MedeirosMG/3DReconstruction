@@ -19,15 +19,17 @@ namespace Services {
 	{
 	private:
 		OpenCV * _openCv;
-		float _threshold = 0.0;
-		vector<vector<Point>> Filter(vector<vector<Point>> contours);
+		float _threshold = 0.1;
+		int _interval = 3;
 		Size _screenSize = Size(REC_SCREEN_DEFAULT_WIDTH, REC_SCREEN_DEFAULT_HEIGHT);
+		vector<vector<Point>> Filter(vector<vector<Point>> contours);
+		double GetBestAverage(vector<vector<Point>> contours);
 
 	public:
 		ConnectedComponentsService();
 		ConnectedComponentsService(OpenCV* openCV);
 		ConnectedComponentsService(OpenCV* openCV, Size imgSize);
-		ConnectedComponentsService(OpenCV* openCV, Size imgSize, float threshold);
+		ConnectedComponentsService(OpenCV* openCV, Size imgSize, float threshold, float interval);
 		~ConnectedComponentsService();
 		Mat Execute(Mat img);
 	};
