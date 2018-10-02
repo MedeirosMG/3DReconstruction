@@ -5,24 +5,36 @@ namespace Services {
 
 	// ----------- Private
 
-	vector<vector<Point>> ConnectedComponentsService::Filter(vector<vector<Point>> contours)
+	Mat ConnectedComponentsService::DrawFiltering(vector<vector<Point>>& contours, vector<Vec4i>& hierarchy, Mat image)
 	{
-		if (_threshold == 0.0)
-			return contours;
+		Mat result = Mat::zeros(image.size(), CV_8UC3);
 
-		vector<vector<Point>> result;
-		Console::Print(contours);
-		double areaScreen = GetBestAverage(contours);
-
-		for each (vector<Point> vecPoint in contours)
+		if (!contours.empty() && !hierarchy.empty())
 		{
-			double areaPoints = PointUtilities().GetArea(vecPoint);
+			// iterate through all the top-level contours,
+			// draw each connected component with its own random color
+			int idx = 0;
+			double areaScreen = 0.0;
+			double areaPoints = 0.0;
+			int countFilter = 0;
 
-			if ((areaPoints / areaScreen >= _threshold) || areaPoints == 0.0)
-				result.push_back(vecPoint);
+			if (_threshold > 0.0)
+				areaScreen = GetBestAverage(contours);
+
+			for (; idx >= 0; idx = hierarchy[idx][0])
+			{
+				if(_threshold > 0.0)
+					areaPoints = PointUtilities().GetArea(contours[idx]);
+
+				if ((areaPoints / areaScreen >= _threshold) || areaPoints == 0.0 || _threshold == 0.0) {
+					Scalar color((rand() & 255), (rand() & 255), (rand() & 255));
+					_openCv->DrawContour(result, contours, idx, color, CV_FILLED, 8, hierarchy);
+					countFilter++;
+				}
+			}
+
+			//cout << "Initial size: " << contours.size() << " | End Size: " << countFilter << endl;
 		}
-
-		cout << "Initial size: " << contours.size() << " | End Size: " << result.size() << endl;
 
 		return result;
 	}
@@ -38,7 +50,7 @@ namespace Services {
 		for each (vector<Point> vecPoint in contours)
 		{
 			double areaPoints = PointUtilities().GetArea(vecPoint);
-			if(areaPoints != 0.0 )
+			if (areaPoints != 0.0)
 				listAreas.push_back(areaPoints);
 		}
 
@@ -108,28 +120,11 @@ namespace Services {
 		vector<vector<Point>> contours;
 		vector<Vec4i> hierarchy;
 
-		findContours(img, contours, hierarchy, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
-		//contours = _openCv->ConnectedComponentsAlgorithm(img, hierarchy, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
-
-		Mat result = Mat::zeros(img.size(), CV_8UC3);
+		// Applying Connected Components from Open CV
+		_openCv->ConnectedComponentsAlgorithm(img, contours, hierarchy, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
 
 		// Applying filter
-		contours = Filter(contours);
-
-		if (!contours.empty() && !hierarchy.empty())
-		{
-			// iterate through all the top-level contours,
-			// draw each connected component with its own random color
-			int idx = 0;
-			for (; idx >= 0; idx = hierarchy[idx][0])
-			{
-				Scalar color((rand() & 255), (rand() & 255), (rand() & 255));
-				drawContours(result, contours, idx, color, CV_FILLED, 8, hierarchy);
-				//result = _openCv->DrawContour(contours, idx, color, CV_FILLED, 8, hierarchy);
-			}
-		}
-
-		return result;
+		return DrawFiltering(contours, hierarchy, img);
 	}
 
 }

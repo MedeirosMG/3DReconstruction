@@ -23,9 +23,9 @@ namespace Algorithms {
 			~OpenCV();
 		
 			Mat CannyAlgorithm(Mat img, double lowThresh, double highThresh, int kernelSize);		
-			vector<vector<Point>> ConnectedComponentsAlgorithm(Mat image, vector<Vec4i> hierarchy, int cvMode, int cvMethod);
+			void ConnectedComponentsAlgorithm(Mat inputImage, vector<vector<Point>> &resultContours, vector<Vec4i> &hierarchy, int cvMode, int cvMethod);
 
-			Mat DrawContour(vector<vector<Point>> contours, int indice, Scalar color, int mode, int lineType, vector<Vec4i> hierarchy);
+			void DrawContour(Mat &result, vector<vector<Point>> contours, int indice, Scalar color, int mode, int lineType, vector<Vec4i> hierarchy);
 			Mat ReadImage(string path);
 			Mat ColorConverter(Mat image, int cvEnum);
 			vector<KeyPoint> SiftDetector(cv::SiftFeatureDetector* detector, Mat img);

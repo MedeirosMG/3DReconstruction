@@ -19,10 +19,10 @@ namespace Services {
 	{
 	private:
 		OpenCV * _openCv;
-		float _threshold = 0.1;
+		float _threshold = 0.02;
 		int _interval = 3;
 		Size _screenSize = Size(REC_SCREEN_DEFAULT_WIDTH, REC_SCREEN_DEFAULT_HEIGHT);
-		vector<vector<Point>> Filter(vector<vector<Point>> contours);
+		Mat DrawFiltering(vector<vector<Point>>& contours, vector<Vec4i>& hierarchy, Mat image);
 		double GetBestAverage(vector<vector<Point>> contours);
 
 	public:

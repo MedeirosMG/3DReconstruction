@@ -28,10 +28,10 @@ namespace Algorithms {
 
 		result = imread(path);
 
-		if(!result.data)
+		if (!result.data)
 			throw std::exception("Error! Image could not be read.");
-			
-		return result;	
+
+		return result;
 	}
 
 	//Convert the colors of an image
@@ -40,26 +40,20 @@ namespace Algorithms {
 		Mat result;
 		cvtColor(image, result, cvEnum);
 
-		return result;  
+		return result;
 	}
 
 	//Connected components (find regions)
-	vector<vector<Point>> OpenCV::ConnectedComponentsAlgorithm(Mat inputImage, vector<Vec4i> hierarchy, int cvMode, int cvMethod)
+	void OpenCV::ConnectedComponentsAlgorithm(Mat inputImage, vector<vector<Point>> &resultContours, vector<Vec4i> &hierarchy, int cvMode, int cvMethod)
 	{
-		vector<vector<Point>> resultContours;
 		findContours(inputImage, resultContours, hierarchy, cvMode, cvMethod);
-
-		return resultContours;
 	}
-	
-	//Draw the contours of an image
-	Mat OpenCV::DrawContour(vector<vector<Point>> contours, int indice, Scalar color, int mode, int lineType, vector<Vec4i> hierarchy)
-	{
-		Mat result;
-		drawContours(result, contours, indice, color, mode, lineType, hierarchy);
 
-		return result;
-	}	
+	//Draw the contours of an image
+	void OpenCV::DrawContour(Mat &result, vector<vector<Point>> contours, int indice, Scalar color, int mode, int lineType, vector<Vec4i> hierarchy)
+	{
+		drawContours(result, contours, indice, color, mode, lineType, hierarchy);
+	}
 
 	//SIFT detector component
 	vector<KeyPoint> OpenCV::SiftDetector(cv::SiftFeatureDetector* detector, Mat img)
@@ -80,7 +74,7 @@ namespace Algorithms {
 
 		return result;
 	}
-	
+
 	//Brute Force Matcher for found points
 	vector<DMatch> OpenCV::BFMatcher(Mat img1, Mat img2)
 	{
@@ -116,7 +110,7 @@ namespace Algorithms {
 	{
 		Mat temp;
 		resize(img, temp, imgSize);
-		
+
 		return temp;
 	}
 }
