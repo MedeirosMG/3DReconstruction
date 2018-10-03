@@ -54,10 +54,10 @@ namespace Services {
 
 		//Outro tipo de match
 		/*FlannBasedMatcher matcher;
-		matcher.match(firstImgDescription, secondImgDescription, matches);
+		matcher.match(firstImgDescription, secondImgDescription, matches);*/
 
 		//Filtro de pontos
-		double max_dist = 0; double min_dist = 100;
+		/*double max_dist = 0; double min_dist = 100;
 
 		//-- Quick calculation of max and min distances between keypoints
 		for (int i = 0; i < firstImgDescription.rows; i++)

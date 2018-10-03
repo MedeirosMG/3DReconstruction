@@ -36,6 +36,9 @@ namespace Algorithms {
 			void SaveImage(string path, Mat img);
 			void NewWindow(string nameWindow);
 			Mat Resize(Mat img, Size imgSize);
+
+			Mat Dilate(Mat img, int dilationSize);
+
 	};
 
 }

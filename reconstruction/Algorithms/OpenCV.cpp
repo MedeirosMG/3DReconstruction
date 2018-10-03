@@ -21,6 +21,16 @@ namespace Algorithms {
 		return ret;
 	}
 
+	Mat OpenCV::Dilate(Mat img, int dilationSize)
+	{
+		Mat element = getStructuringElement(MORPH_CROSS,
+			Size(2 * dilationSize + 1, 2 * dilationSize + 1),
+			Point(dilationSize, dilationSize));
+		Mat result;
+		dilate(img, result, element);
+		return result;
+	}
+
 	//Read a single image
 	Mat OpenCV::ReadImage(string path)
 	{
