@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "DelaunayService.h"
-
+#include <iterator>
 namespace Services {
 	DelaunayService::DelaunayService(OpenCV* openCv)
 	{
@@ -102,6 +102,10 @@ namespace Services {
 		//Merge points
 		vector<Point3f> points = converter->MergePoints(pointsCalibration, converter->PixelToCoordenate(contour, sizeImg));
 		//vector<Point3f> points = pointsCalibration;
+		std::ofstream outFile("points.txt");
+		// the important part
+		for (const auto &e : points) outFile << e.x<< " "<< e.y<<" "<<e.z << "\n";
+		
 
 		// Get max width and max height of points
 		float maxWidth = converter->GetMaxAbsCoord(points, "x");

@@ -1,4 +1,5 @@
-﻿  DelaunayService.cpp
-c:\users\murillo\c++\3dreconstruction\reconstruction\services\delaunayservice.cpp(37): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
-c:\users\murillo\c++\3dreconstruction\reconstruction\services\delaunayservice.cpp(120): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
+﻿  TestService.cpp
+c:\users\murillo\c++\3dreconstruction\reconstruction\helpers\console.h(37): warning C4091: 'static ': ignorado à esquerda de 'Helpers::Console' quando nenhuma variável é declarada
+c:\users\murillo\c++\3dreconstruction\reconstruction\services\connectedcomponentsservice.h(22): warning C4305: 'inicializando': truncamento de 'double' para 'float'
+c:\users\murillo\c++\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignorado à esquerda de 'Helpers::StringHelper' quando nenhuma variável é declarada
   Reconstruction.vcxproj -> C:\Users\Murillo\C++\3DReconstruction\x64\Debug\Reconstruction.exe

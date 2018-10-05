@@ -83,10 +83,10 @@ namespace Services {
 
 
 		SiftResult result;
-		result.Matches = good_matches;
+		result.Matches = matches;
 		result.FirstImageKeyPoints = firstImgKeyPoints;
 		result.SecondImageKeyPoints = secondImgKeyPoints;
-		drawMatches(img1, firstImgKeyPoints, img2, secondImgKeyPoints, good_matches, result.siftImg, Scalar::all(-1), Scalar::all(-1),
+		drawMatches(img1, firstImgKeyPoints, img2, secondImgKeyPoints, matches, result.siftImg, Scalar::all(-1), Scalar::all(-1),
 			vector<char>(), DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS);
 		return result;
 	}

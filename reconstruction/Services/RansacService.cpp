@@ -49,7 +49,7 @@ namespace Services {
 				ransacMatches.push_back(points[i]);
 		}
 
-		return points;
+		return ransacMatches;
 	}
 
 }
