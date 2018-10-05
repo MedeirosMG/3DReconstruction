@@ -43,7 +43,7 @@ namespace Services {
 		double *matrix = new double[16];
 		glGetDoublev(GL_PROJECTION_MATRIX, matrix);
 		glLoadIdentity();
-		glOrtho(0, 800, 0, 600, -5, 5);
+		glOrtho(0, 800, 0, 600, -1, 1);
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 		glPushMatrix();

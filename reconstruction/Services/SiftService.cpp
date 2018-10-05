@@ -57,7 +57,7 @@ namespace Services {
 		matcher.match(firstImgDescription, secondImgDescription, matches);*/
 
 		//Filtro de pontos
-		/*double max_dist = 0; double min_dist = 100;
+		double max_dist = 0; double min_dist = 100;
 
 		//-- Quick calculation of max and min distances between keypoints
 		for (int i = 0; i < firstImgDescription.rows; i++)
@@ -75,18 +75,18 @@ namespace Services {
 
 		for (int i = 0; i < firstImgDescription.rows; i++)
 		{
-			if (matches[i].distance <  10 * min_dist)
+			if (matches[i].distance <  15 * min_dist)
 			{
 				good_matches.push_back(matches[i]);
 			}
-		}*/
+		}
 
 
 		SiftResult result;
-		result.Matches = matches;
+		result.Matches = good_matches;
 		result.FirstImageKeyPoints = firstImgKeyPoints;
 		result.SecondImageKeyPoints = secondImgKeyPoints;
-		drawMatches(img1, firstImgKeyPoints, img2, secondImgKeyPoints, matches, result.siftImg, Scalar::all(-1), Scalar::all(-1),
+		drawMatches(img1, firstImgKeyPoints, img2, secondImgKeyPoints, good_matches, result.siftImg, Scalar::all(-1), Scalar::all(-1),
 			vector<char>(), DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS);
 		return result;
 	}

@@ -1,2 +1,4 @@
-﻿  RansacService.cpp
+﻿  DelaunayService.cpp
+c:\users\murillo\c++\3dreconstruction\reconstruction\services\delaunayservice.cpp(37): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
+c:\users\murillo\c++\3dreconstruction\reconstruction\services\delaunayservice.cpp(120): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
   Reconstruction.vcxproj -> C:\Users\Murillo\C++\3DReconstruction\x64\Debug\Reconstruction.exe

@@ -54,7 +54,7 @@ namespace Services {
 		WorldY = this->WorldPointY(firstPoint.y, WorldZ);
 		WorldX = this->WorldPointX(firstPoint.x, WorldZ);
 
-		Point3f* WorldPoint = new Point3f(WorldX, WorldY, WorldZ);
+		Point3f* WorldPoint = new Point3f(firstPoint.x, firstPoint.y, WorldZ);
 
 		return WorldPoint;
 	}
