@@ -41,15 +41,15 @@ namespace Services {
 	vector<PointPair> RansacService::Execute(SiftResult sift_result, double ransacThresh)
 	{
 		vector<PointPair> points = Convert().DMatchToPointPair(sift_result.Matches, sift_result.FirstImageKeyPoints, sift_result.SecondImageKeyPoints);
-		Mat mask = FindRansacMask(sift_result, ransacThresh);
+		/*Mat mask = FindRansacMask(sift_result, ransacThresh);
 		
 		vector< PointPair > ransacMatches;
 		for (int i = 0; i < mask.rows; i++) {
 			if ((unsigned int)mask.at<uchar>(i))
 				ransacMatches.push_back(points[i]);
-		}
+		}*/
 
-		return ransacMatches;
+		return points;
 	}
 
 }

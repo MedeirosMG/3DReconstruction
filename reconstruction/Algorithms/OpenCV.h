@@ -38,6 +38,7 @@ namespace Algorithms {
 			Mat Resize(Mat img, Size imgSize);
 
 			Mat Dilate(Mat img, int dilationSize);
+			Mat Erode(Mat img, int dilationSize);
 
 	};
 

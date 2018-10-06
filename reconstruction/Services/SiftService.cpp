@@ -32,6 +32,10 @@ namespace Services {
 		//Matches found in images
 		vector<DMatch> matches;
 
+		//-- Draw only "good" matches (i.e. whose distance is less than 3*min_dist )
+		std::vector< DMatch > good_matches;
+
+		SiftResult result;
 		//Number of lines and columns of the image
 		float lin = img1.rows;
 		float col = img1.cols;
@@ -45,6 +49,7 @@ namespace Services {
 		firstImgKeyPoints = _openCv->SiftDetector(&detector, img1);
 		secondImgKeyPoints = _openCv->SiftDetector(&detector, img2);
 
+		
 		//Describing the images
 		firstImgDescription = _openCv->SiftDescriptor(img1, firstImgKeyPoints);
 		secondImgDescription = _openCv->SiftDescriptor(img2, secondImgKeyPoints);
@@ -57,7 +62,7 @@ namespace Services {
 		matcher.match(firstImgDescription, secondImgDescription, matches);*/
 
 		//Filtro de pontos
-		double max_dist = 0; double min_dist = 100;
+		double max_dist = 0, min_dist = 100;
 
 		//-- Quick calculation of max and min distances between keypoints
 		for (int i = 0; i < firstImgDescription.rows; i++)
@@ -70,23 +75,20 @@ namespace Services {
 		printf("-- Max dist : %f \n", max_dist);
 		printf("-- Min dist : %f \n", min_dist);
 
-		//-- Draw only "good" matches (i.e. whose distance is less than 3*min_dist )
-		std::vector< DMatch > good_matches;
 
-		for (int i = 0; i < firstImgDescription.rows; i++)
-		{
-			if (matches[i].distance <  15 * min_dist)
-			{
+		for (int i = 0; i < matches.size(); i++) {
+
+			if (abs(firstImgKeyPoints[i].pt.y - secondImgKeyPoints[matches[i].trainIdx].pt.y) <= 50 && matches[i].distance <  10 * min_dist)
 				good_matches.push_back(matches[i]);
-			}
+
 		}
 
+	
 
-		SiftResult result;
-		result.Matches = matches;
+		result.Matches = good_matches;
 		result.FirstImageKeyPoints = firstImgKeyPoints;
 		result.SecondImageKeyPoints = secondImgKeyPoints;
-		drawMatches(img1, firstImgKeyPoints, img2, secondImgKeyPoints, matches, result.siftImg, Scalar::all(-1), Scalar::all(-1),
+		drawMatches(img1, firstImgKeyPoints, img2, secondImgKeyPoints, good_matches, result.siftImg, Scalar::all(-1), Scalar::all(-1),
 			vector<char>(), DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS);
 		return result;
 	}
