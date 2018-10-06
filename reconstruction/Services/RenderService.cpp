@@ -205,7 +205,7 @@ namespace Services {
 
 		DelaunayService *delaunay = new DelaunayService();
 
-		Execute(argc, argv, delaunay->Execute(points, vector<Point3f>()), points);
+		Execute(argc, argv, delaunay->Execute(points, vector<Point3f>(), Mat()), points);
 	}
 
 	void RenderService::Execute(int *argc, char **argv, vector<Vec6f> triangles, vector<Point3f> points3D)

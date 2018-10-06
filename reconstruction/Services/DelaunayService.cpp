@@ -37,7 +37,7 @@ namespace Services {
 		Mat image = cvCreateImage(cvSize(maxWidth + maxAbs, maxHeight + maxAbs), 8, 1);
 		
 		
-		vector<Vec6f> triangleList = Execute(points, points);
+		vector<Vec6f> triangleList = Execute(points, points, Mat());
 
 		for (size_t i = 0; i < triangleList.size(); i++) {
 			Vec6f triangle = triangleList[i];
@@ -69,6 +69,127 @@ namespace Services {
 			return false;
 	}
 
+	bool DelaunayService::CheckInsidePoint(Point2f point, Mat contour)
+	{
+		int width = REC_SCREEN_DEFAULT_WIDTH;
+		int height = REC_SCREEN_DEFAULT_HEIGHT;
+		bool controlVariable = true;
+
+		// Go to max width
+		Point2f variablePoint = point;
+		while (variablePoint.x < width)
+		{
+			if (contour.at<uchar>(variablePoint.y, variablePoint.x) != 0)
+			{
+				controlVariable = true;
+				break;
+			}
+			else
+			{ 
+				controlVariable = false;
+				variablePoint.x++;
+			}
+		}
+
+		if (!controlVariable)
+			return false;
+
+
+		// Go to min width
+		variablePoint = point;
+		while (variablePoint.x > 0)
+		{
+			if (contour.at<uchar>(variablePoint.y, variablePoint.x) != 0)
+			{
+				controlVariable = true;
+				break;
+			}
+			else
+			{
+				controlVariable = false;
+				variablePoint.x--;
+			}
+		}
+
+		if (!controlVariable)
+			return false;
+
+		// Go to max height
+		variablePoint = point;
+		while (variablePoint.y < height)
+		{
+			if (contour.at<uchar>(variablePoint.y, variablePoint.x) != 0)
+			{
+				controlVariable = true;
+				break;
+			}
+			else
+			{
+				controlVariable = false;
+				variablePoint.y++;
+			}
+		}
+
+		if (!controlVariable)
+			return false;
+
+
+		// Go to min width
+		variablePoint = point;
+		while (variablePoint.y > 0)
+		{
+			if (contour.at<uchar>(variablePoint.y, variablePoint.x) != 0)
+			{
+				controlVariable = true;
+				break;
+			}
+			else
+			{
+				controlVariable = false;
+				variablePoint.y--;
+			}
+		}
+
+		return controlVariable;
+	}
+
+	vector<Vec6f> DelaunayService::FilterTriangles(vector<Vec6f> triangles, Mat contour, Size screenSize)
+	{
+		PointUtilities *utilities = new PointUtilities();
+		vector<Vec6f> result;		
+		Point2f middlePoint;
+
+		for (size_t i = 0; i < triangles.size(); i++) {
+			Vec6f triangle = triangles[i];
+			
+			Point3f pt1 = utilities->CoordenateToPixel(Point3f(cvRound(triangle[0]), cvRound(triangle[1]), 0), screenSize);
+			Point3f pt2 = utilities->CoordenateToPixel(Point3f(cvRound(triangle[2]), cvRound(triangle[3]), 0), screenSize);
+			Point3f pt3 = utilities->CoordenateToPixel(Point3f(cvRound(triangle[4]), cvRound(triangle[5]), 0), screenSize);
+
+			middlePoint = utilities->GetMiddlePoint(Point2f(pt1.x, pt1.y), Point2f(pt2.x, pt2.y));
+			middlePoint.x = cvRound(middlePoint.x);
+			middlePoint.y = cvRound(middlePoint.y);
+			if (!CheckInsidePoint(middlePoint, contour))
+				continue;
+
+			middlePoint = utilities->GetMiddlePoint(Point2f(pt2.x, pt2.y), Point2f(pt3.x, pt3.y));
+			middlePoint.x = cvRound(middlePoint.x);
+			middlePoint.y = cvRound(middlePoint.y);
+			if (!CheckInsidePoint(middlePoint, contour))
+				continue;
+
+			middlePoint = utilities->GetMiddlePoint(Point2f(pt3.x, pt3.y), Point2f(pt1.x, pt1.y));
+			middlePoint.x = cvRound(middlePoint.x);
+			middlePoint.y = cvRound(middlePoint.y);
+			if (!CheckInsidePoint(middlePoint, contour))
+				continue;
+
+			result.push_back(triangle);
+		}
+
+		return result;
+	}
+
 	vector<Vec6f> DelaunayService::RemoveRectangle(vector<Vec6f> triangles) 
 	{
 		vector<Vec6f> retorno;
@@ -94,7 +215,7 @@ namespace Services {
 		return retorno;
 	}
 
-	vector<Vec6f> DelaunayService::Execute(vector<Point3f> pointsCalibration, vector<Point3f> contour, Size sizeImg)
+	vector<Vec6f> DelaunayService::Execute(vector<Point3f> pointsCalibration, vector<Point3f> contour, Mat contourDilated, Size sizeImg)
 	{
 		//Convert Points
 		PointUtilities *converter = new PointUtilities();
@@ -139,6 +260,6 @@ namespace Services {
 		//Return points in triangle to original value
 		triangleList = converter->PointsTranslocate(triangleList, -maxAbs);
 
-		return RemoveRectangle(triangleList);
+		return FilterTriangles(RemoveRectangle(triangleList), contourDilated, sizeImg);
 	}
 }

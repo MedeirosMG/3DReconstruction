@@ -16,7 +16,7 @@ namespace Services {
 	{
 		cout << "======= Start Test ======= " << endl;
 
-		ControllerService* controller = new ControllerService(".\\Others Files\\teste1.png", ".\\Others Files\\teste2.png");
+		ControllerService* controller = new ControllerService(".\\Others Files\\im0.png", ".\\Others Files\\im1.png");
 
 		controller->SetFireflyProperties(2, 50, 100);
 		controller->SetCannyProperties(50, 700, 3);

@@ -20,6 +20,7 @@ namespace Services {
 			CannyService(OpenCV* openCv);
 			~CannyService();
 			vector<Point3f> Execute(Mat inputImage, double lowThresh, double highThresh, int kernelSize);
+			Mat ExecuteDilated(Mat inputImage, double lowThresh, double highThresh, int kernelSize);
 			void TestExecute(const Mat inputImage, double lowThresh, double highThresh, int kernelSize);
 	};
 

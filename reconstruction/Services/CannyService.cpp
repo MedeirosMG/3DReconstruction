@@ -16,7 +16,15 @@ namespace Services {
 
 	CannyService::~CannyService()
 	{
-	}	
+	}
+
+	Mat CannyService::ExecuteDilated(const Mat inputImage, double lowThresh, double highThresh, int kernelSize)
+	{
+		Mat contours = _openCv->CannyAlgorithm(inputImage, lowThresh, highThresh, kernelSize);
+		Mat contoursDilated = _openCv->Dilate(contours, 2);
+
+		return contoursDilated;
+	}
 
 	vector<Point3f> CannyService::Execute(const Mat inputImage, double lowThresh, double highThresh, int kernelSize)
 	{
@@ -25,11 +33,11 @@ namespace Services {
 
 		//Apply canny
 		Mat contours = _openCv->CannyAlgorithm(inputImage, lowThresh, highThresh, kernelSize);
-		Mat contoursDilated = _openCv->Dilate(contours, 0);
+		
 		//Find non black points
-		for (int j = 0; j< contoursDilated.rows; j++) { 
-			for (int i = 0; i< contoursDilated.cols; i++) {
-				if (contoursDilated.at<uchar>(j, i) > 0) {
+		for (int j = 0; j< contours.rows; j++) {
+			for (int i = 0; i< contours.cols; i++) {
+				if (contours.at<uchar>(j, i) > 0) {
 					cv::Point temp;
 					temp.x = i;
 					temp.y = j;

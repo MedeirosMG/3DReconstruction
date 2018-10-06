@@ -34,6 +34,7 @@ namespace Helpers {
 			vector<Point3f> MergePoints(vector<Point3f> pts1, vector<Point3f> pts2);
 			vector<Point3f> PixelToCoordenate(vector<Point3f> points, Size screenSize);
 			Point3f PixelToCoordenate(Point3f point, Size screenSize);
+			Point3f CoordenateToPixel(Point3f point, Size screenSize);
 			vector<PointPair> PixelToCoordenate(vector<PointPair> points, Size screenSize);
 			double GetArea(vector<Point> points);
 	};

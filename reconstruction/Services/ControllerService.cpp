@@ -57,8 +57,11 @@ namespace Services {
 		{
 			cout << endl << "=== Init Canny ===" << endl << endl;
 			_resultCanny = _cannyService->Execute(_firstImage, _cannyLowThresh, _cannyHighTresh, _cannyKernelSize);
-
 			_visualizer->Show(_resultCanny);
+
+			cout << endl << "=== Init Canny Dilated ===" << endl << endl;
+			_resultCannyDilated = _cannyService->ExecuteDilated(_firstImage, _cannyLowThresh, _cannyHighTresh, _cannyKernelSize);
+			_visualizer->Show(_resultCannyDilated, _visualizerName);
 
 			return true;
 		}
@@ -94,8 +97,7 @@ namespace Services {
 		try
 		{
 			cout << endl << "=== Init Delaunay ===" << endl << endl;
-			_resultDelaunay = _delaunayService->Execute(_resultCalibration, _resultCanny, _screenSize);
-
+			_resultDelaunay = _delaunayService->Execute(_resultCalibration, _resultCanny, _resultCannyDilated,_screenSize);
 			_visualizer->Show(_resultDelaunay);
 
 			return true;
