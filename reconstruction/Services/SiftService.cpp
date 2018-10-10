@@ -78,7 +78,7 @@ namespace Services {
 
 		for (int i = 0; i < matches.size(); i++) {
 
-			if (abs(firstImgKeyPoints[i].pt.y - secondImgKeyPoints[matches[i].trainIdx].pt.y) <= 50 && matches[i].distance <  10 * min_dist)
+			if (abs(firstImgKeyPoints[i].pt.y - secondImgKeyPoints[matches[i].trainIdx].pt.y) <= 15 && matches[i].distance <  30 * min_dist)
 				good_matches.push_back(matches[i]);
 
 		}

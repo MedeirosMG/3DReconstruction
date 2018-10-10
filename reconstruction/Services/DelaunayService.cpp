@@ -255,10 +255,18 @@ namespace Services {
 
 		// Get triangle list
 		vector<Vec6f> triangleList;
-		subdiv.getTriangleList(triangleList);
+		//subdiv.getTriangleList(triangleList);
 
+		ifstream inFile("triangles.txt");
+		double p0[3], p1[3], p2[3];
+		
+		while (inFile >> p0[0] >> p0[1] >> p0[2] >> p1[0] >> p1[1] >> p1[2] >> p2[0] >> p2[1] >> p2[2]) {
+			//cout << p0[0] << p0[1] << p0[2] << p1[0] << p1[1] << p1[2] << p2[0] << p2[1] << p2[2];
+			Vec6f tri(p0[0], p0[1], p1[0], p1[1], p2[0], p2[1]);
+			triangleList.push_back(tri);
+		}
 		//Return points in triangle to original value
-		triangleList = converter->PointsTranslocate(triangleList, -maxAbs);
+		//triangleList = converter->PointsTranslocate(triangleList, -maxAbs);
 
 		return FilterTriangles(RemoveRectangle(triangleList), contourDilated, sizeImg);
 	}

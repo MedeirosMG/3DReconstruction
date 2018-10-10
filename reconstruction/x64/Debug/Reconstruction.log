@@ -1,4 +1,18 @@
-﻿  SiftService.cpp
-c:\users\murillo\c++\3dreconstruction\reconstruction\services\siftservice.cpp(40): warning C4244: 'inicializando': conversão de 'int' para 'float', possível perda de dados
-c:\users\murillo\c++\3dreconstruction\reconstruction\services\siftservice.cpp(41): warning C4244: 'inicializando': conversão de 'int' para 'float', possível perda de dados
+﻿  DelaunayService.cpp
+c:\users\murillo\c++\3dreconstruction\reconstruction\services\delaunayservice.cpp(37): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
+c:\users\murillo\c++\3dreconstruction\reconstruction\services\delaunayservice.cpp(82): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
+c:\users\murillo\c++\3dreconstruction\reconstruction\services\delaunayservice.cpp(102): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
+c:\users\murillo\c++\3dreconstruction\reconstruction\services\delaunayservice.cpp(121): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
+c:\users\murillo\c++\3dreconstruction\reconstruction\services\delaunayservice.cpp(141): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
+c:\users\murillo\c++\3dreconstruction\reconstruction\services\delaunayservice.cpp(165): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+c:\users\murillo\c++\3dreconstruction\reconstruction\services\delaunayservice.cpp(166): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+c:\users\murillo\c++\3dreconstruction\reconstruction\services\delaunayservice.cpp(167): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+c:\users\murillo\c++\3dreconstruction\reconstruction\services\delaunayservice.cpp(170): warning C4244: '=': conversão de 'int' para 'float', possível perda de dados
+c:\users\murillo\c++\3dreconstruction\reconstruction\services\delaunayservice.cpp(171): warning C4244: '=': conversão de 'int' para 'float', possível perda de dados
+c:\users\murillo\c++\3dreconstruction\reconstruction\services\delaunayservice.cpp(176): warning C4244: '=': conversão de 'int' para 'float', possível perda de dados
+c:\users\murillo\c++\3dreconstruction\reconstruction\services\delaunayservice.cpp(177): warning C4244: '=': conversão de 'int' para 'float', possível perda de dados
+c:\users\murillo\c++\3dreconstruction\reconstruction\services\delaunayservice.cpp(182): warning C4244: '=': conversão de 'int' para 'float', possível perda de dados
+c:\users\murillo\c++\3dreconstruction\reconstruction\services\delaunayservice.cpp(183): warning C4244: '=': conversão de 'int' para 'float', possível perda de dados
+c:\users\murillo\c++\3dreconstruction\reconstruction\services\delaunayservice.cpp(245): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
+c:\users\murillo\c++\3dreconstruction\reconstruction\services\delaunayservice.cpp(265): warning C4244: 'argumento': conversão de 'double' para 'float', possível perda de dados
   Reconstruction.vcxproj -> C:\Users\Murillo\C++\3DReconstruction\x64\Debug\Reconstruction.exe
