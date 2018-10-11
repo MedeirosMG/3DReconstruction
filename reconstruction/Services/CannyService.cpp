@@ -21,7 +21,7 @@ namespace Services {
 	Mat CannyService::ExecuteDilated(const Mat inputImage, double lowThresh, double highThresh, int kernelSize)
 	{
 		Mat contours = _openCv->CannyAlgorithm(inputImage, lowThresh, highThresh, kernelSize);
-		Mat contoursDilated = _openCv->Dilate(contours, 0);
+		Mat contoursDilated = _openCv->Dilate(contours, 3);
 
 		return contoursDilated;
 	}

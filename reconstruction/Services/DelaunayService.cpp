@@ -18,6 +18,7 @@ namespace Services {
 
 	void DelaunayService::TestExecute(vector<Point3f> points)
 	{
+		/*
 		PointUtilities *converter = new PointUtilities();
 
 		if(points.size() == 0)
@@ -36,7 +37,6 @@ namespace Services {
 
 		Mat image = cvCreateImage(cvSize(maxWidth + maxAbs, maxHeight + maxAbs), 8, 1);
 		
-		
 		vector<Vec6f> triangleList = Execute(points, points, Mat());
 
 		for (size_t i = 0; i < triangleList.size(); i++) {
@@ -50,7 +50,7 @@ namespace Services {
 			_openCv->DrawLine(image, pt3, pt1);
 		}
 
-		_openCv->SaveImage(".\\Others Files\\MockPoints.jpg",image);
+		_openCv->SaveImage(".\\Others Files\\MockPoints.jpg",image);*/
 	}
 
 	bool DelaunayService::CheckRectangle(int coord, Vec6f triangle)
@@ -153,18 +153,26 @@ namespace Services {
 		return controlVariable;
 	}
 
-	vector<Vec6f> DelaunayService::FilterTriangles(vector<Vec6f> triangles, Mat contour, Size screenSize)
+	vector<Vec<Point3f, 3>> DelaunayService::FilterTriangles(vector<Vec<Point3f, 3>> triangles, Mat contour, Size screenSize)
 	{
 		PointUtilities *utilities = new PointUtilities();
-		vector<Vec6f> result;		
+		vector<Vec<Point3f, 3>> result;
 		Point2f middlePoint;
 
-		for (size_t i = 0; i < triangles.size(); i++) {
-			Vec6f triangle = triangles[i];
-			
-			Point3f pt1 = utilities->CoordenateToPixel(Point3f(cvRound(triangle[0]), cvRound(triangle[1]), 0), screenSize);
-			Point3f pt2 = utilities->CoordenateToPixel(Point3f(cvRound(triangle[2]), cvRound(triangle[3]), 0), screenSize);
-			Point3f pt3 = utilities->CoordenateToPixel(Point3f(cvRound(triangle[4]), cvRound(triangle[5]), 0), screenSize);
+		OpenCV *open = new OpenCV();
+		Mat mat1 = Mat(contour.rows, contour.cols, CV_8UC3);
+		Mat mat2 = Mat(contour.rows, contour.cols, CV_8UC3);
+
+		for each (Vec<Point3f, 3> triangle in triangles)
+		{
+			Point3f pt1 = utilities->CoordenateToPixel(triangle[0], screenSize);
+			Point3f pt2 = utilities->CoordenateToPixel(triangle[1], screenSize);
+			Point3f pt3 = utilities->CoordenateToPixel(triangle[2], screenSize);
+
+			open->DrawLine(mat1, Point(1, 1), Point(2, 2));
+			open->DrawLine(mat1, Point(pt1.x, pt1.y), Point(pt2.x, pt2.y));
+			open->DrawLine(mat1, Point(pt2.x, pt2.y), Point(pt3.x, pt3.y));
+			open->DrawLine(mat1, Point(pt3.x, pt3.y), Point(pt1.x, pt1.y));
 
 			middlePoint = utilities->GetMiddlePoint(Point2f(pt1.x, pt1.y), Point2f(pt2.x, pt2.y));
 			middlePoint.x = cvRound(middlePoint.x);
@@ -184,8 +192,19 @@ namespace Services {
 			if (!CheckInsidePoint(middlePoint, contour))
 				continue;
 
+
+			open->DrawLine(mat2, Point(pt1.x, pt1.y), Point(pt2.x, pt2.y));
+			open->DrawLine(mat2, Point(pt2.x, pt2.y), Point(pt3.x, pt3.y));
+			open->DrawLine(mat2, Point(pt3.x, pt3.y), Point(pt1.x, pt1.y));
 			result.push_back(triangle);
 		}
+
+		/*
+		open->NewWindow("antes");
+		open->NewWindow("depois");
+
+		open->ShowImage(mat1, "antes");
+		open->ShowImage(mat2, "depois");*/
 
 		return result;
 	}
@@ -215,8 +234,9 @@ namespace Services {
 		return retorno;
 	}
 
-	vector<Vec6f> DelaunayService::Execute(vector<Point3f> pointsCalibration, vector<Point3f> contour, Mat contourDilated, Size sizeImg)
+	vector<Vec<Point3f, 3>> DelaunayService::Execute(vector<Point3f> pointsCalibration, vector<Point3f> contour, Mat contourDilated, Size sizeImg)
 	{
+		/*
 		//Convert Points
 		PointUtilities *converter = new PointUtilities();
 
@@ -255,11 +275,20 @@ namespace Services {
 
 		// Get triangle list
 		vector<Vec6f> triangleList;
-		subdiv.getTriangleList(triangleList);
+		//subdiv.getTriangleList(triangleList);
+		*/
 
-		//Return points in triangle to original value
-		triangleList = converter->PointsTranslocate(triangleList, -maxAbs);
+		// ^ Substituir triangulação acima pela do VTK ^
 
-		return FilterTriangles(RemoveRectangle(triangleList), contourDilated, sizeImg);
+		vector<Vec<Point3f, 3>> triangleList;
+
+		ifstream inFile(".\\Others Files\\triangles.txt");
+		double p0[3], p1[3], p2[3];
+		
+		while (inFile >> p0[0] >> p0[1] >> p0[2] >> p1[0] >> p1[1] >> p1[2] >> p2[0] >> p2[1] >> p2[2]) {
+			triangleList.push_back(Vec<Point3f, 3>(Point3f(p0[0], p0[1], p0[2]), Point3f(p1[0], p1[1], p1[2]), Point3f(p2[0], p2[1], p2[2])));
+		}
+
+		return FilterTriangles(triangleList, contourDilated, sizeImg);
 	}
 }

@@ -1,129 +1,4 @@
-﻿  stdafx.cpp
-  Firefly.cpp
-d:\medei\documents\3dreconstruction\reconstruction\algorithms\firefly.cpp(63): warning C4244: 'inicializando': conversão de 'double' para 'int', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\algorithms\firefly.cpp(149): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\algorithms\firefly.cpp(162): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\algorithms\firefly.cpp(170): warning C4244: '=': conversão de 'double' para '_Ty', possível perda de dados
-          with
-          [
-              _Ty=unsigned int
-          ]
-d:\medei\documents\3dreconstruction\reconstruction\algorithms\firefly.cpp(171): warning C4244: '=': conversão de 'double' para '_Ty', possível perda de dados
-          with
-          [
-              _Ty=unsigned int
-          ]
-  OpenGL.cpp
-  OpenCV.cpp
-  PointPair.cpp
-  RenderProperties.cpp
-  SiftResult.cpp
-  TimeExecution.cpp
-  Console.cpp
-d:\medei\documents\3dreconstruction\reconstruction\helpers\console.h(37): warning C4091: 'static ': ignorado à esquerda de 'Helpers::Console' quando nenhuma variável é declarada
-  Convert.cpp
-  Export.cpp
-d:\medei\documents\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignorado à esquerda de 'Helpers::StringHelper' quando nenhuma variável é declarada
-d:\medei\documents\3dreconstruction\reconstruction\helpers\export.cpp(19): warning C4244: 'inicializando': conversão de 'double' para 'int', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\helpers\export.cpp(20): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\helpers\export.cpp(23): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\helpers\export.cpp(25): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\helpers\export.cpp(27): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\helpers\export.cpp(29): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\helpers\export.cpp(68): warning C4244: 'inicializando': conversão de 'double' para 'int', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\helpers\export.cpp(69): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\helpers\export.cpp(72): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\helpers\export.cpp(74): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\helpers\export.cpp(76): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\helpers\export.cpp(78): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\helpers\export.cpp(126): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
-  Import.cpp
-d:\medei\documents\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignorado à esquerda de 'Helpers::StringHelper' quando nenhuma variável é declarada
-  MultiThreshold.cpp
-d:\medei\documents\3dreconstruction\reconstruction\helpers\multithreshold.cpp(16): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\helpers\multithreshold.cpp(35): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\helpers\multithreshold.cpp(47): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\helpers\multithreshold.cpp(58): warning C4244: '=': conversão de '_Ty' para 'int', possível perda de dados
-          with
-          [
-              _Ty=double
-          ]
-d:\medei\documents\3dreconstruction\reconstruction\helpers\multithreshold.cpp(61): warning C4244: '=': conversão de '_Ty' para 'int', possível perda de dados
-          with
-          [
-              _Ty=double
-          ]
-d:\medei\documents\3dreconstruction\reconstruction\helpers\multithreshold.cpp(118): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\helpers\multithreshold.cpp(128): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\helpers\multithreshold.cpp(139): warning C4244: '=': conversão de '_Ty' para 'int', possível perda de dados
-          with
-          [
-              _Ty=double
-          ]
-d:\medei\documents\3dreconstruction\reconstruction\helpers\multithreshold.cpp(142): warning C4244: '=': conversão de '_Ty' para 'int', possível perda de dados
-          with
-          [
-              _Ty=double
-          ]
-d:\medei\documents\3dreconstruction\reconstruction\helpers\multithreshold.cpp(196): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\helpers\multithreshold.cpp(214): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\helpers\multithreshold.cpp(225): warning C4244: '=': conversão de '_Ty' para 'int', possível perda de dados
-          with
-          [
-              _Ty=double
-          ]
-d:\medei\documents\3dreconstruction\reconstruction\helpers\multithreshold.cpp(228): warning C4244: '=': conversão de '_Ty' para 'int', possível perda de dados
-          with
-          [
-              _Ty=double
-          ]
-  PointsUtilities.cpp
-d:\medei\documents\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(172): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(234): warning C4244: '=': conversão de 'int' para 'float', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(237): warning C4244: '=': conversão de 'int' para 'float', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(240): warning C4244: '=': conversão de 'int' para 'float', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(243): warning C4244: '=': conversão de 'int' para 'float', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(246): warning C4244: '=': conversão de 'int' para 'float', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(249): warning C4244: '=': conversão de 'int' para 'float', possível perda de dados
-  StringHelper.cpp
-d:\medei\documents\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignorado à esquerda de 'Helpers::StringHelper' quando nenhuma variável é declarada
-  Time.cpp
-d:\medei\documents\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignorado à esquerda de 'Helpers::StringHelper' quando nenhuma variável é declarada
-d:\medei\documents\3dreconstruction\reconstruction\helpers\time.cpp(38): warning C4244: 'inicializando': conversão de '_Rep' para 'long', possível perda de dados
-          with
-          [
-              _Rep=__int64
-          ]
-  Tsallis.cpp
-d:\medei\documents\3dreconstruction\reconstruction\helpers\tsallis.cpp(21): warning C4305: 'inicializando': truncamento de 'double' para 'float'
-d:\medei\documents\3dreconstruction\reconstruction\helpers\tsallis.cpp(21): warning C4305: '+=': truncamento de 'double' para 'float'
-d:\medei\documents\3dreconstruction\reconstruction\helpers\tsallis.cpp(84): warning C4244: 'return': conversão de 'double' para 'float', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\helpers\tsallis.cpp(97): warning C4018: '<': incompatibilidade de signed/unsigned
-  Visualizer.cpp
-d:\medei\documents\3dreconstruction\reconstruction\helpers\console.h(37): warning C4091: 'static ': ignorado à esquerda de 'Helpers::Console' quando nenhuma variável é declarada
-  Main.cpp
-d:\medei\documents\3dreconstruction\reconstruction\helpers\console.h(37): warning C4091: 'static ': ignorado à esquerda de 'Helpers::Console' quando nenhuma variável é declarada
-d:\medei\documents\3dreconstruction\reconstruction\services\connectedcomponentsservice.h(22): warning C4305: 'inicializando': truncamento de 'double' para 'float'
-d:\medei\documents\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignorado à esquerda de 'Helpers::StringHelper' quando nenhuma variável é declarada
-  CalibrationService.cpp
-  CannyService.cpp
-d:\medei\documents\3dreconstruction\reconstruction\services\cannyservice.cpp(51): warning C4244: 'argumento': conversão de '_Tp' para '_Tp', possível perda de dados
-          with
-          [
-              _Tp=int
-          ]
-          and
-          [
-              _Tp=float
-          ]
-  Gerando Código...
-  Compilando...
-  ConnectedComponentsService.cpp
-d:\medei\documents\3dreconstruction\reconstruction\helpers\console.h(37): warning C4091: 'static ': ignorado à esquerda de 'Helpers::Console' quando nenhuma variável é declarada
-d:\medei\documents\3dreconstruction\reconstruction\services\connectedcomponentsservice.h(22): warning C4305: 'inicializando': truncamento de 'double' para 'float'
-d:\medei\documents\3dreconstruction\reconstruction\services\connectedcomponentsservice.cpp(105): warning C4244: '=': conversão de 'float' para 'int', possível perda de dados
-  DelaunayService.cpp
-d:\medei\documents\3dreconstruction\reconstruction\services\delaunayservice.cpp(37): warning C4244: 'argumento': conversão de 'float' para 'int', possível perda de dados
+﻿  DelaunayService.cpp
 d:\medei\documents\3dreconstruction\reconstruction\services\delaunayservice.cpp(82): warning C4244: 'argumento': conversão de '_Tp' para 'int', possível perda de dados
           with
           [
@@ -144,76 +19,93 @@ d:\medei\documents\3dreconstruction\reconstruction\services\delaunayservice.cpp(
           [
               _Tp=float
           ]
-d:\medei\documents\3dreconstruction\reconstruction\services\delaunayservice.cpp(165): warning C4244: 'argumento': conversão de 'int' para '_Tp', possível perda de dados
+d:\medei\documents\3dreconstruction\reconstruction\services\delaunayservice.cpp(173): warning C4244: 'argumento': conversão de '_Tp' para '_Tp', possível perda de dados
           with
           [
               _Tp=float
           ]
-d:\medei\documents\3dreconstruction\reconstruction\services\delaunayservice.cpp(166): warning C4244: 'argumento': conversão de 'int' para '_Tp', possível perda de dados
-          with
-          [
-              _Tp=float
-          ]
-d:\medei\documents\3dreconstruction\reconstruction\services\delaunayservice.cpp(167): warning C4244: 'argumento': conversão de 'int' para '_Tp', possível perda de dados
-          with
-          [
-              _Tp=float
-          ]
-d:\medei\documents\3dreconstruction\reconstruction\services\delaunayservice.cpp(170): warning C4244: '=': conversão de 'int' para '_Tp', possível perda de dados
-          with
-          [
-              _Tp=float
-          ]
-d:\medei\documents\3dreconstruction\reconstruction\services\delaunayservice.cpp(171): warning C4244: '=': conversão de 'int' para '_Tp', possível perda de dados
-          with
-          [
-              _Tp=float
-          ]
-d:\medei\documents\3dreconstruction\reconstruction\services\delaunayservice.cpp(176): warning C4244: '=': conversão de 'int' para '_Tp', possível perda de dados
-          with
-          [
-              _Tp=float
-          ]
-d:\medei\documents\3dreconstruction\reconstruction\services\delaunayservice.cpp(177): warning C4244: '=': conversão de 'int' para '_Tp', possível perda de dados
-          with
-          [
-              _Tp=float
-          ]
-d:\medei\documents\3dreconstruction\reconstruction\services\delaunayservice.cpp(182): warning C4244: '=': conversão de 'int' para '_Tp', possível perda de dados
-          with
-          [
-              _Tp=float
-          ]
-d:\medei\documents\3dreconstruction\reconstruction\services\delaunayservice.cpp(183): warning C4244: '=': conversão de 'int' para '_Tp', possível perda de dados
-          with
-          [
-              _Tp=float
-          ]
-d:\medei\documents\3dreconstruction\reconstruction\services\delaunayservice.cpp(245): warning C4244: 'argumento': conversão de 'float' para '_Tp', possível perda de dados
-          with
+          and
           [
               _Tp=int
           ]
-  FindRegionsService.cpp
-  FireflyService.cpp
-  InputImageService.cpp
-  RansacService.cpp
-  ControllerService.cpp
-d:\medei\documents\3dreconstruction\reconstruction\helpers\console.h(37): warning C4091: 'static ': ignorado à esquerda de 'Helpers::Console' quando nenhuma variável é declarada
-d:\medei\documents\3dreconstruction\reconstruction\services\connectedcomponentsservice.h(22): warning C4305: 'inicializando': truncamento de 'double' para 'float'
-d:\medei\documents\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignorado à esquerda de 'Helpers::StringHelper' quando nenhuma variável é declarada
-  RenderService.cpp
-d:\medei\documents\3dreconstruction\reconstruction\services\renderservice.cpp(102): warning C4267: 'argumento': conversão de 'size_t' para 'int', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\services\renderservice.cpp(104): warning C4267: 'argumento': conversão de 'size_t' para 'int', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\services\renderservice.cpp(161): warning C4267: 'argumento': conversão de 'size_t' para 'int', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\services\renderservice.cpp(163): warning C4267: 'argumento': conversão de 'size_t' para 'int', possível perda de dados
-  SiftService.cpp
-d:\medei\documents\3dreconstruction\reconstruction\services\siftservice.cpp(40): warning C4244: 'inicializando': conversão de 'int' para 'float', possível perda de dados
-d:\medei\documents\3dreconstruction\reconstruction\services\siftservice.cpp(41): warning C4244: 'inicializando': conversão de 'int' para 'float', possível perda de dados
-  TestService.cpp
-d:\medei\documents\3dreconstruction\reconstruction\helpers\console.h(37): warning C4091: 'static ': ignorado à esquerda de 'Helpers::Console' quando nenhuma variável é declarada
-d:\medei\documents\3dreconstruction\reconstruction\services\connectedcomponentsservice.h(22): warning C4305: 'inicializando': truncamento de 'double' para 'float'
-d:\medei\documents\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignorado à esquerda de 'Helpers::StringHelper' quando nenhuma variável é declarada
-  Gerando Código...
-d:\medei\documents\3dreconstruction\reconstruction\services\findregionsservice.cpp(26): warning C4717: 'Services::FindRegionsService::Execute': recursivo em todos os caminhos de controle, função causará estouro na pilha em tempo de execução
+d:\medei\documents\3dreconstruction\reconstruction\services\delaunayservice.cpp(174): warning C4244: 'argumento': conversão de '_Tp' para '_Tp', possível perda de dados
+          with
+          [
+              _Tp=float
+          ]
+          and
+          [
+              _Tp=int
+          ]
+d:\medei\documents\3dreconstruction\reconstruction\services\delaunayservice.cpp(175): warning C4244: 'argumento': conversão de '_Tp' para '_Tp', possível perda de dados
+          with
+          [
+              _Tp=float
+          ]
+          and
+          [
+              _Tp=int
+          ]
+d:\medei\documents\3dreconstruction\reconstruction\services\delaunayservice.cpp(178): warning C4244: '=': conversão de 'int' para '_Tp', possível perda de dados
+          with
+          [
+              _Tp=float
+          ]
+d:\medei\documents\3dreconstruction\reconstruction\services\delaunayservice.cpp(179): warning C4244: '=': conversão de 'int' para '_Tp', possível perda de dados
+          with
+          [
+              _Tp=float
+          ]
+d:\medei\documents\3dreconstruction\reconstruction\services\delaunayservice.cpp(184): warning C4244: '=': conversão de 'int' para '_Tp', possível perda de dados
+          with
+          [
+              _Tp=float
+          ]
+d:\medei\documents\3dreconstruction\reconstruction\services\delaunayservice.cpp(185): warning C4244: '=': conversão de 'int' para '_Tp', possível perda de dados
+          with
+          [
+              _Tp=float
+          ]
+d:\medei\documents\3dreconstruction\reconstruction\services\delaunayservice.cpp(190): warning C4244: '=': conversão de 'int' para '_Tp', possível perda de dados
+          with
+          [
+              _Tp=float
+          ]
+d:\medei\documents\3dreconstruction\reconstruction\services\delaunayservice.cpp(191): warning C4244: '=': conversão de 'int' para '_Tp', possível perda de dados
+          with
+          [
+              _Tp=float
+          ]
+d:\medei\documents\3dreconstruction\reconstruction\services\delaunayservice.cpp(196): warning C4244: 'argumento': conversão de '_Tp' para '_Tp', possível perda de dados
+          with
+          [
+              _Tp=float
+          ]
+          and
+          [
+              _Tp=int
+          ]
+d:\medei\documents\3dreconstruction\reconstruction\services\delaunayservice.cpp(197): warning C4244: 'argumento': conversão de '_Tp' para '_Tp', possível perda de dados
+          with
+          [
+              _Tp=float
+          ]
+          and
+          [
+              _Tp=int
+          ]
+d:\medei\documents\3dreconstruction\reconstruction\services\delaunayservice.cpp(198): warning C4244: 'argumento': conversão de '_Tp' para '_Tp', possível perda de dados
+          with
+          [
+              _Tp=float
+          ]
+          and
+          [
+              _Tp=int
+          ]
+d:\medei\documents\3dreconstruction\reconstruction\services\delaunayservice.cpp(289): warning C4244: 'argumento': conversão de 'double' para '_Tp', possível perda de dados
+          with
+          [
+              _Tp=float
+          ]
   Reconstruction.vcxproj -> D:\Medei\Documents\3DReconstruction\x64\Debug\Reconstruction.exe

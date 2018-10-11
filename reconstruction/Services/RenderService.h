@@ -21,14 +21,14 @@ namespace Services {
 	{
 		private:
 			OpenCV * _openCv;
-			void Init(int width, int height, vector<Vec6f> triangles, vector<Point3f> points3D);
+			void Init(int width, int height, vector<Vec<Point3f, 3>> triangles, vector<Point3f> points3D);
 
 		public:
 			RenderService(OpenCV* openCv);
 			RenderService();
 			~RenderService();
 			void TestExecute(int *argc, char **argv, vector<Point3f> points = vector<Point3f>());
-			void Execute(int *argc, char **argv, vector<Vec6f> triangles, vector<Point3f> points3D);
+			void Execute(int *argc, char **argv, vector<Vec<Point3f, 3>> triangles, vector<Point3f> points3D);
 
 			static RenderProperties *_renderProperties;
 	};

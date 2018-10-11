@@ -165,13 +165,13 @@ namespace Services {
 		glFlush();
 	}
 
-	void RenderService::Init(int width, int height, vector<Vec6f> triangles, vector<Point3f> points3D)
+	void RenderService::Init(int width, int height, vector<Vec<Point3f, 3>> triangles, vector<Point3f> points3D)
 	{
 		// Set render properties
 		_renderProperties = new RenderProperties(10);
 
 		// Convert points
-		_renderProperties->_triangles = Convert().Tiangles2dTo3d(triangles, points3D);
+		_renderProperties->_triangles = triangles;
 
 		/* setup the size, position, and display mode for new windows */
 		glutInitWindowSize(width, height);
@@ -205,10 +205,10 @@ namespace Services {
 
 		DelaunayService *delaunay = new DelaunayService();
 
-		Execute(argc, argv, delaunay->Execute(points, vector<Point3f>(), Mat()), points);
+		//Execute(argc, argv, delaunay->Execute(points, vector<Point3f>(), Mat()), points);
 	}
 
-	void RenderService::Execute(int *argc, char **argv, vector<Vec6f> triangles, vector<Point3f> points3D)
+	void RenderService::Execute(int *argc, char **argv, vector<Vec<Point3f, 3>> triangles, vector<Point3f> points3D)
 	{
 		glutInit(argc, argv);
 

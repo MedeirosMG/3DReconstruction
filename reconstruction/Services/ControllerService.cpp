@@ -98,7 +98,7 @@ namespace Services {
 		{
 			cout << endl << "=== Init Delaunay ===" << endl << endl;
 			_resultDelaunay = _delaunayService->Execute(_resultCalibration, _resultCanny, _resultCannyDilated,_screenSize);
-			_visualizer->Show(_resultDelaunay);
+			//_visualizer->Show(_resultDelaunay); // Implementar show
 
 			return true;
 		}
