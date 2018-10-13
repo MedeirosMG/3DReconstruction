@@ -283,16 +283,17 @@ namespace Services {
 
 		// Build structure and fill with points
 		vtkSmartPointer<vtkUnstructuredGrid> inputUnstructuredGrid = vtkSmartPointer<vtkUnstructuredGrid>::New();
-		FillUnstructuredGrid(inputUnstructuredGrid, utilitie->MergePoints(contour, pointsCalibration));
-
+		//FillUnstructuredGrid(inputUnstructuredGrid, utilitie->MergePoints(contour, pointsCalibration));
+		FillUnstructuredGrid(inputUnstructuredGrid, pointsCalibration);
 		vtkSmartPointer<vtkDelaunay3D> delaunay3D = vtkSmartPointer<vtkDelaunay3D>::New();
 		delaunay3D->SetInputData(inputUnstructuredGrid);
-
+		delaunay3D->Update();
 		vtkSmartPointer<vtkUnstructuredGrid> outputUnstructuredGrid = vtkSmartPointer<vtkUnstructuredGrid>::New();
 		outputUnstructuredGrid = delaunay3D->GetOutput();
 
 		triangleList = GetTriangles(outputUnstructuredGrid);
 
 		return FilterTriangles(triangleList, contourDilated, sizeImg);
+		
 	}
 }
