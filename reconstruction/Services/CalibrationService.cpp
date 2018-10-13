@@ -42,7 +42,7 @@ namespace Services {
 
 		for each (PointPair item in listMatchPoints)
 		{
-			listRealPoints.push_back(*(CalculateRealPoint(item.FirstPoint, item.SecondPoint)));
+			listRealPoints.push_back(converter->CoordenateToPixel(*(CalculateRealPoint(item.FirstPoint, item.SecondPoint)), _imgSize));
 		}
 
 		return listRealPoints;

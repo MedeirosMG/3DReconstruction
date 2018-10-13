@@ -117,6 +117,9 @@ namespace Services {
 		int height = REC_SCREEN_DEFAULT_HEIGHT;
 		bool controlVariable = true;
 
+		if (point.x > width || point.y > height)
+			return false;
+
 		// Go to max width
 		Point2f variablePoint = point;
 		while (variablePoint.x < width)
@@ -207,9 +210,9 @@ namespace Services {
 
 		for each (Vec<Point3f, 3> triangle in triangles)
 		{
-			Point3f pt1 = utilities->CoordenateToPixel(triangle[0], screenSize);
-			Point3f pt2 = utilities->CoordenateToPixel(triangle[1], screenSize);
-			Point3f pt3 = utilities->CoordenateToPixel(triangle[2], screenSize);
+			Point3f pt1 = triangle[0];
+			Point3f pt2 = triangle[1];
+			Point3f pt3 = triangle[2];
 
 			open->DrawLine(mat1, Point(1, 1), Point(2, 2));
 			open->DrawLine(mat1, Point(pt1.x, pt1.y), Point(pt2.x, pt2.y));
@@ -281,13 +284,13 @@ namespace Services {
 		PointUtilities *utilitie = new PointUtilities();
 		vector<Vec<Point3f, 3>> triangleList;
 
-		// Build structure and fill with points
 		vtkSmartPointer<vtkUnstructuredGrid> inputUnstructuredGrid = vtkSmartPointer<vtkUnstructuredGrid>::New();
-		//FillUnstructuredGrid(inputUnstructuredGrid, utilitie->MergePoints(contour, pointsCalibration));
-		FillUnstructuredGrid(inputUnstructuredGrid, pointsCalibration);
+		FillUnstructuredGrid(inputUnstructuredGrid, utilitie->MergePoints(contour, pointsCalibration));		
+
 		vtkSmartPointer<vtkDelaunay3D> delaunay3D = vtkSmartPointer<vtkDelaunay3D>::New();
 		delaunay3D->SetInputData(inputUnstructuredGrid);
 		delaunay3D->Update();
+
 		vtkSmartPointer<vtkUnstructuredGrid> outputUnstructuredGrid = vtkSmartPointer<vtkUnstructuredGrid>::New();
 		outputUnstructuredGrid = delaunay3D->GetOutput();
 

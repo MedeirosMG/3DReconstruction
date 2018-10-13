@@ -1,3 +1,2 @@
-﻿  DelaunayService.cpp
-c:\users\murillo\c++\3dreconstruction\reconstruction\services\delaunayservice.cpp(78): warning C4267: 'argumento': conversão de 'size_t' para 'int', possível perda de dados
-  Reconstruction.vcxproj -> C:\Users\Murillo\C++\3DReconstruction\x64\Debug\Reconstruction.exe
+﻿  CalibrationService.cpp
+  Reconstruction.vcxproj -> D:\Medei\Documents\3DReconstruction\x64\Debug\Reconstruction.exe
