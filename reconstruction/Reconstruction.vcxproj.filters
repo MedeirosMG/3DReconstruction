@@ -230,5 +230,8 @@
     <ClCompile Include="Services\ConnectedComponentsService.cpp">
       <Filter>Source Files\S_Services</Filter>
     </ClCompile>
+    <ClCompile Include="vtk3D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
