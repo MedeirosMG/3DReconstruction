@@ -185,6 +185,7 @@
     <ClInclude Include="Services\RansacService.h" />
     <ClInclude Include="Services\ControllerService.h" />
     <ClInclude Include="Services\RenderService.h" />
+    <ClInclude Include="Services\RenderServiceVtk.h" />
     <ClInclude Include="Services\SiftService.h" />
     <ClInclude Include="Services\TestService.h" />
     <ClInclude Include="stdafx.h" />
@@ -219,6 +220,7 @@
     <ClCompile Include="Services\RansacService.cpp" />
     <ClCompile Include="Services\ControllerService.cpp" />
     <ClCompile Include="Services\RenderService.cpp" />
+    <ClCompile Include="Services\RenderServiceVtk.cpp" />
     <ClCompile Include="Services\SiftService.cpp" />
     <ClCompile Include="Services\TestService.cpp" />
     <ClCompile Include="stdafx.cpp">

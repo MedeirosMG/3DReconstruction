@@ -170,7 +170,9 @@ namespace Services {
 		try
 		{
 			cout << endl << "=== Init Rendering ===" << endl << endl;
-			_renderService->Execute(_argc, _argv, _resultDelaunay, _resultCalibration);
+			//_renderService->Execute(_argc, _argv, _resultDelaunay, _resultCalibration);
+			_renderServiceVTK->Execute(_resultDelaunay, _resultCalibration, _resultCanny);
+
 			return true;
 		}
 		catch (const std::exception& ex)
@@ -301,6 +303,7 @@ namespace Services {
 		_inputImageService = new InputImageService(_openCv);
 		_renderService = new RenderService(_openCv);
 		_renderService = new RenderService(_openCv);
+		_renderServiceVTK = new RenderServiceVtk();
 		_visualizer = new Visualizer(_visualizerName, _openCv, _visualizerExecute);
 	}
 

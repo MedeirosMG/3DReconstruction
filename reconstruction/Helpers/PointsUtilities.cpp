@@ -251,4 +251,24 @@ namespace Helpers {
 
 		return maxValue;
 	}
+
+	void PointUtilities::FillUnstructuredGrid(vtkUnstructuredGrid * unstructuredGrid, vector<Point3f> pointsToApply)
+	{
+		vtkSmartPointer<vtkPoints> points = vtkSmartPointer<vtkPoints>::New();
+		vtkSmartPointer<vtkCellArray> cells = vtkSmartPointer<vtkCellArray>::New();
+
+		points->SetDataType(VTK_DOUBLE);
+		cells->InsertNextCell(pointsToApply.size());
+		for each (Point3f point in pointsToApply)
+		{
+			double newPoint[3] = { point.x, point.y, point.z >= 0 ? point.z : 0 };
+
+			cells->InsertCellPoint(points->InsertNextPoint(newPoint));
+		}
+
+		points->Squeeze();
+		unstructuredGrid->SetPoints(points);
+		cells->Squeeze();
+		unstructuredGrid->SetCells(VTK_VERTEX, cells);
+	}
 }

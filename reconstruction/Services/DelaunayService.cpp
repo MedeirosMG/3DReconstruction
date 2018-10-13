@@ -69,26 +69,6 @@ namespace Services {
 			return false;
 	}
 
-	void DelaunayService::FillUnstructuredGrid(vtkUnstructuredGrid * unstructuredGrid, vector<Point3f> pointsToApply)
-	{
-		vtkSmartPointer<vtkPoints> points = vtkSmartPointer<vtkPoints>::New();
-		vtkSmartPointer<vtkCellArray> cells = vtkSmartPointer<vtkCellArray>::New();
-
-		points->SetDataType(VTK_DOUBLE);
-		cells->InsertNextCell(pointsToApply.size());
-		for each (Point3f point in pointsToApply)
-		{
-			double newPoint[3] = { point.x, point.y, point.z >= 0 ? point.z : 0 };
-			
-			cells->InsertCellPoint(points->InsertNextPoint(newPoint));
-		}
-
-		points->Squeeze();
-		unstructuredGrid->SetPoints(points);
-		cells->Squeeze();
-		unstructuredGrid->SetCells(VTK_VERTEX, cells);
-	}
-
 	vector<Vec<Point3f, 3>> DelaunayService::GetTriangles(vtkUnstructuredGrid * unstructuredGrid)
 	{
 		vector<Vec<Point3f, 3>> result;
@@ -99,11 +79,11 @@ namespace Services {
 			double p0[3];
 			double p1[3];
 			double p2[3];
-
+			
 			cell->GetPoints()->GetPoint(0, p0);
 			cell->GetPoints()->GetPoint(1, p1);
 			cell->GetPoints()->GetPoint(2, p2);
-
+			
 			Vec<Point3f, 3> point = Vec<Point3f, 3>(Point3f(p0[0], p0[1], p0[2]), Point3f(p1[0], p1[1], p1[2]), Point3f(p2[0], p2[1], p2[2]));
 			result.push_back(point);
 		}
@@ -285,7 +265,7 @@ namespace Services {
 		vector<Vec<Point3f, 3>> triangleList;
 
 		vtkSmartPointer<vtkUnstructuredGrid> inputUnstructuredGrid = vtkSmartPointer<vtkUnstructuredGrid>::New();
-		FillUnstructuredGrid(inputUnstructuredGrid, utilitie->MergePoints(contour, pointsCalibration));		
+		utilitie->FillUnstructuredGrid(inputUnstructuredGrid, utilitie->MergePoints(contour, pointsCalibration));
 
 		vtkSmartPointer<vtkDelaunay3D> delaunay3D = vtkSmartPointer<vtkDelaunay3D>::New();
 		delaunay3D->SetInputData(inputUnstructuredGrid);

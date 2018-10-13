@@ -61,7 +61,6 @@ namespace Services {
 			void TestExecute(vector<Point3f> points = vector<Point3f>());
 			vector<Vec6f> RemoveRectangle(vector<Vec6f> triangles);
 			bool CheckRectangle(int coord, Vec6f triangle);
-			void FillUnstructuredGrid(vtkUnstructuredGrid *unstructuredGrid, vector<Point3f> points);
 			vector<Vec<Point3f, 3>> GetTriangles(vtkUnstructuredGrid *unstructuredGrid);
 	};
 

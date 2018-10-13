@@ -18,6 +18,7 @@
 #include "..\Helpers\Visualizer.h"
 #include "..\Helpers\Time.h"
 #include "..\Helpers\ReconstructionDefine.h"
+#include "..\Services\RenderServiceVtk.h"
 
 
 #pragma endregion
@@ -48,6 +49,7 @@ namespace Services {
 		SiftService* _siftService;
 		InputImageService* _inputImageService;
 		RenderService* _renderService;
+		RenderServiceVtk* _renderServiceVTK;
 
 		// Utilities
 		Visualizer* _visualizer = new Visualizer();

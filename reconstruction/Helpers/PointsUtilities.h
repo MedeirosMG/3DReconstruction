@@ -6,6 +6,35 @@
 #include "../Algorithms/OpenCV.h"
 #include "../Algorithms/OpenGL.h"
 #include "../Entities/PointPair.h"
+#include <vtkCellArray.h>
+#include <vtkDelaunay3D.h>
+#include <vtkMinimalStandardRandomSequence.h>
+#include <vtkSmartPointer.h>
+#include <vtkUnstructuredGrid.h>
+#include <vtkProperty.h>
+#include <vtkDataSetMapper.h>
+#include <vtkActor.h>
+#include <vtkPoints.h>
+#include <vtkPolyData.h>
+#include <vtkPolyDataMapper.h>
+#include <vtkPolygon.h>
+#include <vtkSmartPointer.h>
+#include <vtkMath.h>
+#include <vtkRenderer.h>
+#include <vtkRenderWindow.h>
+#include <vtkRenderWindowInteractor.h>
+#include <vtkClipClosedSurface.h>
+#include <vtkCleanPolyData.h>
+#include <vtkDelaunay3D.h>
+#include <vtkDelaunay2D.h>
+#include <vtkXMLPolyDataReader.h>
+#include <vtkSurfaceReconstructionFilter.h>
+#include <vtkContourFilter.h>
+#include <vtkPlane.h>
+#include <vtkPlaneCollection.h>
+#include <vtkDataSetSurfaceFilter.h>
+#include <vtkReverseSense.h>
+#include <vtkTriangle.h>
 
 using namespace std;
 using namespace Algorithms;
@@ -37,6 +66,7 @@ namespace Helpers {
 			Point3f CoordenateToPixel(Point3f point, Size screenSize);
 			vector<PointPair> PixelToCoordenate(vector<PointPair> points, Size screenSize);
 			double GetArea(vector<Point> points);
+			void FillUnstructuredGrid(vtkUnstructuredGrid * unstructuredGrid, vector<Point3f> pointsToApply);
 	};
 
 }
