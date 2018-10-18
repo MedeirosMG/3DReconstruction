@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "DelaunayService.h"
 #include <iterator>
+#include <vtkAutoInit.h> 
 namespace Services {
 	DelaunayService::DelaunayService(OpenCV* openCv)
 	{
@@ -69,22 +70,24 @@ namespace Services {
 			return false;
 	}
 
-	vector<Vec<Point3f, 3>> DelaunayService::GetTriangles(vtkUnstructuredGrid * unstructuredGrid)
+	vector<Vec<Point3f, 4>> DelaunayService::GetTriangles(vtkUnstructuredGrid * unstructuredGrid)
 	{
-		vector<Vec<Point3f, 3>> result;
+		vector<Vec<Point3f, 4>> result;
 
 		for (vtkIdType i = 0; i < unstructuredGrid->GetNumberOfCells(); i++)
 		{
+
 			vtkCell* cell = unstructuredGrid->GetCell(i);
 			double p0[3];
 			double p1[3];
 			double p2[3];
-			
+			double p3[3];
 			cell->GetPoints()->GetPoint(0, p0);
 			cell->GetPoints()->GetPoint(1, p1);
 			cell->GetPoints()->GetPoint(2, p2);
+			cell->GetPoints()->GetPoint(3, p3);
 			
-			Vec<Point3f, 3> point = Vec<Point3f, 3>(Point3f(p0[0], p0[1], p0[2]), Point3f(p1[0], p1[1], p1[2]), Point3f(p2[0], p2[1], p2[2]));
+			Vec<Point3f, 4> point = Vec<Point3f, 4>(Point3f(p0[0], p0[1], p0[2]), Point3f(p1[0], p1[1], p1[2]), Point3f(p2[0], p2[1], p2[2]), Point3f(p3[0], p3[1], p3[2]));
 			result.push_back(point);
 		}
 
@@ -178,21 +181,22 @@ namespace Services {
 		return controlVariable;
 	}
 
-	vector<Vec<Point3f, 3>> DelaunayService::FilterTriangles(vector<Vec<Point3f, 3>> triangles, Mat contour, Size screenSize)
+	vector<Vec<Point3f, 4>> DelaunayService::FilterTriangles(vector<Vec<Point3f, 4>> triangles, Mat contour, Size screenSize)
 	{
 		PointUtilities *utilities = new PointUtilities();
-		vector<Vec<Point3f, 3>> result;
+		vector<Vec<Point3f, 4>> result;
 		Point2f middlePoint;
 
 		OpenCV *open = new OpenCV();
 		Mat mat1 = Mat(contour.rows, contour.cols, CV_8UC3);
 		Mat mat2 = Mat(contour.rows, contour.cols, CV_8UC3);
 
-		for each (Vec<Point3f, 3> triangle in triangles)
+		for each (Vec<Point3f, 4> triangle in triangles)
 		{
 			Point3f pt1 = triangle[0];
 			Point3f pt2 = triangle[1];
 			Point3f pt3 = triangle[2];
+			Point3f pt4 = triangle[3];
 
 			open->DrawLine(mat1, Point(1, 1), Point(2, 2));
 			open->DrawLine(mat1, Point(pt1.x, pt1.y), Point(pt2.x, pt2.y));
@@ -259,13 +263,14 @@ namespace Services {
 		return retorno;
 	}
 
-	vector<Vec<Point3f, 3>> DelaunayService::Execute(vector<Point3f> pointsCalibration, vector<Point3f> contour, Mat contourDilated, Size sizeImg)
+	vector<Vec<Point3f, 4>> DelaunayService::Execute(vector<Point3f> pointsCalibration, vector<Point3f> contour, Mat contourDilated, Size sizeImg)
 	{	
 		PointUtilities *utilitie = new PointUtilities();
-		vector<Vec<Point3f, 3>> triangleList;
+		vector<Vec<Point3f, 4>> triangleList;
 
 		vtkSmartPointer<vtkUnstructuredGrid> inputUnstructuredGrid = vtkSmartPointer<vtkUnstructuredGrid>::New();
 		utilitie->FillUnstructuredGrid(inputUnstructuredGrid, utilitie->MergePoints(contour, pointsCalibration));
+		//utilitie->FillUnstructuredGrid(inputUnstructuredGrid, pointsCalibration);
 
 		vtkSmartPointer<vtkDelaunay3D> delaunay3D = vtkSmartPointer<vtkDelaunay3D>::New();
 		delaunay3D->SetInputData(inputUnstructuredGrid);
@@ -274,6 +279,61 @@ namespace Services {
 		vtkSmartPointer<vtkUnstructuredGrid> outputUnstructuredGrid = vtkSmartPointer<vtkUnstructuredGrid>::New();
 		outputUnstructuredGrid = delaunay3D->GetOutput();
 
+
+		/*VTK_MODULE_INIT(vtkRenderingOpenGL2)
+		VTK_MODULE_INIT(vtkInteractionStyle)
+
+		// Size of screen to render
+		double leftViewport[4] = { 0.0, 0.0, 0.5, 1.0 };
+		double rightViewport[4] = { 0.5, 0.0, 1.0, 1.0 };
+
+		// Multiple renders
+		vtkSmartPointer<vtkRenderer> originalRenderer = vtkSmartPointer<vtkRenderer>::New();
+		vtkSmartPointer<vtkRenderer> delaunayRenderer = vtkSmartPointer<vtkRenderer>::New();
+
+		vtkSmartPointer<vtkRenderWindow> renderWindow = vtkSmartPointer<vtkRenderWindow>::New();
+		renderWindow->SetSize(1500, 800);
+
+		// First render
+		renderWindow->AddRenderer(originalRenderer);
+		originalRenderer->SetViewport(leftViewport);
+
+		// Second render
+		renderWindow->AddRenderer(delaunayRenderer);
+		delaunayRenderer->SetViewport(rightViewport);
+
+
+
+		// For points apply
+		vtkSmartPointer<vtkDataSetMapper> originalMapper = vtkSmartPointer<vtkDataSetMapper>::New();
+		originalMapper->SetInputData(inputUnstructuredGrid);
+
+		vtkSmartPointer<vtkActor> originalActor = vtkSmartPointer<vtkActor>::New();
+		originalActor->SetMapper(originalMapper);
+		originalActor->GetProperty()->SetColor(1, 1, 1);
+
+		vtkSmartPointer<vtkDataSetMapper> delaunayMapper = vtkSmartPointer<vtkDataSetMapper>::New();
+		delaunayMapper->SetInputConnection(delaunay3D->GetOutputPort());
+
+		vtkSmartPointer<vtkActor> delaunayActor = vtkSmartPointer<vtkActor>::New();
+		delaunayActor->SetMapper(delaunayMapper);
+		delaunayActor->GetProperty()->SetColor(1, 1, 1);
+
+
+		// Add interact
+		vtkSmartPointer<vtkRenderWindowInteractor> renderWindowInteractor = vtkSmartPointer<vtkRenderWindowInteractor>::New();
+		renderWindowInteractor->SetRenderWindow(renderWindow);
+
+		originalRenderer->AddActor(originalActor);
+		delaunayRenderer->AddActor(delaunayActor);
+		originalRenderer->SetBackground(.0, .0, .0);
+		delaunayRenderer->SetBackground(.0, .0, .0);
+
+		renderWindow->Render();
+		renderWindowInteractor->Start();
+
+
+		system("PAUSE");*/
 		triangleList = GetTriangles(outputUnstructuredGrid);
 
 		return FilterTriangles(triangleList, contourDilated, sizeImg);

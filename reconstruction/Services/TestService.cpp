@@ -28,10 +28,10 @@ namespace Services {
 		controller->LoadServices();
 
 		
-		controller->FireflyApply();	
+		//controller->FireflyApply();	
 		controller->CannyApply();
-		controller->ConnectedComponentsApply();
-		controller->FindRegionsApply();
+		//controller->ConnectedComponentsApply();
+		//controller->FindRegionsApply();
 		controller->SiftApply();
 		controller->RansacApply();
 		controller->CalibrationApply();

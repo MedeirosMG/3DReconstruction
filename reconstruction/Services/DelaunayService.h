@@ -50,18 +50,18 @@ namespace Services {
 	{
 		private:
 			OpenCV* _openCv;
-			vector<Vec<Point3f, 3>> FilterTriangles(vector<Vec<Point3f, 3>> triangles, Mat contour, Size screenSize);
+			vector<Vec<Point3f, 4>> FilterTriangles(vector<Vec<Point3f, 4>> triangles, Mat contour, Size screenSize);
 			bool CheckInsidePoint(Point2f points, Mat contour);
 
 		public:
 			DelaunayService(OpenCV* openCv);
 			DelaunayService();
 			~DelaunayService();
-			vector<Vec<Point3f, 3>> Execute(vector<Point3f> pointsCalibration, vector<Point3f> contour, Mat contourDilated, Size sizeImg = Size(1,1));
+			vector<Vec<Point3f, 4>> Execute(vector<Point3f> pointsCalibration, vector<Point3f> contour, Mat contourDilated, Size sizeImg = Size(1,1));
 			void TestExecute(vector<Point3f> points = vector<Point3f>());
 			vector<Vec6f> RemoveRectangle(vector<Vec6f> triangles);
 			bool CheckRectangle(int coord, Vec6f triangle);
-			vector<Vec<Point3f, 3>> GetTriangles(vtkUnstructuredGrid *unstructuredGrid);
+			vector<Vec<Point3f, 4>> GetTriangles(vtkUnstructuredGrid *unstructuredGrid);
 	};
 
 }

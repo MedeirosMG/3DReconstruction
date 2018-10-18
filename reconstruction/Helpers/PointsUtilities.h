@@ -67,6 +67,7 @@ namespace Helpers {
 			vector<PointPair> PixelToCoordenate(vector<PointPair> points, Size screenSize);
 			double GetArea(vector<Point> points);
 			void FillUnstructuredGrid(vtkUnstructuredGrid * unstructuredGrid, vector<Point3f> pointsToApply);
+			void FillUnstructuredGrid2(vtkUnstructuredGrid * unstructuredGrid, vector<Vec< Point3f, 4> > triangles);
 	};
 
 }

@@ -62,7 +62,7 @@ namespace Services {
 		Size _screenSize = Size(REC_SCREEN_DEFAULT_WIDTH, REC_SCREEN_DEFAULT_HEIGHT);
 
 		// Delaunay Properties
-		vector<Vec<Point3f, 3>> _resultDelaunay;
+		vector<Vec<Point3f, 4>> _resultDelaunay;
 
 		// Sift Properties
 		int _siftThreshold;

@@ -271,4 +271,29 @@ namespace Helpers {
 		cells->Squeeze();
 		unstructuredGrid->SetCells(VTK_VERTEX, cells);
 	}
+	void PointUtilities::FillUnstructuredGrid2(vtkUnstructuredGrid * unstructuredGrid, vector<Vec<Point3f, 4>> triangles)
+	{
+		vtkSmartPointer<vtkPoints> points = vtkSmartPointer<vtkPoints>::New();
+		vtkSmartPointer<vtkCellArray> cells = vtkSmartPointer<vtkCellArray>::New();
+
+		points->SetDataType(VTK_DOUBLE);
+		for (int i = 0; i < triangles.size(); i++) {
+
+			cells->InsertNextCell(4);
+			double newPoint1[3] = { triangles[i][0].x, triangles[i][0].y, triangles[i][0].z >= 0 ? triangles[i][0].z : 0 };
+			double newPoint2[3] = { triangles[i][1].x, triangles[i][1].y, triangles[i][1].z >= 0 ? triangles[i][1].z : 0 };
+			double newPoint3[3] = { triangles[i][2].x, triangles[i][2].y, triangles[i][2].z >= 0 ? triangles[i][2].z : 0 };
+			double newPoint4[3] = { triangles[i][3].x, triangles[i][3].y, triangles[i][3].z >= 0 ? triangles[i][3].z : 0 };
+
+			cells->InsertCellPoint(points->InsertNextPoint(newPoint1));
+			cells->InsertCellPoint(points->InsertNextPoint(newPoint2));
+			cells->InsertCellPoint(points->InsertNextPoint(newPoint3));
+			cells->InsertCellPoint(points->InsertNextPoint(newPoint4));
+		}
+		
+		points->Squeeze();
+		unstructuredGrid->SetPoints(points);
+		cells->Squeeze();
+		unstructuredGrid->SetCells(VTK_TETRA, cells);
+	}
 }
