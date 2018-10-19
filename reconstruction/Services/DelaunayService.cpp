@@ -201,7 +201,10 @@ namespace Services {
 			open->DrawLine(mat1, Point(1, 1), Point(2, 2));
 			open->DrawLine(mat1, Point(pt1.x, pt1.y), Point(pt2.x, pt2.y));
 			open->DrawLine(mat1, Point(pt2.x, pt2.y), Point(pt3.x, pt3.y));
-			open->DrawLine(mat1, Point(pt3.x, pt3.y), Point(pt1.x, pt1.y));
+			open->DrawLine(mat1, Point(pt3.x, pt3.y), Point(pt1.x, pt1.y)); 
+			open->DrawLine(mat1, Point(pt1.x, pt1.y), Point(pt4.x, pt4.y));
+			open->DrawLine(mat1, Point(pt2.x, pt2.y), Point(pt4.x, pt4.y));
+			open->DrawLine(mat1, Point(pt3.x, pt3.y), Point(pt4.x, pt4.y));
 
 			middlePoint = utilities->GetMiddlePoint(Point2f(pt1.x, pt1.y), Point2f(pt2.x, pt2.y));
 			middlePoint.x = cvRound(middlePoint.x);
@@ -220,11 +223,31 @@ namespace Services {
 			middlePoint.y = cvRound(middlePoint.y);
 			if (!CheckInsidePoint(middlePoint, contour))
 				continue;
+			middlePoint = utilities->GetMiddlePoint(Point2f(pt1.x, pt1.y), Point2f(pt4.x, pt4.y));
+			middlePoint.x = cvRound(middlePoint.x);
+			middlePoint.y = cvRound(middlePoint.y);
+			if (!CheckInsidePoint(middlePoint, contour))
+				continue;
+
+			middlePoint = utilities->GetMiddlePoint(Point2f(pt2.x, pt2.y), Point2f(pt4.x, pt4.y));
+			middlePoint.x = cvRound(middlePoint.x);
+			middlePoint.y = cvRound(middlePoint.y);
+			if (!CheckInsidePoint(middlePoint, contour))
+				continue;
+
+			middlePoint = utilities->GetMiddlePoint(Point2f(pt3.x, pt3.y), Point2f(pt4.x, pt4.y));
+			middlePoint.x = cvRound(middlePoint.x);
+			middlePoint.y = cvRound(middlePoint.y);
+			if (!CheckInsidePoint(middlePoint, contour))
+				continue;
 
 
 			open->DrawLine(mat2, Point(pt1.x, pt1.y), Point(pt2.x, pt2.y));
 			open->DrawLine(mat2, Point(pt2.x, pt2.y), Point(pt3.x, pt3.y));
 			open->DrawLine(mat2, Point(pt3.x, pt3.y), Point(pt1.x, pt1.y));
+			open->DrawLine(mat2, Point(pt1.x, pt1.y), Point(pt4.x, pt4.y));
+			open->DrawLine(mat2, Point(pt2.x, pt2.y), Point(pt4.x, pt4.y));
+			open->DrawLine(mat2, Point(pt3.x, pt3.y), Point(pt4.x, pt4.y));
 			result.push_back(triangle);
 		}
 
@@ -280,60 +303,7 @@ namespace Services {
 		outputUnstructuredGrid = delaunay3D->GetOutput();
 
 
-		/*VTK_MODULE_INIT(vtkRenderingOpenGL2)
-		VTK_MODULE_INIT(vtkInteractionStyle)
-
-		// Size of screen to render
-		double leftViewport[4] = { 0.0, 0.0, 0.5, 1.0 };
-		double rightViewport[4] = { 0.5, 0.0, 1.0, 1.0 };
-
-		// Multiple renders
-		vtkSmartPointer<vtkRenderer> originalRenderer = vtkSmartPointer<vtkRenderer>::New();
-		vtkSmartPointer<vtkRenderer> delaunayRenderer = vtkSmartPointer<vtkRenderer>::New();
-
-		vtkSmartPointer<vtkRenderWindow> renderWindow = vtkSmartPointer<vtkRenderWindow>::New();
-		renderWindow->SetSize(1500, 800);
-
-		// First render
-		renderWindow->AddRenderer(originalRenderer);
-		originalRenderer->SetViewport(leftViewport);
-
-		// Second render
-		renderWindow->AddRenderer(delaunayRenderer);
-		delaunayRenderer->SetViewport(rightViewport);
-
-
-
-		// For points apply
-		vtkSmartPointer<vtkDataSetMapper> originalMapper = vtkSmartPointer<vtkDataSetMapper>::New();
-		originalMapper->SetInputData(inputUnstructuredGrid);
-
-		vtkSmartPointer<vtkActor> originalActor = vtkSmartPointer<vtkActor>::New();
-		originalActor->SetMapper(originalMapper);
-		originalActor->GetProperty()->SetColor(1, 1, 1);
-
-		vtkSmartPointer<vtkDataSetMapper> delaunayMapper = vtkSmartPointer<vtkDataSetMapper>::New();
-		delaunayMapper->SetInputConnection(delaunay3D->GetOutputPort());
-
-		vtkSmartPointer<vtkActor> delaunayActor = vtkSmartPointer<vtkActor>::New();
-		delaunayActor->SetMapper(delaunayMapper);
-		delaunayActor->GetProperty()->SetColor(1, 1, 1);
-
-
-		// Add interact
-		vtkSmartPointer<vtkRenderWindowInteractor> renderWindowInteractor = vtkSmartPointer<vtkRenderWindowInteractor>::New();
-		renderWindowInteractor->SetRenderWindow(renderWindow);
-
-		originalRenderer->AddActor(originalActor);
-		delaunayRenderer->AddActor(delaunayActor);
-		originalRenderer->SetBackground(.0, .0, .0);
-		delaunayRenderer->SetBackground(.0, .0, .0);
-
-		renderWindow->Render();
-		renderWindowInteractor->Start();
-
-
-		system("PAUSE");*/
+		
 		triangleList = GetTriangles(outputUnstructuredGrid);
 
 		return FilterTriangles(triangleList, contourDilated, sizeImg);

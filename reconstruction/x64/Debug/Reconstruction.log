@@ -1,4 +1,2 @@
-﻿  PointsUtilities.cpp
-c:\users\murillo\c++\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(172): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
-c:\users\murillo\c++\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(261): warning C4267: 'argumento': conversão de 'size_t' para 'int', possível perda de dados
+﻿  DelaunayService.cpp
   Reconstruction.vcxproj -> C:\Users\Murillo\C++\3DReconstruction\x64\Debug\Reconstruction.exe
