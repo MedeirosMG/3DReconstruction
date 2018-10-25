@@ -31,7 +31,7 @@ namespace Services {
 		ConnectedComponentsService(OpenCV* openCV, Size imgSize);
 		ConnectedComponentsService(OpenCV* openCV, Size imgSize, float threshold, float interval);
 		~ConnectedComponentsService();
-		Mat Execute(Mat img);
+		vector<Mat> Execute(Mat img);
 	};
 
 }

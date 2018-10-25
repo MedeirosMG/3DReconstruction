@@ -135,6 +135,16 @@ namespace Helpers {
 	
 		return _return;
 	}
+	vector<PointPair> PointUtilities::MergePoints(vector<PointPair> pts1, vector<PointPair> pts2)
+	{
+		vector<PointPair> _return;
+
+		_return.reserve(pts1.size() + pts2.size());
+		_return.insert(_return.end(), pts1.begin(), pts1.end());
+		_return.insert(_return.end(), pts2.begin(), pts2.end());
+
+		return _return;
+	}
 
 	vector<Point3f> PointUtilities::PixelToCoordenate(vector<Point3f> points, Size screenSize)
 	{

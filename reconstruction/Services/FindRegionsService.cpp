@@ -25,19 +25,22 @@ namespace Services {
 		return Execute(regions, ImageToApply);
 	}
 
-	Mat FindRegionsService::Execute(Mat regions, Mat ImageToApply)
+	vector<Mat> FindRegionsService::Execute(vector<Mat> regions, Mat ImageToApply)
 	{
-		if (regions.rows != ImageToApply.rows || regions.cols != ImageToApply.cols)
-			throw new exception("Imagens não tem o mesmo tamanho.");
-
-		for (int y = 0; y < regions.rows; y++) {
-			for (int x = 0; x < regions.cols; x++) {
-				if (regions.at<Vec3b>(Point(x, y)) == Vec3b(0, 0, 0))
-					ImageToApply.at<Vec3b>(Point(x, y)) = Vec3b(0, 0, 0);
+		vector<Mat> result;
+		for (int i = 0; i < regions.size(); i++) {
+			if (regions[i].rows != ImageToApply.rows || regions[i].cols != ImageToApply.cols)
+				throw new exception("Imagens não tem o mesmo tamanho.");
+			Mat img = ImageToApply.clone();
+			for (int y = 0; y < regions[i].rows; y++) {
+				for (int x = 0; x < regions[i].cols; x++) {
+					if (regions[i].at<Vec3b>(Point(x, y)) == Vec3b(0, 0, 0))
+						img.at<Vec3b>(Point(x, y)) = Vec3b(0, 0, 0);
+				}
 			}
+			result.push_back(img);
 		}
-
-		return ImageToApply;
+		return result;
 	}
 
 }

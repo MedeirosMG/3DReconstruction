@@ -25,7 +25,7 @@ namespace Services {
 			FindRegionsService(OpenCV* openCv);
 			~FindRegionsService();
 			Mat Execute(Mat regioes, string caminhoImg);
-			Mat Execute(Mat regioes, Mat imgOriginal);
+			vector<Mat> Execute(vector<Mat> regioes, Mat imgOriginal);
 	};
 
 }

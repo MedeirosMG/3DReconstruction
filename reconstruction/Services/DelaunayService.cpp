@@ -307,6 +307,7 @@ namespace Services {
 		triangleList = GetTriangles(outputUnstructuredGrid);
 
 		return FilterTriangles(triangleList, contourDilated, sizeImg);
+		//return triangleList;
 		
 	}
 }

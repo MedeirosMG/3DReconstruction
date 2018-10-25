@@ -80,8 +80,11 @@ namespace Services {
 			_InterestRegionsFirstImage = _connectedComponentsService->Execute(_firstImageModified);
 			_InterestRegionsSecondImage = _connectedComponentsService->Execute(_secondImageModified);
 
-			_visualizer->Show(_InterestRegionsFirstImage, _visualizerName);
-			_visualizer->Show(_InterestRegionsSecondImage, _visualizerName);
+			for (int i = 0; i < _InterestRegionsFirstImage.size(); i++) {
+				_visualizer->Show(_InterestRegionsFirstImage[i], _visualizerName);
+				_visualizer->Show(_InterestRegionsSecondImage[i], _visualizerName);
+			}
+			
 
 			return true;
 		}
@@ -114,11 +117,13 @@ namespace Services {
 		try
 		{
 			cout << endl << "=== Init Find Regions ===" << endl << endl;
-			_firstImageModified = _findRegionsService->Execute(_InterestRegionsFirstImage, _firstImage);
-			_secondImageModified = _findRegionsService->Execute(_InterestRegionsSecondImage, _secondImage);
+			_InterestRegionsFirstImage = _findRegionsService->Execute(_InterestRegionsFirstImage, _firstImage);
+			_InterestRegionsSecondImage = _findRegionsService->Execute(_InterestRegionsSecondImage, _secondImage);
 
-			_visualizer->Show(_firstImageModified, _visualizerName);
-			_visualizer->Show(_secondImageModified, _visualizerName);
+			for (int i = 0; i < _InterestRegionsFirstImage.size(); i++) {
+				_visualizer->Show(_InterestRegionsFirstImage[i], _visualizerName);
+				_visualizer->Show(_InterestRegionsSecondImage[i], _visualizerName);
+			}
 
 			return true;
 		}
@@ -133,9 +138,14 @@ namespace Services {
 	{
 		try
 		{
+			PointUtilities *utilities = new PointUtilities();
 			cout << endl << "=== Init Ransac ===" << endl << endl;
-			_resultRansac = _ransacService->Execute(_resultSift, _ransacThresh);
 
+			_resultRansac = utilities->MergePoints(_resultRansac, _ransacService->Execute(_resultSift, _ransacThresh));
+			for (int i = 0; i < _resultSiftOnMask.size(); i++) {
+				_resultRansac = utilities->MergePoints(_resultRansac, _ransacService->Execute(_resultSiftOnMask[i], _ransacThresh));
+
+			}
 			_visualizer->Show(_resultRansac);
 
 			return true;
@@ -148,6 +158,27 @@ namespace Services {
 	}
 
 	bool ControllerService::SiftApply() 
+	{
+		try
+		{
+			cout << endl << "=== Init Sift ===" << endl << endl;
+			for (int i = 0; i < _InterestRegionsFirstImage.size(); i++) {
+				_resultSiftOnMask.push_back(_siftService->Execute(_InterestRegionsFirstImage[i], _InterestRegionsSecondImage[i], _siftThreshold));
+				_visualizer->Show(_resultSiftOnMask[i], _visualizerName);
+			}
+
+			
+
+			return true;
+		}
+		catch (const std::exception& ex)
+		{
+			cout << ">> Error on execution of SIFT algorithm. " << endl << endl << ex.what() << endl;
+			return false;
+		}
+	}
+
+	bool ControllerService::SiftOnMaskApply()
 	{
 		try
 		{

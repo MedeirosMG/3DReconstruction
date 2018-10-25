@@ -67,6 +67,7 @@ namespace Services {
 		// Sift Properties
 		int _siftThreshold;
 		SiftResult _resultSift;
+		vector<SiftResult> _resultSiftOnMask;
 
 		//Ransac Properties
 		vector<PointPair> _resultRansac;
@@ -80,8 +81,9 @@ namespace Services {
 		Mat _resultCannyDilated;
 
 		// Connected Components Properties
-		Mat _InterestRegionsFirstImage;
-		Mat _InterestRegionsSecondImage;
+		vector<Mat> _InterestRegionsFirstImage;
+		vector<Mat> _InterestRegionsSecondImage;
+		
 
 		// Calibration Properties
 		float _calibrationB;
@@ -115,6 +117,7 @@ namespace Services {
 		bool FindRegionsApply();
 		bool RansacApply();
 		bool SiftApply();
+		bool SiftOnMaskApply();
 		bool RenderApply();
 		bool FireflyApply();
 		bool ReadImages(string pathFirstImage, string pathSecondImage);

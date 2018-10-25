@@ -18,11 +18,11 @@ namespace Services {
 
 		ControllerService* controller = new ControllerService(".\\Others Files\\im0.png", ".\\Others Files\\im1.png");
 
-		controller->SetFireflyProperties(4, 50, 100);
+		controller->SetFireflyProperties(3, 100, 100);
 		controller->SetCannyProperties(100, 250, 3);
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(1000);
-		controller->SetCalibrationProperties(12, 22, 5);
+		controller->SetCalibrationProperties(4.7, 63, 5);
 		controller->SetRenderProperties(&argc, argv);
 		controller->SetVisualizerProperties(true);
 		controller->LoadServices();
@@ -32,7 +32,8 @@ namespace Services {
 		controller->CannyApply();
 		//controller->ConnectedComponentsApply();
 		//controller->FindRegionsApply();
-		controller->SiftApply();
+		//controller->SiftApply();
+		controller->SiftOnMaskApply();
 		controller->RansacApply();
 		controller->CalibrationApply();
 		controller->DelaunayApply();
@@ -46,7 +47,7 @@ namespace Services {
 		string pathFile = ".\\Reports";
 		cout << "======= Start Test ======= " << endl;
 
-		ControllerService* controller = new ControllerService(".\\Others Files\\im0.png", ".\\Others Files\\im1.png");
+		ControllerService* controller = new ControllerService(".\\Others Files\\unstructured01.png", ".\\Others Files\\unstructured02.png");
 
 		controller->SetFireflyProperties(1, 50, 100);
 		controller->SetCannyProperties(50, 700, 3);
@@ -128,11 +129,11 @@ namespace Services {
 	void TestService::ConnectedComponents()
 	{
 		ConnectedComponentsService *CC = new ConnectedComponentsService();
-		Mat img = CC->Execute(imread(".\\Others Files\\im0.png", 0));
-		resize(img, img, Size(800, 600));
+		//Mat img = CC->Execute(imread(".\\Others Files\\im0.png", 0));
+		//resize(img, img, Size(800, 600));
 
-		imshow("Componentes", img);
-		waitKey();
+		//imshow("Componentes", img);
+		//waitKey();
 	}
 	
 }
