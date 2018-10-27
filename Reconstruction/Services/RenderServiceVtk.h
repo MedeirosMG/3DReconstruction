@@ -19,7 +19,7 @@ namespace Services {
 			void Init();
 
 		public:
-			void Execute(vector<Vec<Point3f, 3>> triangles, vector<Point3f> pointsCalibration, vector<Point3f> contour);
+			void Execute(vector<Vec<Point3f, 4>> triangles, vector<Point3f> pointsCalibration, vector<Point3f> contour);
 	};
 
 }

@@ -1,6 +1,10 @@
 #include "stdafx.h"
 #include "ConnectedComponentsService.h"
 
+bool comp(double a, double b) {
+	return a > b;
+}
+
 namespace Services {
 
 	// ----------- Private
@@ -20,18 +24,35 @@ namespace Services {
 
 			if (_threshold > 0.0)
 				areaScreen = GetBestAverage(contours);
-
+			vector<double> areas;
+			for (; idx >= 0; idx = hierarchy[idx][0])
+			{
+				areaPoints = PointUtilities().GetArea(contours[idx]);
+				areas.push_back(areaPoints);
+			}
+			sort(areas.begin(), areas.end(), comp);
+			idx = 0;
+			for (; idx >= 0; idx = hierarchy[idx][0])
+			{
+				areaPoints = PointUtilities().GetArea(contours[idx]);
+				for (int i = 0; i < 5; i++) {
+					if (areaPoints == areas[i]) {
+						Scalar color((rand() & 255), (rand() & 255), (rand() & 255));
+						_openCv->DrawContour(result, contours, idx, color, CV_FILLED, 8, hierarchy);
+					}
+				}
+			}
+			/*
 			for (; idx >= 0; idx = hierarchy[idx][0])
 			{
 				if(_threshold > 0.0)
 					areaPoints = PointUtilities().GetArea(contours[idx]);
-
 				if ((areaPoints / areaScreen >= _threshold) || areaPoints == 0.0 || _threshold == 0.0) {
 					Scalar color((rand() & 255), (rand() & 255), (rand() & 255));
 					_openCv->DrawContour(result, contours, idx, color, CV_FILLED, 8, hierarchy);
 					countFilter++;
 				}
-			}
+			}*/
 
 			//cout << "Initial size: " << contours.size() << " | End Size: " << countFilter << endl;
 		}
@@ -115,16 +136,56 @@ namespace Services {
 	{
 	}
 
-	Mat ConnectedComponentsService::Execute(Mat img)
+	vector<Mat> ConnectedComponentsService::Execute(Mat img)
 	{
-		vector<vector<Point>> contours;
-		vector<Vec4i> hierarchy;
+				
+		vector<uchar> cores;
+		int a;
+		for (int y = 0; y < img.rows; y++) {
+			for (int x = 0; x < img.cols; x++)
+			{
+				for (a = 0; a < cores.size(); a++)
+					if (img.at<uchar>(y, x) == cores[a])
+						break;
+				if (a == cores.size() && img.at<uchar>(y, x) != 0)
+					cores.push_back(img.at<uchar>(y, x));
+			}
+		}
+		vector<Mat> regions;
+		vector<Mat> resultRegions;
+		for (int i = 0; i < cores.size(); i++) {
+			Mat reg(img.rows, img.cols, img.type());
+			regions.push_back(reg);
+		}
+		
+		for (int y = 0; y < img.rows; y++) {
+			for (int x = 0; x < img.cols; x++)
+			{
+				for (int i = 0; i < cores.size(); i++) {
+					if (img.at<uchar>(y, x) == cores[i])
+						regions[i].at<uchar>(y, x) = 255;
+					else
+						regions[i].at<uchar>(y, x) = 0;
+
+				}
+			}
+		}
+		for (int i = 0; i < regions.size(); i++) {
+			vector<vector<Point>> contours;
+			vector<Vec4i> hierarchy;
+
+			_openCv->ConnectedComponentsAlgorithm(regions[i], contours, hierarchy, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
+			resultRegions.push_back(DrawFiltering(contours, hierarchy, img));
+			//resultRegions[i] = _openCv->Dilate(resultRegions[i], 3);
+		}
+		
+
+
 
 		// Applying Connected Components from Open CV
-		_openCv->ConnectedComponentsAlgorithm(img, contours, hierarchy, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
 
 		// Applying filter
-		return DrawFiltering(contours, hierarchy, img);
+		return resultRegions;
 	}
 
 }

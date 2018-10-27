@@ -135,6 +135,9 @@
     <ClInclude Include="Helpers\ReconstructionDefine.h">
       <Filter>Header Files\H_Helpers</Filter>
     </ClInclude>
+    <ClInclude Include="Services\RenderServiceVtk.h">
+      <Filter>Header Files\H_Services</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -228,6 +231,9 @@
       <Filter>Source Files\S_Algorithms</Filter>
     </ClCompile>
     <ClCompile Include="Services\ConnectedComponentsService.cpp">
+      <Filter>Source Files\S_Services</Filter>
+    </ClCompile>
+    <ClCompile Include="Services\RenderServiceVtk.cpp">
       <Filter>Source Files\S_Services</Filter>
     </ClCompile>
   </ItemGroup>

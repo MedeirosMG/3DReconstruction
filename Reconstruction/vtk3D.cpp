@@ -1,4 +1,4 @@
-
+#include"stdafx.h"
 #define vtkRenderingCore_AUTOINIT 2(vtkRenderingOpenGL2, vtkInteractionStyle)
 #include <vtkCellArray.h>
 #include <vtkDelaunay3D.h>

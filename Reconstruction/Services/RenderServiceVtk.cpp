@@ -1,10 +1,16 @@
 #include "stdafx.h"
+
 #include "RenderService.h"
 #include "RenderServiceVtk.h"
+#include <vtkAutoInit.h> 
 
 namespace Services {
-	void RenderServiceVtk::Execute(vector<Vec<Point3f, 3>> triangles, vector<Point3f> pointsCalibration, vector<Point3f> contour)
+	void RenderServiceVtk::Execute(vector<Vec<Point3f, 4>> triangles, vector<Point3f> pointsCalibration, vector<Point3f> contour)
 	{
+
+		VTK_MODULE_INIT(vtkRenderingOpenGL2)
+		VTK_MODULE_INIT(vtkInteractionStyle)
+
 		PointUtilities *utilitie = new PointUtilities();
 
 		// Size of screen to render
@@ -26,13 +32,12 @@ namespace Services {
 		renderWindow->AddRenderer(delaunayRenderer);
 		delaunayRenderer->SetViewport(rightViewport);
 
-		// Add interact
-		vtkSmartPointer<vtkRenderWindowInteractor> renderWindowInteractor = vtkSmartPointer<vtkRenderWindowInteractor>::New();
-		renderWindowInteractor->SetRenderWindow(renderWindow);
+		
 
 		// For points apply
 		vtkSmartPointer<vtkUnstructuredGrid> inputUnstructuredGrid = vtkSmartPointer<vtkUnstructuredGrid>::New();
 		utilitie->FillUnstructuredGrid(inputUnstructuredGrid, utilitie->MergePoints(contour, pointsCalibration));
+		//utilitie->FillUnstructuredGrid(inputUnstructuredGrid, pointsCalibration);
 		vtkSmartPointer<vtkDataSetMapper> originalMapper = vtkSmartPointer<vtkDataSetMapper>::New();
 		originalMapper->SetInputData(inputUnstructuredGrid);
 
@@ -40,8 +45,27 @@ namespace Services {
 		originalActor->SetMapper(originalMapper);
 		originalActor->GetProperty()->SetColor(1, 1, 1);
 
+		vtkSmartPointer<vtkUnstructuredGrid> delaunayUnstructuredGrid = vtkSmartPointer<vtkUnstructuredGrid>::New();
+		utilitie->FillUnstructuredGrid2(delaunayUnstructuredGrid, triangles);
+		vtkSmartPointer<vtkDataSetMapper> delaunayMapper = vtkSmartPointer<vtkDataSetMapper>::New();
+		delaunayMapper->SetInputData(delaunayUnstructuredGrid);
+
+		vtkSmartPointer<vtkActor> delaunayActor = vtkSmartPointer<vtkActor>::New();
+		delaunayActor->SetMapper(delaunayMapper);
+		delaunayActor->GetProperty()->SetColor(1, 1, 1);
+
+		//Wireframe
+		//delaunayActor->GetProperty()->SetRepresentationToWireframe();
+
+
+
+
+		// Add interact
+		vtkSmartPointer<vtkRenderWindowInteractor> renderWindowInteractor = vtkSmartPointer<vtkRenderWindowInteractor>::New();
+		renderWindowInteractor->SetRenderWindow(renderWindow);
+
 		originalRenderer->AddActor(originalActor);
-		//delaunayRenderer->AddActor(delaunayActor);
+		delaunayRenderer->AddActor(delaunayActor);
 		originalRenderer->SetBackground(.0, .0, .0);
 		delaunayRenderer->SetBackground(.0, .0, .0);
 
