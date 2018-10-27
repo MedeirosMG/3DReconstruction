@@ -38,7 +38,7 @@ namespace Services {
 			cout << endl << "=== Init Calibration ===" << endl << endl;
 			_resultCalibration = _calibrationService->CalculateStereoCameraCalibration(_resultRansac);
 			_calibrationService->OrderPointsByAsc(_resultCalibration);
-
+			
 			_visualizer->Show(_resultCalibration);
 
 			return true;
