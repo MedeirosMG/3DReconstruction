@@ -138,6 +138,9 @@
     <ClInclude Include="Services\RenderServiceVtk.h">
       <Filter>Header Files\H_Services</Filter>
     </ClInclude>
+    <ClInclude Include="Helpers\PFM.h">
+      <Filter>Header Files\H_Helpers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -235,6 +238,9 @@
     </ClCompile>
     <ClCompile Include="Services\RenderServiceVtk.cpp">
       <Filter>Source Files\S_Services</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers\PFM.cpp">
+      <Filter>Source Files\S_Helpers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

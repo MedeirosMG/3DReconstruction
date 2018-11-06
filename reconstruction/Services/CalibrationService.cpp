@@ -38,11 +38,12 @@ namespace Services {
 		PointUtilities *converter = new PointUtilities();
 		vector<Point3f> listRealPoints;
 
-		listMatchPoints = converter->PixelToCoordenate(listMatchPoints, _imgSize);
+		//listMatchPoints = converter->PixelToCoordenate(listMatchPoints, _imgSize);
 
 		for each (PointPair item in listMatchPoints)
 		{
-			listRealPoints.push_back(converter->CoordenateToPixel(*(CalculateRealPoint(item.FirstPoint, item.SecondPoint)), _imgSize));
+			listRealPoints.push_back(*CalculateRealPoint(item.FirstPoint, item.SecondPoint));
+			//listRealPoints.push_back(converter->CoordenateToPixel(*(CalculateRealPoint(item.FirstPoint, item.SecondPoint)), _imgSize));
 		}
 
 		return listRealPoints;
@@ -76,6 +77,6 @@ namespace Services {
 	}
 
 	float CalibrationService::WorldPointZ(Point3f firstPoint, Point3f secondPoint) {
-		return _lambda - ((_lambda * _b) / (secondPoint.x - firstPoint.x));
+		return (_lambda - ((_lambda * _b) / (secondPoint.x - firstPoint.x)));
 	}	
 }

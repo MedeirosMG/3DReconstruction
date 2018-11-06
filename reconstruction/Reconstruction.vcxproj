@@ -167,6 +167,7 @@
     <ClInclude Include="Helpers\Console.h" />
     <ClInclude Include="Helpers\Convert.h" />
     <ClInclude Include="Helpers\Export.h" />
+    <ClInclude Include="Helpers\PFM.h" />
     <ClInclude Include="Helpers\ReconstructionDefine.h" />
     <ClInclude Include="Helpers\Import.h" />
     <ClInclude Include="Helpers\MultiThreshold.h" />
@@ -204,6 +205,7 @@
     <ClCompile Include="Helpers\Export.cpp" />
     <ClCompile Include="Helpers\Import.cpp" />
     <ClCompile Include="Helpers\MultiThreshold.cpp" />
+    <ClCompile Include="Helpers\PFM.cpp" />
     <ClCompile Include="Helpers\PointsUtilities.cpp" />
     <ClCompile Include="Helpers\StringHelper.cpp" />
     <ClCompile Include="Helpers\Time.cpp" />

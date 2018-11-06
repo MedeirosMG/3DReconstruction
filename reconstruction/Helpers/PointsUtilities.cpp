@@ -214,17 +214,26 @@ namespace Helpers {
 			if (item[0].y > maxValue)
 				maxValue = item[0].y;
 
+			if (item[0].z > maxValue)
+				maxValue = item[0].z;
+
 			if (item[1].x > maxValue)
 				maxValue = item[1].x;
 
 			if (item[1].y > maxValue)
 				maxValue = item[1].y;
 
+			if (item[1].z > maxValue)
+				maxValue = item[1].z;
+
 			if (item[2].x > maxValue)
 				maxValue = item[2].x;
 
 			if (item[2].y > maxValue)
 				maxValue = item[2].y;
+
+			if (item[2].z > maxValue)
+				maxValue = item[2].z;
 		}
 
 		return maxValue;
@@ -272,7 +281,7 @@ namespace Helpers {
 		for each (Point3f point in pointsToApply)
 		{
 			double newPoint[3] = { point.x, point.y, point.z >= 0 ? -point.z : 0 };
-
+			
 			cells->InsertCellPoint(points->InsertNextPoint(newPoint));
 		}
 

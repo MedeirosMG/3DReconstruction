@@ -78,7 +78,7 @@ namespace Services {
 
 		for (int i = 0; i < matches.size(); i++) {
 
-			if (abs(firstImgKeyPoints[i].pt.y - secondImgKeyPoints[matches[i].trainIdx].pt.y) <= 15 && matches[i].distance <  30 * min_dist)
+			if (abs(firstImgKeyPoints[matches[i].queryIdx].pt.y - secondImgKeyPoints[matches[i].trainIdx].pt.y) <= 20 && matches[i].distance <  500 * min_dist)
 				good_matches.push_back(matches[i]);
 
 		}
@@ -88,6 +88,7 @@ namespace Services {
 		result.Matches = good_matches;
 		result.FirstImageKeyPoints = firstImgKeyPoints;
 		result.SecondImageKeyPoints = secondImgKeyPoints;
+		
 		drawMatches(img1, firstImgKeyPoints, img2, secondImgKeyPoints, good_matches, result.siftImg, Scalar::all(-1), Scalar::all(-1),
 			vector<char>(), DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS);
 		return result;

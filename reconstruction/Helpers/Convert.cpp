@@ -58,8 +58,8 @@ namespace Helpers {
 		for (int i = 0; i< matches.size(); i++) {
 
 			//Calculations to keep points inside the resolution of the image
-			auxPair.FirstPoint.x = firstImageKeyPoints[i].pt.x;
-			auxPair.FirstPoint.y = firstImageKeyPoints[i].pt.y;
+			auxPair.FirstPoint.x = firstImageKeyPoints[matches[i].queryIdx].pt.x;
+			auxPair.FirstPoint.y = firstImageKeyPoints[matches[i].queryIdx].pt.y;
 			auxPair.FirstPoint.z = 0;
 
 			//Calculations to keep points inside the resolution of the image
