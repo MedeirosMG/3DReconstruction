@@ -36,15 +36,15 @@ namespace Services {
 
 		// For points apply
 		vtkSmartPointer<vtkUnstructuredGrid> inputUnstructuredGrid = vtkSmartPointer<vtkUnstructuredGrid>::New();
-		utilitie->FillUnstructuredGrid(inputUnstructuredGrid, utilitie->MergePoints(contour, pointsCalibration));
-		//utilitie->FillUnstructuredGrid(inputUnstructuredGrid, pointsCalibration);
+		//utilitie->FillUnstructuredGrid(inputUnstructuredGrid, utilitie->MergePoints(contour, pointsCalibration));
+		utilitie->FillUnstructuredGrid(inputUnstructuredGrid, pointsCalibration);
 		vtkSmartPointer<vtkDataSetMapper> originalMapper = vtkSmartPointer<vtkDataSetMapper>::New();
 		originalMapper->SetInputData(inputUnstructuredGrid);
 
 		vtkSmartPointer<vtkActor> originalActor = vtkSmartPointer<vtkActor>::New();
 		originalActor->SetMapper(originalMapper);
 		originalActor->GetProperty()->SetColor(1, 1, 1);
-
+		originalActor->GetProperty()->SetPointSize(3.0);
 		vtkSmartPointer<vtkUnstructuredGrid> delaunayUnstructuredGrid = vtkSmartPointer<vtkUnstructuredGrid>::New();
 		utilitie->FillUnstructuredGrid2(delaunayUnstructuredGrid, triangles);
 		vtkSmartPointer<vtkDataSetMapper> delaunayMapper = vtkSmartPointer<vtkDataSetMapper>::New();
