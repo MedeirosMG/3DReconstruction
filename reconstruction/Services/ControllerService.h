@@ -66,6 +66,8 @@ namespace Services {
 
 		// Sift Properties
 		int _siftThreshold;
+		int _minDist;
+		int _minY;
 		SiftResult _resultSift;
 		vector<SiftResult> _resultSiftOnMask;
 
@@ -116,7 +118,7 @@ namespace Services {
 		bool ConnectedCannyApply();
 		bool DelaunayApply();
 		bool FindRegionsApply();
-		bool RansacApply();
+		bool ConvertSiftApply();
 		bool SiftApply();
 		bool SiftOnMaskApply();
 		bool SiftFilterApply();
@@ -127,6 +129,7 @@ namespace Services {
 
 		void SetCannyProperties(double cannyLowThresh, double cannyHighTresh, int cannyKernelSize);
 		void SetSiftProperties(int siftThreshold);
+		void SetSiftFilterProperties(int minY, int minDist);
 		void SetCalibrationProperties(float calibrationB, float calibrationLambda, int calibrationK);
 		void SetGeneralProperties();
 		void SetFireflyProperties(int thresholds, int number_fireflies, int number_generations);

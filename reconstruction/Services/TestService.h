@@ -18,8 +18,11 @@ namespace Services {
 		public:
 			TestService();
 			~TestService();
-			void Reconstruction(int argc, char **argv);
+			void ReconstructionFF_FP(int argc, char **argv);
+			void Reconstruction_FF(int argc, char **argv);
+			void Reconstruction_FP(int argc, char **argv);
 			void ReconstructionWithTimeExecution(int argc, char **argv);
+			void Reconstruction_Default(int argc, char **argv);
 			void Canny();
 			void Firefly();
 			void Render(int argc, char **argv);

@@ -187,24 +187,12 @@ namespace Services {
 		vector<Vec<Point3f, 4>> result;
 		Point2f middlePoint;
 
-		OpenCV *open = new OpenCV();
-		Mat mat1 = Mat(contour.rows, contour.cols, CV_8UC3);
-		Mat mat2 = Mat(contour.rows, contour.cols, CV_8UC3);
-
 		for each (Vec<Point3f, 4> triangle in triangles)
 		{
 			Point3f pt1 = triangle[0];
 			Point3f pt2 = triangle[1];
 			Point3f pt3 = triangle[2];
 			Point3f pt4 = triangle[3];
-
-			open->DrawLine(mat1, Point(1, 1), Point(2, 2));
-			open->DrawLine(mat1, Point(pt1.x, pt1.y), Point(pt2.x, pt2.y));
-			open->DrawLine(mat1, Point(pt2.x, pt2.y), Point(pt3.x, pt3.y));
-			open->DrawLine(mat1, Point(pt3.x, pt3.y), Point(pt1.x, pt1.y)); 
-			open->DrawLine(mat1, Point(pt1.x, pt1.y), Point(pt4.x, pt4.y));
-			open->DrawLine(mat1, Point(pt2.x, pt2.y), Point(pt4.x, pt4.y));
-			open->DrawLine(mat1, Point(pt3.x, pt3.y), Point(pt4.x, pt4.y));
 
 			middlePoint = utilities->GetMiddlePoint(Point2f(pt1.x, pt1.y), Point2f(pt2.x, pt2.y));
 			middlePoint.x = cvRound(middlePoint.x);
@@ -241,22 +229,8 @@ namespace Services {
 			if (!CheckInsidePoint(middlePoint, contour))
 				continue;
 
-
-			open->DrawLine(mat2, Point(pt1.x, pt1.y), Point(pt2.x, pt2.y));
-			open->DrawLine(mat2, Point(pt2.x, pt2.y), Point(pt3.x, pt3.y));
-			open->DrawLine(mat2, Point(pt3.x, pt3.y), Point(pt1.x, pt1.y));
-			open->DrawLine(mat2, Point(pt1.x, pt1.y), Point(pt4.x, pt4.y));
-			open->DrawLine(mat2, Point(pt2.x, pt2.y), Point(pt4.x, pt4.y));
-			open->DrawLine(mat2, Point(pt3.x, pt3.y), Point(pt4.x, pt4.y));
 			result.push_back(triangle);
 		}
-
-		
-		open->NewWindow("antes");
-		open->NewWindow("depois");
-
-		open->ShowImage(mat1, "antes");
-		open->ShowImage(mat2, "depois");
 
 		return result;
 	}

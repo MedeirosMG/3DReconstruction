@@ -8,7 +8,7 @@ namespace Helpers {
 		_openCv = opencv;
 		_execute = execute;
 
-		if (WindowName != "")
+		if (WindowName != "" && execute)
 			namedWindow(WindowName);
 	}
 
