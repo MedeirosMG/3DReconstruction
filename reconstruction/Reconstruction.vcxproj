@@ -160,6 +160,7 @@
     <ClInclude Include="Algorithms\Firefly.h" />
     <ClInclude Include="Algorithms\OpenGL.h" />
     <ClInclude Include="Algorithms\OpenCV.h" />
+    <ClInclude Include="Entities\CameraProperties.h" />
     <ClInclude Include="Entities\PointPair.h" />
     <ClInclude Include="Entities\RenderProperties.h" />
     <ClInclude Include="Entities\SiftResult.h" />
@@ -196,6 +197,7 @@
     <ClCompile Include="Algorithms\Firefly.cpp" />
     <ClCompile Include="Algorithms\OpenGL.cpp" />
     <ClCompile Include="Algorithms\OpenCV.cpp" />
+    <ClCompile Include="Entities\CameraProperties.cpp" />
     <ClCompile Include="Entities\PointPair.cpp" />
     <ClCompile Include="Entities\RenderProperties.cpp" />
     <ClCompile Include="Entities\SiftResult.cpp" />

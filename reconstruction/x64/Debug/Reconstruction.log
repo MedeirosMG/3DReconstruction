@@ -1,4 +1,36 @@
-﻿  TestService.cpp
-c:\users\murillo\c++\3dreconstruction\reconstruction\helpers\console.h(37): warning C4091: 'static ': ignorado à esquerda de 'Helpers::Console' quando nenhuma variável é declarada
-c:\users\murillo\c++\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignorado à esquerda de 'Helpers::StringHelper' quando nenhuma variável é declarada
-  Reconstruction.vcxproj -> C:\Users\Murillo\C++\3DReconstruction\x64\Debug\Reconstruction.exe
+﻿  CameraProperties.cpp
+  Export.cpp
+d:\projetos\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignored on left of 'Helpers::StringHelper' when no variable is declared
+d:\projetos\3dreconstruction\reconstruction\helpers\export.cpp(19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+d:\projetos\3dreconstruction\reconstruction\helpers\export.cpp(20): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+d:\projetos\3dreconstruction\reconstruction\helpers\export.cpp(23): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+d:\projetos\3dreconstruction\reconstruction\helpers\export.cpp(25): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+d:\projetos\3dreconstruction\reconstruction\helpers\export.cpp(27): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+d:\projetos\3dreconstruction\reconstruction\helpers\export.cpp(29): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+d:\projetos\3dreconstruction\reconstruction\helpers\export.cpp(68): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+d:\projetos\3dreconstruction\reconstruction\helpers\export.cpp(69): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+d:\projetos\3dreconstruction\reconstruction\helpers\export.cpp(72): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+d:\projetos\3dreconstruction\reconstruction\helpers\export.cpp(74): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+d:\projetos\3dreconstruction\reconstruction\helpers\export.cpp(76): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+d:\projetos\3dreconstruction\reconstruction\helpers\export.cpp(78): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+d:\projetos\3dreconstruction\reconstruction\helpers\export.cpp(126): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Import.cpp
+d:\projetos\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignored on left of 'Helpers::StringHelper' when no variable is declared
+  StringHelper.cpp
+d:\projetos\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignored on left of 'Helpers::StringHelper' when no variable is declared
+  Time.cpp
+d:\projetos\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignored on left of 'Helpers::StringHelper' when no variable is declared
+d:\projetos\3dreconstruction\reconstruction\helpers\time.cpp(38): warning C4244: 'initializing': conversion from '__int64' to 'long', possible loss of data
+  Main.cpp
+d:\projetos\3dreconstruction\reconstruction\helpers\console.h(37): warning C4091: 'static ': ignored on left of 'Helpers::Console' when no variable is declared
+d:\projetos\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignored on left of 'Helpers::StringHelper' when no variable is declared
+  ControllerService.cpp
+d:\projetos\3dreconstruction\reconstruction\helpers\console.h(37): warning C4091: 'static ': ignored on left of 'Helpers::Console' when no variable is declared
+d:\projetos\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignored on left of 'Helpers::StringHelper' when no variable is declared
+  TestService.cpp
+d:\projetos\3dreconstruction\reconstruction\helpers\console.h(37): warning C4091: 'static ': ignored on left of 'Helpers::Console' when no variable is declared
+d:\projetos\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignored on left of 'Helpers::StringHelper' when no variable is declared
+  Generating Code...
+CalibrationService.obj : error LNK2019: unresolved external symbol "public: bool __cdecl Helpers::PointUtilities::CheckInsidePoint(class cv::Point_<float>,class cv::Mat)" (?CheckInsidePoint@PointUtilities@Helpers@@QEAA_NV?$Point_@M@cv@@VMat@4@@Z) referenced in function "public: class std::vector<class cv::Point3_<float>,class std::allocator<class cv::Point3_<float> > > __cdecl Services::CalibrationService::CalculateStereoCameraCalibration(class std::vector<class Entities::PointPair,class std::allocator<class Entities::PointPair> >,class cv::Mat)" (?CalculateStereoCameraCalibration@CalibrationService@Services@@QEAA?AV?$vector@V?$Point3_@M@cv@@V?$allocator@V?$Point3_@M@cv@@@std@@@std@@V?$vector@VPointPair@Entities@@V?$allocator@VPointPair@Entities@@@std@@@4@VMat@cv@@@Z)
+ControllerService.obj : error LNK2019: unresolved external symbol "public: class Entities::SiftResult __cdecl Helpers::PointUtilities::FilterKeyPoints(class Entities::SiftResult,int,int,class cv::Mat,class cv::Mat)" (?FilterKeyPoints@PointUtilities@Helpers@@QEAA?AVSiftResult@Entities@@V34@HHVMat@cv@@1@Z) referenced in function "public: bool __cdecl Services::ControllerService::SiftFilterApply(void)" (?SiftFilterApply@ControllerService@Services@@QEAA_NXZ)
+D:\Projetos\3DReconstruction\x64\Debug\Reconstruction.exe : fatal error LNK1120: 2 unresolved externals
