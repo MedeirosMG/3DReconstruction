@@ -4,6 +4,8 @@
 
 #include "../Algorithms/OpenCV.h"
 #include "../Algorithms/OpenGL.h"
+#include "../Helpers/PFM.h"
+#include "../Helpers/PointsUtilities.h"
 
 #include "opencv2/imgproc/imgproc.hpp"
 #include "opencv2/highgui/highgui.hpp"
@@ -11,6 +13,7 @@
 using namespace cv;
 using namespace std;
 using namespace Algorithms;
+using namespace Helpers;
 
 namespace Services {
 
@@ -24,7 +27,7 @@ namespace Services {
 			ReconstructionCompareService();
 			ReconstructionCompareService(OpenCV* openCv);
 			~ReconstructionCompareService();
-			void Execute();
+			void Execute(vector<Point3f> reconstructionPoints, string pathMap, string pathExport);
 	};
 
 }
