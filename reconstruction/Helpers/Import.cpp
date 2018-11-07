@@ -39,10 +39,66 @@ namespace Helpers {
 					}
 				}
 			}
-	
+
 			file.close();
 		}
 
+		return result;
+	}
+
+	CameraProperties Import::CameraParameters(string pathDirectory)
+	{
+		vector<string> listSplitted_0;
+		vector<string> listSplitted_cam0;
+		vector<string> listSplitted_baseline;
+		vector<string> listSplitted_width;
+		CameraProperties result;
+
+		ifstream file;
+		string line = "";
+		int count = 0;
+		file.open(pathDirectory);
+
+		if (file.is_open()) {
+			while (getline(file, line))
+			{
+				switch (count)
+				{
+					default:
+						break;
+					case 0: // cam0
+						listSplitted_0 = StringHelper::Split(line, '[');
+						listSplitted_cam0 = StringHelper::Split(listSplitted_0[0], ' ');
+						break;
+					case 6: // baseline
+						listSplitted_baseline = StringHelper::Split(line, '=');
+						break;
+					case 8: // width
+						listSplitted_width = StringHelper::Split(line, '=');
+						break;
+				}
+
+				result.B = std::stof(listSplitted_cam0[0]);
+				result.CameraDistance = std::stof(listSplitted_baseline[0]) / std::stof(listSplitted_width[0]);
+				
+				count++;
+			}
+
+			file.close();
+		}
+
+		return result;
+	}
+
+	vector<CameraProperties> Import::CameraParameters(vector<string> pathDirectory)
+	{
+		vector<CameraProperties> result;
+
+		for each (string path in pathDirectory)
+		{
+			result.push_back(CameraParameters(path));
+		}
+		
 		return result;
 	}
 }
