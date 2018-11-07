@@ -153,7 +153,7 @@ namespace Services {
 		}
 	}
 
-	bool ControllerService::RansacApply() 
+	bool ControllerService::ConvertSiftApply()
 	{
 		try
 		{
@@ -220,7 +220,7 @@ namespace Services {
 		{
 			PointUtilities utilities;
 			cout << endl << "=== Init SiftFilter ===" << endl << endl;
-			_resultSift = utilities.FilterKeyPoints(_resultSift, 20, 500, _firstImage, _secondImage);
+			_resultSift = utilities.FilterKeyPoints(_resultSift, _minY, _minDist, _firstImage, _secondImage);
 
 			_visualizer->Show(_resultSift, _visualizerName);
 
@@ -240,7 +240,7 @@ namespace Services {
 			PointUtilities utilities;
 			cout << endl << "=== Init SiftFilter ===" << endl << endl;
 			for (int i = 0; i < _InterestRegionsFirstImage.size(); i++) {
-				_resultSiftOnMask[i] = utilities.FilterKeyPoints(_resultSiftOnMask[i], 20, 500, _InterestRegionsFirstImage[i], _InterestRegionsSecondImage[i]);
+				_resultSiftOnMask[i] = utilities.FilterKeyPoints(_resultSiftOnMask[i], _minY, _minDist, _InterestRegionsFirstImage[i], _InterestRegionsSecondImage[i]);
 				_visualizer->Show(_resultSiftOnMask[i], _visualizerName);
 			}
 
@@ -324,6 +324,12 @@ namespace Services {
 	void ControllerService::SetSiftProperties(int siftThreshold = 400)
 	{
 		_siftThreshold = siftThreshold;
+	}
+
+	void ControllerService::SetSiftFilterProperties(int minY, int minDist)
+	{
+		_minDist = minDist;
+		_minY = minY;
 	}
 
 	void ControllerService::SetCalibrationProperties(float calibrationB, float calibrationLambda, int calibrationK)
