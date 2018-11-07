@@ -12,12 +12,9 @@ namespace Services {
 	{
 	}
 	
-	void TestService::Reconstruction(int argc, char **argv)
+	void TestService::ReconstructionFF_FP(int argc, char **argv)
 	{
-		Import::CameraParameters("D:\\Projetos\\3DReconstruction\\Reconstruction\\Others Files\\Cable-perfect\\calib.txt");
-		return;
-
-		cout << "======= Start Test ======= " << endl;
+		cout << "======= Start Test using firefly and sift filter ======= " << endl;
 
 		ControllerService* controller = new ControllerService(".\\Others Files\\caixa1.jpg", ".\\Others Files\\caixa2.jpg");
 		controller->SetFireflyProperties(3, 100, 100);
@@ -25,24 +22,102 @@ namespace Services {
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0);
 		controller->SetCalibrationProperties(9, 56, 5);
+		controller->SetSiftFilterProperties(20, 500);
 		controller->SetRenderProperties(&argc, argv);
 		controller->SetVisualizerProperties(false);
 		controller->LoadServices();
 
-		//controller->FireflyApply();	
+		controller->FireflyApply();
 		controller->CannyApply();
-		//controller->ConnectedCannyApply();
-		//controller->ConnectedComponentsApply();
-		//controller->FindRegionsApply();
-		controller->SiftApply();
-		//controller->SiftFilterApply();
-		//controller->SiftOnMaskApply();
-		//controller->SiftOnMaskFilterApply();
-		controller->RansacApply();
+		controller->ConnectedComponentsApply();
+		controller->FindRegionsApply();
+		controller->SiftOnMaskApply();
+		controller->SiftOnMaskFilterApply();
+		controller->ConvertSiftApply();
 		controller->CalibrationApply();
 		controller->DelaunayApply();
 		controller->RenderApply();
 		
+		cout << "======== End Test ======== " << endl;
+	}
+
+	void TestService::Reconstruction_FF(int argc, char **argv)
+	{
+		cout << "======= Start Test using firefly ======= " << endl;
+
+		ControllerService* controller = new ControllerService(".\\Others Files\\caixa1.jpg", ".\\Others Files\\caixa2.jpg");
+		controller->SetFireflyProperties(3, 100, 100);
+		controller->SetCannyProperties(100, 250, 3);
+		controller->SetGeneralProperties();
+		controller->SetSiftProperties(0);
+		controller->SetCalibrationProperties(9, 56, 5);
+		controller->SetSiftFilterProperties(20, 500);
+		controller->SetRenderProperties(&argc, argv);
+		controller->SetVisualizerProperties(false);
+		controller->LoadServices();
+
+		controller->FireflyApply();
+		controller->CannyApply();
+		controller->ConnectedComponentsApply();
+		controller->FindRegionsApply();
+		controller->SiftOnMaskApply();
+		controller->ConvertSiftApply();
+		controller->CalibrationApply();
+		controller->DelaunayApply();
+		controller->RenderApply();
+
+		cout << "======== End Test ======== " << endl;
+	}
+
+	void TestService::Reconstruction_FP(int argc, char **argv)
+	{
+		cout << "======= Start Test using firefly ======= " << endl;
+
+		ControllerService* controller = new ControllerService(".\\Others Files\\caixa1.jpg", ".\\Others Files\\caixa2.jpg");
+		controller->SetFireflyProperties(3, 100, 100);
+		controller->SetCannyProperties(100, 250, 3);
+		controller->SetGeneralProperties();
+		controller->SetSiftProperties(0);
+		controller->SetCalibrationProperties(9, 56, 5);
+		controller->SetSiftFilterProperties(20, 500);
+		controller->SetRenderProperties(&argc, argv);
+		controller->SetVisualizerProperties(false);
+		controller->LoadServices();
+
+	
+		controller->CannyApply();
+		controller->SiftApply();
+		controller->SiftFilterApply();
+		controller->ConvertSiftApply();
+		controller->CalibrationApply();
+		controller->DelaunayApply();
+		controller->RenderApply();
+
+		cout << "======== End Test ======== " << endl;
+	}
+
+	void TestService::Reconstruction_Default(int argc, char **argv)
+	{
+		cout << "======= Start Test using firefly ======= " << endl;
+
+		ControllerService* controller = new ControllerService(".\\Others Files\\caixa1.jpg", ".\\Others Files\\caixa2.jpg");
+		controller->SetFireflyProperties(3, 100, 100);
+		controller->SetCannyProperties(100, 250, 3);
+		controller->SetGeneralProperties();
+		controller->SetSiftProperties(0);
+		controller->SetCalibrationProperties(9, 56, 5);
+		controller->SetSiftFilterProperties(20, 500);
+		controller->SetRenderProperties(&argc, argv);
+		controller->SetVisualizerProperties(false);
+		controller->LoadServices();
+
+		controller->CannyApply();
+		controller->SiftApply();
+		controller->ConvertSiftApply();
+		controller->CalibrationApply();
+		controller->DelaunayApply();
+		controller->RenderApply();
+
 		cout << "======== End Test ======== " << endl;
 	}
 
@@ -68,7 +143,7 @@ namespace Services {
 		_time->Run(std::bind(&ControllerService::ConnectedComponentsApply, controller), "ConnectedComponentsApply");
 		_time->Run(std::bind(&ControllerService::FindRegionsApply, controller), "FindRegionsApply");
 		_time->Run(std::bind(&ControllerService::SiftApply, controller), "SiftApply");
-		_time->Run(std::bind(&ControllerService::RansacApply, controller), "RansacApply");
+		_time->Run(std::bind(&ControllerService::ConvertSiftApply, controller), "RansacApply");
 		//_time->Run(std::bind(&ControllerService::CalibrationApply, controller), "CalibrationApply");
 		_time->Run(std::bind(&ControllerService::DelaunayApply, controller), "DelaunayApply");
 		_time->PrintResult();
