@@ -186,6 +186,7 @@
     <ClInclude Include="Services\InputImageService.h" />
     <ClInclude Include="Services\RansacService.h" />
     <ClInclude Include="Services\ControllerService.h" />
+    <ClInclude Include="Services\ReconstructionCompareService.h" />
     <ClInclude Include="Services\RenderService.h" />
     <ClInclude Include="Services\RenderServiceVtk.h" />
     <ClInclude Include="Services\SiftService.h" />
@@ -223,6 +224,7 @@
     <ClCompile Include="Services\InputImageService.cpp" />
     <ClCompile Include="Services\RansacService.cpp" />
     <ClCompile Include="Services\ControllerService.cpp" />
+    <ClCompile Include="Services\ReconstructionCompareService.cpp" />
     <ClCompile Include="Services\RenderService.cpp" />
     <ClCompile Include="Services\RenderServiceVtk.cpp" />
     <ClCompile Include="Services\SiftService.cpp" />
