@@ -9,7 +9,7 @@ namespace Services {
 
 	// ----------- Private
 
-	Mat ConnectedComponentsService::DrawFiltering(vector<vector<Point>>& contours, vector<Vec4i>& hierarchy, Mat image)
+	Mat ConnectedComponentsService::DrawFiltering(vector<vector<Point>>& contours, vector<Vec4i>& hierarchy, Mat image, int n)
 	{
 		Mat result = Mat::zeros(image.size(), CV_8UC3);
 
@@ -35,7 +35,7 @@ namespace Services {
 			for (; idx >= 0; idx = hierarchy[idx][0])
 			{
 				areaPoints = PointUtilities().GetArea(contours[idx]);
-				for (int i = 0; i < 5; i++) {
+				for (int i = 0; i < n; i++) {
 					if (areaPoints == areas[i]) {
 						Scalar color((rand() & 255), (rand() & 255), (rand() & 255));
 						_openCv->DrawContour(result, contours, idx, color, CV_FILLED, 8, hierarchy);
@@ -175,8 +175,8 @@ namespace Services {
 			vector<Vec4i> hierarchy;
 
 			_openCv->ConnectedComponentsAlgorithm(regions[i], contours, hierarchy, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
-			resultRegions.push_back(DrawFiltering(contours, hierarchy, img));
-			//resultRegions[i] = _openCv->Dilate(resultRegions[i], 3);
+			resultRegions.push_back(DrawFiltering(contours, hierarchy, img, 5));
+			resultRegions[i] = _openCv->Erode(resultRegions[i], 2);
 		}
 		
 
@@ -186,6 +186,59 @@ namespace Services {
 
 		// Applying filter
 		return resultRegions;
+	}
+	vector<Point3f>  ConnectedComponentsService::ExecuteOnCanny(Mat img)
+	{
+
+		Mat ret;
+		vector<vector<Point>> contours;
+		vector<Vec4i> hierarchy;
+
+		_openCv->ConnectedComponentsAlgorithm(img, contours, hierarchy, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
+		ret = DrawFiltering(contours, hierarchy, img, 2);
+		//ret = _openCv->Erode(ret, 2);
+
+		vector<Point3f> result;
+		vector<cv::Point> locations;
+		for (int j = 0; j< ret.rows; j++) {
+			for (int i = 0; i< ret.cols; i++) {
+				if (ret.at<uchar>(j, i) != 0) {
+					cv::Point temp;
+					temp.x = i;
+					temp.y = j;
+					locations.push_back(temp);
+				}
+			}
+		}
+
+		//Push on result vector the points that will actually be used on delauney
+		for (int i = 0; i < locations.size(); i += 10) {
+			Point3f temp(locations[i].x, locations[i].y, 0);
+			result.push_back(temp);
+		}
+
+
+		// Applying Connected Components from Open CV
+
+		// Applying filter
+		return result;
+	}
+
+	Mat ConnectedComponentsService::ExecuteOnCannyDilated(Mat img)
+	{
+		Mat ret;
+		vector<vector<Point>> contours;
+		vector<Vec4i> hierarchy;
+
+		_openCv->ConnectedComponentsAlgorithm(img, contours, hierarchy, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
+		ret = DrawFiltering(contours, hierarchy, img, 1);
+		//ret = _openCv->Erode(ret, 2);
+
+
+		// Applying Connected Components from Open CV
+
+		// Applying filter
+		return ret;
 	}
 
 }

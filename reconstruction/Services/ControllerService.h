@@ -113,11 +113,14 @@ namespace Services {
 		bool CalibrationApply();
 		bool CannyApply();
 		bool ConnectedComponentsApply();
+		bool ConnectedCannyApply();
 		bool DelaunayApply();
 		bool FindRegionsApply();
 		bool RansacApply();
 		bool SiftApply();
 		bool SiftOnMaskApply();
+		bool SiftFilterApply();
+		bool SiftOnMaskFilterApply();
 		bool RenderApply();
 		bool FireflyApply();
 		bool ReadImages(string pathFirstImage, string pathSecondImage);

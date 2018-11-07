@@ -33,7 +33,7 @@ namespace Services {
 		return (e1.x == e2.x ? e2.y < e2.y : e1.x < e2.x);
 	}
 
-	vector<Point3f> CalibrationService::CalculateStereoCameraCalibration(vector<PointPair> listMatchPoints)
+	vector<Point3f> CalibrationService::CalculateStereoCameraCalibration(vector<PointPair> listMatchPoints, Mat contour)
 	{
 		PointUtilities *converter = new PointUtilities();
 		vector<Point3f> listRealPoints;
@@ -42,7 +42,9 @@ namespace Services {
 
 		for each (PointPair item in listMatchPoints)
 		{
-			listRealPoints.push_back(*CalculateRealPoint(item.FirstPoint, item.SecondPoint));
+			Point3f point = *CalculateRealPoint(item.FirstPoint, item.SecondPoint);
+			if(converter->CheckInsidePoint(Point2f(point.x, point.y), contour))
+				listRealPoints.push_back(point);
 			//listRealPoints.push_back(converter->CoordenateToPixel(*(CalculateRealPoint(item.FirstPoint, item.SecondPoint)), _imgSize));
 		}
 

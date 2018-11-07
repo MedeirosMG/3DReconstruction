@@ -16,26 +16,27 @@ namespace Services {
 	{
 		cout << "======= Start Test ======= " << endl;
 
-		ControllerService* controller = new ControllerService(".\\Others Files\\im0.png", ".\\Others Files\\im1.png");
+		ControllerService* controller = new ControllerService(".\\Others Files\\caixa1.jpg", ".\\Others Files\\caixa2.jpg");
 		controller->SetFireflyProperties(3, 100, 100);
 		controller->SetCannyProperties(100, 250, 3);
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0);
-		controller->SetCalibrationProperties(171.548, 6338.47 / 2796, 5);
+		controller->SetCalibrationProperties(9, 56, 5);
 		controller->SetRenderProperties(&argc, argv);
-		controller->SetVisualizerProperties(true);
+		controller->SetVisualizerProperties(false);
 		controller->LoadServices();
 
-		
-		controller->FireflyApply();	
+		//controller->FireflyApply();	
 		controller->CannyApply();
-		controller->ConnectedComponentsApply();
-		controller->FindRegionsApply();
+		//controller->ConnectedCannyApply();
+		//controller->ConnectedComponentsApply();
+		//controller->FindRegionsApply();
 		controller->SiftApply();
+		//controller->SiftFilterApply();
 		//controller->SiftOnMaskApply();
+		//controller->SiftOnMaskFilterApply();
 		controller->RansacApply();
 		controller->CalibrationApply();
-
 		controller->DelaunayApply();
 		controller->RenderApply();
 		

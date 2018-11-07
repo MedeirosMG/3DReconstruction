@@ -32,7 +32,7 @@ namespace Algorithms {
 	}
 	Mat OpenCV::Erode(Mat img, int dilationSize)
 	{
-		Mat element = getStructuringElement(MORPH_CROSS,
+		Mat element = getStructuringElement(MORPH_ELLIPSE,
 			Size(2 * dilationSize + 1, 2 * dilationSize + 1),
 			Point(dilationSize, dilationSize));
 		Mat result;

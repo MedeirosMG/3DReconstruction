@@ -36,7 +36,7 @@ namespace Services {
 		try
 		{
 			cout << endl << "=== Init Calibration ===" << endl << endl;
-			_resultCalibration = _calibrationService->CalculateStereoCameraCalibration(_resultRansac);
+			_resultCalibration = _calibrationService->CalculateStereoCameraCalibration(_resultRansac, _resultCannyDilated);
 			_calibrationService->OrderPointsByAsc(_resultCalibration);
 			
 			_visualizer->Show(_resultCalibration);
@@ -72,11 +72,30 @@ namespace Services {
 		}
 	}
 
-	bool ControllerService::ConnectedComponentsApply() 
+	bool ControllerService::ConnectedCannyApply() 
 	{
 		try
 		{
-			cout << endl << "=== Init Connected Components ===" << endl << endl;
+			cout << endl << "=== Init Connected Components on Canny ===" << endl << endl;
+			_resultCanny = _connectedComponentsService->ExecuteOnCanny(_resultCannyDilated);
+			_visualizer->Show(_resultCanny);
+			_resultCannyDilated = _connectedComponentsService->ExecuteOnCannyDilated(_resultCannyDilated);
+			_visualizer->Show(_resultCannyDilated, _visualizerName);
+			
+			return true;
+		}
+		catch (const std::exception& ex)
+		{
+			cout << ">> Error ComponentsConnected " << ex.what() << endl;
+			return false;
+		}
+	}
+
+	bool ControllerService::ConnectedComponentsApply()
+	{
+		try
+		{
+			cout << endl << "=== Init Connected Components on Canny ===" << endl << endl;
 			_InterestRegionsFirstImage = _connectedComponentsService->Execute(_firstImageModified);
 			_InterestRegionsSecondImage = _connectedComponentsService->Execute(_secondImageModified);
 
@@ -84,7 +103,7 @@ namespace Services {
 				_visualizer->Show(_InterestRegionsFirstImage[i], _visualizerName);
 				_visualizer->Show(_InterestRegionsSecondImage[i], _visualizerName);
 			}
-			
+
 
 			return true;
 		}
@@ -162,12 +181,9 @@ namespace Services {
 		try
 		{
 			cout << endl << "=== Init Sift ===" << endl << endl;
-			for (int i = 0; i < _InterestRegionsFirstImage.size(); i++) {
-				_resultSiftOnMask.push_back(_siftService->Execute(_InterestRegionsFirstImage[i], _InterestRegionsSecondImage[i], _siftThreshold));
-				_visualizer->Show(_resultSiftOnMask[i], _visualizerName);
-			}
 
-			
+			_resultSift = _siftService->Execute(_firstImage, _secondImage, _siftThreshold);
+			_visualizer->Show(_resultSift, _visualizerName);
 
 			return true;
 		}
@@ -183,9 +199,50 @@ namespace Services {
 		try
 		{
 			cout << endl << "=== Init Sift ===" << endl << endl;
-			_resultSift = _siftService->Execute(_firstImage, _secondImage, _siftThreshold);
+			for (int i = 0; i < _InterestRegionsFirstImage.size(); i++) {
+				_resultSiftOnMask.push_back(_siftService->Execute(_InterestRegionsFirstImage[i], _InterestRegionsSecondImage[i], _siftThreshold));
+				_visualizer->Show(_resultSiftOnMask[i], _visualizerName);
+			}
+
+			return true;
+		}
+		catch (const std::exception& ex)
+		{
+			cout << ">> Error on execution of SIFT algorithm. " << endl << endl << ex.what() << endl;
+			return false;
+		}
+		
+	}
+
+	bool ControllerService::SiftFilterApply()
+	{
+		try
+		{
+			PointUtilities utilities;
+			cout << endl << "=== Init SiftFilter ===" << endl << endl;
+			_resultSift = utilities.FilterKeyPoints(_resultSift, 20, 500, _firstImage, _secondImage);
 
 			_visualizer->Show(_resultSift, _visualizerName);
+
+			return true;
+		}
+		catch (const std::exception& ex)
+		{
+			cout << ">> Error on execution of SIFT algorithm. " << endl << endl << ex.what() << endl;
+			return false;
+		}
+	}
+
+	bool ControllerService::SiftOnMaskFilterApply()
+	{
+		try
+		{
+			PointUtilities utilities;
+			cout << endl << "=== Init SiftFilter ===" << endl << endl;
+			for (int i = 0; i < _InterestRegionsFirstImage.size(); i++) {
+				_resultSiftOnMask[i] = utilities.FilterKeyPoints(_resultSiftOnMask[i], 20, 500, _InterestRegionsFirstImage[i], _InterestRegionsSecondImage[i]);
+				_visualizer->Show(_resultSiftOnMask[i], _visualizerName);
+			}
 
 			return true;
 		}
