@@ -131,6 +131,7 @@ namespace Services {
 		void SetSiftProperties(int siftThreshold);
 		void SetSiftFilterProperties(int minY, int minDist);
 		void SetCalibrationProperties(float calibrationB, float calibrationLambda, int calibrationK);
+		void SetCalibrationProperties(string path);
 		void SetGeneralProperties();
 		void SetFireflyProperties(int thresholds, int number_fireflies, int number_generations);
 		void SetRenderProperties(int *argc, char **argv);

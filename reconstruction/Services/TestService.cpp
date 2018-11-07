@@ -3,6 +3,12 @@
 
 namespace Services {
 
+	string path_calib = "D:\\Projetos\\3DReconstruction\\Reconstruction\\Others Files\\Cable-perfect\\calib.txt";
+	string path_img1 = ".\\Others Files\\caixa1.jpg";
+	string path_img2 = ".\\Others Files\\caixa2.jpg";
+	string path_unstructured1 = ".\\Others Files\\unstructured01.png";
+	string path_unstructured2 = ".\\Others Files\\unstructured02.png";
+
 	TestService::TestService()
 	{
 		_time = new Time();
@@ -16,12 +22,12 @@ namespace Services {
 	{
 		cout << "======= Start Test using firefly and sift filter ======= " << endl;
 
-		ControllerService* controller = new ControllerService(".\\Others Files\\caixa1.jpg", ".\\Others Files\\caixa2.jpg");
+		ControllerService* controller = new ControllerService(path_img1, path_img2);
 		controller->SetFireflyProperties(3, 100, 100);
 		controller->SetCannyProperties(100, 250, 3);
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0);
-		controller->SetCalibrationProperties(9, 56, 5);
+		controller->SetCalibrationProperties(path_calib);
 		controller->SetSiftFilterProperties(20, 500);
 		controller->SetRenderProperties(&argc, argv);
 		controller->SetVisualizerProperties(false);
@@ -45,12 +51,12 @@ namespace Services {
 	{
 		cout << "======= Start Test using firefly ======= " << endl;
 
-		ControllerService* controller = new ControllerService(".\\Others Files\\caixa1.jpg", ".\\Others Files\\caixa2.jpg");
+		ControllerService* controller = new ControllerService(path_img1, path_img2);
 		controller->SetFireflyProperties(3, 100, 100);
 		controller->SetCannyProperties(100, 250, 3);
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0);
-		controller->SetCalibrationProperties(9, 56, 5);
+		controller->SetCalibrationProperties(path_calib);
 		controller->SetSiftFilterProperties(20, 500);
 		controller->SetRenderProperties(&argc, argv);
 		controller->SetVisualizerProperties(false);
@@ -73,12 +79,12 @@ namespace Services {
 	{
 		cout << "======= Start Test using firefly ======= " << endl;
 
-		ControllerService* controller = new ControllerService(".\\Others Files\\caixa1.jpg", ".\\Others Files\\caixa2.jpg");
+		ControllerService* controller = new ControllerService(path_img1, path_img2);
 		controller->SetFireflyProperties(3, 100, 100);
 		controller->SetCannyProperties(100, 250, 3);
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0);
-		controller->SetCalibrationProperties(9, 56, 5);
+		controller->SetCalibrationProperties(path_calib);
 		controller->SetSiftFilterProperties(20, 500);
 		controller->SetRenderProperties(&argc, argv);
 		controller->SetVisualizerProperties(false);
@@ -100,12 +106,12 @@ namespace Services {
 	{
 		cout << "======= Start Test using firefly ======= " << endl;
 
-		ControllerService* controller = new ControllerService(".\\Others Files\\caixa1.jpg", ".\\Others Files\\caixa2.jpg");
+		ControllerService* controller = new ControllerService(path_img1, path_img2);
 		controller->SetFireflyProperties(3, 100, 100);
 		controller->SetCannyProperties(100, 250, 3);
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0);
-		controller->SetCalibrationProperties(9, 56, 5);
+		controller->SetCalibrationProperties(path_calib);
 		controller->SetSiftFilterProperties(20, 500);
 		controller->SetRenderProperties(&argc, argv);
 		controller->SetVisualizerProperties(false);
@@ -126,13 +132,13 @@ namespace Services {
 		string pathFile = ".\\Reports";
 		cout << "======= Start Test ======= " << endl;
 
-		ControllerService* controller = new ControllerService(".\\Others Files\\unstructured01.png", ".\\Others Files\\unstructured02.png");
+		ControllerService* controller = new ControllerService(path_unstructured1, path_unstructured2);
 
 		controller->SetFireflyProperties(1, 50, 100);
 		controller->SetCannyProperties(50, 700, 3);
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(400);
-		controller->SetCalibrationProperties(1, 2, 1);
+		controller->SetCalibrationProperties(path_calib);
 		controller->SetRenderProperties(&argc, argv);
 		controller->SetVisualizerProperties(false);
 
