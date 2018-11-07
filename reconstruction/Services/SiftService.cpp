@@ -61,35 +61,14 @@ namespace Services {
 		/*FlannBasedMatcher matcher;
 		matcher.match(firstImgDescription, secondImgDescription, matches);*/
 
-		//Filtro de pontos
-		double max_dist = 0, min_dist = 100;
-
-		//-- Quick calculation of max and min distances between keypoints
-		for (int i = 0; i < firstImgDescription.rows; i++)
-		{
-			double dist = matches[i].distance;
-			if (dist < min_dist) min_dist = dist;
-			if (dist > max_dist) max_dist = dist;
-		}
-
-		printf("-- Max dist : %f \n", max_dist);
-		printf("-- Min dist : %f \n", min_dist);
-
-
-		for (int i = 0; i < matches.size(); i++) {
-
-			if (abs(firstImgKeyPoints[matches[i].queryIdx].pt.y - secondImgKeyPoints[matches[i].trainIdx].pt.y) <= 20 && matches[i].distance <  500 * min_dist)
-				good_matches.push_back(matches[i]);
-
-		}
-
+		
 	
 
-		result.Matches = good_matches;
+		result.Matches = matches;
 		result.FirstImageKeyPoints = firstImgKeyPoints;
 		result.SecondImageKeyPoints = secondImgKeyPoints;
 		
-		drawMatches(img1, firstImgKeyPoints, img2, secondImgKeyPoints, good_matches, result.siftImg, Scalar::all(-1), Scalar::all(-1),
+		drawMatches(img1, firstImgKeyPoints, img2, secondImgKeyPoints, matches, result.siftImg, Scalar::all(-1), Scalar::all(-1),
 			vector<char>(), DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS);
 		return result;
 	}

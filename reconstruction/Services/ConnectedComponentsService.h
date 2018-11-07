@@ -22,7 +22,7 @@ namespace Services {
 		float _threshold = 0.02;
 		int _interval = 3;
 		Size _screenSize = Size(REC_SCREEN_DEFAULT_WIDTH, REC_SCREEN_DEFAULT_HEIGHT);
-		Mat DrawFiltering(vector<vector<Point>>& contours, vector<Vec4i>& hierarchy, Mat image);
+		Mat DrawFiltering(vector<vector<Point>>& contours, vector<Vec4i>& hierarchy, Mat image, int n);
 		double GetBestAverage(vector<vector<Point>> contours);
 
 	public:
@@ -32,6 +32,8 @@ namespace Services {
 		ConnectedComponentsService(OpenCV* openCV, Size imgSize, float threshold, float interval);
 		~ConnectedComponentsService();
 		vector<Mat> Execute(Mat img);
+		vector<Point3f>  ConnectedComponentsService::ExecuteOnCanny(Mat img);
+		Mat  ConnectedComponentsService::ExecuteOnCannyDilated(Mat img);
 	};
 
 }

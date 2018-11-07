@@ -44,7 +44,7 @@ namespace Services {
 			CalibrationService(OpenCV* openCv);
 			~CalibrationService();
 
-			vector<Point3f> CalculateStereoCameraCalibration(vector<PointPair> listMatchPoints);
+			vector<Point3f> CalculateStereoCameraCalibration(vector<PointPair> listMatchPoints, Mat contour);
 			Point3f* CalculateRealPoint(Point3f firstPoint, Point3f secondPoint);
 			void OrderPointsByAsc(vector<Point3f>& listPoints);
 	};

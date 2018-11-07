@@ -6,6 +6,8 @@
 #include "../Algorithms/OpenCV.h"
 #include "../Algorithms/OpenGL.h"
 #include "../Entities/PointPair.h"
+#include "../Entities/SiftResult.h"
+#include "../Helpers/ReconstructionDefine.h"
 #include <vtkCellArray.h>
 #include <vtkDelaunay3D.h>
 #include <vtkMinimalStandardRandomSequence.h>
@@ -66,9 +68,11 @@ namespace Helpers {
 			Point3f PixelToCoordenate(Point3f point, Size screenSize);
 			Point3f CoordenateToPixel(Point3f point, Size screenSize);
 			vector<PointPair> PixelToCoordenate(vector<PointPair> points, Size screenSize);
+			SiftResult FilterKeyPoints(SiftResult result, int filterY, int filterDist, Mat img1, Mat img2);
 			double GetArea(vector<Point> points);
 			void FillUnstructuredGrid(vtkUnstructuredGrid * unstructuredGrid, vector<Point3f> pointsToApply);
 			void FillUnstructuredGrid2(vtkUnstructuredGrid * unstructuredGrid, vector<Vec< Point3f, 4> > triangles);
+			bool CheckInsidePoint(Point2f point, Mat contour);
 	};
 
 }
