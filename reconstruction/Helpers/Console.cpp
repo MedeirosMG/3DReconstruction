@@ -4,7 +4,7 @@
 namespace Helpers {
 
 	// -------- Private
-	
+
 	string Console::PrintString(Point2f point)
 	{
 		return "P(" + to_string(point.x) + "," + to_string(point.y) + ")";
@@ -21,10 +21,10 @@ namespace Helpers {
 	{
 
 	}
-	
+
 	Console::~Console()
 	{
-	}	
+	}
 
 	void Console::Print(vector<Point3f> points, bool pause)
 	{
@@ -93,8 +93,8 @@ namespace Helpers {
 		cout << ">> Size: " << points.size() << endl;
 
 		for (int i = 0; i < points.size(); i++) {
-				cout << " >>> Vector [0" << i << "]: " << endl;
-				Print(points[i]);
+			cout << " >>> Vector [0" << i << "]: " << endl;
+			Print(points[i]);
 
 			if (i == 99)
 				break;
@@ -157,14 +157,14 @@ namespace Helpers {
 
 		// Print matches
 		Print(siftResult.Matches);
-		
+
 		// temp vector points for keypoints
 		vector<Point2f> firstPoints, secondPoints;
 
 		// get vector first points
 		for each (KeyPoint pt in siftResult.FirstImageKeyPoints)
 			firstPoints.push_back(pt.pt);
-		
+
 		// get vector second points
 		for each (KeyPoint pt in siftResult.FirstImageKeyPoints)
 			secondPoints.push_back(pt.pt);
@@ -195,8 +195,8 @@ namespace Helpers {
 		}
 
 		cout << "============================= Only top 100 =====================================" << endl << endl;
-		
-		if(pause)
+
+		if (pause)
 			Pause();
 	}
 
@@ -215,7 +215,21 @@ namespace Helpers {
 		}
 
 		cout << "=============================== Only top 100 ===================================" << endl << endl;
-		
+
+		if (pause)
+			Pause();
+	}
+
+	void Console::Print(CameraProperties cameraProperties, bool pause)
+	{
+		cout << "=============================== CameraProperties ===============================" << endl;
+
+		cout << "B: " << cameraProperties.B << endl;
+		cout << "CameraDistance: " << cameraProperties.CameraDistance << endl;
+		cout << "Lambda: " << cameraProperties.Lambda << endl;
+
+		cout << "================================================================================" << endl << endl;
+
 		if (pause)
 			Pause();
 	}

@@ -7,6 +7,7 @@
 #include "../Algorithms/OpenGL.h"
 #include "../Entities/PointPair.h"
 #include "../Entities/SiftResult.h"
+#include "../Entities/CameraProperties.h"
 
 using namespace std;
 using namespace Algorithms;
@@ -34,6 +35,7 @@ namespace Helpers {
 			static void Print(SiftResult siftResult, bool pause = false);
 			static void Print(vector<Vec6f> triangles, bool pause = false);
 			static void Print(vector<DMatch> matches, bool pause = false);
+			static void Print(CameraProperties cameraProperties, bool pause = false);
 	};
 
 }

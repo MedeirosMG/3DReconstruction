@@ -14,6 +14,9 @@ namespace Services {
 	
 	void TestService::Reconstruction(int argc, char **argv)
 	{
+		Import::CameraParameters("D:\\Projetos\\3DReconstruction\\Reconstruction\\Others Files\\Cable-perfect\\calib.txt");
+		return;
+
 		cout << "======= Start Test ======= " << endl;
 
 		ControllerService* controller = new ControllerService(".\\Others Files\\caixa1.jpg", ".\\Others Files\\caixa2.jpg");

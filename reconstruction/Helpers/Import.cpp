@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Import.h"
+#include "Console.h"
 
 namespace Helpers {
 
@@ -68,7 +69,7 @@ namespace Helpers {
 						break;
 					case 0: // cam0
 						listSplitted_0 = StringHelper::Split(line, '[');
-						listSplitted_cam0 = StringHelper::Split(listSplitted_0[0], ' ');
+						listSplitted_cam0 = StringHelper::Split(listSplitted_0[1], ' ');
 						break;
 					case 6: // baseline
 						listSplitted_baseline = StringHelper::Split(line, '=');
@@ -78,14 +79,16 @@ namespace Helpers {
 						break;
 				}
 
-				result.B = std::stof(listSplitted_cam0[0]);
-				result.CameraDistance = std::stof(listSplitted_baseline[0]) / std::stof(listSplitted_width[0]);
-				
 				count++;
 			}
 
+			result.B = std::stof(listSplitted_cam0[0]);
+			result.CameraDistance = std::stof(listSplitted_baseline[1]) / std::stof(listSplitted_width[1]);
+
 			file.close();
 		}
+
+		Console::Print(result);
 
 		return result;
 	}
@@ -98,7 +101,7 @@ namespace Helpers {
 		{
 			result.push_back(CameraParameters(path));
 		}
-		
+
 		return result;
 	}
 }
