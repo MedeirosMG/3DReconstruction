@@ -339,6 +339,15 @@ namespace Services {
 		_calibrationK =	calibrationK;
 	}
 
+	void ControllerService::SetCalibrationProperties(string path)
+	{
+		CameraProperties cameraProperties = Import::CameraParameters(path);
+
+		_calibrationB = cameraProperties.B;
+		_calibrationLambda = cameraProperties.Lambda;
+		_calibrationK = 1;
+	}
+
 	void ControllerService::SetGeneralProperties()
 	{
 	}

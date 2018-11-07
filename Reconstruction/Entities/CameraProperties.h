@@ -11,7 +11,6 @@ namespace Entities {
 
 			float B;
 			float Lambda;
-			float CameraDistance;
 	};
 
 }
