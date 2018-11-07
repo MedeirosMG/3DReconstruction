@@ -172,6 +172,39 @@ namespace Helpers {
 		return pointsReturn;
 	}
 
+	SiftResult PointUtilities::FilterKeyPoints(SiftResult result, int filterY, int filterDist, Mat img1, Mat img2)
+	{
+		//Filtro de pontos
+		vector<DMatch> good_matches;
+		
+		double max_dist = 0, min_dist = 100;
+
+		//-- Quick calculation of max and min distances between keypoints
+		for (int i = 0; i < result.Matches.size(); i++)
+		{
+			double dist = result.Matches[i].distance;
+			if (dist < min_dist) min_dist = dist;
+			if (dist > max_dist) max_dist = dist;
+		}
+
+		printf("-- Max dist : %f \n", max_dist);
+		printf("-- Min dist : %f \n", min_dist);
+
+
+		for (int i = 0; i < result.Matches.size(); i++) {
+
+			if (abs(result.FirstImageKeyPoints[result.Matches[i].queryIdx].pt.y - result.SecondImageKeyPoints[result.Matches[i].trainIdx].pt.y) <= filterY && 
+				result.Matches[i].distance <  filterDist * min_dist)
+				good_matches.push_back(result.Matches[i]);
+
+		}
+		SiftResult ret = result;
+		ret.Matches = good_matches;
+		drawMatches(img1, result.FirstImageKeyPoints, img2, result.SecondImageKeyPoints, good_matches, result.siftImg, Scalar::all(-1), Scalar::all(-1),
+			vector<char>(), DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS);
+		return ret;
+	}
+
 	double PointUtilities::GetArea(vector<Point> points)
 	{
 		// (X[i], Y[i]) are coordinates of i'th point.		
@@ -314,5 +347,92 @@ namespace Helpers {
 		unstructuredGrid->SetPoints(points);
 		cells->Squeeze();
 		unstructuredGrid->SetCells(VTK_TETRA, cells);
+	}
+
+	bool PointUtilities::CheckInsidePoint(Point2f point, Mat contour)
+	{
+		int width = REC_SCREEN_DEFAULT_WIDTH;
+		int height = REC_SCREEN_DEFAULT_HEIGHT;
+		bool controlVariable = true;
+
+		if (point.x > width || point.y > height)
+			return false;
+
+		// Go to max width
+		Point2f variablePoint = point;
+		while (variablePoint.x < width)
+		{
+			if (contour.at<uchar>(variablePoint.y, variablePoint.x) != 0)
+			{
+				controlVariable = true;
+				break;
+			}
+			else
+			{
+				controlVariable = false;
+				variablePoint.x++;
+			}
+		}
+
+		if (!controlVariable)
+			return false;
+
+
+		// Go to min width
+		variablePoint = point;
+		while (variablePoint.x > 0)
+		{
+			if (contour.at<uchar>(variablePoint.y, variablePoint.x) != 0)
+			{
+				controlVariable = true;
+				break;
+			}
+			else
+			{
+				controlVariable = false;
+				variablePoint.x--;
+			}
+		}
+
+		if (!controlVariable)
+			return false;
+
+		// Go to max height
+		variablePoint = point;
+		while (variablePoint.y < height)
+		{
+			if (contour.at<uchar>(variablePoint.y, variablePoint.x) != 0)
+			{
+				controlVariable = true;
+				break;
+			}
+			else
+			{
+				controlVariable = false;
+				variablePoint.y++;
+			}
+		}
+
+		if (!controlVariable)
+			return false;
+
+
+		// Go to min width
+		variablePoint = point;
+		while (variablePoint.y > 0)
+		{
+			if (contour.at<uchar>(variablePoint.y, variablePoint.x) != 0)
+			{
+				controlVariable = true;
+				break;
+			}
+			else
+			{
+				controlVariable = false;
+				variablePoint.y--;
+			}
+		}
+
+		return controlVariable;
 	}
 }
