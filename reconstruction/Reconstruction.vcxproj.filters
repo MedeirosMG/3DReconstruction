@@ -147,6 +147,9 @@
     <ClInclude Include="Services\ReconstructionCompareService.h">
       <Filter>Header Files\H_Services</Filter>
     </ClInclude>
+    <ClInclude Include="Entities\ReconstructionComparison.h">
+      <Filter>Header Files\H_Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -253,6 +256,9 @@
     </ClCompile>
     <ClCompile Include="Services\ReconstructionCompareService.cpp">
       <Filter>Source Files\S_Services</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\ReconstructionComparison.cpp">
+      <Filter>Source Files\S_Entities</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
