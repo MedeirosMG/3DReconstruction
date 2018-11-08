@@ -89,6 +89,29 @@ namespace Helpers {
 		return maxValue;
 	}
 
+	float PointUtilities::GetMinAbsCoord(vector<Point3f> points, string coordinate)
+	{
+		float minValue = 9999999999;
+
+		for each (Point3f point in points)
+		{
+			float numTemp = 0.0;
+
+			if (coordinate == "x")
+				numTemp = point.x;
+			else if (coordinate == "y")
+				numTemp = point.y;
+			else if (coordinate == "z")
+				numTemp = point.z;
+
+
+			if (abs(numTemp) < minValue && !isinf(numTemp))
+				minValue = abs(numTemp);
+		}
+
+		return minValue;
+	}
+
 	// Get max value with the coordinate using a vector points
 	float PointUtilities::GetMaxAbsCoord(Mat image, string coordinate)
 	{
@@ -103,6 +126,21 @@ namespace Helpers {
 		}
 
 		return GetMaxAbsCoord(pointsMap, coordinate);
+	}
+
+	float PointUtilities::GetMinAbsCoord(Mat image, string coordinate)
+	{
+		vector<Point3f> pointsMap;
+		for (int i = 0; i < image.rows; i++)
+		{
+			for (int j = 0; j < image.cols; j++)
+			{
+				float zPoint = image.at<float>(i, j);
+				pointsMap.push_back(Point3f(i, j, zPoint));
+			}
+		}
+
+		return GetMinAbsCoord(pointsMap, coordinate);
 	}
 
 	vector<Point3f> PointUtilities::GetMockPoints(string fileRead)

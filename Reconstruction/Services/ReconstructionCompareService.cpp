@@ -28,13 +28,15 @@ namespace Services {
 		resize(mapImage, mapImage, Size(REC_SCREEN_DEFAULT_WIDTH, REC_SCREEN_DEFAULT_HEIGHT));
 
 		float maxPointReconstruction = pointUtilities->GetMaxAbsCoord(reconstructionPoints, "z");
+		float minPointReconstruction = pointUtilities->GetMinAbsCoord(reconstructionPoints, "z");
 		float maxPointMap = pointUtilities->GetMaxAbsCoord(mapImage, "z");
-		
+		float minPointMap = pointUtilities->GetMinAbsCoord(mapImage, "z");
 		for each (Point3f point in reconstructionPoints)
 		{
 			ReconstructionComparison reconstructionComparison;
-			reconstructionComparison.Map.z = mapImage.at<float>((int)point.y, (int)point.x) / maxPointMap;
-			reconstructionComparison.Reconstruction.z = point.z / maxPointReconstruction;
+			reconstructionComparison.Map.z = (mapImage.at<float>((int)point.y, (int)point.x) - minPointMap) / (maxPointMap - minPointMap);
+			reconstructionComparison.Map.z = 1 - reconstructionComparison.Map.z;
+			reconstructionComparison.Reconstruction.z = (point.z - minPointReconstruction) / (maxPointReconstruction - minPointReconstruction);
 			reconstructionComparison.Error.z = abs(reconstructionComparison.Map.z - reconstructionComparison.Reconstruction.z);
 
 			result.push_back(reconstructionComparison);
