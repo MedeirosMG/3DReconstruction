@@ -30,7 +30,7 @@ namespace Services {
 			ReconstructionCompareService();
 			ReconstructionCompareService(OpenCV* openCv);
 			~ReconstructionCompareService();
-			void Execute(vector<Point3f> reconstructionPoints, string pathMap, string pathExport, string filename = "reconstruction_comparison.csv");
+			void Execute(vector<Point3f> reconstructionPoints, string pathMap, string pathExport);
 	};
 
 }

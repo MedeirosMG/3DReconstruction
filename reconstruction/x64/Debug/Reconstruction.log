@@ -1,16 +1,4 @@
-﻿  Export.cpp
-c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\stringhelper.h(27): warning C4091: 'static ': ignored on left of 'Helpers::StringHelper' when no variable is declared
-c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\export.cpp(19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\export.cpp(20): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\export.cpp(23): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\export.cpp(25): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\export.cpp(27): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\export.cpp(29): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\export.cpp(68): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\export.cpp(69): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\export.cpp(72): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\export.cpp(74): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\export.cpp(76): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\export.cpp(78): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\export.cpp(128): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  Reconstruction.vcxproj -> C:\Users\ssbgaz\OneDrive - Scania CV\0 - Personal\Repo\3DReconstruction\x64\Debug\Reconstruction.exe
+﻿  Main.cpp
+d:\projetos\3dreconstruction\reconstruction\helpers\console.h(39): warning C4091: 'static ': ignored on left of 'Helpers::Console' when no variable is declared
+d:\projetos\3dreconstruction\reconstruction\helpers\stringhelper.h(27): warning C4091: 'static ': ignored on left of 'Helpers::StringHelper' when no variable is declared
+  Reconstruction.vcxproj -> D:\Projetos\3DReconstruction\x64\Debug\Reconstruction.exe

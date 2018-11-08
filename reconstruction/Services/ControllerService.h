@@ -88,11 +88,13 @@ namespace Services {
 		vector<Mat> _InterestRegionsFirstImage;
 		vector<Mat> _InterestRegionsSecondImage;
 		
-
 		// Calibration Properties
 		float _calibrationB;
 		float _calibrationLambda;
 		int _calibrationK;
+		string _pathDisparity;
+		string _pathExport;
+		bool _exportCalib;
 		vector<Point3f> _resultCalibration;
 
 		// Fireflies Properties
@@ -114,7 +116,7 @@ namespace Services {
 		ControllerService(string pathFirstImage, string pathSecondImage);
 		~ControllerService();
 
-		bool CalibrationApply(bool logResult = false, string path = ".\\Other Files", string filename = "reconstruction_comparison.csv");
+		bool CalibrationApply();
 		bool CannyApply();
 		bool ConnectedComponentsApply();
 		bool ConnectedCannyApply();
@@ -132,8 +134,8 @@ namespace Services {
 		void SetCannyProperties(double cannyLowThresh, double cannyHighTresh, int cannyKernelSize);
 		void SetSiftProperties(int siftThreshold);
 		void SetSiftFilterProperties(int minY, int minDist);
-		void SetCalibrationProperties(float calibrationB, float calibrationLambda, int calibrationK);
-		void SetCalibrationProperties(string path);
+		void SetCalibrationProperties(string _pathDisparity, string _pathExport, float calibrationB = 0, float calibrationLambda = 0, int calibrationK = 0, bool _export = false);
+		void SetCalibrationProperties(string path, string pathDisparity, string pathExport, bool _export = false);
 		void SetGeneralProperties();
 		void SetFireflyProperties(int thresholds, int number_fireflies, int number_generations);
 		void SetRenderProperties(int *argc, char **argv);

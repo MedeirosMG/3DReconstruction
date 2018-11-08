@@ -108,7 +108,7 @@ namespace Helpers {
 		return true;
 	}
 
-	bool Export::Csv(Helpers::Time time, string pathDirectory, string filename)
+	bool Export::Csv(Helpers::Time time, string pathDirectory)
 	{
 		try
 		{
@@ -119,7 +119,7 @@ namespace Helpers {
 			int maxQtd = 0;
 			ofstream file;
 
-			file.open(pathDirectory + "\\" + filename);
+			file.open(pathDirectory);
 			if (file.is_open()) {
 				// setting columns name on csv
 				for (int i = 0; i < list.size(); i++)
@@ -175,7 +175,7 @@ namespace Helpers {
 		}
 	}
 
-	bool Export::Csv(vector<ReconstructionComparison> reconstructionComparison, string pathDirectory, string filename, string coordinates)
+	bool Export::Csv(vector<ReconstructionComparison> reconstructionComparison, string pathDirectory, string coordinates)
 	{
 		try
 		{
@@ -187,7 +187,7 @@ namespace Helpers {
 			string data = "";
 			ofstream file;
 
-			file.open(pathDirectory + "\\" + filename);
+			file.open(pathDirectory);
 			if (file.is_open()) {
 				// setting header
 				for (char& c : coordinates) {

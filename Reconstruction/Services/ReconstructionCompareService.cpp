@@ -18,7 +18,7 @@ namespace Services {
 	{
 	}
 
-	void ReconstructionCompareService::Execute(vector<Point3f> reconstructionPoints, string pathMap, string pathExport, string filename)
+	void ReconstructionCompareService::Execute(vector<Point3f> reconstructionPoints, string pathMap, string pathExport)
 	{
 		vector<ReconstructionComparison> result;
 		PointUtilities *pointUtilities = new PointUtilities();
@@ -33,13 +33,13 @@ namespace Services {
 		for each (Point3f point in reconstructionPoints)
 		{
 			ReconstructionComparison reconstructionComparison;
-			//reconstructionComparison.Map.z = mapImage.at<float>(point.x, point.y) / maxPointMap;
+			reconstructionComparison.Map.z = mapImage.at<float>((int)point.y, (int)point.x) / maxPointMap;
 			reconstructionComparison.Reconstruction.z = point.z / maxPointReconstruction;
 			reconstructionComparison.Error.z = abs(reconstructionComparison.Map.z - reconstructionComparison.Reconstruction.z);
 
 			result.push_back(reconstructionComparison);
 		}
 
-		Export::Csv(result, pathExport, filename, "z");
+		Export::Csv(result, pathExport, "z");
 	}
 }

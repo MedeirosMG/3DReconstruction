@@ -82,8 +82,8 @@ namespace Helpers {
 				count++;
 			}
 
-			result.Lambda = std::stof(listSplitted_cam0[0]);
-			result.B = std::stof(listSplitted_baseline[1]) / std::stof(listSplitted_width[1]);
+			result.Lambda = std::stof(listSplitted_cam0[0]) / std::stof(listSplitted_width[1]);
+			result.B = std::stof(listSplitted_baseline[1]);
 
 			file.close();
 		}

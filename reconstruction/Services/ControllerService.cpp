@@ -31,7 +31,7 @@ namespace Services {
 
 #pragma region [ Apply ]
 
-	bool ControllerService::CalibrationApply(bool logResult, string path, string filename)
+	bool ControllerService::CalibrationApply()
 	{		
 		try
 		{
@@ -41,8 +41,8 @@ namespace Services {
 			
 			_visualizer->Show(_resultCalibration);
 
-			if(logResult)
-				_reconstructionCompareService->Execute(_resultCalibration, ".\\Others Files\\Cable-perfect\\disp0.pfm", ".\\Others Files", filename);
+			if(_exportCalib)
+				_reconstructionCompareService->Execute(_resultCalibration, _pathDisparity, _pathExport);
 
 			return true;
 		}
@@ -335,20 +335,26 @@ namespace Services {
 		_minY = minY;
 	}
 
-	void ControllerService::SetCalibrationProperties(float calibrationB, float calibrationLambda, int calibrationK)
+	void ControllerService::SetCalibrationProperties(string pathDisparity, string pathExport, float calibrationB, float calibrationLambda, int calibrationK, bool _export)
 	{
+		_pathExport = pathExport;
 		_calibrationB = calibrationB;
 		_calibrationLambda = calibrationLambda;
 		_calibrationK =	calibrationK;
+		_exportCalib = _export;
 	}
 
-	void ControllerService::SetCalibrationProperties(string path)
+	void ControllerService::SetCalibrationProperties(string path, string pathDisparity, string pathExport, bool _export)
 	{
 		CameraProperties cameraProperties = Import::CameraParameters(path);
 
 		_calibrationB = cameraProperties.B;
 		_calibrationLambda = cameraProperties.Lambda;
 		_calibrationK = 1;
+
+		_exportCalib = _export;
+		_pathDisparity = pathDisparity;
+		_pathExport = pathExport;
 	}
 
 	void ControllerService::SetGeneralProperties()
