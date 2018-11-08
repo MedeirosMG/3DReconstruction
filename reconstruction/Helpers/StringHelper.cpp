@@ -33,5 +33,19 @@ namespace Helpers {
 
 		return result;
 	}
-	
+
+	void StringHelper::Append(string & str, string newString)
+	{
+		str += newString;
+	}	
+
+	char StringHelper::ToUppercase(char str)
+	{
+		return str - ('a' - 'A');
+	}
+
+	char StringHelper::ToLowercase(char str)
+	{
+		return str + ('a' - 'A');
+	}
 }

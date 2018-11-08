@@ -3,7 +3,7 @@
 
 namespace Services {
 
-	string path_calib = "D:\\Projetos\\3DReconstruction\\Reconstruction\\Others Files\\Cable-perfect\\calib.txt";
+	string path_calib = ".\\Others Files\\Cable-perfect\\calib.txt";
 	string path_img1 = ".\\Others Files\\caixa1.jpg";
 	string path_img2 = ".\\Others Files\\caixa2.jpg";
 	string path_unstructured1 = ".\\Others Files\\unstructured01.png";
@@ -219,6 +219,31 @@ namespace Services {
 
 		//imshow("Componentes", img);
 		//waitKey();
+	}
+
+	void TestService::ReconstructionComparison(int argc, char **argv)
+	{
+		cout << "======= Start Test Reconstruction Comparison ======= " << endl;
+
+		ControllerService* controller = new ControllerService(path_img1, path_img2);
+		controller->SetFireflyProperties(3, 100, 100);
+		controller->SetCannyProperties(100, 250, 3);
+		controller->SetGeneralProperties();
+		controller->SetSiftProperties(0);
+		controller->SetCalibrationProperties(path_calib);
+		controller->SetSiftFilterProperties(20, 500);
+		controller->SetRenderProperties(&argc, argv);
+		controller->SetVisualizerProperties(false);
+		controller->LoadServices();
+
+		controller->CannyApply();
+		controller->SiftApply();
+		controller->ConvertSiftApply();
+		controller->CalibrationApply(true);
+		controller->DelaunayApply();
+		controller->RenderApply();
+
+		cout << "======== End Test ======== " << endl;
 	}
 	
 }

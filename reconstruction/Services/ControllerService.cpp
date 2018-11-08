@@ -31,7 +31,7 @@ namespace Services {
 
 #pragma region [ Apply ]
 
-	bool ControllerService::CalibrationApply() 
+	bool ControllerService::CalibrationApply(bool logResult, string path, string filename)
 	{		
 		try
 		{
@@ -40,6 +40,9 @@ namespace Services {
 			_calibrationService->OrderPointsByAsc(_resultCalibration);
 			
 			_visualizer->Show(_resultCalibration);
+
+			if(logResult)
+				_reconstructionCompareService->Execute(_resultCalibration, ".\\Others Files\\Cable-perfect\\disp0.pfm", ".\\Others Files", filename);
 
 			return true;
 		}

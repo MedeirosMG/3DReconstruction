@@ -108,16 +108,18 @@ namespace Helpers {
 		return true;
 	}
 
-	bool Export::Csv(Helpers::Time time, string pathDirectory)
+	bool Export::Csv(Helpers::Time time, string pathDirectory, string filename)
 	{
 		try
 		{
 			vector<TimeExecution> list = time.Get();
 			vector<vector<string>> excelValues;
 			string exportText = "";
+			string splitter = ";";
 			int maxQtd = 0;
 			ofstream file;
-			file.open(pathDirectory + "\\time_execution.csv");
+
+			file.open(pathDirectory + "\\" + filename);
 			if (file.is_open()) {
 				// setting columns name on csv
 				for (int i = 0; i < list.size(); i++)
@@ -128,7 +130,7 @@ namespace Helpers {
 						maxQtd = sizeMethod;
 
 					if ((i + 1) != list.size()) {
-						exportText += ";";
+						exportText += splitter;
 					}
 				}
 				exportText += "\n";
@@ -153,7 +155,7 @@ namespace Helpers {
 				{
 					for each (string col in row)
 					{
-						exportText += col + ";";
+						exportText += col + splitter;
 					}
 
 					exportText += "\n";
@@ -166,8 +168,70 @@ namespace Helpers {
 						
 			return true;
 		}
-		catch (const std::exception&)
+		catch (const std::exception& ex)
 		{
+			cout << "Exception Export CSV: " << ex.what() << endl;
+			return false;
+		}
+	}
+
+	bool Export::Csv(vector<ReconstructionComparison> reconstructionComparison, string pathDirectory, string filename, string coordinates)
+	{
+		try
+		{
+			if (coordinates == "")
+				throw exception("Coordinates cannot be null or empty");
+
+			string exportText = "";
+			string splitter = ";";
+			string data = "";
+			ofstream file;
+
+			file.open(pathDirectory + "\\" + filename);
+			if (file.is_open()) {
+				// setting header
+				for (char& c : coordinates) {
+					string coord(&c);
+					string header = "Reconstruction Coord " + coord + splitter + "Map Coord " + coord + splitter + "Error " + coord + splitter;
+
+					StringHelper::Append(exportText, header);
+				}
+
+				StringHelper::Append(exportText, "\n");
+
+				// setting data
+				for each (ReconstructionComparison item in reconstructionComparison)
+				{
+					for (char& c : coordinates) {
+						switch (c)
+						{
+							case 'x':
+								data = to_string(item.Reconstruction.x) + splitter + to_string(item.Map.x) + splitter + to_string(item.Error.x) + splitter;
+								break;
+							case 'y':
+								data = to_string(item.Reconstruction.y) + splitter + to_string(item.Map.y) + splitter + to_string(item.Error.y) + splitter;
+								break;
+							case 'z':
+								data = to_string(item.Reconstruction.z) + splitter + to_string(item.Map.z) + splitter + to_string(item.Error.z) + splitter;
+								break;
+						}
+
+						StringHelper::Append(exportText, data);
+					}
+
+					StringHelper::Append(exportText, "\n");
+				}
+			}
+
+			file << exportText;
+
+			file.close();
+
+			return true;
+		}
+		catch (const std::exception& ex)
+		{
+			cout << "Exception Export CSV: " << ex.what() << endl;
 			return false;
 		}
 	}

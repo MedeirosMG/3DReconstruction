@@ -5,12 +5,12 @@ namespace Entities {
 
 	class CameraProperties {
 		public:
-			CameraProperties(float b, float lambda, float cameraDistance);
+			CameraProperties(float b, float lambda);
 			CameraProperties();
 			~CameraProperties();
 
-			float B;
-			float Lambda;
+			float B = 1;
+			float Lambda = 1;
 	};
 
 }

@@ -13,6 +13,7 @@
 #include "SiftService.h"
 #include "InputImageService.h"
 #include "RenderService.h"
+#include "ReconstructionCompareService.h"
 #include "..\Helpers\Console.h"
 #include "..\Helpers\Convert.h"
 #include "..\Helpers\Visualizer.h"
@@ -50,6 +51,7 @@ namespace Services {
 		InputImageService* _inputImageService;
 		RenderService* _renderService;
 		RenderServiceVtk* _renderServiceVTK;
+		ReconstructionCompareService* _reconstructionCompareService;
 
 		// Utilities
 		Visualizer* _visualizer = new Visualizer();
@@ -112,7 +114,7 @@ namespace Services {
 		ControllerService(string pathFirstImage, string pathSecondImage);
 		~ControllerService();
 
-		bool CalibrationApply();
+		bool CalibrationApply(bool logResult = false, string path = ".\\Other Files", string filename = "reconstruction_comparison.csv");
 		bool CannyApply();
 		bool ConnectedComponentsApply();
 		bool ConnectedCannyApply();

@@ -42,11 +42,11 @@ namespace Helpers {
 			Point pt3{ cvRound(triangle[4]), cvRound(triangle[5]) };
 
 			_triangles.push_back(Vec6f(triangle[0] + maxValue,
-										triangle[1] + maxValue,
-										triangle[2] + maxValue,
-										triangle[3] + maxValue,
-										triangle[4] + maxValue,
-										triangle[5] + maxValue));
+				triangle[1] + maxValue,
+				triangle[2] + maxValue,
+				triangle[3] + maxValue,
+				triangle[4] + maxValue,
+				triangle[5] + maxValue));
 		}
 
 		return _triangles;
@@ -73,6 +73,7 @@ namespace Helpers {
 		for each (Point3f point in points)
 		{
 			float numTemp = 0.0;
+
 			if (coordinate == "x")
 				numTemp = point.x;
 			else if (coordinate == "y")
@@ -81,11 +82,27 @@ namespace Helpers {
 				numTemp = point.z;
 
 
-			if (abs(numTemp) > maxValue)
+			if (abs(numTemp) > maxValue && !isinf(numTemp))
 				maxValue = abs(numTemp);
 		}
 
 		return maxValue;
+	}
+
+	// Get max value with the coordinate using a vector points
+	float PointUtilities::GetMaxAbsCoord(Mat image, string coordinate)
+	{
+		vector<Point3f> pointsMap;
+		for (int i = 0; i < image.rows; i++)
+		{
+			for (int j = 0; j < image.cols; j++)
+			{
+				float zPoint = image.at<float>(i, j);
+				pointsMap.push_back(Point3f(i, j, zPoint));
+			}
+		}
+
+		return GetMaxAbsCoord(pointsMap, coordinate);
 	}
 
 	vector<Point3f> PointUtilities::GetMockPoints(string fileRead)
@@ -132,7 +149,7 @@ namespace Helpers {
 		_return.reserve(pts1.size() + pts2.size());
 		_return.insert(_return.end(), pts1.begin(), pts1.end());
 		_return.insert(_return.end(), pts2.begin(), pts2.end());
-	
+
 		return _return;
 	}
 	vector<PointPair> PointUtilities::MergePoints(vector<PointPair> pts1, vector<PointPair> pts2)
@@ -176,7 +193,7 @@ namespace Helpers {
 	{
 		//Filtro de pontos
 		vector<DMatch> good_matches;
-		
+
 		double max_dist = 0, min_dist = 100;
 
 		//-- Quick calculation of max and min distances between keypoints
@@ -193,8 +210,8 @@ namespace Helpers {
 
 		for (int i = 0; i < result.Matches.size(); i++) {
 
-			if (abs(result.FirstImageKeyPoints[result.Matches[i].queryIdx].pt.y - result.SecondImageKeyPoints[result.Matches[i].trainIdx].pt.y) <= filterY && 
-				result.Matches[i].distance <  filterDist * min_dist)
+			if (abs(result.FirstImageKeyPoints[result.Matches[i].queryIdx].pt.y - result.SecondImageKeyPoints[result.Matches[i].trainIdx].pt.y) <= filterY &&
+				result.Matches[i].distance < filterDist * min_dist)
 				good_matches.push_back(result.Matches[i]);
 
 		}
@@ -225,13 +242,13 @@ namespace Helpers {
 
 	Point3f PointUtilities::PixelToCoordenate(Point3f point, Size screenSize)
 	{
-		Point3f pt = Point3f((point.x - screenSize.width/2), (-point.y + screenSize.height/2), point.z);
+		Point3f pt = Point3f((point.x - screenSize.width / 2), (-point.y + screenSize.height / 2), point.z);
 		return pt;
 	}
 
 	Point3f PointUtilities::CoordenateToPixel(Point3f point, Size screenSize)
 	{
-		Point3f pt = Point3f(point.x + screenSize.width/2, screenSize.height/2 - point.y , point.z);
+		Point3f pt = Point3f(point.x + screenSize.width / 2, screenSize.height / 2 - point.y, point.z);
 		return pt;
 	}
 
@@ -243,7 +260,7 @@ namespace Helpers {
 		{
 			if (item[0].x > maxValue)
 				maxValue = item[0].x;
-			
+
 			if (item[0].y > maxValue)
 				maxValue = item[0].y;
 
@@ -272,7 +289,7 @@ namespace Helpers {
 		return maxValue;
 	}
 
-	float PointUtilities::GetMaxAbsCoord(vector<Vec6f> points) 
+	float PointUtilities::GetMaxAbsCoord(vector<Vec6f> points)
 	{
 		float maxValue = 0.0;
 
@@ -314,7 +331,7 @@ namespace Helpers {
 		for each (Point3f point in pointsToApply)
 		{
 			double newPoint[3] = { point.x, point.y, point.z >= 0 ? -point.z : 0 };
-			
+
 			cells->InsertCellPoint(points->InsertNextPoint(newPoint));
 		}
 
@@ -342,7 +359,7 @@ namespace Helpers {
 			cells->InsertCellPoint(points->InsertNextPoint(newPoint3));
 			cells->InsertCellPoint(points->InsertNextPoint(newPoint4));
 		}
-		
+
 		points->Squeeze();
 		unstructuredGrid->SetPoints(points);
 		cells->Squeeze();

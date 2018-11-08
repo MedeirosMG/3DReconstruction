@@ -1,98 +1,16 @@
-﻿  stdafx.cpp
-  Firefly.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\algorithms\firefly.cpp(63): warning C4244: 'inicializando': conversão de 'double' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\algorithms\firefly.cpp(149): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\algorithms\firefly.cpp(162): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\algorithms\firefly.cpp(170): warning C4244: '=': conversão de 'double' para 'unsigned int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\algorithms\firefly.cpp(171): warning C4244: '=': conversão de 'double' para 'unsigned int', possível perda de dados
-  OpenGL.cpp
-  OpenCV.cpp
-  CameraProperties.cpp
-  PointPair.cpp
-  RenderProperties.cpp
-  SiftResult.cpp
-  TimeExecution.cpp
-  Console.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\console.h(37): warning C4091: 'static ': ignorado à esquerda de 'Helpers::Console' quando nenhuma variável é declarada
-  Convert.cpp
-  Export.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignorado à esquerda de 'Helpers::StringHelper' quando nenhuma variável é declarada
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\export.cpp(19): warning C4244: 'inicializando': conversão de 'double' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\export.cpp(20): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\export.cpp(23): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\export.cpp(25): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\export.cpp(27): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\export.cpp(29): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\export.cpp(68): warning C4244: 'inicializando': conversão de 'double' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\export.cpp(69): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\export.cpp(72): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\export.cpp(74): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\export.cpp(76): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\export.cpp(78): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\export.cpp(126): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
-  Import.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignorado à esquerda de 'Helpers::StringHelper' quando nenhuma variável é declarada
-  MultiThreshold.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\multithreshold.cpp(16): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\multithreshold.cpp(35): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\multithreshold.cpp(47): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\multithreshold.cpp(58): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\multithreshold.cpp(61): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\multithreshold.cpp(118): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\multithreshold.cpp(128): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\multithreshold.cpp(139): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\multithreshold.cpp(142): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\multithreshold.cpp(196): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\multithreshold.cpp(214): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\multithreshold.cpp(225): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\multithreshold.cpp(228): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
-  PFM.cpp
-  PointsUtilities.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(215): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\pointsutilities.cpp(313): warning C4267: 'argumento': conversão de 'size_t' para 'int', possível perda de dados
-  StringHelper.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignorado à esquerda de 'Helpers::StringHelper' quando nenhuma variável é declarada
-  Time.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignorado à esquerda de 'Helpers::StringHelper' quando nenhuma variável é declarada
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\time.cpp(38): warning C4244: 'inicializando': conversão de '__int64' para 'long', possível perda de dados
-  Tsallis.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\tsallis.cpp(21): warning C4305: 'inicializando': truncamento de 'double' para 'float'
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\tsallis.cpp(21): warning C4305: '+=': truncamento de 'double' para 'float'
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\tsallis.cpp(84): warning C4244: 'return': conversão de 'double' para 'float', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\tsallis.cpp(97): warning C4018: '<': incompatibilidade de signed/unsigned
-  Visualizer.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\console.h(37): warning C4091: 'static ': ignorado à esquerda de 'Helpers::Console' quando nenhuma variável é declarada
-  Main.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\console.h(37): warning C4091: 'static ': ignorado à esquerda de 'Helpers::Console' quando nenhuma variável é declarada
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignorado à esquerda de 'Helpers::StringHelper' quando nenhuma variável é declarada
-  Gerando Código...
-  Compilando...
-  CalibrationService.cpp
-  CannyService.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\cannyservice.cpp(52): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
-  ConnectedComponentsService.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\console.h(37): warning C4091: 'static ': ignorado à esquerda de 'Helpers::Console' quando nenhuma variável é declarada
-  DelaunayService.cpp
-  FindRegionsService.cpp
-  FireflyService.cpp
-  InputImageService.cpp
-  RansacService.cpp
-  ControllerService.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\console.h(37): warning C4091: 'static ': ignorado à esquerda de 'Helpers::Console' quando nenhuma variável é declarada
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignorado à esquerda de 'Helpers::StringHelper' quando nenhuma variável é declarada
-  ReconstructionCompareService.cpp
-  RenderService.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\renderservice.cpp(102): warning C4267: 'argumento': conversão de 'size_t' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\renderservice.cpp(104): warning C4267: 'argumento': conversão de 'size_t' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\renderservice.cpp(161): warning C4267: 'argumento': conversão de 'size_t' para 'int', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\renderservice.cpp(163): warning C4267: 'argumento': conversão de 'size_t' para 'int', possível perda de dados
-  RenderServiceVtk.cpp
-  SiftService.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\siftservice.cpp(40): warning C4244: 'inicializando': conversão de 'int' para 'float', possível perda de dados
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\siftservice.cpp(41): warning C4244: 'inicializando': conversão de 'int' para 'float', possível perda de dados
-  TestService.cpp
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\console.h(37): warning C4091: 'static ': ignorado à esquerda de 'Helpers::Console' quando nenhuma variável é declarada
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\helpers\stringhelper.h(24): warning C4091: 'static ': ignorado à esquerda de 'Helpers::StringHelper' quando nenhuma variável é declarada
-  Gerando Código...
-c:\sd\arquivos\documentos\3dreconstruction\reconstruction\services\findregionsservice.cpp(26): warning C4717: 'Services::FindRegionsService::Execute': recursivo em todos os caminhos de controle, função causará estouro na pilha em tempo de execução
-  Reconstruction.vcxproj -> C:\SD\Arquivos\Documentos\3DReconstruction\x64\Debug\Reconstruction.exe
+﻿  Export.cpp
+c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\stringhelper.h(27): warning C4091: 'static ': ignored on left of 'Helpers::StringHelper' when no variable is declared
+c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\export.cpp(19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\export.cpp(20): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\export.cpp(23): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\export.cpp(25): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\export.cpp(27): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\export.cpp(29): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\export.cpp(68): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\export.cpp(69): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\export.cpp(72): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\export.cpp(74): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\export.cpp(76): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\export.cpp(78): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ssbgaz\onedrive - scania cv\0 - personal\repo\3dreconstruction\reconstruction\helpers\export.cpp(128): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Reconstruction.vcxproj -> C:\Users\ssbgaz\OneDrive - Scania CV\0 - Personal\Repo\3DReconstruction\x64\Debug\Reconstruction.exe

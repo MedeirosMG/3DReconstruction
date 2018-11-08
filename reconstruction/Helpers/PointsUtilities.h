@@ -60,6 +60,7 @@ namespace Helpers {
 			float GetMaxAbsCoord(vector<Point3f> points, string coordinate);
 			float GetMaxAbsCoord(vector<Vec6f> points);
 			float GetMaxAbsCoord(vector<Vec<Point3f, 3>> points);
+			float GetMaxAbsCoord(Mat image, string coordinate);
 			vector<Point3f> GetMockPoints(string fileRead = ".\\Others Files\\MockPoints.obj");
 			Point2f GetMiddlePoint(Point2f pt1, Point2f pt2);
 			vector<Point3f> MergePoints(vector<Point3f> pts1, vector<Point3f> pts2);

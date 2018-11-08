@@ -162,6 +162,7 @@
     <ClInclude Include="Algorithms\OpenCV.h" />
     <ClInclude Include="Entities\CameraProperties.h" />
     <ClInclude Include="Entities\PointPair.h" />
+    <ClInclude Include="Entities\ReconstructionComparison.h" />
     <ClInclude Include="Entities\RenderProperties.h" />
     <ClInclude Include="Entities\SiftResult.h" />
     <ClInclude Include="Entities\TimeExecution.h" />
@@ -200,6 +201,7 @@
     <ClCompile Include="Algorithms\OpenCV.cpp" />
     <ClCompile Include="Entities\CameraProperties.cpp" />
     <ClCompile Include="Entities\PointPair.cpp" />
+    <ClCompile Include="Entities\ReconstructionComparison.cpp" />
     <ClCompile Include="Entities\RenderProperties.cpp" />
     <ClCompile Include="Entities\SiftResult.cpp" />
     <ClCompile Include="Entities\TimeExecution.cpp" />

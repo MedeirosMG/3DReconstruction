@@ -29,6 +29,7 @@ namespace Services {
 			void Delaunay();
 			void Ransac();
 			void ConnectedComponents();
+			void ReconstructionComparison(int argc, char **argv);
 	};
 
 }

@@ -3,8 +3,8 @@
 
 namespace Entities {	
 
-	CameraProperties::CameraProperties(float b, float lambda, float cameraDistance) 
-		: B(b), Lambda(lambda), CameraDistance(cameraDistance)
+	CameraProperties::CameraProperties(float b, float lambda) 
+		: B(b), Lambda(lambda)
 	{
 	}
 

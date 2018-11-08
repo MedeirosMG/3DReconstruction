@@ -21,6 +21,9 @@ namespace Helpers {
 			~StringHelper();
 			
 			static vector<string> Split(const string& str, const char& splitter);
+			static void Append(string& str, string newString);
+			static char ToUppercase(char str);
+			static char ToLowercase(char str);
 	};
 
 }
