@@ -5,4 +5,7 @@
 Reconstruction/x64
 
 # Excluding debug generator path
-Reconstruction/debug
+reconstruction/debug
+
+#Excluding Debug project
+Debug
