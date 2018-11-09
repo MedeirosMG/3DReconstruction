@@ -160,9 +160,12 @@
     <ClInclude Include="Algorithms\Firefly.h" />
     <ClInclude Include="Algorithms\OpenGL.h" />
     <ClInclude Include="Algorithms\OpenCV.h" />
+    <ClInclude Include="AutomatedTests\BatchReconstruction.h" />
+    <ClInclude Include="AutomatedTests\TestService.h" />
     <ClInclude Include="Entities\CameraProperties.h" />
     <ClInclude Include="Entities\PointPair.h" />
     <ClInclude Include="Entities\ReconstructionComparison.h" />
+    <ClInclude Include="Entities\ReconstructionTest.h" />
     <ClInclude Include="Entities\RenderProperties.h" />
     <ClInclude Include="Entities\SiftResult.h" />
     <ClInclude Include="Entities\TimeExecution.h" />
@@ -191,7 +194,6 @@
     <ClInclude Include="Services\RenderService.h" />
     <ClInclude Include="Services\RenderServiceVtk.h" />
     <ClInclude Include="Services\SiftService.h" />
-    <ClInclude Include="Services\TestService.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -199,9 +201,12 @@
     <ClCompile Include="Algorithms\Firefly.cpp" />
     <ClCompile Include="Algorithms\OpenGL.cpp" />
     <ClCompile Include="Algorithms\OpenCV.cpp" />
+    <ClCompile Include="AutomatedTests\BatchReconstruction.cpp" />
+    <ClCompile Include="AutomatedTests\TestService.cpp" />
     <ClCompile Include="Entities\CameraProperties.cpp" />
     <ClCompile Include="Entities\PointPair.cpp" />
     <ClCompile Include="Entities\ReconstructionComparison.cpp" />
+    <ClCompile Include="Entities\ReconstructionTest.cpp" />
     <ClCompile Include="Entities\RenderProperties.cpp" />
     <ClCompile Include="Entities\SiftResult.cpp" />
     <ClCompile Include="Entities\TimeExecution.cpp" />
@@ -230,7 +235,6 @@
     <ClCompile Include="Services\RenderService.cpp" />
     <ClCompile Include="Services\RenderServiceVtk.cpp" />
     <ClCompile Include="Services\SiftService.cpp" />
-    <ClCompile Include="Services\TestService.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

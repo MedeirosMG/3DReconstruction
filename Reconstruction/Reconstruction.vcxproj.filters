@@ -37,6 +37,12 @@
     <Filter Include="Header Files\H_Services">
       <UniqueIdentifier>{59042b0f-401c-4d9a-a5f0-15e12f4f8f77}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\H_AutomatedTests">
+      <UniqueIdentifier>{6922e942-6460-4d34-af68-940fb5f93586}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\S_AutomatedTests">
+      <UniqueIdentifier>{4d033760-b288-4eee-9fed-11b8e068b79c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="targetver.h">
@@ -93,9 +99,6 @@
     <ClInclude Include="Entities\TimeExecution.h">
       <Filter>Header Files\H_Entities</Filter>
     </ClInclude>
-    <ClInclude Include="Services\TestService.h">
-      <Filter>Header Files\H_Services</Filter>
-    </ClInclude>
     <ClInclude Include="Helpers\Time.h">
       <Filter>Header Files\H_Helpers</Filter>
     </ClInclude>
@@ -150,6 +153,15 @@
     <ClInclude Include="Entities\ReconstructionComparison.h">
       <Filter>Header Files\H_Entities</Filter>
     </ClInclude>
+    <ClInclude Include="Entities\ReconstructionTest.h">
+      <Filter>Header Files\H_Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="AutomatedTests\BatchReconstruction.h">
+      <Filter>Header Files\H_AutomatedTests</Filter>
+    </ClInclude>
+    <ClInclude Include="AutomatedTests\TestService.h">
+      <Filter>Header Files\H_AutomatedTests</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -199,9 +211,6 @@
     </ClCompile>
     <ClCompile Include="Helpers\PointsUtilities.cpp">
       <Filter>Source Files\S_Helpers</Filter>
-    </ClCompile>
-    <ClCompile Include="Services\TestService.cpp">
-      <Filter>Source Files\S_Services</Filter>
     </ClCompile>
     <ClCompile Include="Helpers\Time.cpp">
       <Filter>Source Files\S_Helpers</Filter>
@@ -259,6 +268,15 @@
     </ClCompile>
     <ClCompile Include="Entities\ReconstructionComparison.cpp">
       <Filter>Source Files\S_Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\ReconstructionTest.cpp">
+      <Filter>Source Files\S_Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="AutomatedTests\BatchReconstruction.cpp">
+      <Filter>Source Files\S_AutomatedTests</Filter>
+    </ClCompile>
+    <ClCompile Include="AutomatedTests\TestService.cpp">
+      <Filter>Source Files\S_AutomatedTests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
