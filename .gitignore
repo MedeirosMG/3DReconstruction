@@ -3,9 +3,11 @@
 
 # Excluding x64 debug generator path
 reconstruction/x64
+Reconstruction/x64
 
 # Excluding debug generator path
 reconstruction/debug
+Reconstruction/debug
 
 #Excluding Debug project
 Debug
