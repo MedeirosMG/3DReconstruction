@@ -1,3 +1,8 @@
-Browse.VC.db
-Browse.VC.opendb
-.duo
+# Visual Studio 2015/2017 cache/options directory
+.vs/
+
+# Excluding x64 debug generator path
+Reconstruction/x64
+
+# Excluding debug generator path
+Reconstruction/debug
