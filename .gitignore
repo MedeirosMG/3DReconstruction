@@ -2,7 +2,7 @@
 .vs/
 
 # Excluding x64 debug generator path
-Reconstruction/x64
+reconstruction/x64
 
 # Excluding debug generator path
 reconstruction/debug
