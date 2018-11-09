@@ -185,6 +185,7 @@ namespace Helpers {
 			string exportText = "";
 			string splitter = ";";
 			string data = "";
+			bool exportLine = true;
 			ofstream file;
 
 			file.open(pathDirectory);
@@ -202,24 +203,45 @@ namespace Helpers {
 				// setting data
 				for each (ReconstructionComparison item in reconstructionComparison)
 				{
+					exportLine = true;
+
 					for (char& c : coordinates) {
 						switch (c)
 						{
 							case 'x':
+								if (isinf(item.Reconstruction.x) || isinf(item.Map.x) || isinf(item.Error.x)) {
+									exportLine = false;
+									continue;
+								}
+
 								data = to_string(item.Reconstruction.x) + splitter + to_string(item.Map.x) + splitter + to_string(item.Error.x) + splitter;
 								break;
 							case 'y':
+								if (isinf(item.Reconstruction.y) || isinf(item.Map.y) || isinf(item.Error.y)) {
+									exportLine = false;
+									continue;
+								}
+
 								data = to_string(item.Reconstruction.y) + splitter + to_string(item.Map.y) + splitter + to_string(item.Error.y) + splitter;
 								break;
 							case 'z':
+								if (isinf(item.Reconstruction.z) || isinf(item.Map.z) || isinf(item.Error.z)) {
+									exportLine = false;
+									continue;
+								}
+
 								data = to_string(item.Reconstruction.z) + splitter + to_string(item.Map.z) + splitter + to_string(item.Error.z) + splitter;
 								break;
 						}
 
-						StringHelper::Append(exportText, data);
+						if (exportLine) {
+							std::replace(data.begin(), data.end(), '.', ',');
+							StringHelper::Append(exportText, data);
+						}
 					}
-
-					StringHelper::Append(exportText, "\n");
+					
+					if(exportLine)
+						StringHelper::Append(exportText, "\n");
 				}
 			}
 

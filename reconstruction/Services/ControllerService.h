@@ -102,10 +102,6 @@ namespace Services {
 		int _number_fireflies;
 		int _number_generations;
 
-		// Render Properties
-		int *_argc;
-		char **_argv;
-
 		// Visualizer properties
 		string _visualizerName;
 		bool _visualizerExecute;
@@ -134,11 +130,10 @@ namespace Services {
 		void SetCannyProperties(double cannyLowThresh, double cannyHighTresh, int cannyKernelSize);
 		void SetSiftProperties(int siftThreshold);
 		void SetSiftFilterProperties(int minY, int minDist);
-		void SetCalibrationProperties(string _pathDisparity, string _pathExport, float calibrationB = 0, float calibrationLambda = 0, int calibrationK = 0, bool _export = false);
-		void SetCalibrationProperties(string path, string pathDisparity, string pathExport, bool _export = false);
+		void SetCalibrationProperties(string _pathDisparity, string _pathExport = "", float calibrationB = 0, float calibrationLambda = 0, int calibrationK = 0);
+		void SetCalibrationProperties(string path, string pathDisparity, string pathExport = "");
 		void SetGeneralProperties();
 		void SetFireflyProperties(int thresholds, int number_fireflies, int number_generations);
-		void SetRenderProperties(int *argc, char **argv);
 		void SetRansacProperties(double ransacThreshold);
 		void SetVisualizerProperties(bool execute, string nameWindow = "Default Name");
 		void SetScreenProperties(Size screenSize);

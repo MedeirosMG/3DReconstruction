@@ -41,7 +41,7 @@ namespace Services {
 			
 			_visualizer->Show(_resultCalibration);
 
-			if(_exportCalib)
+			if(_pathExport != "")
 				_reconstructionCompareService->Execute(_resultCalibration, _pathDisparity, _pathExport);
 
 			return true;
@@ -261,7 +261,6 @@ namespace Services {
 		try
 		{
 			cout << endl << "=== Init Rendering ===" << endl << endl;
-			//_renderService->Execute(_argc, _argv, _resultDelaunay, _resultCalibration);
 			_renderServiceVTK->Execute(_resultDelaunay, _resultCalibration, _resultCanny);
 
 			return true;
@@ -335,16 +334,15 @@ namespace Services {
 		_minY = minY;
 	}
 
-	void ControllerService::SetCalibrationProperties(string pathDisparity, string pathExport, float calibrationB, float calibrationLambda, int calibrationK, bool _export)
+	void ControllerService::SetCalibrationProperties(string pathDisparity, string pathExport, float calibrationB, float calibrationLambda, int calibrationK)
 	{
 		_pathExport = pathExport;
 		_calibrationB = calibrationB;
 		_calibrationLambda = calibrationLambda;
 		_calibrationK =	calibrationK;
-		_exportCalib = _export;
 	}
 
-	void ControllerService::SetCalibrationProperties(string path, string pathDisparity, string pathExport, bool _export)
+	void ControllerService::SetCalibrationProperties(string path, string pathDisparity, string pathExport)
 	{
 		CameraProperties cameraProperties = Import::CameraParameters(path);
 
@@ -352,7 +350,6 @@ namespace Services {
 		_calibrationLambda = cameraProperties.Lambda;
 		_calibrationK = 1;
 
-		_exportCalib = _export;
 		_pathDisparity = pathDisparity;
 		_pathExport = pathExport;
 	}
@@ -366,12 +363,6 @@ namespace Services {
 		_thresholds = thresholds;
 		_number_fireflies = number_fireflies;
 		_number_generations = number_generations;
-	}
-
-	void ControllerService::SetRenderProperties(int *argc, char **argv)
-	{
-		_argc = argc;
-		_argv = argv;
 	}
 
 	void ControllerService::SetRansacProperties(double ransacThreshold)
