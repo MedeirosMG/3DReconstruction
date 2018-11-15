@@ -7,7 +7,10 @@ namespace AutomatedTests {
 	string path_img1 = ".\\Others Files\\Cable-perfect\\im0.png";
 	string path_img2 = ".\\Others Files\\Cable-perfect\\im1.png";
 	string path_disparity = ".\\Others Files\\Cable-perfect\\disp0.pfm";
+	string path_exportFF = ".\\Others Files\\resultsFF.csv";
 	string path_export = ".\\Others Files\\results.csv";
+	string path_exportFF_FP = ".\\Others Files\\resultsFF_FP.csv";
+	string path_exportFP = ".\\Others Files\\resultsFP.csv";
 
 	string path_unstructured1 = ".\\Others Files\\unstructured01.png";
 	string path_unstructured2 = ".\\Others Files\\unstructured02.png";
@@ -30,7 +33,7 @@ namespace AutomatedTests {
 		controller->SetCannyProperties(100, 250, 3);
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0);
-		controller->SetCalibrationProperties(path_calib, path_disparity, path_export);
+		controller->SetCalibrationProperties(path_calib, path_disparity, path_exportFF_FP);
 		controller->SetSiftFilterProperties(20, 500);
 		controller->SetVisualizerProperties(false);
 		controller->LoadServices();
@@ -58,7 +61,7 @@ namespace AutomatedTests {
 		controller->SetCannyProperties(100, 250, 3);
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0);
-		controller->SetCalibrationProperties(path_calib, path_disparity, path_export);
+		controller->SetCalibrationProperties(path_calib, path_disparity, path_exportFF);
 		controller->SetSiftFilterProperties(20, 500);
 		controller->SetVisualizerProperties(false);
 		controller->LoadServices();
@@ -85,7 +88,7 @@ namespace AutomatedTests {
 		controller->SetCannyProperties(100, 250, 3);
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0);
-		controller->SetCalibrationProperties(path_calib, path_disparity, path_export);
+		controller->SetCalibrationProperties(path_calib, path_disparity, path_exportFP);
 		controller->SetSiftFilterProperties(20, 500);
 		controller->SetVisualizerProperties(false);
 		controller->LoadServices();

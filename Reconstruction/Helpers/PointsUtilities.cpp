@@ -116,11 +116,12 @@ namespace Helpers {
 	float PointUtilities::GetMaxAbsCoord(Mat image, string coordinate)
 	{
 		vector<Point3f> pointsMap;
-		for (int i = 0; i < image.rows; i++)
+		for (int j = 0; j < image.rows; j++)
 		{
-			for (int j = 0; j < image.cols; j++)
+			for (int i = 0; i < image.cols; i++)
 			{
-				float zPoint = image.at<float>(i, j);
+				float zPoint = image.at<float>(j, i);
+				zPoint = 171.548 *(6338 / (zPoint + 479.489));
 				pointsMap.push_back(Point3f(i, j, zPoint));
 			}
 		}
@@ -131,12 +132,14 @@ namespace Helpers {
 	float PointUtilities::GetMinAbsCoord(Mat image, string coordinate)
 	{
 		vector<Point3f> pointsMap;
-		for (int i = 0; i < image.rows; i++)
+		for (int j = 0; j < image.rows; j++)
 		{
-			for (int j = 0; j < image.cols; j++)
+			for (int i = 0; i < image.cols; i++)
 			{
-				float zPoint = image.at<float>(i, j);
-				pointsMap.push_back(Point3f(i, j, zPoint));
+				float zPoint = image.at<float>(j, i);
+				zPoint = 171.548 *(6338 / (zPoint + 479.489));
+				if(zPoint != 0)
+					pointsMap.push_back(Point3f(i, j, zPoint));
 			}
 		}
 
