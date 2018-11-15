@@ -14,3 +14,4 @@ Debug
 
 #exclude images test
 reconstruction/Structured_Images/
+reconstruction/Export_Result/*.*
