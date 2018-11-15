@@ -19,18 +19,11 @@ namespace AutomatedTests {
 		public:
 			TestService();
 			~TestService();
-			void ReconstructionFF_FP();
-			void Reconstruction_FF();
-			void Reconstruction_FP();
-			void ReconstructionWithTimeExecution();
-			void Reconstruction_Default();
-			void Canny();
-			void Firefly();
-			void Render(int argc, char **argv);
-			void Delaunay();
-			void Ransac();
-			void ConnectedComponents();
-			void ReconstructionComparison();
+			void ReconstructionFF_FP(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export);
+			void Reconstruction_FF(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export);
+			void Reconstruction_FP(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export);
+			void Reconstruction_Default(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export);
+			void ReconstructionWithTimeExecution(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export);
 	};
 
 }

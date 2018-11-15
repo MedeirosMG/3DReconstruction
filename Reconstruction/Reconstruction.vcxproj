@@ -106,8 +106,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>false</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)\Libs_Externas\opencv 2.4.13.6\include;$(SolutionDir)\Libs_Externas\freeglut\freeglut\include;$(SolutionDir)\Libs_Externas\VTK 8.1.1\include\vtk-8.1</AdditionalIncludeDirectories>
-      <LanguageStandard>
-      </LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <DisableLanguageExtensions>false</DisableLanguageExtensions>
     </ClCompile>
     <Link>
