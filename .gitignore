@@ -11,3 +11,6 @@ Reconstruction/debug
 
 #Excluding Debug project
 Debug
+
+#exclude images test
+reconstruction/Structured_Images
