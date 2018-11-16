@@ -53,6 +53,7 @@ namespace Helpers {
 		vector<string> listSplitted_cam0;
 		vector<string> listSplitted_baseline;
 		vector<string> listSplitted_width;
+		vector<string> listSplitted_doffs;
 		CameraProperties result;
 
 		ifstream file;
@@ -71,10 +72,12 @@ namespace Helpers {
 						listSplitted_0 = StringHelper::Split(line, '[');
 						listSplitted_cam0 = StringHelper::Split(listSplitted_0[1], ' ');
 						break;
-					case 6: // baseline
+					case 2: // doffs
+						listSplitted_doffs = StringHelper::Split(line, '=');
+					case 3: // baseline
 						listSplitted_baseline = StringHelper::Split(line, '=');
 						break;
-					case 8: // width
+					case 4: // width
 						listSplitted_width = StringHelper::Split(line, '=');
 						break;
 				}
@@ -82,9 +85,12 @@ namespace Helpers {
 				count++;
 			}
 
+			result.f = std::stof(listSplitted_cam0[0]);
+			result.width = std::stof(listSplitted_width[1]);
 			result.Lambda = std::stof(listSplitted_cam0[0]) / std::stof(listSplitted_width[1]);
 			result.B = std::stof(listSplitted_baseline[1]);
-
+			result.doffs = std::stof(listSplitted_doffs[1]);
+			
 			file.close();
 		}
 

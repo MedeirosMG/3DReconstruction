@@ -18,7 +18,7 @@ namespace Services {
 	{
 	}
 
-	void ReconstructionCompareService::Execute(vector<Point3f> reconstructionPoints, string pathMap, string pathExport)
+	void ReconstructionCompareService::Execute(vector<Point3f> reconstructionPoints, CameraProperties calib, string pathMap, string pathExport)
 	{
 		vector<ReconstructionComparison> resultNormalized;
 		vector<ReconstructionComparison> result;
@@ -31,14 +31,14 @@ namespace Services {
 		float maxPointReconstruction = pointUtilities->GetMaxAbsCoord(reconstructionPoints, "z");
 		float minPointReconstruction = pointUtilities->GetMinAbsCoord(reconstructionPoints, "z");
 		cout << "min calibration: " << minPointReconstruction << " max calibration:" << maxPointReconstruction << endl;
-		float maxPointMap = pointUtilities->GetMaxAbsCoord(mapImageResult, "z");
-		float minPointMap = pointUtilities->GetMinAbsCoord(mapImageResult, "z");
+		float maxPointMap = pointUtilities->GetMaxAbsCoord(mapImageResult, "z", calib);
+		float minPointMap = pointUtilities->GetMinAbsCoord(mapImageResult, "z", calib);
 		cout << "min depth map: " << minPointMap << " max depth map:" << maxPointMap << endl;
 		for each (Point3f point in reconstructionPoints)
 		{
 			ReconstructionComparison reconstructionComparison;
 			ReconstructionComparison reconstructionComparison2;
-			double Z = 171.548 *(6338 / (mapImageResult.at<float>((int)point.y, (int)point.x) + 479.489));
+			double Z = calib.B *(calib.f / (mapImageResult.at<float>((int)point.y, (int)point.x) + calib.doffs));
 		
 			//double Z = (mapImageResult.at<float>((int)point.y, (int)point.x));
 			reconstructionComparison.Map.z = (Z - minPointMap) / (maxPointMap - minPointMap);

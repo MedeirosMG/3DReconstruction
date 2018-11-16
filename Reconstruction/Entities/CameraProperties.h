@@ -9,8 +9,12 @@ namespace Entities {
 			CameraProperties();
 			~CameraProperties();
 
+			float f = 1;
+			float width = 1;
 			float B = 1;
 			float Lambda = 1;
+			float doffs = 1;
+			float K = 1;
 	};
 
 }

@@ -42,7 +42,7 @@ namespace Services {
 			_visualizer->Show(_resultCalibration);
 
 			if(_pathExport != "")
-				_reconstructionCompareService->Execute(_resultCalibration, _pathDisparity, _pathExport);
+				_reconstructionCompareService->Execute(_resultCalibration, _calibration, _pathDisparity, _pathExport);
 
 			return true;
 		}
@@ -337,18 +337,15 @@ namespace Services {
 	void ControllerService::SetCalibrationProperties(string pathDisparity, string pathExport, float calibrationB, float calibrationLambda, int calibrationK)
 	{
 		_pathExport = pathExport;
-		_calibrationB = calibrationB;
-		_calibrationLambda = calibrationLambda;
-		_calibrationK =	calibrationK;
+		_calibration.B = calibrationB;
+		_calibration.Lambda = calibrationLambda;
 	}
 
 	void ControllerService::SetCalibrationProperties(string path, string pathDisparity, string pathExport)
 	{
 		CameraProperties cameraProperties = Import::CameraParameters(path);
 
-		_calibrationB = cameraProperties.B;
-		_calibrationLambda = cameraProperties.Lambda;
-		_calibrationK = 1;
+		_calibration = cameraProperties;
 
 		_pathDisparity = pathDisparity;
 		_pathExport = pathExport;
@@ -395,7 +392,7 @@ namespace Services {
 
 	void ControllerService::LoadServices()
 	{
-		_calibrationService = new CalibrationService(_calibrationB, _calibrationLambda, new OpenCV(), _calibrationK, _screenSize);
+		_calibrationService = new CalibrationService(_calibration.B, _calibration.Lambda, new OpenCV(), _calibration.K, _screenSize);
 		_cannyService = new CannyService(_openCv);
 		_connectedComponentsService = new ConnectedComponentsService(_openCv);
 		_delaunayService = new DelaunayService(_openCv);

@@ -224,6 +224,9 @@ namespace Helpers {
 	{
 		cout << "=============================== CameraProperties ===============================" << endl;
 
+		cout << "f: " << cameraProperties.f << endl;
+		cout << "width: " << cameraProperties.width << endl;
+		cout << "doffs: " << cameraProperties.doffs << endl;
 		cout << "B: " << cameraProperties.B << endl;
 		cout << "Lambda: " << cameraProperties.Lambda << endl;
 

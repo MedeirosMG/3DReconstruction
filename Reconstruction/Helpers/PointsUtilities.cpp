@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PointsUtilities.h"
 
+
 namespace Helpers {
 
 	PointUtilities::PointUtilities()
@@ -113,7 +114,7 @@ namespace Helpers {
 	}
 
 	// Get max value with the coordinate using a vector points
-	float PointUtilities::GetMaxAbsCoord(Mat image, string coordinate)
+	float PointUtilities::GetMaxAbsCoord(Mat image, string coordinate, CameraProperties calib)
 	{
 		vector<Point3f> pointsMap;
 		for (int j = 0; j < image.rows; j++)
@@ -121,7 +122,7 @@ namespace Helpers {
 			for (int i = 0; i < image.cols; i++)
 			{
 				float zPoint = image.at<float>(j, i);
-				zPoint = 171.548 *(6338 / (zPoint + 479.489));
+				zPoint = calib.B *(calib.f / (zPoint + calib.doffs));
 				pointsMap.push_back(Point3f(i, j, zPoint));
 			}
 		}
@@ -129,7 +130,7 @@ namespace Helpers {
 		return GetMaxAbsCoord(pointsMap, coordinate);
 	}
 
-	float PointUtilities::GetMinAbsCoord(Mat image, string coordinate)
+	float PointUtilities::GetMinAbsCoord(Mat image, string coordinate, CameraProperties calib)
 	{
 		vector<Point3f> pointsMap;
 		for (int j = 0; j < image.rows; j++)
@@ -137,7 +138,7 @@ namespace Helpers {
 			for (int i = 0; i < image.cols; i++)
 			{
 				float zPoint = image.at<float>(j, i);
-				zPoint = 171.548 *(6338 / (zPoint + 479.489));
+				zPoint = calib.B *(calib.f / (zPoint + calib.doffs));
 				if(zPoint != 0)
 					pointsMap.push_back(Point3f(i, j, zPoint));
 			}

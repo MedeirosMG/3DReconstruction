@@ -89,9 +89,7 @@ namespace Services {
 		vector<Mat> _InterestRegionsSecondImage;
 		
 		// Calibration Properties
-		float _calibrationB;
-		float _calibrationLambda;
-		int _calibrationK;
+		CameraProperties _calibration;
 		string _pathDisparity;
 		string _pathExport;
 		bool _exportCalib;
