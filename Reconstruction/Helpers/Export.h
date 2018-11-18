@@ -28,6 +28,7 @@ namespace Helpers {
 			static bool Obj(vector<Point3f> listPoints, string pathDirectory);
 			static bool Csv(Time time, string pathDirectory);
 			static bool Csv(vector<ReconstructionComparison> reconstructionComparison, string pathDirectory, string coordinates = "xyz");
+			static bool Csv(map<string, double> result, string pathDirectory);
 	};
 
 }

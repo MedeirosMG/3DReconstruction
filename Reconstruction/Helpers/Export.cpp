@@ -257,4 +257,41 @@ namespace Helpers {
 			return false;
 		}
 	}
+
+	bool Export::Csv(map<string, double> result, string pathDirectory)
+	{
+		try {
+			string exportText = "";
+			string splitter = ";";
+			string data = "";
+			bool exportLine = true;
+			ofstream file;
+
+			file.open(pathDirectory);
+			if (file.is_open()) {
+				// setting header
+				string header = "Image" + splitter + "Error" + splitter + "\n";
+				StringHelper::Append(exportText, header);
+
+				// setting data
+				map<string, double>::iterator it;
+				for (it = result.begin(); it != result.end(); it++)
+				{
+					// it->first(key) / it->second(value)
+					StringHelper::Append(exportText, it->first + ";" + to_string(it->second) + ";");
+				}
+			}
+
+			file << exportText;
+
+			file.close();
+
+			return true;
+		}
+		catch (const std::exception& ex)
+		{
+			cout << "Exception Export CSV: " << ex.what() << endl;
+			return false;
+		}
+	}
 }

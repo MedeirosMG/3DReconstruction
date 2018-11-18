@@ -61,6 +61,8 @@ namespace AutomatedTests {
 
 	void BatchReconstruction::Example()
 	{
+		map<string, double> _resultBatch;
+
 		LoadPropertiesExample();
 
 		// Example!!!!
@@ -68,7 +70,7 @@ namespace AutomatedTests {
 		{
 			cout << "======= Starting Example Automated Test ======= " << endl;
 
-			ControllerService* controller = new ControllerService(reconstruction.PathFirstStructuredImage, reconstruction.PathSecondStructuredImage);
+			ControllerService* controller = new ControllerService(reconstruction.PathFirstStructuredImage, reconstruction.PathSecondStructuredImage, _resultBatch);
 			controller->SetFireflyProperties(3, 100, 100);
 			controller->SetCannyProperties(100, 250, 3);
 			controller->SetGeneralProperties();
@@ -91,6 +93,8 @@ namespace AutomatedTests {
 
 			cout << "======== End Example Automated Test ======== " << endl;
 		}
+
+		Export::Csv(_resultBatch, ".\\Others Files\\result_final.csv");
 	}
 
 #pragma endregion	

@@ -7,22 +7,39 @@ namespace Services {
 	{
 		_openCv = new OpenCV();
 		_time = new Time();
+
+		_resultBatch.insert(pair<string, double>("Header", 0.0));
 	}
 
-	ControllerService::ControllerService(Mat firstImage, Mat secondImage)
+	ControllerService::ControllerService(map<string, double> resultBatch)
+	{
+		_openCv = new OpenCV();
+		_time = new Time();
+
+		_resultBatch = resultBatch;
+		_resultBatch.insert(pair<string, double>("Header", 0.0));
+	}
+
+	ControllerService::ControllerService(Mat firstImage, Mat secondImage, map<string, double> resultBatch)
 	{
 		_openCv = new OpenCV();
 
 		_firstImage = _openCv->Resize(firstImage, _screenSize);
 		_secondImage = _openCv->Resize(secondImage, _screenSize);
+
+		_resultBatch = resultBatch;
+		_resultBatch.insert(pair<string, double>("Header", 0.0));
 	}
 
-	ControllerService::ControllerService(string pathFirstImage, string pathSecondImage)
+	ControllerService::ControllerService(string pathFirstImage, string pathSecondImage, map<string, double> resultBatch)
 	{
 		_openCv = new OpenCV();
 
 		_firstImage = _openCv->Resize(_openCv->ReadImage(pathFirstImage), _screenSize);
 		_secondImage = _openCv->Resize(_openCv->ReadImage(pathSecondImage), _screenSize);
+
+		_resultBatch = resultBatch;
+		_resultBatch.insert(pair<string, double>("Header", 0.0));
 	}
 
 	ControllerService::~ControllerService()
@@ -42,7 +59,7 @@ namespace Services {
 			_visualizer->Show(_resultCalibration);
 
 			if(_pathExport != "")
-				_reconstructionCompareService->Execute(_resultCalibration, _calibration, _pathDisparity, _pathExport);
+				_reconstructionCompareService->Execute(_resultCalibration, _calibration, _pathDisparity, _pathExport, _resultBatch);
 
 			return true;
 		}
@@ -446,4 +463,6 @@ namespace Services {
 		_visualizer->Show(tempFirstImageModified, "First Image - Modified");
 		_visualizer->Show(tempSecondImageModified, "Second Image - Modified");
 	}
+
+
 }

@@ -62,6 +62,7 @@ namespace Services {
 		Mat _firstImageModified;
 		Mat _secondImageModified;
 		Size _screenSize = Size(REC_SCREEN_DEFAULT_WIDTH, REC_SCREEN_DEFAULT_HEIGHT);
+		map<string, double> _resultBatch;
 
 		// Delaunay Properties
 		vector<Vec<Point3f, 4>> _resultDelaunay;
@@ -106,8 +107,9 @@ namespace Services {
 
 	public:
 		ControllerService();
-		ControllerService(Mat firstImage, Mat secondImage);
-		ControllerService(string pathFirstImage, string pathSecondImage);
+		ControllerService(map<string, double> resultBatch);
+		ControllerService(Mat firstImage, Mat secondImage, map<string, double> resultBatch = map<string, double>());
+		ControllerService(string pathFirstImage, string pathSecondImage, map<string, double> resultBatch = map<string, double>());
 		~ControllerService();
 
 		bool CalibrationApply();
@@ -137,10 +139,10 @@ namespace Services {
 		void SetScreenProperties(Size screenSize);
 		void LoadServices();
 
-		void SaveFirstImage(string Path = ".\\Others Files\\FirstImage.jpg");
-		void SaveSecondImage(string Path = ".\\Others Files\\SecondImage.jpg");
-		void SaveFirstImageModified(string Path = ".\\Others Files\\FirstImageModified.jpg");
-		void SaveSecondImageModified(string Path = ".\\Others Files\\SecondImageModified.jpg");
+		void SaveFirstImage(string path = ".\\Others Files\\FirstImage.jpg");
+		void SaveSecondImage(string path = ".\\Others Files\\SecondImage.jpg");
+		void SaveFirstImageModified(string path = ".\\Others Files\\FirstImageModified.jpg");
+		void SaveSecondImageModified(string path = ".\\Others Files\\SecondImageModified.jpg");
 
 		void DisplayImages();
 	};

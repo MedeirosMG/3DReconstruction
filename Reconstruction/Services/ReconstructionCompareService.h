@@ -10,6 +10,7 @@
 #include "../Helpers/PointsUtilities.h"
 #include "../Helpers/Export.h"
 #include "../Helpers/ReconstructionDefine.h"
+#include "../Helpers/StringHelper.h"
 #include "../Entities/ReconstructionComparison.h"
 
 using namespace cv;
@@ -31,6 +32,7 @@ namespace Services {
 			ReconstructionCompareService(OpenCV* openCv);
 			~ReconstructionCompareService();
 			void Execute(vector<Point3f> reconstructionPoints, CameraProperties calib, string pathMap, string pathExport);
+			void Execute(vector<Point3f> reconstructionPoints, CameraProperties calib, string pathMap, string pathExport, map<string, double> batchResult);
 	};
 
 }
