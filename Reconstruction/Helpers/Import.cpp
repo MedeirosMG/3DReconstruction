@@ -47,6 +47,49 @@ namespace Helpers {
 		return result;
 	}
 
+	void Import::CalculateAverage(string pathDirectory, map<string, double> &result)
+	{
+		string line = "";		
+		ifstream file;
+		vector<string> paths_base;
+		
+		for (auto & p : fs::directory_iterator(pathDirectory))
+			paths_base.push_back(p.path().string());
+
+		// Run test in all paths
+		for each (string path in paths_base)
+		{			
+			double average = 0.0;
+			int count = 0;
+			bool header = true;
+			file.open(path);
+
+			if (file.is_open()) {
+				while (getline(file, line))
+				{
+					vector<string> listSplitted = StringHelper::Split(line, ';');
+					if (header) {						
+						header = false;
+					}
+					else {
+						if (listSplitted[2] != "-nan(ind)") {
+							std::replace(listSplitted[2].begin(), listSplitted[2].end(), ',', '.');
+							double error = std::stod(listSplitted[2]);
+							average += error;
+
+							count++;
+						}
+					}
+				}
+
+				file.close();
+			}
+			
+			vector<string> splitted = StringHelper::Split(path, '\\');
+			result.insert(pair<string, double>(splitted[splitted.size() - 1], (average / count)));
+		}
+	}
+
 	CameraProperties Import::CameraParameters(string pathDirectory)
 	{
 		vector<string> listSplitted_0;
