@@ -12,11 +12,11 @@ namespace AutomatedTests {
 	{
 	}
 	
-	void TestService::ReconstructionFF_FP(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export)
+	void TestService::ReconstructionFF_FP(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export, map<string, double>* _resultBatch)
 	{
 		cout << "======= Start Test using firefly and sift filter ======= " << endl;
 
-		ControllerService* controller = new ControllerService(path_img1, path_img2);
+		ControllerService* controller = new ControllerService(path_img1, path_img2, _resultBatch);
 		controller->SetFireflyProperties(3, 100, 100);
 		controller->SetCannyProperties(100, 250, 3);
 		controller->SetGeneralProperties();
@@ -40,11 +40,11 @@ namespace AutomatedTests {
 		cout << "======== End Test ======== " << endl;
 	}
 
-	void TestService::Reconstruction_FF(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export)
+	void TestService::Reconstruction_FF(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export, map<string, double>* _resultBatch)
 	{
 		cout << "======= Start Test using firefly ======= " << endl;
 
-		ControllerService* controller = new ControllerService(path_img1, path_img2);
+		ControllerService* controller = new ControllerService(path_img1, path_img2, _resultBatch);
 		controller->SetFireflyProperties(3, 100, 100);
 		controller->SetCannyProperties(100, 250, 3);
 		controller->SetGeneralProperties();
@@ -67,11 +67,11 @@ namespace AutomatedTests {
 		cout << "======== End Test ======== " << endl;
 	}
 
-	void TestService::Reconstruction_FP(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export)
+	void TestService::Reconstruction_FP(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export, map<string, double>* _resultBatch)
 	{
 		cout << "======= Start Test using firefly ======= " << endl;
 
-		ControllerService* controller = new ControllerService(path_img1, path_img2);
+		ControllerService* controller = new ControllerService(path_img1, path_img2, _resultBatch);
 		controller->SetFireflyProperties(3, 100, 100);
 		controller->SetCannyProperties(100, 250, 3);
 		controller->SetGeneralProperties();
@@ -93,11 +93,11 @@ namespace AutomatedTests {
 		cout << "======== End Test ======== " << endl;
 	}
 
-	void TestService::Reconstruction_Default(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export)
+	void TestService::Reconstruction_Default(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export, map<string, double>* _resultBatch)
 	{
 		cout << "======= Start Test using firefly ======= " << endl;
 
-		ControllerService* controller = new ControllerService(path_img1, path_img2);
+		ControllerService* controller = new ControllerService(path_img1, path_img2, _resultBatch);
 		controller->SetFireflyProperties(3, 100, 100);
 		controller->SetCannyProperties(100, 250, 3);
 		controller->SetGeneralProperties();

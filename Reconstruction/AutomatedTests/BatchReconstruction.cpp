@@ -59,42 +59,69 @@ namespace AutomatedTests {
 
 #pragma region [ Test Methods ]
 
-	void BatchReconstruction::Example()
+	void BatchReconstruction::Test()
 	{
-		map<string, double> _resultBatch;
+		int i = 0;
+		map<string, double> resultBatchFFFP;
+		map<string, double> resultBatchFF;
+		map<string, double> resultBatchFP;
+		map<string, double> resultBatchDefault;
 
-		LoadPropertiesExample();
+		AutomatedTests::TestService* testService = new AutomatedTests::TestService();
 
-		// Example!!!!
-		for each (ReconstructionTest reconstruction in ListReconstructions)
+		vector<string> paths_base;
+		// Get all paths in structure images
+		for (auto & p : fs::directory_iterator(".\\Structured_Images"))
+			paths_base.push_back(p.path().string());
+
+		// Run test in all paths
+		for each (string path in paths_base)
 		{
-			cout << "======= Starting Example Automated Test ======= " << endl;
+			int total = paths_base.size();
 
-			ControllerService* controller = new ControllerService(reconstruction.PathFirstStructuredImage, reconstruction.PathSecondStructuredImage, _resultBatch);
-			controller->SetFireflyProperties(3, 100, 100);
-			controller->SetCannyProperties(100, 250, 3);
-			controller->SetGeneralProperties();
-			controller->SetSiftProperties(0);
-			controller->SetCalibrationProperties(reconstruction.PathCalib, reconstruction.PathDisparity, reconstruction.PathExportComparison);
-			controller->SetSiftFilterProperties(20, 500);
-			controller->SetVisualizerProperties(false);
-			controller->LoadServices();
+			cout << "--------------------------------------------------------------------" << endl;
+			cout << "Executing: " + path.substr(path.find("s\\") + 2, path.size()) << endl;
+			cout << "Progress: " + to_string(i) + " | " + to_string(total) << endl;
+			cout << "--------------------------------------------------------------------" << endl << endl << endl << endl;
 
-			controller->FireflyApply();
-			controller->CannyApply();
-			controller->ConnectedComponentsApply();
-			controller->FindRegionsApply();
-			controller->SiftOnMaskApply();
-			controller->SiftOnMaskFilterApply();
-			controller->ConvertSiftApply();
-			controller->CalibrationApply();
-			controller->DelaunayApply();
-			controller->RenderApply();
+			string export_path = ".\\Export_Result\\" + path.substr(path.find("s\\") + 2, path.size());
+			testService->ReconstructionFF_FP(path + "\\calib.txt",
+				path + "\\im0.png",
+				path + "\\im1.png",
+				path + "\\disp0.pfm",
+				export_path + "_FF_FP.csv",
+				&resultBatchFFFP);
 
-			cout << "======== End Example Automated Test ======== " << endl;
+			testService->Reconstruction_FF(path + "\\calib.txt",
+				path + "\\im0.png",
+				path + "\\im1.png",
+				path + "\\disp0.pfm",
+				export_path + "_FF.csv",
+				&resultBatchFF);
+
+			testService->Reconstruction_FP(path + "\\calib.txt",
+				path + "\\im0.png",
+				path + "\\im1.png",
+				path + "\\disp0.pfm",
+				export_path + "_FP.csv",
+				&resultBatchFP);
+
+			testService->Reconstruction_Default(path + "\\calib.txt",
+				path + "\\im0.png",
+				path + "\\im1.png",
+				path + "\\disp0.pfm",
+				export_path + "_DEF.csv",
+				&resultBatchDefault);
+
+			i++;
+
+			system("cls");
 		}
 
-		Export::Csv(_resultBatch, ".\\Others Files\\result_final.csv");
+		Export::Csv(resultBatchFFFP, ".\\Reports\\resultBatchFFFP.csv");
+		Export::Csv(resultBatchFF, ".\\Reports\\resultBatchFF.csv");
+		Export::Csv(resultBatchFP, ".\\Reports\\resultBatchFP.csv");
+		Export::Csv(resultBatchDefault, ".\\Reports\\resultBatchDefault.csv");
 	}
 
 #pragma endregion	

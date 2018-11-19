@@ -1,13 +1,17 @@
 #ifndef AUTOMATED_TEST_BATCH_RECONSTRUCTION
 #define AUTOMATED_TEST_BATCH_RECONSTRUCTION
 #include <iostream>
+#include <experimental/filesystem>
+
 #include "..\Services\ControllerService.h"
 #include "..\Helpers\Time.h"
 #include "..\Helpers\Console.h"
 #include "..\Helpers\Export.h"
 #include "..\Helpers\Import.h"
 #include "..\Entities\ReconstructionTest.h"
+#include "TestService.h"
 
+namespace fs = std::experimental::filesystem;
 using namespace std;
 using namespace Helpers;
 using namespace Entities;
@@ -31,7 +35,7 @@ namespace AutomatedTests {
 			~BatchReconstruction();
 
 			// Test methods
-			void Example();
+			void Test();
 	};
 
 }

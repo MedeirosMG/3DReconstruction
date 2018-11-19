@@ -18,12 +18,7 @@ namespace Services {
 	{
 	}
 
-	void ReconstructionCompareService::Execute(vector<Point3f> reconstructionPoints, CameraProperties calib, string pathMap, string pathExport)
-	{
-		
-	}
-
-	void ReconstructionCompareService::Execute(vector<Point3f> reconstructionPoints, CameraProperties calib, string pathMap, string pathExport, std::map<string, double> batchResult)
+	void ReconstructionCompareService::Execute(vector<Point3f> reconstructionPoints, CameraProperties calib, string pathMap, string pathExport, std::map<string, double>* batchResult)
 	{
 		vector<ReconstructionComparison> resultNormalized;
 		vector<ReconstructionComparison> result;
@@ -61,20 +56,24 @@ namespace Services {
 		}
 
 		Export::Csv(resultNormalized, pathExport, "z");
-		Export::Csv(result, pathExport + "_normal", "z");
+		//Export::Csv(result, pathExport + "_normal", "z");
 
 		// Add overall of all tests
-		if (!batchResult.empty()) {
+		if (batchResult != NULL) {
 			double average = 0.0;
 			vector<string> splittedPath = StringHelper::Split(pathExport, '\\');
+			int count = 0;
 
 			for each (ReconstructionComparison item in resultNormalized)
 			{
-				average += item.Error.z;
+				if (!isinf(item.Error.z)) {
+					average += item.Error.z;
+					count++;
+				}
 			}
 
-			average = average / resultNormalized.size();
-			batchResult.insert(pair<string, double>(splittedPath[splittedPath.size()], average));
+			average = average / count;
+			batchResult->insert(pair<string, double>(splittedPath[splittedPath.size() - 1], average));
 		}
 	}
 }

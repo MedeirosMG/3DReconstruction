@@ -7,20 +7,17 @@ namespace Services {
 	{
 		_openCv = new OpenCV();
 		_time = new Time();
-
-		_resultBatch.insert(pair<string, double>("Header", 0.0));
 	}
 
-	ControllerService::ControllerService(map<string, double> resultBatch)
+	ControllerService::ControllerService(map<string, double>* resultBatch)
 	{
 		_openCv = new OpenCV();
 		_time = new Time();
 
 		_resultBatch = resultBatch;
-		_resultBatch.insert(pair<string, double>("Header", 0.0));
 	}
 
-	ControllerService::ControllerService(Mat firstImage, Mat secondImage, map<string, double> resultBatch)
+	ControllerService::ControllerService(Mat firstImage, Mat secondImage, map<string, double>* resultBatch)
 	{
 		_openCv = new OpenCV();
 
@@ -28,10 +25,9 @@ namespace Services {
 		_secondImage = _openCv->Resize(secondImage, _screenSize);
 
 		_resultBatch = resultBatch;
-		_resultBatch.insert(pair<string, double>("Header", 0.0));
 	}
 
-	ControllerService::ControllerService(string pathFirstImage, string pathSecondImage, map<string, double> resultBatch)
+	ControllerService::ControllerService(string pathFirstImage, string pathSecondImage, map<string, double>* resultBatch)
 	{
 		_openCv = new OpenCV();
 
@@ -39,7 +35,6 @@ namespace Services {
 		_secondImage = _openCv->Resize(_openCv->ReadImage(pathSecondImage), _screenSize);
 
 		_resultBatch = resultBatch;
-		_resultBatch.insert(pair<string, double>("Header", 0.0));
 	}
 
 	ControllerService::~ControllerService()

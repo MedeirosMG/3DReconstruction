@@ -62,7 +62,7 @@ namespace Services {
 		Mat _firstImageModified;
 		Mat _secondImageModified;
 		Size _screenSize = Size(REC_SCREEN_DEFAULT_WIDTH, REC_SCREEN_DEFAULT_HEIGHT);
-		map<string, double> _resultBatch;
+		map<string, double>* _resultBatch;
 
 		// Delaunay Properties
 		vector<Vec<Point3f, 4>> _resultDelaunay;
@@ -107,9 +107,9 @@ namespace Services {
 
 	public:
 		ControllerService();
-		ControllerService(map<string, double> resultBatch);
-		ControllerService(Mat firstImage, Mat secondImage, map<string, double> resultBatch = map<string, double>());
-		ControllerService(string pathFirstImage, string pathSecondImage, map<string, double> resultBatch = map<string, double>());
+		ControllerService(map<string, double>* resultBatch);
+		ControllerService(Mat firstImage, Mat secondImage, map<string, double>* resultBatch = NULL);
+		ControllerService(string pathFirstImage, string pathSecondImage, map<string, double>* resultBatch = NULL);
 		~ControllerService();
 
 		bool CalibrationApply();

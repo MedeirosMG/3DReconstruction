@@ -20,6 +20,9 @@ namespace Helpers {
 
 	class Export
 	{
+		private:
+			static inline string Splitter = ";";
+
 		public:
 			Export();
 			~Export();

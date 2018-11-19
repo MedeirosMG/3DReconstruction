@@ -115,7 +115,6 @@ namespace Helpers {
 			vector<TimeExecution> list = time.Get();
 			vector<vector<string>> excelValues;
 			string exportText = "";
-			string splitter = ";";
 			int maxQtd = 0;
 			ofstream file;
 
@@ -130,7 +129,7 @@ namespace Helpers {
 						maxQtd = sizeMethod;
 
 					if ((i + 1) != list.size()) {
-						exportText += splitter;
+						exportText += Splitter;
 					}
 				}
 				exportText += "\n";
@@ -155,7 +154,7 @@ namespace Helpers {
 				{
 					for each (string col in row)
 					{
-						exportText += col + splitter;
+						exportText += col + Splitter;
 					}
 
 					exportText += "\n";
@@ -183,7 +182,6 @@ namespace Helpers {
 				throw exception("Coordinates cannot be null or empty");
 
 			string exportText = "";
-			string splitter = ";";
 			string data = "";
 			bool exportLine = true;
 			ofstream file;
@@ -193,7 +191,7 @@ namespace Helpers {
 				// setting header
 				for (char& c : coordinates) {
 					string coord(&c);
-					string header = "Reconstruction Coord " + coord + splitter + "Map Coord " + coord + splitter + "Error " + coord + splitter;
+					string header = "Reconstruction Coord " + coord + Splitter + "Map Coord " + coord + Splitter + "Error " + coord + Splitter;
 
 					StringHelper::Append(exportText, header);
 				}
@@ -214,7 +212,7 @@ namespace Helpers {
 									continue;
 								}
 
-								data = to_string(item.Reconstruction.x) + splitter + to_string(item.Map.x) + splitter + to_string(item.Error.x) + splitter;
+								data = to_string(item.Reconstruction.x) + Splitter + to_string(item.Map.x) + Splitter + to_string(item.Error.x) + Splitter;
 								break;
 							case 'y':
 								if (isinf(item.Reconstruction.y) || isinf(item.Map.y) || isinf(item.Error.y)) {
@@ -222,7 +220,7 @@ namespace Helpers {
 									continue;
 								}
 
-								data = to_string(item.Reconstruction.y) + splitter + to_string(item.Map.y) + splitter + to_string(item.Error.y) + splitter;
+								data = to_string(item.Reconstruction.y) + Splitter + to_string(item.Map.y) + Splitter + to_string(item.Error.y) + Splitter;
 								break;
 							case 'z':
 								if (isinf(item.Reconstruction.z) || isinf(item.Map.z) || isinf(item.Error.z)) {
@@ -230,7 +228,7 @@ namespace Helpers {
 									continue;
 								}
 
-								data = to_string(item.Reconstruction.z) + splitter + to_string(item.Map.z) + splitter + to_string(item.Error.z) + splitter;
+								data = to_string(item.Reconstruction.z) + Splitter + to_string(item.Map.z) + Splitter + to_string(item.Error.z) + Splitter;
 								break;
 						}
 
@@ -262,7 +260,6 @@ namespace Helpers {
 	{
 		try {
 			string exportText = "";
-			string splitter = ";";
 			string data = "";
 			bool exportLine = true;
 			ofstream file;
@@ -270,7 +267,7 @@ namespace Helpers {
 			file.open(pathDirectory);
 			if (file.is_open()) {
 				// setting header
-				string header = "Image" + splitter + "Error" + splitter + "\n";
+				string header = "Image" + Splitter + "Error" + Splitter + "\n";
 				StringHelper::Append(exportText, header);
 
 				// setting data
@@ -278,12 +275,13 @@ namespace Helpers {
 				for (it = result.begin(); it != result.end(); it++)
 				{
 					// it->first(key) / it->second(value)
-					StringHelper::Append(exportText, it->first + ";" + to_string(it->second) + ";");
+					string error = to_string(it->second);
+					std::replace(error.begin(), error.end(), '.', ',');
+					StringHelper::Append(exportText, it->first + Splitter + error + Splitter + "\n");
 				}
 			}
-
+			
 			file << exportText;
-
 			file.close();
 
 			return true;

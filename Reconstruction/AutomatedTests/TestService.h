@@ -19,10 +19,10 @@ namespace AutomatedTests {
 		public:
 			TestService();
 			~TestService();
-			void ReconstructionFF_FP(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export);
-			void Reconstruction_FF(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export);
-			void Reconstruction_FP(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export);
-			void Reconstruction_Default(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export);
+			void ReconstructionFF_FP(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export, map<string, double>* _resultBatch);
+			void Reconstruction_FF(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export, map<string, double>* _resultBatch);
+			void Reconstruction_FP(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export, map<string, double>* _resultBatch);
+			void Reconstruction_Default(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export, map<string, double>* _resultBatch);
 			void ReconstructionWithTimeExecution(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export);
 	};
 
