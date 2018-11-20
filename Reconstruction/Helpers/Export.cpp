@@ -304,7 +304,7 @@ namespace Helpers {
 			file.open(pathDirectory);
 			if (file.is_open()) {
 				// setting header
-				string header = "Image" + Splitter + "Average" + Splitter +"Deviation STD" + Splitter + "\n";
+				string header = "Image" + Splitter + "Average" + Splitter +"Standard Deviation" + Splitter + "\n";
 				StringHelper::Append(exportText, header);
 
 				// setting data

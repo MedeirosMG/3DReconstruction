@@ -1,4 +1,4 @@
-Image;Average;Deviation STD;
+Image;Average;Standard Deviation;
 Adirondack-perfect_FP.csv;0,549702;0,243040;
 Backpack-perfect_FP.csv;0,215423;0,188333;
 Bicycle1-perfect_FP.csv;0,472805;0,258100;
