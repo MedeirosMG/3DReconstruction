@@ -292,4 +292,43 @@ namespace Helpers {
 			return false;
 		}
 	}
+
+	bool Export::Csv(map<string, AverageDeviationStd*> result, string pathDirectory)
+	{
+		try {
+			string exportText = "";
+			string data = "";
+			bool exportLine = true;
+			ofstream file;
+
+			file.open(pathDirectory);
+			if (file.is_open()) {
+				// setting header
+				string header = "Image" + Splitter + "Average" + Splitter +"Deviation STD" + Splitter + "\n";
+				StringHelper::Append(exportText, header);
+
+				// setting data
+				map<string, AverageDeviationStd*>::iterator it;
+				for (it = result.begin(); it != result.end(); it++)
+				{
+					// it->first(key) / it->second(value)
+					string average = to_string(it->second->Average);
+					string deviation = to_string(it->second->Deviation);
+					std::replace(average.begin(), average.end(), '.', ',');
+					std::replace(deviation.begin(), deviation.end(), '.', ',');
+					StringHelper::Append(exportText, it->first + Splitter + average + Splitter + deviation + Splitter + "\n");
+				}
+			}
+
+			file << exportText;
+			file.close();
+
+			return true;
+		}
+		catch (const std::exception& ex)
+		{
+			cout << "Exception Export CSV: " << ex.what() << endl;
+			return false;
+		}
+	}
 }

@@ -8,7 +8,9 @@
 #include "../Algorithms/OpenGL.h"
 #include "../Helpers/Time.h"
 #include "../Helpers/StringHelper.h"
+#include "../Helpers/Mathematic.h"
 #include "../Entities/CameraProperties.h"
+#include "../Entities/AverageDeviationStd.h"
 
 namespace fs = std::experimental::filesystem;
 using namespace std;
@@ -25,6 +27,7 @@ namespace Helpers {
 
 			static vector<TimeExecution> Csv(string pathDirectory);
 			static void CalculateAverage(string pathDirectory, map<string, double>& result);
+			static void CalculateAverage(string pathDirectory, map<string, AverageDeviationStd*>& result);
 			static CameraProperties CameraParameters(string pathDirectory);
 			static vector<CameraProperties> CameraParameters(vector<string> pathDirectory);
 	};

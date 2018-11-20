@@ -162,6 +162,7 @@
     <ClInclude Include="Algorithms\OpenCV.h" />
     <ClInclude Include="AutomatedTests\BatchReconstruction.h" />
     <ClInclude Include="AutomatedTests\TestService.h" />
+    <ClInclude Include="Entities\AverageDeviationStd.h" />
     <ClInclude Include="Entities\CameraProperties.h" />
     <ClInclude Include="Entities\PointPair.h" />
     <ClInclude Include="Entities\ReconstructionComparison.h" />
@@ -172,6 +173,7 @@
     <ClInclude Include="Helpers\Console.h" />
     <ClInclude Include="Helpers\Convert.h" />
     <ClInclude Include="Helpers\Export.h" />
+    <ClInclude Include="Helpers\Mathematic.h" />
     <ClInclude Include="Helpers\PFM.h" />
     <ClInclude Include="Helpers\ReconstructionDefine.h" />
     <ClInclude Include="Helpers\Import.h" />
@@ -203,6 +205,7 @@
     <ClCompile Include="Algorithms\OpenCV.cpp" />
     <ClCompile Include="AutomatedTests\BatchReconstruction.cpp" />
     <ClCompile Include="AutomatedTests\TestService.cpp" />
+    <ClCompile Include="Entities\AverageDeviationStd.cpp" />
     <ClCompile Include="Entities\CameraProperties.cpp" />
     <ClCompile Include="Entities\PointPair.cpp" />
     <ClCompile Include="Entities\ReconstructionComparison.cpp" />
@@ -214,6 +217,7 @@
     <ClCompile Include="Helpers\Convert.cpp" />
     <ClCompile Include="Helpers\Export.cpp" />
     <ClCompile Include="Helpers\Import.cpp" />
+    <ClCompile Include="Helpers\Mathematic.cpp" />
     <ClCompile Include="Helpers\MultiThreshold.cpp" />
     <ClCompile Include="Helpers\PFM.cpp" />
     <ClCompile Include="Helpers\PointsUtilities.cpp" />

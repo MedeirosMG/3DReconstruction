@@ -62,7 +62,7 @@ namespace Services {
 		Mat _firstImageModified;
 		Mat _secondImageModified;
 		Size _screenSize = Size(REC_SCREEN_DEFAULT_WIDTH, REC_SCREEN_DEFAULT_HEIGHT);
-		map<string, double>* _resultBatch;
+		map<string, double>* _resultBatch = NULL;
 
 		// Delaunay Properties
 		vector<Vec<Point3f, 4>> _resultDelaunay;

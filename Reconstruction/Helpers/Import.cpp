@@ -59,7 +59,7 @@ namespace Helpers {
 		// Run test in all paths
 		for each (string path in paths_base)
 		{			
-			double average = 0.0;
+			vector<double> values;
 			int count = 0;
 			bool header = true;
 			file.open(path);
@@ -75,7 +75,7 @@ namespace Helpers {
 						if (listSplitted[2] != "-nan(ind)") {
 							std::replace(listSplitted[2].begin(), listSplitted[2].end(), ',', '.');
 							double error = std::stod(listSplitted[2]);
-							average += error;
+							values.push_back(error);
 
 							count++;
 						}
@@ -86,7 +86,54 @@ namespace Helpers {
 			}
 			
 			vector<string> splitted = StringHelper::Split(path, '\\');
-			result.insert(pair<string, double>(splitted[splitted.size() - 1], (average / count)));
+			result.insert(pair<string, double>(splitted[splitted.size() - 1], Mathematic::Average(values)));
+		}
+	}
+
+	void Import::CalculateAverage(string pathDirectory, map<string, AverageDeviationStd*> &result)
+	{
+		string line = "";
+		ifstream file;
+		vector<string> paths_base;
+
+		for (auto & p : fs::directory_iterator(pathDirectory))
+			paths_base.push_back(p.path().string());
+
+		// Run test in all paths
+		for each (string path in paths_base)
+		{
+			vector<double> values;
+			int count = 0;
+			bool header = true;
+			file.open(path);
+
+			if (file.is_open()) {
+				while (getline(file, line))
+				{
+					vector<string> listSplitted = StringHelper::Split(line, ';');
+					if (header) {
+						header = false;
+					}
+					else {
+						if (listSplitted[2] != "-nan(ind)") {
+							std::replace(listSplitted[2].begin(), listSplitted[2].end(), ',', '.');
+							double error = std::stod(listSplitted[2]);
+							values.push_back(error);
+
+							count++;
+						}
+					}
+				}
+
+				file.close();
+			}
+
+			AverageDeviationStd* avgDevStd = new AverageDeviationStd();
+			avgDevStd->Average = Mathematic::Average(values);
+			avgDevStd->Deviation = Mathematic::StandardDeviation(values);
+
+			vector<string> splitted = StringHelper::Split(path, '\\');
+			result.insert(pair<string, AverageDeviationStd*>(splitted[splitted.size() - 1], avgDevStd));
 		}
 	}
 

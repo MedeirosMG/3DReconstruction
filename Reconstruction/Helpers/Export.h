@@ -9,6 +9,7 @@
 #include "../Entities/ReconstructionComparison.h"
 #include "../Helpers/Time.h"
 #include "../Helpers/StringHelper.h"
+#include "../Entities/AverageDeviationStd.h"
 
 using namespace std;
 using namespace Algorithms;
@@ -32,6 +33,7 @@ namespace Helpers {
 			static bool Csv(Time time, string pathDirectory);
 			static bool Csv(vector<ReconstructionComparison> reconstructionComparison, string pathDirectory, string coordinates = "xyz");
 			static bool Csv(map<string, double> result, string pathDirectory);
+			static bool Csv(map<string, AverageDeviationStd*> result, string pathDirectory);
 	};
 
 }

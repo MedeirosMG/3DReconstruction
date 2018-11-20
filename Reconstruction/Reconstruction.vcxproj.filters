@@ -162,6 +162,12 @@
     <ClInclude Include="AutomatedTests\TestService.h">
       <Filter>Header Files\H_AutomatedTests</Filter>
     </ClInclude>
+    <ClInclude Include="Entities\AverageDeviationStd.h">
+      <Filter>Source Files\S_Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Helpers\Mathematic.h">
+      <Filter>Header Files\H_Helpers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -277,6 +283,12 @@
     </ClCompile>
     <ClCompile Include="AutomatedTests\TestService.cpp">
       <Filter>Source Files\S_AutomatedTests</Filter>
+    </ClCompile>
+    <ClCompile Include="Entities\AverageDeviationStd.cpp">
+      <Filter>Source Files\S_Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers\Mathematic.cpp">
+      <Filter>Source Files\S_Helpers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
