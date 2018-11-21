@@ -77,8 +77,12 @@ namespace AutomatedTests {
 		// Run test in all paths
 		for each (string path in paths_base)
 		{
+			if (i < 3) {
+				i++;
+				continue;
+			}
 			int total = paths_base.size();
-
+			
 			cout << "--------------------------------------------------------------------" << endl;
 			cout << "Executing: " + path.substr(path.find("s\\") + 2, path.size()) << endl;
 			cout << "Progress: " + to_string(i) + " | " + to_string(total) << endl;
