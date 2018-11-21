@@ -149,5 +149,32 @@ namespace AutomatedTests {
 		cout << "======== End Test ======== " << endl;
 	}
 	
+	void TestService::Reconstruction(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export, map<string, double>* _resultBatch)
+	{
+		cout << "======= Start Test using firefly and sift filter ======= " << endl;
+
+		ControllerService* controller = new ControllerService(path_img1, path_img2, _resultBatch);
+		controller->SetFireflyProperties(3, 100, 100);
+		controller->SetCannyProperties(100, 250, 3);
+		controller->SetGeneralProperties();
+		controller->SetSiftProperties(0);
+		controller->SetCalibrationProperties(path_calib, path_disparity, path_export);
+		controller->SetSiftFilterProperties(20, 500);
+		controller->SetVisualizerProperties(true);
+		controller->LoadServices();
+
+		controller->FireflyApply();
+		controller->CannyApply();
+		controller->ConnectedComponentsApply();
+		controller->FindRegionsApply();
+		controller->SiftOnMaskApply();
+		controller->SiftOnMaskFilterApply();
+		controller->ConvertSiftApply();
+		controller->CalibrationApply();
+		controller->DelaunayApply();
+		controller->RenderApply();
+
+		cout << "======== End Test ======== " << endl;
+	}
 }
 

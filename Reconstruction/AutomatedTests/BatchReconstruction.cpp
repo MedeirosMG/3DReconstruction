@@ -84,33 +84,37 @@ namespace AutomatedTests {
 			cout << "Progress: " + to_string(i) + " | " + to_string(total) << endl;
 			cout << "--------------------------------------------------------------------" << endl << endl << endl << endl;
 
-			string export_path = ".\\Export_Result\\" + path.substr(path.find("s\\") + 2, path.size());
+			string export_path_FFFP = ".\\Reports\\Export_Result\\FF_FP\\" + path.substr(path.find("s\\") + 2, path.size());
+			string export_path_FF = ".\\Reports\\Export_Result\\FF\\" + path.substr(path.find("s\\") + 2, path.size());
+			string export_path_FP = ".\\Reports\\Export_Result\\FP\\" + path.substr(path.find("s\\") + 2, path.size());
+			string export_path_Default = ".\\Reports\\Export_Result\\DEFAULT\\" + path.substr(path.find("s\\") + 2, path.size());
+
 			testService->ReconstructionFF_FP(path + "\\calib.txt",
 				path + "\\im0.png",
 				path + "\\im1.png",
 				path + "\\disp0.pfm",
-				export_path + "_FF_FP.csv",
+				export_path_FFFP + "_FF_FP.csv",
 				&resultBatchFFFP);
 
 			testService->Reconstruction_FF(path + "\\calib.txt",
 				path + "\\im0.png",
 				path + "\\im1.png",
 				path + "\\disp0.pfm",
-				export_path + "_FF.csv",
+				export_path_FF + "_FF.csv",
 				&resultBatchFF);
 
 			testService->Reconstruction_FP(path + "\\calib.txt",
 				path + "\\im0.png",
 				path + "\\im1.png",
 				path + "\\disp0.pfm",
-				export_path + "_FP.csv",
+				export_path_FP + "_FP.csv",
 				&resultBatchFP);
 
 			testService->Reconstruction_Default(path + "\\calib.txt",
 				path + "\\im0.png",
 				path + "\\im1.png",
 				path + "\\disp0.pfm",
-				export_path + "_DEF.csv",
+				export_path_Default + "_DEF.csv",
 				&resultBatchDefault);
 
 			i++;

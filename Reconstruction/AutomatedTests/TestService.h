@@ -24,6 +24,7 @@ namespace AutomatedTests {
 			void Reconstruction_FP(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export, map<string, double>* _resultBatch);
 			void Reconstruction_Default(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export, map<string, double>* _resultBatch);
 			void ReconstructionWithTimeExecution(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export);
+			void Reconstruction(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export, map<string, double>* _resultBatch);
 	};
 
 }
