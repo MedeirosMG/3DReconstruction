@@ -17,7 +17,7 @@ namespace AutomatedTests {
 		cout << "======= Start Test using firefly and sift filter ======= " << endl;
 
 		ControllerService* controller = new ControllerService(path_img1, path_img2, _resultBatch);
-		controller->SetFireflyProperties(3, 100, 100);
+		controller->SetFireflyProperties(1, 100, 100);
 		controller->SetCannyProperties(100, 250, 3);
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0);
@@ -45,7 +45,7 @@ namespace AutomatedTests {
 		cout << "======= Start Test using firefly ======= " << endl;
 
 		ControllerService* controller = new ControllerService(path_img1, path_img2, _resultBatch);
-		controller->SetFireflyProperties(3, 100, 100);
+		controller->SetFireflyProperties(1, 100, 100);
 		controller->SetCannyProperties(100, 250, 3);
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0);
@@ -72,7 +72,7 @@ namespace AutomatedTests {
 		cout << "======= Start Test using firefly ======= " << endl;
 
 		ControllerService* controller = new ControllerService(path_img1, path_img2, _resultBatch);
-		controller->SetFireflyProperties(3, 100, 100);
+		controller->SetFireflyProperties(1, 100, 100);
 		controller->SetCannyProperties(100, 250, 3);
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0);
@@ -98,7 +98,7 @@ namespace AutomatedTests {
 		cout << "======= Start Test using firefly ======= " << endl;
 
 		ControllerService* controller = new ControllerService(path_img1, path_img2, _resultBatch);
-		controller->SetFireflyProperties(3, 100, 100);
+		controller->SetFireflyProperties(1, 100, 100);
 		controller->SetCannyProperties(100, 250, 3);
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0);
