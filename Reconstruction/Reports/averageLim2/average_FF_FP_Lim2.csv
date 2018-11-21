@@ -1,0 +1,24 @@
+Image;Average;Standard Deviation;;
+Storage-perfect_FF_FP.csv;0,118311;0,127989;;
+Mask-perfect_FF_FP.csv;0,176499;0,182699;;
+Pipes-perfect_FF_FP.csv;0,18149;0,169499;;
+Umbrella-perfect_FF_FP.csv;0,21297;0,178585;;7,758813
+Shelves-perfect_FF_FP.csv;0,235678;0,160165;;
+Playtable-perfect_FF_FP.csv;0,237545;0,152808;;
+Vintage-perfect_FF_FP.csv;0,268695;0,131815;;
+Jadeplant-perfect_FF_FP.csv;0,296356;0,150812;;
+Sword2-perfect_FF_FP.csv;0,300719;0,206774;;
+Motorcycle-perfect_FF_FP.csv;0,314534;0,224047;;
+Backpack-perfect_FF_FP.csv;0,32508;0,312239;;
+Playroom-perfect_FF_FP.csv;0,33193;0,230987;;
+Sword1-perfect_FF_FP.csv;0,343909;0,209014;;
+Flowers-perfect_FF_FP.csv;0,350275;0,255997;;
+Piano-perfect_FF_FP.csv;0,400801;0,126381;;
+Cable-perfect_FF_FP.csv;0,405222;0,173524;;
+Sticks-perfect_FF_FP.csv;0,415022;0,193805;;
+Shopvac-perfect_FF_FP.csv;0,422341;0,133184;;
+Adirondack-perfect_FF_FP.csv;0,472965;0,274189;;
+Couch-perfect_FF_FP.csv;0,4951;0,169761;;
+Classroom1-perfect_FF_FP.csv;0,523894;0,204303;;
+Recycle-perfect_FF_FP.csv;0,639285;0,257347;;
+Bicycle1-perfect_FF_FP.csv;0,698694;0,224274;;
