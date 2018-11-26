@@ -162,11 +162,11 @@
     <ClInclude Include="AutomatedTests\TestService.h">
       <Filter>Header Files\H_AutomatedTests</Filter>
     </ClInclude>
-    <ClInclude Include="Entities\AverageDeviationStd.h">
-      <Filter>Source Files\S_Entities</Filter>
-    </ClInclude>
     <ClInclude Include="Helpers\Mathematic.h">
       <Filter>Header Files\H_Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Entities\AverageDeviationStd.h">
+      <Filter>Header Files\H_Entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
