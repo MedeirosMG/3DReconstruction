@@ -12,7 +12,12 @@ Reconstruction/debug
 #Excluding Debug project
 Debug
 
-#exclude images test
+#exclude debug x64 project build
+reconstruction/Reconstruction.exe
+reconstruction/Reconstruction.ilk
+reconstruction/Reconstruction.pdb
+
+#exclude test images
 reconstruction/Structured_Images/
 reconstruction/Export_Result/*.*
 reconstruction/Reports

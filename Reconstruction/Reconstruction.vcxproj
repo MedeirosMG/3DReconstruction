@@ -170,6 +170,7 @@
     <ClInclude Include="Entities\RenderProperties.h" />
     <ClInclude Include="Entities\SiftResult.h" />
     <ClInclude Include="Entities\TimeExecution.h" />
+    <ClInclude Include="Helpers\CameraCapture.h" />
     <ClInclude Include="Helpers\Console.h" />
     <ClInclude Include="Helpers\Convert.h" />
     <ClInclude Include="Helpers\Export.h" />
@@ -214,6 +215,7 @@
     <ClCompile Include="Entities\RenderProperties.cpp" />
     <ClCompile Include="Entities\SiftResult.cpp" />
     <ClCompile Include="Entities\TimeExecution.cpp" />
+    <ClCompile Include="Helpers\CameraCapture.cpp" />
     <ClCompile Include="Helpers\Console.cpp" />
     <ClCompile Include="Helpers\Convert.cpp" />
     <ClCompile Include="Helpers\Export.cpp" />
