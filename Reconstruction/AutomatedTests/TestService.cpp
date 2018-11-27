@@ -160,7 +160,7 @@ namespace AutomatedTests {
 		controller->SetSiftProperties(0);
 		controller->SetCalibrationProperties(path_calib, path_disparity, path_export);
 		controller->SetSiftFilterProperties(20, 500);
-		controller->SetVisualizerProperties(true);
+		controller->SetVisualizerProperties(false);
 		controller->LoadServices();
 
 		controller->FireflyApply();

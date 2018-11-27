@@ -3,8 +3,49 @@
 #include "RenderService.h"
 #include "RenderServiceVtk.h"
 #include <vtkAutoInit.h> 
+#include <vtkCellData.h>
+#include <vtkCellArray.h>
+#include <vtkDoubleArray.h>
+#include <vtkPoints.h>
+#include <vtkPolyData.h>
+#include <vtkPointData.h>
+#include <vtkSmartPointer.h>
+#include <vtkXMLPolyDataReader.h>
+#include <vtkPolyDataNormals.h>
+#include <vtkOBJExporter.h>
 
-namespace Services {
+#define _CRT_SECURE_NO_DEPRECATE
+
+class MyClass : vtkOBJExporter
+{
+public:
+	void MyClass::Writer(vtkActor *a, int &b)
+	{
+		FILE * fpObj;
+		
+		fpObj = fopen("C:\\Users\\Murillo\\Desktop\\teste.obj", "w");
+		
+		FILE * fpMat;
+
+		fpMat = fopen("C:\\Users\\Murillo\\Desktop\\teste2.obj", "w");
+
+		WriteAnActor(a, fpObj, fpMat, b);
+
+		fclose(fpObj);
+		fclose(fpMat);
+	}
+
+	MyClass::MyClass()
+	{
+	}
+
+	MyClass::~MyClass()
+	{
+	}
+};
+
+namespace Services 
+{
 	void RenderServiceVtk::Execute(vector<Vec<Point3f, 4>> triangles, vector<Point3f> pointsCalibration, vector<Point3f> contour)
 	{
 
@@ -58,7 +99,7 @@ namespace Services {
 		//delaunayActor->GetProperty()->SetRepresentationToWireframe();
 
 
-
+			
 
 		// Add interact
 		vtkSmartPointer<vtkRenderWindowInteractor> renderWindowInteractor = vtkSmartPointer<vtkRenderWindowInteractor>::New();
@@ -69,7 +110,12 @@ namespace Services {
 		originalRenderer->SetBackground(.0, .0, .0);
 		delaunayRenderer->SetBackground(.0, .0, .0);
 
+		int a = 1;
+		MyClass guilherme;
+		guilherme.Writer(delaunayActor, a);
+
+
 		renderWindow->Render();
-		renderWindowInteractor->Start();
+		renderWindowInteractor->Start();	
 	}
 }
