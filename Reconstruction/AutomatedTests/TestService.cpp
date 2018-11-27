@@ -21,7 +21,8 @@ namespace AutomatedTests {
 		controller->SetCannyProperties(100, 250, 3);
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0);
-		controller->SetCalibrationProperties(path_calib, path_disparity, path_export);
+		//controller->SetCalibrationProperties(path_calib, path_disparity, path_export);
+		controller->SetCalibrationProperties("", "", 30, 23);
 		controller->SetSiftFilterProperties(20, 500);
 		controller->SetVisualizerProperties(false);
 		controller->LoadServices();
@@ -76,7 +77,8 @@ namespace AutomatedTests {
 		controller->SetCannyProperties(100, 250, 3);
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0);
-		controller->SetCalibrationProperties(path_calib, path_disparity, path_export);
+		//controller->SetCalibrationProperties(path_calib, path_disparity, path_export);
+		controller->SetCalibrationProperties("", "", 30, 23);
 		controller->SetSiftFilterProperties(20, 500);
 		controller->SetVisualizerProperties(false);
 		controller->LoadServices();

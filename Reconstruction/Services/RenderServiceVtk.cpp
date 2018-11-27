@@ -57,9 +57,6 @@ namespace Services {
 		//Wireframe
 		//delaunayActor->GetProperty()->SetRepresentationToWireframe();
 
-
-
-
 		// Add interact
 		vtkSmartPointer<vtkRenderWindowInteractor> renderWindowInteractor = vtkSmartPointer<vtkRenderWindowInteractor>::New();
 		renderWindowInteractor->SetRenderWindow(renderWindow);
