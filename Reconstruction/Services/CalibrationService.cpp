@@ -43,10 +43,12 @@ namespace Services {
 		for each (PointPair item in listMatchPoints)
 		{
 			Point3f point = *CalculateRealPoint(item.FirstPoint, item.SecondPoint);
-			if(converter->CheckInsidePoint(Point2f(point.x, point.y), contour))
-			if(point.z >= 0 && point.z <= 150)
-				listRealPoints.push_back(point);
-			//listRealPoints.push_back(converter->CoordenateToPixel(*(CalculateRealPoint(item.FirstPoint, item.SecondPoint)), _imgSize));
+			if (converter->CheckInsidePoint(Point2f(point.x, point.y), contour)) {
+				// Filter Z
+				if(point.z >= 0 && point.z <= 150)
+					listRealPoints.push_back(point);
+					//listRealPoints.push_back(converter->CoordenateToPixel(*(CalculateRealPoint(item.FirstPoint, item.SecondPoint)), _imgSize));
+			}
 		}
 
 		return listRealPoints;
