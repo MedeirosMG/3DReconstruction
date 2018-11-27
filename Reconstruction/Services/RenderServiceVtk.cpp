@@ -16,37 +16,9 @@
 
 #define _CRT_SECURE_NO_DEPRECATE
 
-class MyClass : vtkOBJExporter
-{
-public:
-	void MyClass::Writer(vtkActor *a, int &b)
-	{
-		FILE * fpObj;
-		
-		fpObj = fopen("C:\\Users\\Murillo\\Desktop\\teste.obj", "w");
-		
-		FILE * fpMat;
-
-		fpMat = fopen("C:\\Users\\Murillo\\Desktop\\teste2.obj", "w");
-
-		WriteAnActor(a, fpObj, fpMat, b);
-
-		fclose(fpObj);
-		fclose(fpMat);
-	}
-
-	MyClass::MyClass()
-	{
-	}
-
-	MyClass::~MyClass()
-	{
-	}
-};
-
 namespace Services 
 {
-	void RenderServiceVtk::Execute(vector<Vec<Point3f, 4>> triangles, vector<Point3f> pointsCalibration, vector<Point3f> contour)
+	void RenderServiceVtk::Execute(vector<Vec<Point3f, 4>> triangles, vector<Point3f> pointsCalibration, vector<Point3f> contour, string pathDirectoryExport, string filenameExport)
 	{
 
 		VTK_MODULE_INIT(vtkRenderingOpenGL2)
@@ -71,9 +43,7 @@ namespace Services
 
 		// Second render
 		renderWindow->AddRenderer(delaunayRenderer);
-		delaunayRenderer->SetViewport(rightViewport);
-
-		
+		delaunayRenderer->SetViewport(rightViewport);		
 
 		// For points apply
 		vtkSmartPointer<vtkUnstructuredGrid> inputUnstructuredGrid = vtkSmartPointer<vtkUnstructuredGrid>::New();
@@ -96,10 +66,7 @@ namespace Services
 		delaunayActor->GetProperty()->SetColor(1, 1, 1);
 
 		//Wireframe
-		//delaunayActor->GetProperty()->SetRepresentationToWireframe();
-
-
-			
+		//delaunayActor->GetProperty()->SetRepresentationToWireframe();			
 
 		// Add interact
 		vtkSmartPointer<vtkRenderWindowInteractor> renderWindowInteractor = vtkSmartPointer<vtkRenderWindowInteractor>::New();
@@ -110,10 +77,8 @@ namespace Services
 		originalRenderer->SetBackground(.0, .0, .0);
 		delaunayRenderer->SetBackground(.0, .0, .0);
 
-		int a = 1;
-		MyClass guilherme;
-		guilherme.Writer(delaunayActor, a);
-
+		if(pathDirectoryExport != "")
+			Export::Obj(delaunayActor, pathDirectoryExport, filenameExport);
 
 		renderWindow->Render();
 		renderWindowInteractor->Start();	

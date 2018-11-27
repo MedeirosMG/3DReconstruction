@@ -5,6 +5,7 @@
 #include "../Helpers/PointsUtilities.h"
 #include "../Entities/RenderProperties.h"
 #include "../Helpers/Convert.h"
+#include "../Helpers/Export.h"
 #include "../Services/DelaunayService.h"
 
 using namespace std;
@@ -19,7 +20,7 @@ namespace Services {
 			void Init();
 
 		public:
-			void Execute(vector<Vec<Point3f, 4>> triangles, vector<Point3f> pointsCalibration, vector<Point3f> contour);
+			void Execute(vector<Vec<Point3f, 4>> triangles, vector<Point3f> pointsCalibration, vector<Point3f> contour, string pathDirectoryExport = "", string filenameExport= "");
 	};
 
 }

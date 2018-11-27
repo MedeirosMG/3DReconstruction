@@ -108,6 +108,21 @@ namespace Helpers {
 		return true;
 	}
 
+	bool Export::Obj(vtkActor * vtkActor, string pathDirectory, string filename)
+	{
+		try
+		{
+			ExportVtk().ExportObj(vtkActor, pathDirectory, filename);
+
+			return true;
+		}
+		catch (const std::exception& ex)
+		{
+			cout << "Exception Export VTK obj: " << ex.what() << endl;
+			return false;
+		}
+	}
+
 	bool Export::Csv(Helpers::Time time, string pathDirectory)
 	{
 		try

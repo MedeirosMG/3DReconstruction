@@ -168,6 +168,9 @@
     <ClInclude Include="Entities\AverageDeviationStd.h">
       <Filter>Header Files\H_Entities</Filter>
     </ClInclude>
+    <ClInclude Include="Helpers\ExportVtk.h">
+      <Filter>Header Files\H_Helpers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -288,6 +291,9 @@
       <Filter>Source Files\S_Entities</Filter>
     </ClCompile>
     <ClCompile Include="Helpers\Mathematic.cpp">
+      <Filter>Source Files\S_Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers\ExportVtk.cpp">
       <Filter>Source Files\S_Helpers</Filter>
     </ClCompile>
   </ItemGroup>

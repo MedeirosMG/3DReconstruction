@@ -173,6 +173,7 @@
     <ClInclude Include="Helpers\Console.h" />
     <ClInclude Include="Helpers\Convert.h" />
     <ClInclude Include="Helpers\Export.h" />
+    <ClInclude Include="Helpers\ExportVtk.h" />
     <ClInclude Include="Helpers\Mathematic.h" />
     <ClInclude Include="Helpers\PFM.h" />
     <ClInclude Include="Helpers\ReconstructionDefine.h" />
@@ -216,6 +217,7 @@
     <ClCompile Include="Helpers\Console.cpp" />
     <ClCompile Include="Helpers\Convert.cpp" />
     <ClCompile Include="Helpers\Export.cpp" />
+    <ClCompile Include="Helpers\ExportVtk.cpp" />
     <ClCompile Include="Helpers\Import.cpp" />
     <ClCompile Include="Helpers\Mathematic.cpp" />
     <ClCompile Include="Helpers\MultiThreshold.cpp" />

@@ -273,7 +273,7 @@ namespace Services {
 		try
 		{
 			cout << endl << "=== Init Rendering ===" << endl << endl;
-			_renderServiceVTK->Execute(_resultDelaunay, _resultCalibration, _resultCanny);
+			_renderServiceVTK->Execute(_resultDelaunay, _resultCalibration, _resultCanny, ".\\Reports");
 
 			return true;
 		}
