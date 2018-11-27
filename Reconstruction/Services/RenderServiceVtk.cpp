@@ -18,7 +18,7 @@
 
 namespace Services 
 {
-	void RenderServiceVtk::Execute(vector<Vec<Point3f, 4>> triangles, vector<Point3f> pointsCalibration, vector<Point3f> contour, string pathDirectoryExport, string filenameExport)
+	void RenderServiceVtk::Execute(vector<Vec<Point3f, 4>> triangles, vector<Point3f> pointsCalibration, vector<Point3f> contour, string path_export)
 	{
 
 		VTK_MODULE_INIT(vtkRenderingOpenGL2)
@@ -77,8 +77,8 @@ namespace Services
 		originalRenderer->SetBackground(.0, .0, .0);
 		delaunayRenderer->SetBackground(.0, .0, .0);
 
-		if(pathDirectoryExport != "")
-			Export::Obj(delaunayActor, pathDirectoryExport, filenameExport);
+		if(path_export != "")
+			Export::Obj(delaunayActor, path_export);
 
 		renderWindow->Render();
 		renderWindowInteractor->Start();	

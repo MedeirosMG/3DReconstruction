@@ -23,7 +23,7 @@ namespace Helpers {
 			ExportVtk();
 			~ExportVtk();
 
-			bool ExportObj(vtkActor *a, string pathDirectory, string filename = "object");
+			bool ExportObj(vtkActor *a, string path_export);
 	};
 
 }

@@ -98,6 +98,7 @@ namespace AutomatedTests {
 				path + "\\im1.png",
 				path + "\\disp0.pfm",
 				export_path_FFFP + "_FF_FP.csv",
+				"",
 				&resultBatchFFFP);
 
 			testService->Reconstruction_FF(path + "\\calib.txt",
@@ -105,6 +106,7 @@ namespace AutomatedTests {
 				path + "\\im1.png",
 				path + "\\disp0.pfm",
 				export_path_FF + "_FF.csv",
+				"",
 				&resultBatchFF);
 
 			testService->Reconstruction_FP(path + "\\calib.txt",
@@ -112,6 +114,7 @@ namespace AutomatedTests {
 				path + "\\im1.png",
 				path + "\\disp0.pfm",
 				export_path_FP + "_FP.csv",
+				"",
 				&resultBatchFP);
 
 			testService->Reconstruction_Default(path + "\\calib.txt",
@@ -119,6 +122,7 @@ namespace AutomatedTests {
 				path + "\\im1.png",
 				path + "\\disp0.pfm",
 				export_path_Default + "_DEF.csv",
+				"",
 				&resultBatchDefault);
 
 			i++;

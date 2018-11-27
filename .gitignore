@@ -1,5 +1,5 @@
 # Visual Studio 2015/2017 cache/options directory
-.vs/
+.vs
 
 # Excluding x64 debug generator path
 reconstruction/x64

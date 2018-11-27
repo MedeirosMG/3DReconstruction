@@ -53,8 +53,8 @@ namespace Services {
 			
 			_visualizer->Show(_resultCalibration);
 
-			if(_pathExport != "")
-				_reconstructionCompareService->Execute(_resultCalibration, _calibration, _pathDisparity, _pathExport, _resultBatch);
+			if(_pathExportCSV != "")
+				_reconstructionCompareService->Execute(_resultCalibration, _calibration, _pathDisparity, _pathExportCSV, _resultBatch);
 
 			return true;
 		}
@@ -273,7 +273,7 @@ namespace Services {
 		try
 		{
 			cout << endl << "=== Init Rendering ===" << endl << endl;
-			_renderServiceVTK->Execute(_resultDelaunay, _resultCalibration, _resultCanny, ".\\Reports");
+			_renderServiceVTK->Execute(_resultDelaunay, _resultCalibration, _resultCanny, _pathExportOBJ);
 
 			return true;
 		}
@@ -346,21 +346,19 @@ namespace Services {
 		_minY = minY;
 	}
 
-	void ControllerService::SetCalibrationProperties(string pathDisparity, string pathExport, float calibrationB, float calibrationLambda, int calibrationK)
+	void ControllerService::SetCalibrationProperties(float calibrationB, float calibrationLambda, int calibrationK)
 	{
-		_pathExport = pathExport;
 		_calibration.B = calibrationB;
 		_calibration.Lambda = calibrationLambda;
 	}
 
-	void ControllerService::SetCalibrationProperties(string path, string pathDisparity, string pathExport)
+	void ControllerService::SetCalibrationProperties(string path, string pathDisparity)
 	{
 		CameraProperties cameraProperties = Import::CameraParameters(path);
 
 		_calibration = cameraProperties;
 
 		_pathDisparity = pathDisparity;
-		_pathExport = pathExport;
 	}
 
 	void ControllerService::SetGeneralProperties()
@@ -390,6 +388,12 @@ namespace Services {
 		// Init window
 		if(execute)
 			_visualizer->NewWindow(_visualizerName);
+	}
+
+	void ControllerService::SetExportProperties(string pathExportCSV, string pathExportOBJ)
+	{
+		_pathExportCSV = pathExportCSV;
+		_pathExportOBJ = pathExportOBJ;
 	}
 
 	void ControllerService::SetScreenProperties(Size imgSize)

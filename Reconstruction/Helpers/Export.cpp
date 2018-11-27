@@ -108,11 +108,11 @@ namespace Helpers {
 		return true;
 	}
 
-	bool Export::Obj(vtkActor * vtkActor, string pathDirectory, string filename)
+	bool Export::Obj(vtkActor * vtkActor, string pathDirectory)
 	{
 		try
 		{
-			ExportVtk().ExportObj(vtkActor, pathDirectory, filename);
+			ExportVtk().ExportObj(vtkActor, pathDirectory);
 
 			return true;
 		}

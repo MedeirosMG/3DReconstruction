@@ -20,7 +20,7 @@ namespace Services {
 			void Init();
 
 		public:
-			void Execute(vector<Vec<Point3f, 4>> triangles, vector<Point3f> pointsCalibration, vector<Point3f> contour, string pathDirectoryExport = "", string filenameExport= "");
+			void Execute(vector<Vec<Point3f, 4>> triangles, vector<Point3f> pointsCalibration, vector<Point3f> contour, string path_export);
 	};
 
 }

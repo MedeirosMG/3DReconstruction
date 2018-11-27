@@ -92,7 +92,6 @@ namespace Services {
 		// Calibration Properties
 		CameraProperties _calibration;
 		string _pathDisparity;
-		string _pathExport;
 		bool _exportCalib;
 		vector<Point3f> _resultCalibration;
 
@@ -104,6 +103,10 @@ namespace Services {
 		// Visualizer properties
 		string _visualizerName;
 		bool _visualizerExecute;
+
+		// Export properties
+		string _pathExportCSV = "";
+		string _pathExportOBJ = "";
 
 	public:
 		ControllerService();
@@ -130,12 +133,13 @@ namespace Services {
 		void SetCannyProperties(double cannyLowThresh, double cannyHighTresh, int cannyKernelSize);
 		void SetSiftProperties(int siftThreshold);
 		void SetSiftFilterProperties(int minY, int minDist);
-		void SetCalibrationProperties(string _pathDisparity, string _pathExport = "", float calibrationB = 0, float calibrationLambda = 0, int calibrationK = 0);
-		void SetCalibrationProperties(string path, string pathDisparity, string pathExport = "");
+		void SetCalibrationProperties(float calibrationB = 0, float calibrationLambda = 0, int calibrationK = 0);
+		void SetCalibrationProperties(string path, string pathDisparity);
 		void SetGeneralProperties();
 		void SetFireflyProperties(int thresholds, int number_fireflies, int number_generations);
 		void SetRansacProperties(double ransacThreshold);
 		void SetVisualizerProperties(bool execute, string nameWindow = "Default Name");
+		void SetExportProperties(string pathExportCSV = "", string pathExportOBJ = "");
 		void SetScreenProperties(Size screenSize);
 		void LoadServices();
 

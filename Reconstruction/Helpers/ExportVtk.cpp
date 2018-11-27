@@ -10,15 +10,15 @@ namespace Helpers {
 	{
 	}
 
-	bool ExportVtk::ExportObj(vtkActor * a, string pathDirectory, string filename)
+	bool ExportVtk::ExportObj(vtkActor * a, string path_export)
 	{
 		try
 		{
 			int b = 1;
 			FILE * fpObj = NULL;
 			FILE * fpMat = NULL;
-			string pathObj = pathDirectory + "\\" + filename + "_obj.obj";
-			string pathMtl = pathDirectory + "\\" + filename + "_mat.mtl";
+			string pathObj = path_export + ".obj";
+			string pathMtl = path_export + ".mtl";
 
 			
 			fpObj = fopen(pathObj.c_str(), "w");
@@ -32,7 +32,7 @@ namespace Helpers {
 		}
 		catch (const std::exception& ex)
 		{
-			cout << "Exception Export CSV: " << ex.what() << endl;
+			cout << "Exception Export OBJ: " << ex.what() << endl;
 			return false;
 		}
 	}
