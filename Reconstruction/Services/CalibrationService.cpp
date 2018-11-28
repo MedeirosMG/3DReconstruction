@@ -45,8 +45,13 @@ namespace Services {
 			Point3f point = *CalculateRealPoint(item.FirstPoint, item.SecondPoint);
 			if (converter->CheckInsidePoint(Point2f(point.x, point.y), contour)) {
 				// Filter Z
-				if(point.z >= 0 && point.z <= 150)
+				if (point.z >= 0 && point.z <= 150)
+				{
 					listRealPoints.push_back(point);
+					
+					Point3f secondPoint = Point3f(point.x, point.y, point.z * -1);
+					listRealPoints.push_back(secondPoint);
+				}
 					//listRealPoints.push_back(converter->CoordenateToPixel(*(CalculateRealPoint(item.FirstPoint, item.SecondPoint)), _imgSize));
 			}
 		}

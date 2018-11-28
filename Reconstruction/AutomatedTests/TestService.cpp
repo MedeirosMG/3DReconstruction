@@ -23,6 +23,7 @@ namespace AutomatedTests {
 		controller->SetSiftProperties(0);
 		controller->SetSiftFilterProperties(20, 500);
 		controller->SetVisualizerProperties(false);
+		controller->SetExportProperties(path_export_CSV, path_export_OBJ);
 		if (calibB != 0 || calibLambda != 0)
 			controller->SetCalibrationProperties(calibB, calibLambda);
 		else
@@ -82,7 +83,7 @@ namespace AutomatedTests {
 		controller->SetFireflyProperties(3, 100, 100);
 		controller->SetCannyProperties(100, 250, 3);
 		controller->SetGeneralProperties();
-		controller->SetSiftProperties(0);
+		controller->SetSiftProperties(170);
 		controller->SetSiftFilterProperties(20, 500);
 		controller->SetVisualizerProperties(false);
 		controller->SetExportProperties(path_export_CSV, path_export_OBJ);

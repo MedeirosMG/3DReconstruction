@@ -372,7 +372,7 @@ namespace Helpers {
 		cells->InsertNextCell(pointsToApply.size());
 		for each (Point3f point in pointsToApply)
 		{
-			double newPoint[3] = { point.x, point.y, point.z >= 0 ? -point.z : 0 };
+			double newPoint[3] = { point.x, point.y, point.z };
 
 			cells->InsertCellPoint(points->InsertNextPoint(newPoint));
 		}
@@ -391,10 +391,10 @@ namespace Helpers {
 		for (int i = 0; i < triangles.size(); i++) {
 
 			cells->InsertNextCell(4);
-			double newPoint1[3] = { triangles[i][0].x, triangles[i][0].y, triangles[i][0].z <= 0 ? triangles[i][0].z : 0 };
-			double newPoint2[3] = { triangles[i][1].x, triangles[i][1].y, triangles[i][1].z <= 0 ? triangles[i][1].z : 0 };
-			double newPoint3[3] = { triangles[i][2].x, triangles[i][2].y, triangles[i][2].z <= 0 ? triangles[i][2].z : 0 };
-			double newPoint4[3] = { triangles[i][3].x, triangles[i][3].y, triangles[i][3].z <= 0 ? triangles[i][3].z : 0 };
+			double newPoint1[3] = { triangles[i][0].x, triangles[i][0].y, triangles[i][0].z };
+			double newPoint2[3] = { triangles[i][1].x, triangles[i][1].y, triangles[i][1].z };
+			double newPoint3[3] = { triangles[i][2].x, triangles[i][2].y, triangles[i][2].z };
+			double newPoint4[3] = { triangles[i][3].x, triangles[i][3].y, triangles[i][3].z };
 
 			cells->InsertCellPoint(points->InsertNextPoint(newPoint1));
 			cells->InsertCellPoint(points->InsertNextPoint(newPoint2));
