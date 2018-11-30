@@ -22,3 +22,4 @@ reconstruction/Structured_Images/
 reconstruction/Export_Result/*.*
 reconstruction/Reports
 reconstruction/Unstructured_Images
+reconstruction/StructuredImage

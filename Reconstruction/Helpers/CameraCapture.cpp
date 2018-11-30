@@ -45,8 +45,8 @@ namespace Helpers {
 				secondaryCamera >> secondaryFrame; 
 
 				// Tag the frames
-				cv::putText(principalFrame, "Principal Camera", Point(40, 40), 1, 12, Scalar(255, 0, 0));
-				cv::putText(secondaryFrame, "Secondary Camera", Point(40, 40), 1, 12, Scalar(255, 0, 0));
+				cv::putText(principalFrame, "Principal Camera", Point(40, 40), 1, 5, Scalar(255, 0, 0));
+				cv::putText(secondaryFrame, "Secondary Camera", Point(40, 40), 1, 5, Scalar(255, 0, 0));
 
 				// Show Grid
 				if (showGrid) {

@@ -45,7 +45,7 @@ namespace Services {
 			Point3f point = *CalculateRealPoint(item.FirstPoint, item.SecondPoint);
 			if (converter->CheckInsidePoint(Point2f(point.x, point.y), contour)) {
 				// Filter Z
-				if (point.z >= 0 && point.z <= 150)
+				if (point.z >= -150 && point.z <= 150)
 				{
 					listRealPoints.push_back(point);
 					
