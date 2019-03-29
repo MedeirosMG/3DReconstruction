@@ -24,6 +24,8 @@ namespace AutomatedTests {
 			void Reconstruction_FP(string path_img1, string path_img2, string path_calib, string path_disparity, string path_export_CSV = "", string path_export_OBJ = "", map<string, double>* _resultBatch = NULL, int calibB = 0, int calibLambda = 0);
 			void Reconstruction_Default(string path_img1, string path_img2, string path_calib, string path_disparity, string path_export_CSV = "", string path_export_OBJ = "", map<string, double>* _resultBatch = NULL, int calibB = 0, int calibLambda = 0);
 			void ReconstructionWithTimeExecution(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export);
+
+			void HeartTest(string path_calib, string path_img1, string path_img2, string basePathDepthMap);
 	};
 
 }

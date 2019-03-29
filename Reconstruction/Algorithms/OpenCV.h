@@ -32,7 +32,7 @@ namespace Algorithms {
 			Mat SiftDescriptor(Mat imgInput, vector<KeyPoint> keypoints);
 			vector<DMatch> BFMatcher(Mat img1, Mat img2);
 			void DrawLine(cv::Mat image, const cv::Point& p1, const cv::Point& p2);
-			void ShowImage(cv::Mat image, string nameWindow);
+			void ShowImage(cv::Mat image, string nameWindow, bool wait = true);
 			void SaveImage(string path, Mat img);
 			void NewWindow(string nameWindow);
 			Mat Resize(Mat img, Size imgSize);

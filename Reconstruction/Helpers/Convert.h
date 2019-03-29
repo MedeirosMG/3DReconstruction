@@ -29,6 +29,8 @@ namespace Helpers {
 
 			static vector<PointPair> DMatchToPointPair(vector<DMatch> matches, vector<KeyPoint> firstImageKeyPoints, vector<KeyPoint> secondImageKeyPoints);
 			static vector<Vec<Point3f, 3>> Tiangles2dTo3d(vector<Vec6f> triangles, vector<Point3f> points);
+
+			static vector<Mat> VideoToFrames(string pathDirectory);
 	};
 
 }

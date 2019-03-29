@@ -17,8 +17,7 @@ namespace Helpers {
 	{
 		_openCv = openCv;
 	}
-
-
+	
 	Convert::~Convert()
 	{
 	}	
@@ -132,5 +131,31 @@ namespace Helpers {
 		}
 
 		return result;
+	}
+
+	vector<Mat> Convert::VideoToFrames(string pathDirectory)
+	{
+		VideoCapture video(pathDirectory);
+		Mat img;
+		vector<Mat> frames;
+		OpenCV openCv;
+		int count = 0;
+
+		while (true)
+		{
+			video >> img;
+
+			if (img.empty())
+				break;
+
+			//openCv.ShowImage(img, "Frame " + count, false);
+			//Sleep(1000);
+			frames.push_back(img);
+			//cout << "Frame " + count << endl;
+
+			count++;
+		}
+
+		return frames;
 	}
 }

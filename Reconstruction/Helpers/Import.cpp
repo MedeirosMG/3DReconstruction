@@ -136,7 +136,7 @@ namespace Helpers {
 			result.insert(pair<string, AverageDeviationStd*>(splitted[splitted.size() - 1], avgDevStd));
 		}
 	}
-
+	
 	CameraProperties Import::CameraParameters(string pathDirectory)
 	{
 		vector<string> listSplitted_0;
@@ -199,5 +199,87 @@ namespace Helpers {
 		}
 
 		return result;
+	}
+
+	vector<vector<Point3f>> Import::HeartDepthMap(string pathDirectory, int columnSize)
+	{
+		vector<vector<Point3f>> matriz;
+		vector<string> lineValues;
+
+		ifstream file;
+		string line = "";
+		int rows = 0;
+		int columns = 0;
+		file.open(pathDirectory);
+
+		matriz.push_back(vector<Point3f>());
+		if (file.is_open()) {
+			while (getline(file, line))
+			{
+				lineValues = StringHelper::Split(line, ' ');
+
+				Point3f point;		
+				point.x = std::stof(lineValues[0]);
+				point.y = std::stof(lineValues[1]);
+				point.z = std::stof(lineValues[2]);
+
+				if (columns == columnSize) {
+					matriz.push_back(vector<Point3f>());
+					rows++;
+					columns = 0;
+				}
+
+				matriz[rows].push_back(point);
+
+				columns++;
+			}
+
+			file.close();
+		}
+
+		return matriz;
+	}
+	
+	CameraProperties Import::HeartCameraParameters(string pathDirectory)
+	{
+		CameraProperties camera;
+		vector<string> lineValues;
+
+		float focal_Length_1 = 0.0;		
+		float principal_Point_1 = 0.0;
+		float focal_Length_2 = 0.0;
+		float principal_Point_2 = 0.0;
+
+		ifstream file;
+		string line = "";
+		int count = 0;
+		file.open(pathDirectory);
+
+		if (file.is_open()) {
+			while (getline(file, line))
+			{
+				lineValues = StringHelper::Split(line, ' ');
+
+				switch (count)
+				{
+					case 0:
+						focal_Length_1 = std::stof(lineValues[0]);
+						principal_Point_1 = std::stof(lineValues[2]);
+						break;
+					case 1:
+						focal_Length_2 = std::stof(lineValues[1]);
+						principal_Point_2 = std::stof(lineValues[2]);
+						break;
+					default:
+						break;
+				}
+
+				count++;
+			}
+
+			file.close();
+		}
+
+		return camera;
 	}
 }

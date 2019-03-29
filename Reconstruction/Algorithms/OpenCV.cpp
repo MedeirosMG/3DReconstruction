@@ -111,9 +111,11 @@ namespace Algorithms {
 	}
 
 	//Show image on screen
-	void OpenCV::ShowImage(cv::Mat image, string nameWindow) {
+	void OpenCV::ShowImage(cv::Mat image, string nameWindow, bool wait) {
 		imshow(nameWindow, image);
-		waitKey();
+
+		if(wait)
+			waitKey();
 	}
 
 	//Save image in path

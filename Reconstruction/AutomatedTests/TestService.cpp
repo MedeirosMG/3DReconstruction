@@ -164,5 +164,36 @@ namespace AutomatedTests {
 
 		cout << "======== End Test ======== " << endl;
 	}
+
+	void TestService::HeartTest(string path_calib, string path_img1, string path_img2, string basePathDepthMap)
+	{
+		//basePathDepthMap = "C:\\Users\\ssbgaz\\Desktop\\Cidão\\f5\\heartDepthMap_";
+
+		int count = 0;
+		int depthMapCount = -1;
+		string pathDepthMap = "";
+
+		vector<Mat> framesLeft = Convert::VideoToFrames(path_img1);
+		vector<Mat> framesRight = Convert::VideoToFrames(path_img2);
+		CameraProperties camera = Import::HeartCameraParameters(path_calib);
+
+		for (int frameNo = 0; frameNo < framesLeft.size(); frameNo++)
+		{
+
+			Mat imgLeft = framesLeft[frameNo];
+			Mat imgRight = framesRight[frameNo];
+
+			// original round(mod((FrameNo/25 + 0.466667)*30,20))
+			depthMapCount = round(((frameNo / 25 + 0.466667) * 30) % 20);
+
+			StringHelper::Append(pathDepthMap, basePathDepthMap);
+			StringHelper::Append(pathDepthMap, to_string(depthMapCount));
+			StringHelper::Append(pathDepthMap, ".txt");
+			vector<vector<Point3f>> depthMap = Import::HeartDepthMap(pathDepthMap, 360);
+
+			// Pegar o frame de cada imagem e aplicar o sift/calibração
+			// comparar o erro de cada ponto e extrair
+		}
+	}
 }
 
