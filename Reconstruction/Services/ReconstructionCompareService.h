@@ -32,6 +32,7 @@ namespace Services {
 			ReconstructionCompareService(OpenCV* openCv);
 			~ReconstructionCompareService();
 			void Execute(vector<Point3f> reconstructionPoints, CameraProperties calib, string pathMap, string pathExport, map<string, double>* batchResult = NULL);
+			void Execute(vector<Point3f> reconstructionPoints, CameraProperties calib, Mat mapImage, string pathExport, std::map<string, double>* batchResult = NULL);
 	};
 
 }

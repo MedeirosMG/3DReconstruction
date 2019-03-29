@@ -361,6 +361,23 @@ namespace Services {
 		_pathDisparity = pathDisparity;
 	}
 
+	void ControllerService::SetCalibrationProperties(string path, Mat depthMap)
+	{
+		CameraProperties cameraProperties = Import::CameraParameters(path);
+
+		_calibration = cameraProperties;
+
+		_depthMap = depthMap;
+	}
+
+	void ControllerService::SetCalibrationProperties(float calibrationB, float calibrationLambda, Mat depthMap)
+	{
+		_calibration.B = calibrationB;
+		_calibration.Lambda = calibrationLambda;
+
+		_depthMap = depthMap;
+	}
+
 	void ControllerService::SetGeneralProperties()
 	{
 	}

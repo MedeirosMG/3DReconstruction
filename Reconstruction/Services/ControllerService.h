@@ -92,6 +92,7 @@ namespace Services {
 		// Calibration Properties
 		CameraProperties _calibration;
 		string _pathDisparity;
+		Mat _depthMap;
 		bool _exportCalib;
 		vector<Point3f> _resultCalibration;
 
@@ -135,6 +136,8 @@ namespace Services {
 		void SetSiftFilterProperties(int minY, int minDist);
 		void SetCalibrationProperties(float calibrationB = 0, float calibrationLambda = 0, int calibrationK = 0);
 		void SetCalibrationProperties(string path, string pathDisparity);
+		void SetCalibrationProperties(string path, Mat depthMap);
+		void SetCalibrationProperties(float calibrationB, float calibrationLambda, Mat depthMap);
 		void SetGeneralProperties();
 		void SetFireflyProperties(int thresholds, int number_fireflies, int number_generations);
 		void SetRansacProperties(double ransacThreshold);

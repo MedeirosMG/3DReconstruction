@@ -82,7 +82,7 @@ namespace AutomatedTests {
 				continue;
 			}
 			int total = paths_base.size();
-			
+
 			cout << "--------------------------------------------------------------------" << endl;
 			cout << "Executing: " + path.substr(path.find("s\\") + 2, path.size()) << endl;
 			cout << "Progress: " + to_string(i) + " | " + to_string(total) << endl;
@@ -134,6 +134,92 @@ namespace AutomatedTests {
 		Export::Csv(resultBatchFF, ".\\Reports\\resultBatchFF.csv");
 		Export::Csv(resultBatchFP, ".\\Reports\\resultBatchFP.csv");
 		Export::Csv(resultBatchDefault, ".\\Reports\\resultBatchDefault.csv");
+	}
+
+	void BatchReconstruction::TestHeartDepthMap(string path_calib, string path_video1, string path_video2, string basePathDepthMap) {
+		
+		map<string, double> resultBatchFFFP;
+		map<string, double> resultBatchFF;
+		map<string, double> resultBatchFP;
+		map<string, double> resultBatchDefault;
+		int count = 0;
+		int depthMapCount = -1;
+		string pathDepthMap = "";
+
+		AutomatedTests::TestService* testService = new AutomatedTests::TestService();
+		vector<Mat> framesLeft = Convert::VideoToFrames(path_video1);
+		vector<Mat> framesRight = Convert::VideoToFrames(path_video2);
+		CameraProperties camera = Import::HeartCameraParameters(path_calib);
+
+		for (int frameNo = 0; frameNo < framesLeft.size(); frameNo++)
+		{
+			Mat imgLeft = framesLeft[frameNo];
+			Mat imgRight = framesRight[frameNo];
+
+			// original round(mod((FrameNo/25 + 0.466667)*30,20))
+			depthMapCount = (int)std::round((frameNo / 25.0 + 0.466667) * 30.0) % 20;
+			
+			StringHelper::Append(pathDepthMap, basePathDepthMap);
+			StringHelper::Append(pathDepthMap, to_string(depthMapCount));
+			StringHelper::Append(pathDepthMap, ".txt");
+			vector<vector<Point3f>> pointsDepthMap = Import::HeartDepthMap(pathDepthMap, 360);
+			Mat depthMap;
+			// Pegar o frame de cada imagem e aplicar o sift/calibração
+			// comparar o erro de cada ponto e extrair
+
+			cout << "--------------------------------------------------------------------" << endl;
+			cout << "Executing: " + to_string(frameNo) << endl;
+			cout << "Progress: " + to_string(frameNo) + " | " + to_string(framesLeft.size()) << endl;
+			cout << "--------------------------------------------------------------------" << endl << endl << endl << endl;
+
+			string export_path_FFFP = ".\\Reports\\Export_Result\\FF_FP\\heart_calib.txt";
+			string export_path_FF = ".\\Reports\\Export_Result\\FF\\heart_calib.txt";
+			string export_path_FP = ".\\Reports\\Export_Result\\FP\\heart_calib.txt";
+			string export_path_Default = ".\\Reports\\Export_Result\\DEFAULT\\heart_calib.txt";
+
+			//Reconstruction_Default(Mat img1, Mat img2, Mat depth_map, string path_export_CSV, string path_export_OBJ, map<string, double>* _resultBatch, int calibB, int calibLambda);
+			testService->ReconstructionFF_FP(
+				imgLeft,
+				imgRight,
+				depthMap,
+				"",
+				"",
+				&resultBatchFFFP,
+				camera.B,
+				camera.Lambda);
+
+			testService->Reconstruction_FF(
+				imgLeft,
+				imgRight,
+				depthMap,
+				"",
+				"",
+				&resultBatchFFFP,
+				camera.B,
+				camera.Lambda);
+
+			testService->Reconstruction_FP(
+				imgLeft,
+				imgRight,
+				depthMap,
+				"",
+				"",
+				&resultBatchFFFP,
+				camera.B,
+				camera.Lambda);
+
+			testService->Reconstruction_Default(
+				imgLeft,
+				imgRight,
+				depthMap,
+				"",
+				"",
+				&resultBatchFFFP,
+				camera.B,
+				camera.Lambda);
+
+			system("cls");
+		}
 	}
 
 #pragma endregion	

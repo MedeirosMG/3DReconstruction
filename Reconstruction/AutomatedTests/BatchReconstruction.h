@@ -36,6 +36,7 @@ namespace AutomatedTests {
 
 			// Test methods
 			void Test();
+			void TestHeartDepthMap(string path_calib, string path_video1, string path_video2, string basePathDepthMap);
 	};
 
 }

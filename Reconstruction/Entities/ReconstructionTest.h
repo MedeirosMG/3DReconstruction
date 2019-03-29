@@ -9,6 +9,14 @@ namespace Entities {
 			ReconstructionTest();
 			~ReconstructionTest();
 
+			// Mat of structured images
+			Mat MatFirstStructuredImage;
+			Mat MatSecondStructuredImage;
+
+			// Mat of unstructured images
+			Mat MatFirstUnstructuredImage;
+			Mat MatSecondUnstructuredImage;
+
 			// Path of structured images
 			string PathFirstStructuredImage;
 			string PathSecondStructuredImage;
