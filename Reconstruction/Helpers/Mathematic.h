@@ -2,6 +2,7 @@
 #define HELPERS_MATHEMATIC
 #include <iostream>
 #include <fstream>
+#include <math.h>
 #include <experimental/filesystem>
 
 #include "../Algorithms/OpenCV.h"
@@ -26,6 +27,7 @@ namespace Helpers {
 			static double StandardDeviation(vector<double> vec);
 			static double Variance(vector<double> vec);
 			static double Average(vector<double> vec);
+			static double EuclideanDistance(double x1, double y1, double x2, double y2);
 	};
 }
 

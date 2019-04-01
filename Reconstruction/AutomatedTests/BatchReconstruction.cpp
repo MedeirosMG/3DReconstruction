@@ -136,7 +136,7 @@ namespace AutomatedTests {
 		Export::Csv(resultBatchDefault, ".\\Reports\\resultBatchDefault.csv");
 	}
 
-	void BatchReconstruction::TestHeartDepthMap(string path_calib, string path_video1, string path_video2, string basePathDepthMap) {
+	void BatchReconstruction::TestHeartDepthMap(string path_calib_left, string path_calib_right, string path_video1, string path_video2, string basePathDepthMap) {
 		
 		map<string, double> resultBatchFFFP;
 		map<string, double> resultBatchFF;
@@ -149,7 +149,8 @@ namespace AutomatedTests {
 		AutomatedTests::TestService* testService = new AutomatedTests::TestService();
 		vector<Mat> framesLeft = Convert::VideoToFrames(path_video1);
 		vector<Mat> framesRight = Convert::VideoToFrames(path_video2);
-		CameraProperties camera = Import::HeartCameraParameters(path_calib);
+		CameraProperties camera = Import::HeartCameraParameters(path_calib_left, path_calib_right);
+
 
 		for (int frameNo = 0; frameNo < framesLeft.size(); frameNo++)
 		{

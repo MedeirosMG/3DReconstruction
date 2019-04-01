@@ -240,20 +240,25 @@ namespace Helpers {
 		return matriz;
 	}
 	
-	CameraProperties Import::HeartCameraParameters(string pathDirectory)
+	CameraProperties Import::HeartCameraParameters(string path_calib_left, string path_calib_right)
 	{
 		CameraProperties camera;
 		vector<string> lineValues;
 
-		float focal_Length_1 = 0.0;		
-		float principal_Point_1 = 0.0;
-		float focal_Length_2 = 0.0;
-		float principal_Point_2 = 0.0;
+		float left_focal_length_1 = 0.0;		
+		float left_principal_point_1 = 0.0;
+		float left_focal_length_2 = 0.0;
+		float left_principal_point_2 = 0.0;
+
+		float right_focal_length_1 = 0.0;
+		float right_principal_point_1 = 0.0;
+		float right_focal_length_2 = 0.0;
+		float right_principal_point_2 = 0.0;
 
 		ifstream file;
 		string line = "";
 		int count = 0;
-		file.open(pathDirectory);
+		file.open(path_calib_left);
 
 		if (file.is_open()) {
 			while (getline(file, line))
@@ -263,12 +268,12 @@ namespace Helpers {
 				switch (count)
 				{
 					case 0:
-						focal_Length_1 = std::stof(lineValues[0]);
-						principal_Point_1 = std::stof(lineValues[2]);
+						left_focal_length_1 = std::stof(lineValues[0]);
+						left_principal_point_1 = std::stof(lineValues[2]);
 						break;
 					case 1:
-						focal_Length_2 = std::stof(lineValues[1]);
-						principal_Point_2 = std::stof(lineValues[2]);
+						left_focal_length_2 = std::stof(lineValues[1]);
+						left_principal_point_2 = std::stof(lineValues[2]);
 						break;
 					default:
 						break;
@@ -279,6 +284,37 @@ namespace Helpers {
 
 			file.close();
 		}
+		
+		file.open(path_calib_right);
+
+		if (file.is_open()) {
+			while (getline(file, line))
+			{
+				lineValues = StringHelper::Split(line, ' ');
+
+				switch (count)
+				{
+				case 0:
+					right_focal_length_1 = std::stof(lineValues[0]);
+					right_principal_point_1 = std::stof(lineValues[2]);
+					break;
+				case 1:
+					right_focal_length_2 = std::stof(lineValues[1]);
+					right_principal_point_2 = std::stof(lineValues[2]);
+					break;
+				default:
+					break;
+				}
+
+				count++;
+			}
+
+			camera.B = Mathematic::EuclideanDistance(left_principal_point_1, left_principal_point_2, right_principal_point_1, right_principal_point_2);
+			camera.Lambda = Mathematic::EuclideanDistance(left_focal_length_1, left_focal_length_2, right_focal_length_1, right_focal_length_2);
+
+			file.close();
+		}
+
 
 		return camera;
 	}
