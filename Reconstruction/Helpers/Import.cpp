@@ -201,6 +201,41 @@ namespace Helpers {
 		return result;
 	}
 
+	vector<vector<float>> Import::HeartDepthMapFloat(string pathDirectory, int columnSize)
+	{
+		vector<vector<float>> matriz;
+		vector<string> lineValues;
+
+		ifstream file;
+		string line = "";
+		int rows = 0;
+		int columns = 0;
+		file.open(pathDirectory);
+
+		matriz.push_back(vector<float>());
+		if (file.is_open()) {
+			while (getline(file, line))
+			{
+				lineValues = StringHelper::Split(line, ' ');
+				int z = std::stof(lineValues[2]);
+
+				if (columns == columnSize) {
+					matriz.push_back(vector<float>());
+					rows++;
+					columns = 0;
+				}
+
+				matriz[rows].push_back(z);
+
+				columns++;
+			}
+
+			file.close();
+		}
+
+		return matriz;
+	}
+	
 	vector<vector<Point3f>> Import::HeartDepthMap(string pathDirectory, int columnSize)
 	{
 		vector<vector<Point3f>> matriz;
@@ -218,7 +253,7 @@ namespace Helpers {
 			{
 				lineValues = StringHelper::Split(line, ' ');
 
-				Point3f point;		
+				Point3f point;
 				point.x = std::stof(lineValues[0]);
 				point.y = std::stof(lineValues[1]);
 				point.z = std::stof(lineValues[2]);
@@ -239,7 +274,7 @@ namespace Helpers {
 
 		return matriz;
 	}
-	
+
 	CameraProperties Import::HeartCameraParameters(string path_calib_left, string path_calib_right)
 	{
 		CameraProperties camera;

@@ -58,12 +58,14 @@ namespace Helpers {
 			vector<Point3f> PointsTranslocate(vector<Point3f> points, float maxValue);
 			vector<Vec6f> PointsTranslocate(vector<Vec6f> points, float maxValue);
 			vector<Point3f> PointsZoom(vector<Point3f> points, int zoom);
+			float GetMaxAbsCoord(vector<vector<Point3f>> points, string coordinate);
 			float GetMaxAbsCoord(vector<Point3f> points, string coordinate);
 			float GetMaxAbsCoord(vector<Vec6f> points);
 			float GetMaxAbsCoord(vector<Vec<Point3f, 3>> points);
 			float GetMaxAbsCoord(Mat image, string coordinate, CameraProperties calib);
 			float GetMinAbsCoord(Mat image, string coordinate, CameraProperties calib);
 			float GetMinAbsCoord(vector<Point3f> points, string coordinate);
+			float GetMinAbsCoord(vector<vector<Point3f>> points, string coordinate);
 			vector<Point3f> GetMockPoints(string fileRead = ".\\Others Files\\MockPoints.obj");
 			Point2f GetMiddlePoint(Point2f pt1, Point2f pt2);
 			vector<Point3f> MergePoints(vector<Point3f> pts1, vector<Point3f> pts2);

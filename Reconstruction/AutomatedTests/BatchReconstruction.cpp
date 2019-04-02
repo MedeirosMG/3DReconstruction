@@ -146,10 +146,12 @@ namespace AutomatedTests {
 		int depthMapCount = -1;
 		string pathDepthMap = "";
 
+		PointUtilities *pointUtilities = new PointUtilities();
 		AutomatedTests::TestService* testService = new AutomatedTests::TestService();
 		vector<Mat> framesLeft = Convert::VideoToFrames(path_video1);
 		vector<Mat> framesRight = Convert::VideoToFrames(path_video2);
 		CameraProperties camera = Import::HeartCameraParameters(path_calib_left, path_calib_right);
+		OpenCV openCv;
 
 
 		for (int frameNo = 0; frameNo < framesLeft.size(); frameNo++)
@@ -163,8 +165,26 @@ namespace AutomatedTests {
 			StringHelper::Append(pathDepthMap, basePathDepthMap);
 			StringHelper::Append(pathDepthMap, to_string(depthMapCount));
 			StringHelper::Append(pathDepthMap, ".txt");
-			vector<vector<Point3f>> pointsDepthMap = Import::HeartDepthMap(pathDepthMap, 360);
-			Mat depthMap;
+			vector<vector<float>> matrizDepthZ = Import::HeartDepthMapFloat(pathDepthMap, 360);
+			vector<vector<Point3f>> matrizDepthMat = Import::HeartDepthMap(pathDepthMap, 360);
+			float maxDepthMap = pointUtilities->GetMaxAbsCoord(matrizDepthMat, "z");
+			float minDepthMap = pointUtilities->GetMinAbsCoord(matrizDepthMat, "z");
+			vector<vector<int>> matrizDepthMatNormalizedZ;
+
+			for each (vector<float> row in matrizDepthZ)
+			{
+				matrizDepthMatNormalizedZ.push_back(vector<int>());
+
+				for each (float z in row)
+				{
+					matrizDepthMatNormalizedZ[matrizDepthMatNormalizedZ.size() - 1].push_back(((z - minDepthMap) / (minDepthMap - maxDepthMap)) * 255);
+				}
+			}
+
+			Mat depthMap(288, 360, 1, &matrizDepthMatNormalizedZ);
+			
+			openCv.ShowImage(depthMap, "Depth Map");
+
 			// Pegar o frame de cada imagem e aplicar o sift/calibração
 			// comparar o erro de cada ponto e extrair
 

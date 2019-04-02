@@ -114,6 +114,60 @@ namespace Helpers {
 	}
 
 	// Get max value with the coordinate using a vector points
+	float PointUtilities::GetMaxAbsCoord(vector<vector<Point3f>> points, string coordinate)
+	{
+		float maxValue = 0.0;
+
+		for each (vector<Point3f> row in points)
+		{
+			for each (Point3f point in  row)
+			{
+				float numTemp = 0.0;
+
+				if (coordinate == "x")
+					numTemp = point.x;
+				else if (coordinate == "y")
+					numTemp = point.y;
+				else if (coordinate == "z")
+					numTemp = point.z;
+
+
+				if (abs(numTemp) > maxValue && !isinf(numTemp))
+					maxValue = abs(numTemp);
+			}			
+		}
+
+		return maxValue;
+	}
+
+	float PointUtilities::GetMinAbsCoord(vector<vector<Point3f>> points, string coordinate)
+	{
+		float minValue = 9999999999;
+
+		for each (vector<Point3f> row in points)
+		{
+			for each (Point3f point in  row)
+			{
+				float numTemp = 0.0;
+
+				if (coordinate == "x")
+					numTemp = point.x;
+				else if (coordinate == "y")
+					numTemp = point.y;
+				else if (coordinate == "z")
+					numTemp = point.z;
+
+
+				if (abs(numTemp) < minValue && !isinf(numTemp))
+					minValue = abs(numTemp);
+			}
+		}
+
+		return minValue;
+	}
+
+	
+	// Get max value with the coordinate using a vector points
 	float PointUtilities::GetMaxAbsCoord(Mat image, string coordinate, CameraProperties calib)
 	{
 		vector<Point3f> pointsMap;
@@ -139,7 +193,7 @@ namespace Helpers {
 			{
 				float zPoint = image.at<float>(j, i);
 				zPoint = calib.B *(calib.f / (zPoint + calib.doffs));
-				if(zPoint != 0)
+				if (zPoint != 0)
 					pointsMap.push_back(Point3f(i, j, zPoint));
 			}
 		}

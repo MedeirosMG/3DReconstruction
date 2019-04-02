@@ -49,8 +49,8 @@ namespace Services {
 				{
 					listRealPoints.push_back(point);
 					
-					Point3f secondPoint = Point3f(point.x, point.y, point.z * -1);
-					listRealPoints.push_back(secondPoint);
+					//Point3f secondPoint = Point3f(point.x, point.y, point.z * -1);
+					//listRealPoints.push_back(secondPoint);
 				}
 					//listRealPoints.push_back(converter->CoordenateToPixel(*(CalculateRealPoint(item.FirstPoint, item.SecondPoint)), _imgSize));
 			}
