@@ -77,10 +77,6 @@ namespace AutomatedTests {
 		// Run test in all paths
 		for each (string path in paths_base)
 		{
-			if (i < 3) {
-				i++;
-				continue;
-			}
 			int total = paths_base.size();
 
 			cout << "--------------------------------------------------------------------" << endl;
@@ -148,11 +144,13 @@ namespace AutomatedTests {
 
 		PointUtilities *pointUtilities = new PointUtilities();
 		AutomatedTests::TestService* testService = new AutomatedTests::TestService();
-		vector<Mat> framesLeft = Convert::VideoToFrames(path_video1);
-		vector<Mat> framesRight = Convert::VideoToFrames(path_video2);
+		vector<Mat> framesLeft; //= Convert::VideoToFrames(path_video1);
+		vector<Mat> framesRight; //= Convert::VideoToFrames(path_video2);
 		CameraProperties camera = Import::HeartCameraParameters(path_calib_left, path_calib_right);
 		OpenCV openCv;
 
+		framesLeft.push_back(imread(".\\Heart\\Left\\heartFrameL_0.png"));
+		framesRight.push_back(imread(".\\Heart\\Right\\heartFrameR_0.png"));
 
 		for (int frameNo = 0; frameNo < framesLeft.size(); frameNo++)
 		{
@@ -169,20 +167,18 @@ namespace AutomatedTests {
 			vector<vector<Point3f>> matrizDepthMat = Import::HeartDepthMap(pathDepthMap, 360);
 			float maxDepthMap = pointUtilities->GetMaxAbsCoord(matrizDepthMat, "z");
 			float minDepthMap = pointUtilities->GetMinAbsCoord(matrizDepthMat, "z");
-			vector<vector<int>> matrizDepthMatNormalizedZ;
+			vector<int> matrizDepthMatNormalizedZ;
 
 			for each (vector<float> row in matrizDepthZ)
 			{
-				matrizDepthMatNormalizedZ.push_back(vector<int>());
-
+				
 				for each (float z in row)
 				{
-					matrizDepthMatNormalizedZ[matrizDepthMatNormalizedZ.size() - 1].push_back(((z - minDepthMap) / (minDepthMap - maxDepthMap)) * 255);
+					matrizDepthMatNormalizedZ.push_back(((z - minDepthMap) / (maxDepthMap - minDepthMap)) * 255);
 				}
 			}
 
-			Mat depthMap(288, 360, 1, &matrizDepthMatNormalizedZ);
-			
+			Mat depthMap(288, 360, 1, matrizDepthMatNormalizedZ.data());
 			openCv.ShowImage(depthMap, "Depth Map");
 
 			// Pegar o frame de cada imagem e aplicar o sift/calibração
