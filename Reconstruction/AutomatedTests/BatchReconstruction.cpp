@@ -171,7 +171,6 @@ namespace AutomatedTests {
 
 			for each (vector<float> row in matrizDepthZ)
 			{
-				
 				for each (float z in row)
 				{
 					matrizDepthMatNormalizedZ.push_back(((z - minDepthMap) / (maxDepthMap - minDepthMap)) * 255);

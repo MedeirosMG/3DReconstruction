@@ -1,0 +1,9 @@
+391.656525 0.000000 165.964371
+0.000000 426.835144 154.498138
+0.000000 0.000000 1.000000
+-0.196312 0.129540 0.004356 0.006236
+
+Focal_Length_1 0 Principal_Point_1
+0 Focal_Length_2 Principal_Point_2
+0 0 1
+Distortion_coefficient_1 Distortion_coefficient_2 Distortion_coefficient_3 Distortion_coefficient_4
