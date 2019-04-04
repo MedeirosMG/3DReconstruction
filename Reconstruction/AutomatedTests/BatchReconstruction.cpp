@@ -132,8 +132,10 @@ namespace AutomatedTests {
 		Export::Csv(resultBatchDefault, ".\\Reports\\resultBatchDefault.csv");
 	}
 
-	void BatchReconstruction::TestHeartDepthMap(string path_calib_left, string path_calib_right, string path_video1, string path_video2, string basePathDepthMap) {
 
+	void BatchReconstruction::TestHeartDepthMap(string path_calib_left, string path_calib_right, string path_video1, string path_video2, string basePathDepthMap, 
+		string basePathDisparityMap) {
+		
 		map<string, double> resultBatchFFFP;
 		map<string, double> resultBatchFF;
 		map<string, double> resultBatchFP;
@@ -141,6 +143,7 @@ namespace AutomatedTests {
 		int count = 0;
 		int depthMapCount = -1;
 		string pathDepthMap = "";
+		string pathDisparityMap;
 
 		PointUtilities *pointUtilities = new PointUtilities();
 		AutomatedTests::TestService* testService = new AutomatedTests::TestService();
@@ -164,11 +167,27 @@ namespace AutomatedTests {
 			StringHelper::Append(pathDepthMap, basePathDepthMap);
 			StringHelper::Append(pathDepthMap, to_string(depthMapCount));
 			StringHelper::Append(pathDepthMap, ".txt");
+			StringHelper::Append(pathDisparityMap, basePathDisparityMap);
+			StringHelper::Append(pathDisparityMap, to_string(depthMapCount));
+			StringHelper::Append(pathDisparityMap, ".txt");
+			vector<float> matrizDisparityZ = Import::HeartDisparityMap(pathDisparityMap);
 			vector<vector<float>> matrizDepthZ = Import::HeartDepthMapFloat(pathDepthMap, 360);
 			vector<vector<Point3f>> matrizDepthMat = Import::HeartDepthMap(pathDepthMap, 360);
 			float maxDepthMap = pointUtilities->GetMaxAbsCoord(matrizDepthMat, "z");
 			float minDepthMap = pointUtilities->GetMinAbsCoord(matrizDepthMat, "z");
 			vector<int> matrizDepthMatNormalizedZ;
+			vector<int> matrizDisparityMatNormalizedZ;
+
+			float maxDisparityMap = 0;
+			for each (float z in matrizDisparityZ) {
+				if (z > maxDisparityMap)
+					maxDisparityMap = z;
+			}
+			float minDisparityMap = maxDisparityMap;
+			for each (float z in matrizDisparityZ) {
+				if (z < minDisparityMap && z > 0)
+					minDisparityMap = z;
+			}
 
 			for each (vector<float> row in matrizDepthZ)
 			{
@@ -179,8 +198,19 @@ namespace AutomatedTests {
 				}
 
 			}
+
 			Mat depthMap(288, 360, 1, matrizDepthMatNormalizedZ.data());
 			openCv.ShowImage(depthMap, "Depth Map");
+
+
+			for each (float z in matrizDisparityZ) {
+
+				matrizDisparityMatNormalizedZ.push_back(((z - minDisparityMap) / (maxDisparityMap - minDisparityMap)) * 255);
+			}
+			Mat disparityMap(288, 360, 1, matrizDisparityMatNormalizedZ.data());
+			openCv.ShowImage(disparityMap, "Disparity Map");
+			// Pegar o frame de cada imagem e aplicar o sift/calibração
+			// comparar o erro de cada ponto e extrair
 
 			cout << "--------------------------------------------------------------------" << endl;
 			cout << "Executing: " + to_string(frameNo) << endl;

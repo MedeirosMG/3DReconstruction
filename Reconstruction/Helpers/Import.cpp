@@ -201,6 +201,32 @@ namespace Helpers {
 		return result;
 	}
 
+	vector<float> Import::HeartDisparityMap(string pathDirectory)
+	{
+		vector<float> matriz;
+		vector<string> lineValues;
+
+		ifstream file;
+		string line = "";
+		file.open(pathDirectory);
+
+		if (file.is_open()) {
+			while (getline(file, line))
+			{
+				
+				int z = std::stof(line);
+
+
+				matriz.push_back(z);
+
+			}
+
+			file.close();
+		}
+
+		return matriz;
+	}
+
 	vector<vector<float>> Import::HeartDepthMapFloat(string pathDirectory, int columnSize)
 	{
 		vector<vector<float>> matriz;
@@ -236,6 +262,8 @@ namespace Helpers {
 
 		return matriz;
 	}
+
+
 	
 	vector<vector<Point3f>> Import::HeartDepthMap(string pathDirectory, int columnSize)
 	{

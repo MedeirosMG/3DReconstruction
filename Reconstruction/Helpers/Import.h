@@ -30,6 +30,7 @@ namespace Helpers {
 			static void CalculateAverage(string pathDirectory, map<string, AverageDeviationStd*>& result);
 			static CameraProperties CameraParameters(string pathDirectory);
 			static vector<CameraProperties> CameraParameters(vector<string> pathDirectory);
+			static vector<float> HeartDisparityMap(string pathDirectory);
 			static vector<vector<float>> HeartDepthMapFloat(string pathDirectory, int columnSize);
 			static vector<vector<Point3f>> HeartDepthMap(string pathDirectory, int columnSize);
 			static CameraProperties HeartCameraParameters(string path_calib_left, string path_calib_right);
