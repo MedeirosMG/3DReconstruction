@@ -28,6 +28,7 @@ namespace Helpers {
 			static double Variance(vector<double> vec);
 			static double Average(vector<double> vec);
 			static double EuclideanDistance(double x1, double y1, double x2, double y2);
+			static double Equalize(double value, double minValue, double maxValue);
 	};
 }
 

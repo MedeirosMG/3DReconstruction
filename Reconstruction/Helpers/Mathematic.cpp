@@ -49,4 +49,9 @@ namespace Helpers {
 	{
 		return sqrt(pow((x2 - x1), 2) + pow((y2 - y1), 2));
 	}
+
+	double Mathematic::Normalize(double value, double minValue, double maxValue)
+	{
+		return (value - minValue) / (maxValue - minValue);
+	}
 }

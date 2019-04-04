@@ -42,9 +42,9 @@ namespace Services {
 			ReconstructionComparison reconstructionComparison;
 			double Z = calib.B *(calib.f / (mapImageResult.at<float>((int)point.y, (int)point.x) + calib.doffs));
 
-			float mapZ = (Z - minPointMap) / (maxPointMap - minPointMap);
+			float mapZ = Mathematic::Normalize(Z, minPointMap, maxPointMap); // (Z - minPointMap) / (maxPointMap - minPointMap);
 			reconstructionComparisonNormalized.Map.z = mapZ < 0 ? 0 : mapZ;
-			reconstructionComparisonNormalized.Reconstruction.z = (point.z - minPointReconstruction) / (maxPointReconstruction - minPointReconstruction);
+			reconstructionComparisonNormalized.Reconstruction.z = Mathematic::Normalize(point.z, minPointReconstruction, maxPointReconstruction); //(point.z - minPointReconstruction) / (maxPointReconstruction - minPointReconstruction);
 			reconstructionComparisonNormalized.Error.z = sqrt(pow(reconstructionComparisonNormalized.Map.z - reconstructionComparisonNormalized.Reconstruction.z, 2));
 
 			reconstructionComparison.Map.z = Z;
@@ -101,9 +101,9 @@ namespace Services {
 			ReconstructionComparison reconstructionComparison;
 			double Z = calib.B *(calib.f / (mapImageResult.at<float>((int)point.y, (int)point.x) + calib.doffs));
 
-			float mapZ = (Z - minPointMap) / (maxPointMap - minPointMap);
+			float mapZ = Mathematic::Normalize(Z, minPointMap, maxPointMap); // (Z - minPointMap) / (maxPointMap - minPointMap);
 			reconstructionComparisonNormalized.Map.z = mapZ < 0 ? 0 : mapZ;
-			reconstructionComparisonNormalized.Reconstruction.z = (point.z - minPointReconstruction) / (maxPointReconstruction - minPointReconstruction);
+			reconstructionComparisonNormalized.Reconstruction.z = Mathematic::Normalize(point.z, minPointReconstruction, maxPointReconstruction); //(point.z - minPointReconstruction) / (maxPointReconstruction - minPointReconstruction);
 			reconstructionComparisonNormalized.Error.z = sqrt(pow(reconstructionComparisonNormalized.Map.z - reconstructionComparisonNormalized.Reconstruction.z, 2));
 
 			reconstructionComparison.Map.z = Z;

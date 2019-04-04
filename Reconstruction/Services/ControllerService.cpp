@@ -53,8 +53,12 @@ namespace Services {
 			
 			_visualizer->Show(_resultCalibration);
 
-			if(_pathExportCSV != "")
-				_reconstructionCompareService->Execute(_resultCalibration, _calibration, _pathDisparity, _pathExportCSV, _resultBatch);
+			if (_pathExportCSV != "") {
+				if(_depthMap.empty())
+					_reconstructionCompareService->Execute(_resultCalibration, _calibration, _pathDisparity, _pathExportCSV, _resultBatch);
+				else
+					_reconstructionCompareService->Execute(_resultCalibration, _calibration, _depthMap, _pathExportCSV, _resultBatch);
+			}
 
 			return true;
 		}
