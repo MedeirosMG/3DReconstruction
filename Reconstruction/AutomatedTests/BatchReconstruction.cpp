@@ -167,12 +167,15 @@ namespace AutomatedTests {
 			StringHelper::Append(pathDepthMap, basePathDepthMap);
 			StringHelper::Append(pathDepthMap, to_string(depthMapCount));
 			StringHelper::Append(pathDepthMap, ".txt");
+
 			StringHelper::Append(pathDisparityMap, basePathDisparityMap);
 			StringHelper::Append(pathDisparityMap, to_string(depthMapCount));
 			StringHelper::Append(pathDisparityMap, ".txt");
+
 			vector<float> matrizDisparityZ = Import::HeartDisparityMap(pathDisparityMap);
 			vector<vector<float>> matrizDepthZ = Import::HeartDepthMapFloat(pathDepthMap, 360);
 			vector<vector<Point3f>> matrizDepthMat = Import::HeartDepthMap(pathDepthMap, 360);
+
 			float maxDepthMap = pointUtilities->GetMaxAbsCoord(matrizDepthMat, "z");
 			float minDepthMap = pointUtilities->GetMinAbsCoord(matrizDepthMat, "z");
 			vector<int> matrizDepthMatNormalizedZ;
@@ -199,15 +202,15 @@ namespace AutomatedTests {
 
 			}
 
-			Mat depthMap(288, 360, 1, matrizDepthMatNormalizedZ.data());
+			Mat depthMap(288, 360, 0, matrizDepthMatNormalizedZ.data());
 			openCv.ShowImage(depthMap, "Depth Map");
-
 
 			for each (float z in matrizDisparityZ) {
 
-				matrizDisparityMatNormalizedZ.push_back(((z - minDisparityMap) / (maxDisparityMap - minDisparityMap)) * 255);
+				matrizDisparityMatNormalizedZ.push_back(Mathematic::Normalize(z, minDisparityMap, maxDisparityMap) * 255);
 			}
-			Mat disparityMap(288, 360, 1, matrizDisparityMatNormalizedZ.data());
+
+			Mat disparityMap(288, 360, 0, matrizDisparityMatNormalizedZ.data());
 			openCv.ShowImage(disparityMap, "Disparity Map");
 			// Pegar o frame de cada imagem e aplicar o sift/calibração
 			// comparar o erro de cada ponto e extrair
