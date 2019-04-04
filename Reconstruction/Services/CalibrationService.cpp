@@ -47,7 +47,7 @@ namespace Services {
 				// Filter Z
 				//if (point.z >= -150 && point.z <= 150)
 				//{
-					listRealPoints.push_back(Point3f(point.x, point.y, point.z <= 0 ? 0 : point.z);
+					listRealPoints.push_back(Point3f(point.x, point.y, point.z <= 0 ? 0 : point.z));
 					
 					//Point3f secondPoint = Point3f(point.x, point.y, point.z * -1);
 					//listRealPoints.push_back(secondPoint);

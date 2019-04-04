@@ -133,7 +133,7 @@ namespace AutomatedTests {
 	}
 
 	void BatchReconstruction::TestHeartDepthMap(string path_calib_left, string path_calib_right, string path_video1, string path_video2, string basePathDepthMap) {
-		
+
 		map<string, double> resultBatchFFFP;
 		map<string, double> resultBatchFF;
 		map<string, double> resultBatchFP;
@@ -149,17 +149,18 @@ namespace AutomatedTests {
 		CameraProperties camera = Import::HeartCameraParameters(path_calib_left, path_calib_right);
 		OpenCV openCv;
 
-		framesLeft.push_back(imread(".\\Heart\\Left\\heartFrameL_0.png"));
-		framesRight.push_back(imread(".\\Heart\\Right\\heartFrameR_0.png"));
+		framesLeft.push_back(openCv.ReadImage(".\\Heart\\Left\\heartFrameL_0.png"));
+		framesRight.push_back(openCv.ReadImage(".\\Heart\\Right\\heartFrameR_0.png"));
+
 
 		for (int frameNo = 0; frameNo < framesLeft.size(); frameNo++)
 		{
 			Mat imgLeft = framesLeft[frameNo];
 			Mat imgRight = framesRight[frameNo];
 
-			// original round(mod((FrameNo/25 + 0.466667)*30,20))
+			// Original Equation: round(mod((FrameNo/25 + 0.466667)*30,20))
 			depthMapCount = (int)std::round((frameNo / 25.0 + 0.466667) * 30.0) % 20;
-			
+
 			StringHelper::Append(pathDepthMap, basePathDepthMap);
 			StringHelper::Append(pathDepthMap, to_string(depthMapCount));
 			StringHelper::Append(pathDepthMap, ".txt");
@@ -171,74 +172,72 @@ namespace AutomatedTests {
 
 			for each (vector<float> row in matrizDepthZ)
 			{
+
 				for each (float z in row)
 				{
-					matrizDepthMatNormalizedZ.push_back(((z - minDepthMap) / (maxDepthMap - minDepthMap)) * 255);
+					matrizDepthMatNormalizedZ.push_back(Mathematic::Normalize(z, minDepthMap, maxDepthMap) * 255);
 				}
+
+
+				Mat depthMap(288, 360, 1, matrizDepthMatNormalizedZ.data());
+				openCv.ShowImage(depthMap, "Depth Map");
+
+				cout << "--------------------------------------------------------------------" << endl;
+				cout << "Executing: " + to_string(frameNo) << endl;
+				cout << "Progress: " + to_string(frameNo) + " | " + to_string(framesLeft.size()) << endl;
+				cout << "--------------------------------------------------------------------" << endl << endl << endl << endl;
+
+				string export_path_FFFP = ".\\Reports\\Export_Result\\FF_FP\\heart_calib.txt";
+				string export_path_FF = ".\\Reports\\Export_Result\\FF\\heart_calib.txt";
+				string export_path_FP = ".\\Reports\\Export_Result\\FP\\heart_calib.txt";
+				string export_path_Default = ".\\Reports\\Export_Result\\DEFAULT\\heart_calib.txt";
+
+				testService->ReconstructionFF_FP(
+					imgLeft,
+					imgRight,
+					depthMap,
+					"",
+					"",
+					&resultBatchFFFP,
+					camera.B,
+					camera.Lambda);
+
+				testService->Reconstruction_FF(
+					imgLeft,
+					imgRight,
+					depthMap,
+					"",
+					"",
+					&resultBatchFFFP,
+					camera.B,
+					camera.Lambda);
+
+				testService->Reconstruction_FP(
+					imgLeft,
+					imgRight,
+					depthMap,
+					"",
+					"",
+					&resultBatchFFFP,
+					camera.B,
+					camera.Lambda);
+
+				testService->Reconstruction_Default(
+					imgLeft,
+					imgRight,
+					depthMap,
+					"",
+					"",
+					&resultBatchFFFP,
+					camera.B,
+					camera.Lambda);
+
+				system("cls");
 			}
-
-			Mat depthMap(288, 360, 1, matrizDepthMatNormalizedZ.data());
-			openCv.ShowImage(depthMap, "Depth Map");
-
-			// Pegar o frame de cada imagem e aplicar o sift/calibração
-			// comparar o erro de cada ponto e extrair
-
-			cout << "--------------------------------------------------------------------" << endl;
-			cout << "Executing: " + to_string(frameNo) << endl;
-			cout << "Progress: " + to_string(frameNo) + " | " + to_string(framesLeft.size()) << endl;
-			cout << "--------------------------------------------------------------------" << endl << endl << endl << endl;
-
-			string export_path_FFFP = ".\\Reports\\Export_Result\\FF_FP\\heart_calib.txt";
-			string export_path_FF = ".\\Reports\\Export_Result\\FF\\heart_calib.txt";
-			string export_path_FP = ".\\Reports\\Export_Result\\FP\\heart_calib.txt";
-			string export_path_Default = ".\\Reports\\Export_Result\\DEFAULT\\heart_calib.txt";
-
-			//Reconstruction_Default(Mat img1, Mat img2, Mat depth_map, string path_export_CSV, string path_export_OBJ, map<string, double>* _resultBatch, int calibB, int calibLambda);
-			testService->ReconstructionFF_FP(
-				imgLeft,
-				imgRight,
-				depthMap,
-				"",
-				"",
-				&resultBatchFFFP,
-				camera.B,
-				camera.Lambda);
-
-			testService->Reconstruction_FF(
-				imgLeft,
-				imgRight,
-				depthMap,
-				"",
-				"",
-				&resultBatchFFFP,
-				camera.B,
-				camera.Lambda);
-
-			testService->Reconstruction_FP(
-				imgLeft,
-				imgRight,
-				depthMap,
-				"",
-				"",
-				&resultBatchFFFP,
-				camera.B,
-				camera.Lambda);
-
-			testService->Reconstruction_Default(
-				imgLeft,
-				imgRight,
-				depthMap,
-				"",
-				"",
-				&resultBatchFFFP,
-				camera.B,
-				camera.Lambda);
-
-			system("cls");
 		}
-	}
 
 #pragma endregion	
 
+	}
 }
 
