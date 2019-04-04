@@ -178,66 +178,66 @@ namespace AutomatedTests {
 					matrizDepthMatNormalizedZ.push_back(Mathematic::Normalize(z, minDepthMap, maxDepthMap) * 255);
 				}
 
-
-				Mat depthMap(288, 360, 1, matrizDepthMatNormalizedZ.data());
-				openCv.ShowImage(depthMap, "Depth Map");
-
-				cout << "--------------------------------------------------------------------" << endl;
-				cout << "Executing: " + to_string(frameNo) << endl;
-				cout << "Progress: " + to_string(frameNo) + " | " + to_string(framesLeft.size()) << endl;
-				cout << "--------------------------------------------------------------------" << endl << endl << endl << endl;
-
-				string export_path_FFFP = ".\\Reports\\Export_Result\\FF_FP\\heart_calib.txt";
-				string export_path_FF = ".\\Reports\\Export_Result\\FF\\heart_calib.txt";
-				string export_path_FP = ".\\Reports\\Export_Result\\FP\\heart_calib.txt";
-				string export_path_Default = ".\\Reports\\Export_Result\\DEFAULT\\heart_calib.txt";
-
-				testService->ReconstructionFF_FP(
-					imgLeft,
-					imgRight,
-					depthMap,
-					"",
-					"",
-					&resultBatchFFFP,
-					camera.B,
-					camera.Lambda);
-
-				testService->Reconstruction_FF(
-					imgLeft,
-					imgRight,
-					depthMap,
-					"",
-					"",
-					&resultBatchFFFP,
-					camera.B,
-					camera.Lambda);
-
-				testService->Reconstruction_FP(
-					imgLeft,
-					imgRight,
-					depthMap,
-					"",
-					"",
-					&resultBatchFFFP,
-					camera.B,
-					camera.Lambda);
-
-				testService->Reconstruction_Default(
-					imgLeft,
-					imgRight,
-					depthMap,
-					"",
-					"",
-					&resultBatchFFFP,
-					camera.B,
-					camera.Lambda);
-
-				system("cls");
 			}
+			Mat depthMap(288, 360, 1, matrizDepthMatNormalizedZ.data());
+			openCv.ShowImage(depthMap, "Depth Map");
+
+			cout << "--------------------------------------------------------------------" << endl;
+			cout << "Executing: " + to_string(frameNo) << endl;
+			cout << "Progress: " + to_string(frameNo) + " | " + to_string(framesLeft.size()) << endl;
+			cout << "--------------------------------------------------------------------" << endl << endl << endl << endl;
+
+			string export_path_FFFP = ".\\Reports\\Export_Result\\FF_FP\\heart_calib.txt";
+			string export_path_FF = ".\\Reports\\Export_Result\\FF\\heart_calib.txt";
+			string export_path_FP = ".\\Reports\\Export_Result\\FP\\heart_calib.txt";
+			string export_path_Default = ".\\Reports\\Export_Result\\DEFAULT\\heart_calib.txt";
+
+			testService->ReconstructionFF_FP(
+				imgLeft,
+				imgRight,
+				depthMap,
+				"",
+				"",
+				&resultBatchFFFP,
+				camera.B,
+				camera.Lambda);
+
+			testService->Reconstruction_FF(
+				imgLeft,
+				imgRight,
+				depthMap,
+				"",
+				"",
+				&resultBatchFFFP,
+				camera.B,
+				camera.Lambda);
+
+			testService->Reconstruction_FP(
+				imgLeft,
+				imgRight,
+				depthMap,
+				"",
+				"",
+				&resultBatchFFFP,
+				camera.B,
+				camera.Lambda);
+
+			testService->Reconstruction_Default(
+				imgLeft,
+				imgRight,
+				depthMap,
+				"",
+				"",
+				&resultBatchFFFP,
+				camera.B,
+				camera.Lambda);
+
+			system("cls");
 		}
+	}
 
 #pragma endregion	
 
-	}
 }
+
 

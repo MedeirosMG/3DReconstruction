@@ -217,8 +217,8 @@ namespace Helpers {
 			while (getline(file, line))
 			{
 				lineValues = StringHelper::Split(line, ' ');
-				//int z = std::stof(lineValues[2]);
-				int z = std::stof(lineValues[0]);
+				int z = std::stof(lineValues[2]);
+				//int z = std::stof(lineValues[0]);
 
 				if (columns == columnSize) {
 					matriz.push_back(vector<float>());
