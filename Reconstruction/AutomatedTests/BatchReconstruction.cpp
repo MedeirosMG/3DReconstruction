@@ -178,8 +178,8 @@ namespace AutomatedTests {
 
 			float maxDepthMap = pointUtilities->GetMaxAbsCoord(matrizDepthMat, "z");
 			float minDepthMap = pointUtilities->GetMinAbsCoord(matrizDepthMat, "z");
-			vector<int> matrizDepthMatNormalizedZ;
-			vector<int> matrizDisparityMatNormalizedZ;
+			vector<uchar> matrizDepthMatNormalizedZ;
+			vector<uchar> matrizDisparityMatNormalizedZ;
 
 			float maxDisparityMap = 0;
 			for each (float z in matrizDisparityZ) {
@@ -203,15 +203,17 @@ namespace AutomatedTests {
 			}
 
 			Mat depthMap(288, 360, 0, matrizDepthMatNormalizedZ.data());
+			flip(depthMap, depthMap, 1);
 			openCv.ShowImage(depthMap, "Depth Map");
 
 			for each (float z in matrizDisparityZ) {
 				float normalizedZ = Mathematic::Normalize(z, minDisparityMap, maxDisparityMap);
 				matrizDisparityMatNormalizedZ.push_back(normalizedZ < 0 ? 0 : normalizedZ * 255);
-				cout<<z<<" " << matrizDisparityMatNormalizedZ[matrizDisparityMatNormalizedZ.size()-1] << endl;
+				//cout<<z<<" " << matrizDisparityMatNormalizedZ[matrizDisparityMatNormalizedZ.size()-1] << endl;
 			}
 
 			Mat disparityMap(288, 360, 0, matrizDisparityMatNormalizedZ.data());
+			flip(disparityMap, disparityMap, 1);
 			openCv.ShowImage(disparityMap, "Disparity Map");
 			// Pegar o frame de cada imagem e aplicar o sift/calibração
 			// comparar o erro de cada ponto e extrair
