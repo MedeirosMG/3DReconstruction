@@ -214,7 +214,7 @@ namespace Helpers {
 			while (getline(file, line))
 			{
 				
-				int z = std::stof(line);
+				float z = std::stof(line);
 
 
 				matriz.push_back(z);
@@ -243,7 +243,7 @@ namespace Helpers {
 			while (getline(file, line))
 			{
 				lineValues = StringHelper::Split(line, ' ');
-				int z = std::stof(lineValues[2]);
+				float z = std::stof(lineValues[2]);
 				//int z = std::stof(lineValues[0]);
 
 				if (columns == columnSize) {

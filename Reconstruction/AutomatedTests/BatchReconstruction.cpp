@@ -206,8 +206,9 @@ namespace AutomatedTests {
 			openCv.ShowImage(depthMap, "Depth Map");
 
 			for each (float z in matrizDisparityZ) {
-
-				matrizDisparityMatNormalizedZ.push_back(Mathematic::Normalize(z, minDisparityMap, maxDisparityMap) * 255);
+				float normalizedZ = Mathematic::Normalize(z, minDisparityMap, maxDisparityMap);
+				matrizDisparityMatNormalizedZ.push_back(normalizedZ < 0 ? 0 : normalizedZ * 255);
+				cout<<z<<" " << matrizDisparityMatNormalizedZ[matrizDisparityMatNormalizedZ.size()-1] << endl;
 			}
 
 			Mat disparityMap(288, 360, 0, matrizDisparityMatNormalizedZ.data());
