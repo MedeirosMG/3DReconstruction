@@ -2,6 +2,7 @@
 #define AUTOMATED_TEST_BATCH_RECONSTRUCTION
 #include <iostream>
 #include <experimental/filesystem>
+#include <algorithm>
 
 #include "..\Services\ControllerService.h"
 #include "..\Helpers\Time.h"

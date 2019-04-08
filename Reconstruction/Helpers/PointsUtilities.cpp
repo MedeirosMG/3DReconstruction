@@ -67,7 +67,7 @@ namespace Helpers {
 	}
 
 	// Get max value with the coordinate using a vector points
-	float PointUtilities::GetMaxAbsCoord(vector<Point3f> points, string coordinate)
+	float PointUtilities::GetMaxAbsCoord(vector<Point3f> points, string coordinate, bool excludeZero)
 	{
 		float maxValue = 0.0;
 
@@ -83,14 +83,18 @@ namespace Helpers {
 				numTemp = point.z;
 
 
-			if (abs(numTemp) > maxValue && !isinf(numTemp))
+			if (abs(numTemp) > maxValue && !isinf(numTemp)) {
+				if (excludeZero && abs(numTemp) == 0)
+					continue;
+
 				maxValue = abs(numTemp);
+			}
 		}
 
 		return maxValue;
 	}
 
-	float PointUtilities::GetMinAbsCoord(vector<Point3f> points, string coordinate)
+	float PointUtilities::GetMinAbsCoord(vector<Point3f> points, string coordinate, bool excludeZero)
 	{
 		float minValue = 9999999999;
 
@@ -106,69 +110,183 @@ namespace Helpers {
 				numTemp = point.z;
 
 
-			if (abs(numTemp) < minValue && !isinf(numTemp))
+			if (abs(numTemp) < minValue && !isinf(numTemp)) {
+				if (excludeZero && abs(numTemp) == 0)
+					continue;
+
 				minValue = abs(numTemp);
-		}
-
-		return minValue;
-	}
-
-	// Get max value with the coordinate using a vector points
-	float PointUtilities::GetMaxAbsCoord(vector<vector<Point3f>> points, string coordinate)
-	{
-		float maxValue = 0.0;
-
-		for each (vector<Point3f> row in points)
-		{
-			for each (Point3f point in  row)
-			{
-				float numTemp = 0.0;
-
-				if (coordinate == "x")
-					numTemp = point.x;
-				else if (coordinate == "y")
-					numTemp = point.y;
-				else if (coordinate == "z")
-					numTemp = point.z;
-
-
-				if (abs(numTemp) > maxValue && !isinf(numTemp))
-					maxValue = abs(numTemp);
-			}			
-		}
-
-		return maxValue;
-	}
-
-	float PointUtilities::GetMinAbsCoord(vector<vector<Point3f>> points, string coordinate)
-	{
-		float minValue = 9999999999;
-
-		for each (vector<Point3f> row in points)
-		{
-			for each (Point3f point in  row)
-			{
-				float numTemp = 0.0;
-
-				if (coordinate == "x")
-					numTemp = point.x;
-				else if (coordinate == "y")
-					numTemp = point.y;
-				else if (coordinate == "z")
-					numTemp = point.z;
-
-
-				if (abs(numTemp) < minValue && !isinf(numTemp))
-					minValue = abs(numTemp);
 			}
 		}
 
 		return minValue;
 	}
 
-	
 	// Get max value with the coordinate using a vector points
-	float PointUtilities::GetMaxAbsCoord(Mat image, string coordinate, CameraProperties calib)
+	float PointUtilities::GetMaxAbsCoord(vector<vector<Point3f>> points, string coordinate, bool excludeZero)
+	{
+		float maxValue = 0.0;
+
+		for each (vector<Point3f> row in points)
+		{
+			for each (Point3f point in  row)
+			{
+				float numTemp = 0.0;
+
+				if (coordinate == "x")
+					numTemp = point.x;
+				else if (coordinate == "y")
+					numTemp = point.y;
+				else if (coordinate == "z")
+					numTemp = point.z;
+
+
+				if (abs(numTemp) > maxValue && !isinf(numTemp)) {
+					if (excludeZero && abs(numTemp) == 0)
+						continue;
+
+					maxValue = abs(numTemp);
+				}
+			}
+		}
+
+		return maxValue;
+	}
+
+	float PointUtilities::GetMinAbsCoord(vector<vector<Point3f>> points, string coordinate, bool excludeZero)
+	{
+		float minValue = 9999999999;
+
+		for each (vector<Point3f> row in points)
+		{
+			for each (Point3f point in  row)
+			{
+				float numTemp = 0.0;
+
+				if (coordinate == "x")
+					numTemp = point.x;
+				else if (coordinate == "y")
+					numTemp = point.y;
+				else if (coordinate == "z")
+					numTemp = point.z;
+
+
+				if (abs(numTemp) < minValue && !isinf(numTemp)) {
+					if (excludeZero && abs(numTemp) == 0)
+						continue;
+
+					minValue = abs(numTemp);
+				}
+			}
+		}
+
+		return minValue;
+	}
+
+
+	float PointUtilities::GetMaxAbsCoord(vector<float> points, bool excludeZero) {
+		float maxValue = 0.0;
+
+		for each (float point in points)
+		{
+			if (abs(point) > maxValue && !isinf(point)) {
+				if (excludeZero && abs(point) == 0)
+					continue;
+
+				maxValue = abs(point);
+			}
+		}
+
+		return maxValue;
+	}
+
+	float PointUtilities::GetMinAbsCoord(vector<float> points, bool excludeZero) {
+		float minValue = 9999999999;
+
+		for each (float point in points)
+		{
+			if (abs(point) < minValue && !isinf(point)) {
+				if (excludeZero && abs(point) == 0)
+					continue;
+
+				minValue = abs(point);
+			}
+		}
+
+		return minValue;
+	}
+
+
+	float PointUtilities::GetMaxAbsCoord(vector<Vec<Point3f, 3>> points)
+	{
+		float maxValue = 0.0;
+
+		for each (Vec<Point3f, 3> item in points)
+		{
+			if (item[0].x > maxValue)
+				maxValue = item[0].x;
+
+			if (item[0].y > maxValue)
+				maxValue = item[0].y;
+
+			if (item[0].z > maxValue)
+				maxValue = item[0].z;
+
+			if (item[1].x > maxValue)
+				maxValue = item[1].x;
+
+			if (item[1].y > maxValue)
+				maxValue = item[1].y;
+
+			if (item[1].z > maxValue)
+				maxValue = item[1].z;
+
+			if (item[2].x > maxValue)
+				maxValue = item[2].x;
+
+			if (item[2].y > maxValue)
+				maxValue = item[2].y;
+
+			if (item[2].z > maxValue)
+				maxValue = item[2].z;
+		}
+
+		return maxValue;
+	}
+
+	float PointUtilities::GetMaxAbsCoord(vector<Vec6f> points)
+	{
+		float maxValue = 0.0;
+
+		for (size_t i = 0; i < points.size(); i++) {
+			Vec6f triangle = points[i];
+			Point pt1{ cvRound(triangle[0]), cvRound(triangle[1]) };
+			Point pt2{ cvRound(triangle[2]), cvRound(triangle[3]) };
+			Point pt3{ cvRound(triangle[4]), cvRound(triangle[5]) };
+
+			if (abs(pt1.x) > maxValue)
+				maxValue = abs(pt1.x);
+
+			if (abs(pt1.y) > maxValue)
+				maxValue = abs(pt1.y);
+
+			if (abs(pt2.x) > maxValue)
+				maxValue = abs(pt2.x);
+
+			if (abs(pt2.y) > maxValue)
+				maxValue = abs(pt2.y);
+
+			if (abs(pt3.x) > maxValue)
+				maxValue = abs(pt3.x);
+
+			if (abs(pt3.y) > maxValue)
+				maxValue = abs(pt3.y);
+		}
+
+		return maxValue;
+	}
+
+	// Get max value with the coordinate using a vector points
+	float PointUtilities::GetMaxAbsCoord(Mat image, string coordinate, CameraProperties calib, bool excludeZero)
 	{
 		vector<Point3f> pointsMap;
 		for (int j = 0; j < image.rows; j++)
@@ -184,7 +302,7 @@ namespace Helpers {
 		return GetMaxAbsCoord(pointsMap, coordinate);
 	}
 
-	float PointUtilities::GetMinAbsCoord(Mat image, string coordinate, CameraProperties calib)
+	float PointUtilities::GetMinAbsCoord(Mat image, string coordinate, CameraProperties calib, bool excludeZero)
 	{
 		vector<Point3f> pointsMap;
 		for (int j = 0; j < image.rows; j++)
@@ -248,6 +366,7 @@ namespace Helpers {
 
 		return _return;
 	}
+
 	vector<PointPair> PointUtilities::MergePoints(vector<PointPair> pts1, vector<PointPair> pts2)
 	{
 		vector<PointPair> _return;
@@ -348,74 +467,7 @@ namespace Helpers {
 		return pt;
 	}
 
-	float PointUtilities::GetMaxAbsCoord(vector<Vec<Point3f, 3>> points)
-	{
-		float maxValue = 0.0;
-
-		for each (Vec<Point3f, 3> item in points)
-		{
-			if (item[0].x > maxValue)
-				maxValue = item[0].x;
-
-			if (item[0].y > maxValue)
-				maxValue = item[0].y;
-
-			if (item[0].z > maxValue)
-				maxValue = item[0].z;
-
-			if (item[1].x > maxValue)
-				maxValue = item[1].x;
-
-			if (item[1].y > maxValue)
-				maxValue = item[1].y;
-
-			if (item[1].z > maxValue)
-				maxValue = item[1].z;
-
-			if (item[2].x > maxValue)
-				maxValue = item[2].x;
-
-			if (item[2].y > maxValue)
-				maxValue = item[2].y;
-
-			if (item[2].z > maxValue)
-				maxValue = item[2].z;
-		}
-
-		return maxValue;
-	}
-
-	float PointUtilities::GetMaxAbsCoord(vector<Vec6f> points)
-	{
-		float maxValue = 0.0;
-
-		for (size_t i = 0; i < points.size(); i++) {
-			Vec6f triangle = points[i];
-			Point pt1{ cvRound(triangle[0]), cvRound(triangle[1]) };
-			Point pt2{ cvRound(triangle[2]), cvRound(triangle[3]) };
-			Point pt3{ cvRound(triangle[4]), cvRound(triangle[5]) };
-
-			if (abs(pt1.x) > maxValue)
-				maxValue = abs(pt1.x);
-
-			if (abs(pt1.y) > maxValue)
-				maxValue = abs(pt1.y);
-
-			if (abs(pt2.x) > maxValue)
-				maxValue = abs(pt2.x);
-
-			if (abs(pt2.y) > maxValue)
-				maxValue = abs(pt2.y);
-
-			if (abs(pt3.x) > maxValue)
-				maxValue = abs(pt3.x);
-
-			if (abs(pt3.y) > maxValue)
-				maxValue = abs(pt3.y);
-		}
-
-		return maxValue;
-	}
+	
 
 	void PointUtilities::FillUnstructuredGrid(vtkUnstructuredGrid * unstructuredGrid, vector<Point3f> pointsToApply)
 	{
@@ -436,6 +488,7 @@ namespace Helpers {
 		cells->Squeeze();
 		unstructuredGrid->SetCells(VTK_VERTEX, cells);
 	}
+
 	void PointUtilities::FillUnstructuredGrid2(vtkUnstructuredGrid * unstructuredGrid, vector<Vec<Point3f, 4>> triangles)
 	{
 		vtkSmartPointer<vtkPoints> points = vtkSmartPointer<vtkPoints>::New();

@@ -133,33 +133,38 @@ namespace AutomatedTests {
 	}
 
 
-	void BatchReconstruction::TestHeartDepthMap(string path_calib_left, string path_calib_right, string path_video1, string path_video2, string basePathDepthMap, 
-		string basePathDisparityMap) {
-		
+	void BatchReconstruction::TestHeartDepthMap(string path_calib_left, string path_calib_right, string path_img1, string path_img2, string basePathDepthMap, string basePathDisparityMap) {
 		map<string, double> resultBatchFFFP;
 		map<string, double> resultBatchFF;
 		map<string, double> resultBatchFP;
 		map<string, double> resultBatchDefault;
+		vector<string> paths_base_left;
+		vector<string> paths_base_right;
 		int count = 0;
 		int depthMapCount = -1;
 		string pathDepthMap = "";
 		string pathDisparityMap;
 
+		OpenCV openCv;
 		PointUtilities *pointUtilities = new PointUtilities();
 		AutomatedTests::TestService* testService = new AutomatedTests::TestService();
-		vector<Mat> framesLeft; //= Convert::VideoToFrames(path_video1);
-		vector<Mat> framesRight; //= Convert::VideoToFrames(path_video2);
 		CameraProperties camera = Import::HeartCameraParameters(path_calib_left, path_calib_right);
-		OpenCV openCv;
 
-		framesLeft.push_back(openCv.ReadImage(".\\Heart\\Left\\heartFrameL_0.png"));
-		framesRight.push_back(openCv.ReadImage(".\\Heart\\Right\\heartFrameR_0.png"));
+		// Get all paths in structure images
+		for (auto & p : fs::directory_iterator(path_img1))
+			paths_base_left.push_back(p.path().string());
 
+		// Get all paths in structure images
+		for (auto & p : fs::directory_iterator(path_img2))
+			paths_base_right.push_back(p.path().string());
 
-		for (int frameNo = 0; frameNo < framesLeft.size(); frameNo++)
+		std::sort(paths_base_left.begin(), paths_base_left.end());
+		std::sort(paths_base_right.begin(), paths_base_right.end());
+
+		for (int frameNo = 0; frameNo < paths_base_left.size(); frameNo++)
 		{
-			Mat imgLeft = framesLeft[frameNo];
-			Mat imgRight = framesRight[frameNo];
+			Mat imgLeft = openCv.ReadImage(paths_base_left[frameNo]);
+			Mat imgRight = openCv.ReadImage(paths_base_right[frameNo]);
 
 			// Original Equation: round(mod((FrameNo/25 + 0.466667)*30,20))
 			depthMapCount = (int)std::round((frameNo / 25.0 + 0.466667) * 30.0) % 20;
@@ -176,63 +181,45 @@ namespace AutomatedTests {
 			vector<vector<float>> matrizDepthZ = Import::HeartDepthMapFloat(pathDepthMap, 360);
 			vector<vector<Point3f>> matrizDepthMat = Import::HeartDepthMap(pathDepthMap, 360);
 
-			float maxDepthMap = pointUtilities->GetMaxAbsCoord(matrizDepthMat, "z");
-			float minDepthMap = pointUtilities->GetMinAbsCoord(matrizDepthMat, "z");
-			vector<uchar> matrizDepthMatNormalizedZ;
-			vector<uchar> matrizDisparityMatNormalizedZ;
-
-			float maxDisparityMap = 0;
-			for each (float z in matrizDisparityZ) {
-				if (z > maxDisparityMap)
-					maxDisparityMap = z;
-			}
-			float minDisparityMap = maxDisparityMap;
-			for each (float z in matrizDisparityZ) {
-				if (z < minDisparityMap && z > 0)
-					minDisparityMap = z;
-			}
+			float maxDepthMap = pointUtilities->GetMaxAbsCoord(matrizDepthMat, "z", true);
+			float minDepthMap = pointUtilities->GetMinAbsCoord(matrizDepthMat, "z", true);
+			vector<uchar> matrizDepthMatNormalizedZ;			
 
 			for each (vector<float> row in matrizDepthZ)
 			{
-
 				for each (float z in row)
 				{
 					matrizDepthMatNormalizedZ.push_back(Mathematic::Normalize(z, minDepthMap, maxDepthMap) * 255);
 				}
-
 			}
 
 			Mat depthMap(288, 360, 0, matrizDepthMatNormalizedZ.data());
 			flip(depthMap, depthMap, 1);
-			openCv.ShowImage(depthMap, "Depth Map");
+			//openCv.ShowImage(depthMap, "Depth Map");
+
+			/*float maxDisparityMap = pointUtilities->GetMaxAbsCoord(matrizDisparityZ, true);
+			float minDisparityMap = pointUtilities->GetMinAbsCoord(matrizDisparityZ, true);
+			vector<uchar> matrizDisparityMatNormalizedZ;
 
 			for each (float z in matrizDisparityZ) {
 				float normalizedZ = Mathematic::Normalize(z, minDisparityMap, maxDisparityMap);
 				matrizDisparityMatNormalizedZ.push_back(normalizedZ < 0 ? 0 : normalizedZ * 255);
-				//cout<<z<<" " << matrizDisparityMatNormalizedZ[matrizDisparityMatNormalizedZ.size()-1] << endl;
 			}
 
 			Mat disparityMap(288, 360, 0, matrizDisparityMatNormalizedZ.data());
 			flip(disparityMap, disparityMap, 1);
-			openCv.ShowImage(disparityMap, "Disparity Map");
-			// Pegar o frame de cada imagem e aplicar o sift/calibração
-			// comparar o erro de cada ponto e extrair
+			openCv.ShowImage(disparityMap, "Disparity Map");*/
 
 			cout << "--------------------------------------------------------------------" << endl;
 			cout << "Executing: " + to_string(frameNo) << endl;
-			cout << "Progress: " + to_string(frameNo) + " | " + to_string(framesLeft.size()) << endl;
+			cout << "Progress: " + to_string(frameNo) + " | " + to_string(paths_base_left.size()) << endl;
 			cout << "--------------------------------------------------------------------" << endl << endl << endl << endl;
-
-			string export_path_FFFP = ".\\Reports\\Export_Result\\FF_FP\\heart_calib.txt";
-			string export_path_FF = ".\\Reports\\Export_Result\\FF\\heart_calib.txt";
-			string export_path_FP = ".\\Reports\\Export_Result\\FP\\heart_calib.txt";
-			string export_path_Default = ".\\Reports\\Export_Result\\DEFAULT\\heart_calib.txt";
 
 			testService->ReconstructionFF_FP(
 				imgLeft,
 				imgRight,
 				depthMap,
-				"",
+				".\\Reports\\FF_FP",
 				"",
 				&resultBatchFFFP,
 				camera.B,
@@ -242,7 +229,7 @@ namespace AutomatedTests {
 				imgLeft,
 				imgRight,
 				depthMap,
-				"",
+				".\\Reports\\FF",
 				"",
 				&resultBatchFFFP,
 				camera.B,
@@ -252,7 +239,7 @@ namespace AutomatedTests {
 				imgLeft,
 				imgRight,
 				depthMap,
-				"",
+				".\\Reports\\FP",
 				"",
 				&resultBatchFFFP,
 				camera.B,
@@ -262,7 +249,7 @@ namespace AutomatedTests {
 				imgLeft,
 				imgRight,
 				depthMap,
-				"",
+				".\\Reports\\DEFAULT",
 				"",
 				&resultBatchFFFP,
 				camera.B,
@@ -270,6 +257,11 @@ namespace AutomatedTests {
 
 			system("cls");
 		}
+
+		Export::Csv(resultBatchFFFP, ".\\Reports\\resultBatchFFFP.csv");
+		Export::Csv(resultBatchFF, ".\\Reports\\resultBatchFF.csv");
+		Export::Csv(resultBatchFP, ".\\Reports\\resultBatchFP.csv");
+		Export::Csv(resultBatchDefault, ".\\Reports\\resultBatchDefault.csv");
 	}
 
 #pragma endregion	
