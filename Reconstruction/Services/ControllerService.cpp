@@ -23,6 +23,8 @@ namespace Services {
 
 		_firstImage = _openCv->Resize(firstImage, _screenSize);
 		_secondImage = _openCv->Resize(secondImage, _screenSize);
+		//_firstImage = firstImage;
+		//_secondImage = secondImage;
 
 		_resultBatch = resultBatch;
 	}
@@ -31,8 +33,10 @@ namespace Services {
 	{
 		_openCv = new OpenCV();
 
-		_firstImage = _openCv->Resize(_openCv->ReadImage(pathFirstImage), _screenSize);
-		_secondImage = _openCv->Resize(_openCv->ReadImage(pathSecondImage), _screenSize);
+		//_firstImage = _openCv->Resize(_openCv->ReadImage(pathFirstImage), _screenSize);
+		//_secondImage = _openCv->Resize(_openCv->ReadImage(pathSecondImage), _screenSize);
+		_firstImage = _openCv->ReadImage(pathFirstImage);
+		_secondImage = _openCv->ReadImage(pathSecondImage);
 
 		_resultBatch = resultBatch;
 	}
@@ -55,9 +59,12 @@ namespace Services {
 
 			if (_pathExportCSV != "") {
 				if(_depthMap.empty())
+					//_reconstructionCompareService->Execute(_resultCalibration, _calibration, _pathDisparity, _pathExportCSV, _resultBatch);
 					_reconstructionCompareService->Execute(_resultCalibration, _calibration, _pathDisparity, _pathExportCSV, _resultBatch);
 				else
-					_reconstructionCompareService->Execute(_resultCalibration, _calibration, _depthMap, _pathExportCSV, _resultBatch);
+					//_reconstructionCompareService->Execute(_resultCalibration, _calibration, _depthMap, _pathExportCSV, _resultBatch);
+					_reconstructionCompareService->HeartComparison(_resultCalibration, _calibration, _depthMap, _pathExportCSV, _resultBatch);
+
 			}
 
 			return true;
@@ -293,6 +300,7 @@ namespace Services {
 		try
 		{
 			cout << endl << "=== Init Firefly ===" << endl << endl;
+			
 			_firstImageModified = _fireflyService->Execute(_firstImage, _thresholds, _number_fireflies, _number_generations);
 			_secondImageModified = _fireflyService->Execute(_secondImage, _thresholds, _number_fireflies, _number_generations);
 

@@ -26,7 +26,7 @@ namespace Services {
 		std::vector<unsigned int> bests;
 
 		//Convert image to gray
-		Mat grayedImg = _openCv->ColorConverter(img, CV_RGB2GRAY);
+		Mat grayedImg = _openCv->ColorConverter(img, CV_BGR2GRAY);
 
 		//Find best thresholds with firefly algorithm
 		bests = _firefly->BestsThresholds(grayedImg, n_thresholds, n_fireflies, n_generations);

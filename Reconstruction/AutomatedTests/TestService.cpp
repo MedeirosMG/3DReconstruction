@@ -47,7 +47,7 @@ namespace AutomatedTests {
 	void TestService::Reconstruction_FF(string path_img1, string path_img2, string path_calib, string path_disparity, string path_export_CSV, string path_export_OBJ, map<string, double>* _resultBatch, int calibB, int calibLambda)
 	{
 		cout << "======= Start Test using firefly ======= " << endl;
-
+		
 		ControllerService* controller = new ControllerService(path_img1, path_img2, _resultBatch);
 		controller->SetFireflyProperties(3, 100, 100);
 		controller->SetCannyProperties(100, 250, 3);
@@ -137,7 +137,7 @@ namespace AutomatedTests {
 	void TestService::ReconstructionFF_FP(Mat img1, Mat img2, string path_calib, string path_depth_map, string path_export_CSV, string path_export_OBJ, map<string, double>* _resultBatch, int calibB, int calibLambda)
 	{
 		cout << "======= Start Test using firefly and sift filter ======= " << endl;
-
+		
 		ControllerService* controller = new ControllerService(img1, img2, _resultBatch);
 		controller->SetFireflyProperties(3, 100, 100);
 		controller->SetCannyProperties(100, 250, 3);
@@ -259,7 +259,7 @@ namespace AutomatedTests {
 	void TestService::ReconstructionFF_FP(Mat img1, Mat img2, Mat depth_map, string path_export_CSV, string path_export_OBJ, map<string, double>* _resultBatch, int calibB, int calibLambda)
 	{
 		cout << "======= Start Test using firefly and sift filter ======= " << endl;
-
+		
 		ControllerService* controller = new ControllerService(img1, img2, _resultBatch);
 		controller->SetFireflyProperties(3, 100, 100);
 		controller->SetCannyProperties(100, 250, 3);

@@ -163,20 +163,21 @@ namespace AutomatedTests {
 
 		for (int frameNo = 0; frameNo < paths_base_left.size(); frameNo++)
 		{
+			pathDisparityMap = "";
 			Mat imgLeft = openCv.ReadImage(paths_base_left[frameNo]);
 			Mat imgRight = openCv.ReadImage(paths_base_right[frameNo]);
-
 			// Original Equation: round(mod((FrameNo/25 + 0.466667)*30,20))
-			depthMapCount = (int)std::round((frameNo / 25.0 + 0.466667) * 30.0) % 20;
+			//depthMapCount = (int)std::round((frameNo / 25.0 + 0.466667) * 30.0) % 20;
 
 			StringHelper::Append(pathDepthMap, basePathDepthMap);
-			StringHelper::Append(pathDepthMap, to_string(depthMapCount));
+			StringHelper::Append(pathDepthMap, to_string(frameNo));
 			StringHelper::Append(pathDepthMap, ".txt");
 
 			StringHelper::Append(pathDisparityMap, basePathDisparityMap);
-			StringHelper::Append(pathDisparityMap, to_string(depthMapCount));
+			StringHelper::Append(pathDisparityMap, to_string(frameNo));
 			StringHelper::Append(pathDisparityMap, ".txt");
 
+			cout << pathDisparityMap << endl;
 			vector<float> matrizDisparityZ = Import::HeartDisparityMap(pathDisparityMap);
 			vector<vector<float>> matrizDepthZ = Import::HeartDepthMapFloat(pathDepthMap, 360);
 			vector<vector<Point3f>> matrizDepthMat = Import::HeartDepthMap(pathDepthMap, 360);
@@ -189,26 +190,26 @@ namespace AutomatedTests {
 			{
 				for each (float z in row)
 				{
-					matrizDepthMatNormalizedZ.push_back(Mathematic::Normalize(z, minDepthMap, maxDepthMap) * 255);
+					matrizDepthMatNormalizedZ.push_back(Mathematic::Normalize(z, minDepthMap, maxDepthMap));
 				}
 			}
 
 			Mat depthMap(288, 360, 0, matrizDepthMatNormalizedZ.data());
 			flip(depthMap, depthMap, 1);
 			//openCv.ShowImage(depthMap, "Depth Map");
-
-			/*float maxDisparityMap = pointUtilities->GetMaxAbsCoord(matrizDisparityZ, true);
+			
+			float maxDisparityMap = pointUtilities->GetMaxAbsCoord(matrizDisparityZ, true);
 			float minDisparityMap = pointUtilities->GetMinAbsCoord(matrizDisparityZ, true);
 			vector<uchar> matrizDisparityMatNormalizedZ;
 
 			for each (float z in matrizDisparityZ) {
 				float normalizedZ = Mathematic::Normalize(z, minDisparityMap, maxDisparityMap);
-				matrizDisparityMatNormalizedZ.push_back(normalizedZ < 0 ? 0 : normalizedZ * 255);
+				matrizDisparityMatNormalizedZ.push_back(normalizedZ < 0 ? 0 : normalizedZ*255);
 			}
 
 			Mat disparityMap(288, 360, 0, matrizDisparityMatNormalizedZ.data());
 			flip(disparityMap, disparityMap, 1);
-			openCv.ShowImage(disparityMap, "Disparity Map");*/
+			//openCv.ShowImage(disparityMap, "Disparity Map");
 
 			cout << "--------------------------------------------------------------------" << endl;
 			cout << "Executing: " + to_string(frameNo) << endl;
@@ -218,7 +219,7 @@ namespace AutomatedTests {
 			testService->ReconstructionFF_FP(
 				imgLeft,
 				imgRight,
-				depthMap,
+				disparityMap,
 				".\\Reports\\FF_FP",
 				"",
 				&resultBatchFFFP,
@@ -228,7 +229,7 @@ namespace AutomatedTests {
 			testService->Reconstruction_FF(
 				imgLeft,
 				imgRight,
-				depthMap,
+				disparityMap,
 				".\\Reports\\FF",
 				"",
 				&resultBatchFFFP,
@@ -238,7 +239,7 @@ namespace AutomatedTests {
 			testService->Reconstruction_FP(
 				imgLeft,
 				imgRight,
-				depthMap,
+				disparityMap,
 				".\\Reports\\FP",
 				"",
 				&resultBatchFFFP,
@@ -248,13 +249,13 @@ namespace AutomatedTests {
 			testService->Reconstruction_Default(
 				imgLeft,
 				imgRight,
-				depthMap,
+				disparityMap,
 				".\\Reports\\DEFAULT",
 				"",
 				&resultBatchFFFP,
 				camera.B,
 				camera.Lambda);
-
+			system("PAUSE");
 			system("cls");
 		}
 
