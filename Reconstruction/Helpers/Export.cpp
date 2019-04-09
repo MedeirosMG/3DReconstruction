@@ -346,4 +346,37 @@ namespace Helpers {
 			return false;
 		}
 	}
+
+	bool Export::Csv(vector<Point3f> listPoints, string pathDirectory) {
+		try {
+			string exportText = "";
+			string data = "";
+			bool exportLine = true;
+			ofstream file;
+
+			file.open(pathDirectory);
+			if (file.is_open()) {
+				// setting header
+				string header = "Coord X" + Splitter + "Coord Y" + Splitter + "Coord Z" + Splitter + "\n";
+				StringHelper::Append(exportText, header);
+
+				// setting data
+				map<string, double>::iterator it;
+				for each (Point3f point in listPoints)
+				{
+					StringHelper::Append(exportText, to_string(point.x) + Splitter + to_string(point.y) + Splitter + to_string(point.z) + Splitter + "\n");
+				}
+			}
+
+			file << exportText;
+			file.close();
+
+			return true;
+		}
+		catch (const std::exception& ex)
+		{
+			cout << "Exception Export CSV: " << ex.what() << endl;
+			return false;
+		}
+	}
 }

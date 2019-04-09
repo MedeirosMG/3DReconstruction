@@ -179,10 +179,10 @@ namespace AutomatedTests {
 
 			cout << pathDisparityMap << endl;
 			vector<float> matrizDisparityZ = Import::HeartDisparityMap(pathDisparityMap);
-			vector<vector<float>> matrizDepthZ = Import::HeartDepthMapFloat(pathDepthMap, 360);
-			vector<vector<Point3f>> matrizDepthMat = Import::HeartDepthMap(pathDepthMap, 360);
+			//vector<vector<float>> matrizDepthZ = Import::HeartDepthMapFloat(pathDepthMap, 360);
+			//vector<vector<Point3f>> matrizDepthMat = Import::HeartDepthMap(pathDepthMap, 360);
 
-			float maxDepthMap = pointUtilities->GetMaxAbsCoord(matrizDepthMat, "z", true);
+			/*float maxDepthMap = pointUtilities->GetMaxAbsCoord(matrizDepthMat, "z", true);
 			float minDepthMap = pointUtilities->GetMinAbsCoord(matrizDepthMat, "z", true);
 			vector<uchar> matrizDepthMatNormalizedZ;			
 
@@ -195,7 +195,7 @@ namespace AutomatedTests {
 			}
 
 			Mat depthMap(288, 360, 0, matrizDepthMatNormalizedZ.data());
-			flip(depthMap, depthMap, 1);
+			flip(depthMap, depthMap, 1);*/
 			//openCv.ShowImage(depthMap, "Depth Map");
 			
 			float maxDisparityMap = pointUtilities->GetMaxAbsCoord(matrizDisparityZ, true);
