@@ -358,13 +358,20 @@ namespace Helpers {
 			if (file.is_open()) {
 				// setting header
 				string header = "Coord X" + Splitter + "Coord Y" + Splitter + "Coord Z" + Splitter + "\n";
-				StringHelper::Append(exportText, header);
+				StringHelper::Append(exportText, header);				
 
 				// setting data
 				map<string, double>::iterator it;
 				for each (Point3f point in listPoints)
 				{
-					StringHelper::Append(exportText, to_string(point.x) + Splitter + to_string(point.y) + Splitter + to_string(point.z) + Splitter + "\n");
+					string x = to_string(point.x);
+					string y = to_string(point.y);
+					string z = to_string(point.z);
+					std::replace(x.begin(), x.end(), '.', ',');
+					std::replace(y.begin(), y.end(), '.', ',');
+					std::replace(z.begin(), z.end(), '.', ',');
+
+					StringHelper::Append(exportText, x + Splitter + y + Splitter + z + Splitter + "\n");
 				}
 			}
 

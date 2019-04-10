@@ -72,7 +72,7 @@ namespace Services {
 			}
 
 			average = average / count;
-			batchResult->insert(pair<string, double>(splittedPath[splittedPath.size() - 1], average));
+			//batchResult->insert(pair<string, double>(splittedPath[splittedPath.size() - 1], average));
 		}
 	}
 
@@ -165,7 +165,8 @@ namespace Services {
 			resultNormalized.push_back(reconstructionComparisonNormalized);
 			result.push_back(reconstructionComparison);
 		}
-
+		
+		Export::Csv(reconstructionPoints, pathExport + "_normal.csv");
 		Export::Csv(resultNormalized, pathExport, "z");
 		//Export::Csv(result, pathExport + "_normal", "z");
 
@@ -178,6 +179,12 @@ namespace Services {
 			for each (ReconstructionComparison item in resultNormalized)
 			{
 				if (!isinf(item.Error.z)) {
+					string n;
+					stringstream rr;
+					rr << count;
+					rr >> n;
+					string P = pathExport + " Pt " + n;
+					//batchResult->insert(pair<string, double>(P, item.Error.z));
 					average += item.Error.z;
 					count++;
 				}

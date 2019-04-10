@@ -184,7 +184,7 @@ namespace AutomatedTests {
 
 			/*float maxDepthMap = pointUtilities->GetMaxAbsCoord(matrizDepthMat, "z", true);
 			float minDepthMap = pointUtilities->GetMinAbsCoord(matrizDepthMat, "z", true);
-			vector<uchar> matrizDepthMatNormalizedZ;			
+			vector<uchar> matrizDepthMatNormalizedZ;
 
 			for each (vector<float> row in matrizDepthZ)
 			{
@@ -197,14 +197,14 @@ namespace AutomatedTests {
 			Mat depthMap(288, 360, 0, matrizDepthMatNormalizedZ.data());
 			flip(depthMap, depthMap, 1);*/
 			//openCv.ShowImage(depthMap, "Depth Map");
-			
+
 			float maxDisparityMap = pointUtilities->GetMaxAbsCoord(matrizDisparityZ, true);
 			float minDisparityMap = pointUtilities->GetMinAbsCoord(matrizDisparityZ, true);
 			vector<uchar> matrizDisparityMatNormalizedZ;
 
 			for each (float z in matrizDisparityZ) {
 				float normalizedZ = Mathematic::Normalize(z, minDisparityMap, maxDisparityMap);
-				matrizDisparityMatNormalizedZ.push_back(normalizedZ < 0 ? 0 : normalizedZ*255);
+				matrizDisparityMatNormalizedZ.push_back(normalizedZ < 0 ? 0 : normalizedZ * 255);
 			}
 
 			Mat disparityMap(288, 360, 0, matrizDisparityMatNormalizedZ.data());
@@ -220,19 +220,19 @@ namespace AutomatedTests {
 				imgLeft,
 				imgRight,
 				disparityMap,
-				".\\Reports\\FF_FP",
+				".\\Reports\\FF_FP_" + to_string(frameNo) + ".csv",
 				"",
 				&resultBatchFFFP,
 				camera.B,
 				camera.Lambda);
 
-			testService->Reconstruction_FF(
+			/*testService->Reconstruction_FF(
 				imgLeft,
 				imgRight,
 				disparityMap,
-				".\\Reports\\FF",
+				".\\Reports\\FF_" + to_string(frameNo) + ".csv",
 				"",
-				&resultBatchFFFP,
+				&resultBatchFF,
 				camera.B,
 				camera.Lambda);
 
@@ -240,9 +240,9 @@ namespace AutomatedTests {
 				imgLeft,
 				imgRight,
 				disparityMap,
-				".\\Reports\\FP",
+				".\\Reports\\FP_" + to_string(frameNo) + ".csv",
 				"",
-				&resultBatchFFFP,
+				&resultBatchFP,
 				camera.B,
 				camera.Lambda);
 
@@ -250,19 +250,20 @@ namespace AutomatedTests {
 				imgLeft,
 				imgRight,
 				disparityMap,
-				".\\Reports\\DEFAULT",
+				".\\Reports\\DEFAULT_" + to_string(frameNo) + ".csv",
 				"",
-				&resultBatchFFFP,
+				&resultBatchDefault,
 				camera.B,
-				camera.Lambda);
-			system("PAUSE");
+				camera.Lambda);*/
+
+			//system("PAUSE");
 			system("cls");
 		}
 
 		Export::Csv(resultBatchFFFP, ".\\Reports\\resultBatchFFFP.csv");
-		Export::Csv(resultBatchFF, ".\\Reports\\resultBatchFF.csv");
-		Export::Csv(resultBatchFP, ".\\Reports\\resultBatchFP.csv");
-		Export::Csv(resultBatchDefault, ".\\Reports\\resultBatchDefault.csv");
+		//Export::Csv(resultBatchFF, ".\\Reports\\resultBatchFF.csv");
+		//Export::Csv(resultBatchFP, ".\\Reports\\resultBatchFP.csv");
+		//Export::Csv(resultBatchDefault, ".\\Reports\\resultBatchDefault.csv");
 	}
 
 #pragma endregion	

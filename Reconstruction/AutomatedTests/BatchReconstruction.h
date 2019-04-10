@@ -3,6 +3,7 @@
 #include <iostream>
 #include <experimental/filesystem>
 #include <algorithm>
+#include <sstream>
 
 #include "..\Services\ControllerService.h"
 #include "..\Helpers\Time.h"
