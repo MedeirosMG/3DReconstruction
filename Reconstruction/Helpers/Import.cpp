@@ -375,8 +375,8 @@ namespace Helpers {
 				count++;
 			}
 
-			camera.B = Mathematic::EuclideanDistance(left_principal_point_1, left_principal_point_2, right_principal_point_1, right_principal_point_2);
-			camera.Lambda = Mathematic::EuclideanDistance(left_focal_length_1, left_focal_length_2, right_focal_length_1, right_focal_length_2);
+			camera.B = abs(left_principal_point_1 - left_principal_point_2);
+			camera.Lambda = left_focal_length_1;
 
 			file.close();
 		}

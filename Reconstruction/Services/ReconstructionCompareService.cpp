@@ -154,7 +154,8 @@ namespace Services {
 			ReconstructionComparison reconstructionComparisonNormalized;
 			ReconstructionComparison reconstructionComparison;
 			
-			double Z = mapImageResult.at<uchar>((int)point.y, (int)point.x) / 255.0;
+			//double Z = (calib.B*calib.Lambda)/mapImageResult.at<float>((int)point.y, (int)point.x);
+			double Z = mapImageResult.at<float>((int)point.y, (int)point.x);
 			reconstructionComparisonNormalized.Map.z = Z;
 			reconstructionComparisonNormalized.Reconstruction.z = Mathematic::Normalize(point.z, minPointReconstruction, maxPointReconstruction); //(point.z - minPointReconstruction) / (maxPointReconstruction - minPointReconstruction);
 			reconstructionComparisonNormalized.Error.z = sqrt(pow(reconstructionComparisonNormalized.Map.z - reconstructionComparisonNormalized.Reconstruction.z, 2));
@@ -191,6 +192,7 @@ namespace Services {
 			}
 
 			average = average / count;
+			cout << average << endl;
 			batchResult->insert(pair<string, double>(splittedPath[splittedPath.size() - 1], average));
 		}
 	}

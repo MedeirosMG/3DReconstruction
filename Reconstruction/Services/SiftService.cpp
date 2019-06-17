@@ -53,17 +53,17 @@ namespace Services {
 		//Describing the images
 		firstImgDescription = _openCv->SiftDescriptor(img1, firstImgKeyPoints);
 		secondImgDescription = _openCv->SiftDescriptor(img2, secondImgKeyPoints);
-
 		//Finding matches with Brute Force Matcher
-		matches = _openCv->BFMatcher(firstImgDescription, secondImgDescription);
+		//matches = _openCv->BFMatcher(firstImgDescription, secondImgDescription);
 
 		//Outro tipo de match
-		/*FlannBasedMatcher matcher;
-		matcher.match(firstImgDescription, secondImgDescription, matches);*/
-
+		FlannBasedMatcher matcher;
+		matcher.match(firstImgDescription, secondImgDescription, matches);
 		
 	
-
+		result.detector = detector;
+		result.firstImgDescription = firstImgDescription;
+		result.secondImgDescription = secondImgDescription;
 		result.Matches = matches;
 		result.FirstImageKeyPoints = firstImgKeyPoints;
 		result.SecondImageKeyPoints = secondImgKeyPoints;

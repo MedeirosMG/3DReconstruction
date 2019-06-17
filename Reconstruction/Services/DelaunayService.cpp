@@ -266,8 +266,8 @@ namespace Services {
 		vector<Vec<Point3f, 4>> triangleList;
 
 		vtkSmartPointer<vtkUnstructuredGrid> inputUnstructuredGrid = vtkSmartPointer<vtkUnstructuredGrid>::New();
-		utilitie->FillUnstructuredGrid(inputUnstructuredGrid, utilitie->MergePoints(contour, pointsCalibration));
-		//utilitie->FillUnstructuredGrid(inputUnstructuredGrid, pointsCalibration);
+		//utilitie->FillUnstructuredGrid(inputUnstructuredGrid, utilitie->MergePoints(contour, pointsCalibration));
+		utilitie->FillUnstructuredGrid(inputUnstructuredGrid, pointsCalibration);
 
 		vtkSmartPointer<vtkDelaunay3D> delaunay3D = vtkSmartPointer<vtkDelaunay3D>::New();
 		delaunay3D->SetInputData(inputUnstructuredGrid);
@@ -280,8 +280,8 @@ namespace Services {
 		
 		triangleList = GetTriangles(outputUnstructuredGrid);
 
-		return FilterTriangles(triangleList, contourDilated, sizeImg);
-		//return triangleList;
+		//return FilterTriangles(triangleList, contourDilated, sizeImg);
+		return triangleList;
 		
 	}
 }

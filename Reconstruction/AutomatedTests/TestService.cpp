@@ -22,7 +22,7 @@ namespace AutomatedTests {
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0);
 		controller->SetSiftFilterProperties(20, 500);
-		controller->SetVisualizerProperties(false);
+		controller->SetVisualizerProperties(true);
 		controller->SetExportProperties(path_export_CSV, path_export_OBJ);
 		if (calibB != 0 || calibLambda != 0)
 			controller->SetCalibrationProperties(calibB, calibLambda);
@@ -144,7 +144,7 @@ namespace AutomatedTests {
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0);
 		controller->SetSiftFilterProperties(20, 500);
-		controller->SetVisualizerProperties(false);
+		controller->SetVisualizerProperties(true);
 		controller->SetExportProperties(path_export_CSV, path_export_OBJ);
 		if (calibB != 0 || calibLambda != 0)
 			controller->SetCalibrationProperties(calibB, calibLambda);
@@ -262,11 +262,11 @@ namespace AutomatedTests {
 		
 		ControllerService* controller = new ControllerService(img1, img2, _resultBatch);
 		controller->SetFireflyProperties(3, 100, 100);
-		controller->SetCannyProperties(100, 250, 3);
+		controller->SetCannyProperties(50, 250, 3);
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0);
-		controller->SetSiftFilterProperties(20, 500);
-		controller->SetVisualizerProperties(false);
+		controller->SetSiftFilterProperties(500, 3);
+		controller->SetVisualizerProperties(true);
 		controller->SetExportProperties(path_export_CSV, path_export_OBJ);
 		controller->SetCalibrationProperties(calibB, calibLambda, depth_map);
 		controller->LoadServices();
@@ -279,8 +279,8 @@ namespace AutomatedTests {
 		controller->SiftOnMaskFilterApply();
 		controller->ConvertSiftApply();
 		controller->CalibrationApply();
-		/*controller->DelaunayApply();
-		controller->RenderApply();*/
+		//controller->DelaunayApply();
+		//controller->RenderApply();
 
 		cout << "======== End Test ======== " << endl;
 	}
@@ -295,7 +295,7 @@ namespace AutomatedTests {
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0);
 		controller->SetSiftFilterProperties(20, 500);
-		controller->SetVisualizerProperties(false);
+		controller->SetVisualizerProperties(true);
 		controller->SetExportProperties(path_export_CSV, path_export_OBJ);
 		controller->SetCalibrationProperties(calibB, calibLambda, depth_map);
 		controller->LoadServices();
@@ -323,7 +323,7 @@ namespace AutomatedTests {
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0);
 		controller->SetSiftFilterProperties(20, 500);
-		controller->SetVisualizerProperties(false);
+		controller->SetVisualizerProperties(true);
 		controller->SetExportProperties(path_export_CSV, path_export_OBJ);
 		controller->SetCalibrationProperties(calibB, calibLambda, depth_map);
 		controller->LoadServices();
@@ -350,7 +350,7 @@ namespace AutomatedTests {
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0);
 		controller->SetSiftFilterProperties(20, 500);
-		controller->SetVisualizerProperties(false);
+		controller->SetVisualizerProperties(true);
 		controller->SetExportProperties(path_export_CSV, path_export_OBJ);
 		controller->SetCalibrationProperties(calibB, calibLambda, depth_map);
 		controller->LoadServices();

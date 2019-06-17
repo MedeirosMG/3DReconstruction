@@ -408,7 +408,7 @@ namespace Helpers {
 	{
 		//Filtro de pontos
 		vector<DMatch> good_matches;
-
+		
 		double max_dist = 0, min_dist = 100;
 
 		//-- Quick calculation of max and min distances between keypoints
@@ -423,13 +423,33 @@ namespace Helpers {
 		printf("-- Min dist : %f \n", min_dist);
 
 
-		for (int i = 0; i < result.Matches.size(); i++) {
-
+		/*for (int i = 0; i < result.Matches.size(); i++) {
 			if (abs(result.FirstImageKeyPoints[result.Matches[i].queryIdx].pt.y - result.SecondImageKeyPoints[result.Matches[i].trainIdx].pt.y) <= filterY &&
-				result.Matches[i].distance < filterDist * min_dist)
-				good_matches.push_back(result.Matches[i]);
+				result.Matches[i].distance < filterDist * min_dist) {
+					good_matches.push_back(result.Matches[i]);
+			}
+		}*/
+		
+		vector<Point2f> points1;
+		vector<Point2f> points2;
 
+		for (int i = 0; i < result.Matches.size(); i++) {
+			points1.push_back(result.FirstImageKeyPoints[result.Matches[i].queryIdx].pt);
+			points2.push_back(result.SecondImageKeyPoints[result.Matches[i].trainIdx].pt);
+				
 		}
+
+		
+		Mat mask;
+		Mat H = findHomography(points1, points2, CV_RANSAC, 5, mask);
+		cout << mask.type() << endl;
+		for (int i = 0; i < mask.rows; i++) {
+			cout << (unsigned int)mask.at<uchar>(i) << endl;
+			if ((unsigned int)mask.at<uchar>(i)) {
+				good_matches.push_back(result.Matches[i]);
+			}
+		}
+
 		SiftResult ret = result;
 		ret.Matches = good_matches;
 		drawMatches(img1, result.FirstImageKeyPoints, img2, result.SecondImageKeyPoints, good_matches, result.siftImg, Scalar::all(-1), Scalar::all(-1),

@@ -10,9 +10,12 @@ namespace Entities {
 			vector<DMatch> Matches;
 			vector<KeyPoint> FirstImageKeyPoints;
 			vector<KeyPoint> SecondImageKeyPoints;
+			SiftFeatureDetector detector;
+			Mat firstImgDescription;
+			Mat secondImgDescription;
 			Mat siftImg;
 			SiftResult();
-			SiftResult(vector<DMatch> matches, vector<KeyPoint> firstImageKeyPoints, vector<KeyPoint> secondImageKeyPoints);
+			SiftResult(vector<DMatch> matches, vector<KeyPoint> firstImageKeyPoints, vector<KeyPoint> secondImageKeyPoints, SiftFeatureDetector detector, Mat firstDescriptor, Mat secondDescriptor);
 			~SiftResult();
 	};
 

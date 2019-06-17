@@ -200,14 +200,14 @@ namespace AutomatedTests {
 
 			float maxDisparityMap = pointUtilities->GetMaxAbsCoord(matrizDisparityZ, true);
 			float minDisparityMap = pointUtilities->GetMinAbsCoord(matrizDisparityZ, true);
-			vector<uchar> matrizDisparityMatNormalizedZ;
+			vector<float> matrizDisparityMatNormalizedZ;
 
 			for each (float z in matrizDisparityZ) {
 				float normalizedZ = Mathematic::Normalize(z, minDisparityMap, maxDisparityMap);
-				matrizDisparityMatNormalizedZ.push_back(normalizedZ < 0 ? 0 : normalizedZ * 255);
+				matrizDisparityMatNormalizedZ.push_back(normalizedZ < 0 ? 0 : normalizedZ);
 			}
 
-			Mat disparityMap(288, 360, 0, matrizDisparityMatNormalizedZ.data());
+			Mat disparityMap(288, 360, 5, matrizDisparityZ.data());
 			flip(disparityMap, disparityMap, 1);
 			//openCv.ShowImage(disparityMap, "Disparity Map");
 
@@ -226,7 +226,7 @@ namespace AutomatedTests {
 				camera.B,
 				camera.Lambda);
 
-			/*testService->Reconstruction_FF(
+			testService->Reconstruction_FF(
 				imgLeft,
 				imgRight,
 				disparityMap,
@@ -254,7 +254,7 @@ namespace AutomatedTests {
 				"",
 				&resultBatchDefault,
 				camera.B,
-				camera.Lambda);*/
+				camera.Lambda);
 
 			//system("PAUSE");
 			system("cls");
