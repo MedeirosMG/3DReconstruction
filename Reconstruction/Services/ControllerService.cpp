@@ -33,10 +33,10 @@ namespace Services {
 	{
 		_openCv = new OpenCV();
 
-		//_firstImage = _openCv->Resize(_openCv->ReadImage(pathFirstImage), _screenSize);
-		//_secondImage = _openCv->Resize(_openCv->ReadImage(pathSecondImage), _screenSize);
-		_firstImage = _openCv->ReadImage(pathFirstImage);
-		_secondImage = _openCv->ReadImage(pathSecondImage);
+		_firstImage = _openCv->Resize(_openCv->ReadImage(pathFirstImage), _screenSize);
+		_secondImage = _openCv->Resize(_openCv->ReadImage(pathSecondImage), _screenSize);
+		//_firstImage = _openCv->ReadImage(pathFirstImage);
+		//_secondImage = _openCv->ReadImage(pathSecondImage);
 
 		_resultBatch = resultBatch;
 	}

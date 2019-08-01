@@ -3,8 +3,8 @@
 
 namespace Helpers {
 
-	#define REC_SCREEN_DEFAULT_WIDTH 360
-	#define REC_SCREEN_DEFAULT_HEIGHT 288
+	#define REC_SCREEN_DEFAULT_WIDTH 800
+	#define REC_SCREEN_DEFAULT_HEIGHT 600
 
 }
 

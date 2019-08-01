@@ -89,33 +89,37 @@ namespace AutomatedTests {
 			string export_path_FP = ".\\Reports\\Export_Result\\FP\\" + path.substr(path.find("s\\") + 2, path.size());
 			string export_path_Default = ".\\Reports\\Export_Result\\DEFAULT\\" + path.substr(path.find("s\\") + 2, path.size());
 
-			testService->ReconstructionFF_FP(path + "\\calib.txt",
-				path + "\\im0.png",
+			testService->ReconstructionFF_FP(
 				path + "\\im1.png",
+				path + "\\im0.png", 
+				path + "\\calib.txt",
 				path + "\\disp0.pfm",
 				export_path_FFFP + "_FF_FP.csv",
 				"",
 				&resultBatchFFFP);
 
-			testService->Reconstruction_FF(path + "\\calib.txt",
-				path + "\\im0.png",
+			testService->Reconstruction_FF(
 				path + "\\im1.png",
+				path + "\\im0.png",
+				path + "\\calib.txt",
 				path + "\\disp0.pfm",
 				export_path_FF + "_FF.csv",
 				"",
 				&resultBatchFF);
 
-			testService->Reconstruction_FP(path + "\\calib.txt",
-				path + "\\im0.png",
+			testService->Reconstruction_FP(
 				path + "\\im1.png",
+				path + "\\im0.png",
+				path + "\\calib.txt",
 				path + "\\disp0.pfm",
 				export_path_FP + "_FP.csv",
 				"",
 				&resultBatchFP);
 
-			testService->Reconstruction_Default(path + "\\calib.txt",
-				path + "\\im0.png",
+			testService->Reconstruction_Default(
 				path + "\\im1.png",
+				path + "\\im0.png",
+				path + "\\calib.txt",
 				path + "\\disp0.pfm",
 				export_path_Default + "_DEF.csv",
 				"",
@@ -126,10 +130,10 @@ namespace AutomatedTests {
 			system("cls");
 		}
 
-		Export::Csv(resultBatchFFFP, ".\\Reports\\resultBatchFFFP.csv");
-		Export::Csv(resultBatchFF, ".\\Reports\\resultBatchFF.csv");
-		Export::Csv(resultBatchFP, ".\\Reports\\resultBatchFP.csv");
-		Export::Csv(resultBatchDefault, ".\\Reports\\resultBatchDefault.csv");
+		Export::Csv(resultBatchFFFP, ".\\Reports\\Structured\\resultBatchFFFP.csv");
+		Export::Csv(resultBatchFF, ".\\Reports\\Structured\\resultBatchFF.csv");
+		Export::Csv(resultBatchFP, ".\\Reports\\Structured\\resultBatchFP.csv");
+		Export::Csv(resultBatchDefault, ".\\Reports\\Structured\\resultBatchDefault.csv");
 	}
 
 
@@ -207,7 +211,7 @@ namespace AutomatedTests {
 				matrizDisparityMatNormalizedZ.push_back(normalizedZ < 0 ? 0 : normalizedZ);
 			}
 
-			Mat disparityMap(288, 360, 5, matrizDisparityZ.data());
+			Mat disparityMap(288, 360, 5, matrizDisparityMatNormalizedZ.data());
 			flip(disparityMap, disparityMap, 1);
 			//openCv.ShowImage(disparityMap, "Disparity Map");
 
@@ -225,7 +229,7 @@ namespace AutomatedTests {
 				&resultBatchFFFP,
 				camera.B,
 				camera.Lambda);
-
+			
 			testService->Reconstruction_FF(
 				imgLeft,
 				imgRight,
@@ -245,7 +249,7 @@ namespace AutomatedTests {
 				&resultBatchFP,
 				camera.B,
 				camera.Lambda);
-
+			
 			testService->Reconstruction_Default(
 				imgLeft,
 				imgRight,
@@ -255,15 +259,15 @@ namespace AutomatedTests {
 				&resultBatchDefault,
 				camera.B,
 				camera.Lambda);
-
+				
 			//system("PAUSE");
 			system("cls");
 		}
 
-		Export::Csv(resultBatchFFFP, ".\\Reports\\resultBatchFFFP.csv");
-		//Export::Csv(resultBatchFF, ".\\Reports\\resultBatchFF.csv");
-		//Export::Csv(resultBatchFP, ".\\Reports\\resultBatchFP.csv");
-		//Export::Csv(resultBatchDefault, ".\\Reports\\resultBatchDefault.csv");
+		Export::Csv(resultBatchFFFP, ".\\Reports\\Unstructured\\Filter\\resultBatchFFFP.csv");
+		Export::Csv(resultBatchFF, ".\\Reports\\Unstructured\\Filter\\resultBatchFF.csv");
+		Export::Csv(resultBatchFP, ".\\Reports\\Unstructured\\Filter\\resultBatchFP.csv");
+		Export::Csv(resultBatchDefault, ".\\Reports\\Unstructured\\Filter\\resultBatchDefault.csv");
 	}
 
 #pragma endregion	

@@ -294,7 +294,7 @@ namespace Helpers {
 			for (int i = 0; i < image.cols; i++)
 			{
 				float zPoint = image.at<float>(j, i);
-				zPoint = calib.B *(calib.f / (zPoint + calib.doffs));
+				//zPoint = calib.B *(calib.f / (zPoint + calib.doffs));
 				pointsMap.push_back(Point3f(i, j, zPoint));
 			}
 		}
@@ -310,8 +310,8 @@ namespace Helpers {
 			for (int i = 0; i < image.cols; i++)
 			{
 				float zPoint = image.at<float>(j, i);
-				zPoint = calib.B *(calib.f / (zPoint + calib.doffs));
-				if (zPoint != 0)
+				//zPoint = calib.B *(calib.f / (zPoint + calib.doffs));
+				//if (zPoint != 0)
 					pointsMap.push_back(Point3f(i, j, zPoint));
 			}
 		}
@@ -424,8 +424,8 @@ namespace Helpers {
 
 
 		/*for (int i = 0; i < result.Matches.size(); i++) {
-			if (abs(result.FirstImageKeyPoints[result.Matches[i].queryIdx].pt.y - result.SecondImageKeyPoints[result.Matches[i].trainIdx].pt.y) <= filterY &&
-				result.Matches[i].distance < filterDist * min_dist) {
+			if (abs(result.FirstImageKeyPoints[result.Matches[i].queryIdx].pt.y - result.SecondImageKeyPoints[result.Matches[i].trainIdx].pt.y) <= filterY){
+				// && result.Matches[i].distance < filterDist * min_dist) {
 					good_matches.push_back(result.Matches[i]);
 			}
 		}*/
@@ -442,9 +442,9 @@ namespace Helpers {
 		
 		Mat mask;
 		Mat H = findHomography(points1, points2, CV_RANSAC, 5, mask);
-		cout << mask.type() << endl;
+		//cout << mask.type() << endl;
 		for (int i = 0; i < mask.rows; i++) {
-			cout << (unsigned int)mask.at<uchar>(i) << endl;
+			//cout << (unsigned int)mask.at<uchar>(i) << endl;
 			if ((unsigned int)mask.at<uchar>(i)) {
 				good_matches.push_back(result.Matches[i]);
 			}

@@ -90,26 +90,29 @@ namespace Services {
 		float minPointReconstruction = pointUtilities->GetMinAbsCoord(reconstructionPoints, "z");
 		cout << "min calibration: " << minPointReconstruction << " max calibration:" << maxPointReconstruction << endl;
 
-		float maxPointMap = pointUtilities->GetMaxAbsCoord(mapImageResult, "z", calib);
-		float minPointMap = pointUtilities->GetMinAbsCoord(mapImageResult, "z", calib);
+		float maxPointMap = pointUtilities->GetMaxAbsCoord(mapImageResult, "z", calib, true);
+		float minPointMap = pointUtilities->GetMinAbsCoord(mapImageResult, "z", calib, true);
+
 		cout << "min depth map: " << minPointMap << " max depth map:" << maxPointMap << endl;
 		
 		for each (Point3f point in reconstructionPoints)
 		{
 			ReconstructionComparison reconstructionComparisonNormalized;
 			ReconstructionComparison reconstructionComparison;
-			double Z = calib.B *(calib.f / (mapImageResult.at<float>((int)point.y, (int)point.x) + calib.doffs));
+			//double Z = calib.B *(calib.f / (mapImageResult.at<float>((int)point.y, (int)point.x) + calib.doffs));
+			double Z = mapImageResult.at<float>((int)point.y, (int)point.x);
+			if (Z != 0) {
+				float mapZ = Mathematic::Normalize(Z, minPointMap, maxPointMap); // (Z - minPointMap) / (maxPointMap - minPointMap);
+				reconstructionComparisonNormalized.Map.z = mapZ < 0 ? 0 : mapZ;
+				reconstructionComparisonNormalized.Reconstruction.z = Mathematic::Normalize(point.z, minPointReconstruction, maxPointReconstruction); //(point.z - minPointReconstruction) / (maxPointReconstruction - minPointReconstruction);
+				reconstructionComparisonNormalized.Error.z = sqrt(pow(reconstructionComparisonNormalized.Map.z - reconstructionComparisonNormalized.Reconstruction.z, 2));
 
-			float mapZ = Mathematic::Normalize(Z, minPointMap, maxPointMap); // (Z - minPointMap) / (maxPointMap - minPointMap);
-			reconstructionComparisonNormalized.Map.z = mapZ < 0 ? 0 : mapZ;
-			reconstructionComparisonNormalized.Reconstruction.z = Mathematic::Normalize(point.z, minPointReconstruction, maxPointReconstruction); //(point.z - minPointReconstruction) / (maxPointReconstruction - minPointReconstruction);
-			reconstructionComparisonNormalized.Error.z = sqrt(pow(reconstructionComparisonNormalized.Map.z - reconstructionComparisonNormalized.Reconstruction.z, 2));
+				reconstructionComparison.Map.z = Z;
+				reconstructionComparison.Reconstruction.z = point.z;
 
-			reconstructionComparison.Map.z = Z;
-			reconstructionComparison.Reconstruction.z = point.z;
-
-			resultNormalized.push_back(reconstructionComparisonNormalized);
-			result.push_back(reconstructionComparison);
+				resultNormalized.push_back(reconstructionComparisonNormalized);
+				result.push_back(reconstructionComparison);
+			}
 		}
 
 		Export::Csv(resultNormalized, pathExport, "z");
@@ -128,9 +131,10 @@ namespace Services {
 					count++;
 				}
 			}
-
-			average = average / count;
-			batchResult->insert(pair<string, double>(splittedPath[splittedPath.size() - 1], average));
+			if (count != 0) {
+				average = average / count;
+				batchResult->insert(pair<string, double>(splittedPath[splittedPath.size() - 1], average));
+			}
 		}
 	}
 
@@ -156,15 +160,18 @@ namespace Services {
 			
 			//double Z = (calib.B*calib.Lambda)/mapImageResult.at<float>((int)point.y, (int)point.x);
 			double Z = mapImageResult.at<float>((int)point.y, (int)point.x);
-			reconstructionComparisonNormalized.Map.z = Z;
-			reconstructionComparisonNormalized.Reconstruction.z = Mathematic::Normalize(point.z, minPointReconstruction, maxPointReconstruction); //(point.z - minPointReconstruction) / (maxPointReconstruction - minPointReconstruction);
-			reconstructionComparisonNormalized.Error.z = sqrt(pow(reconstructionComparisonNormalized.Map.z - reconstructionComparisonNormalized.Reconstruction.z, 2));
+			if (Z != 0) {
+				reconstructionComparisonNormalized.Map.z = Z;
+				//reconstructionComparisonNormalized.Reconstruction.z = point.z;
+				reconstructionComparisonNormalized.Reconstruction.z = Mathematic::Normalize(point.z, minPointReconstruction, maxPointReconstruction); //(point.z - minPointReconstruction) / (maxPointReconstruction - minPointReconstruction);
+				reconstructionComparisonNormalized.Error.z = sqrt(pow(reconstructionComparisonNormalized.Map.z - reconstructionComparisonNormalized.Reconstruction.z, 2));
 
-			reconstructionComparison.Map.z = Z;
-			reconstructionComparison.Reconstruction.z = point.z;
+				reconstructionComparison.Map.z = Z;
+				reconstructionComparison.Reconstruction.z = point.z;
 
-			resultNormalized.push_back(reconstructionComparisonNormalized);
-			result.push_back(reconstructionComparison);
+				resultNormalized.push_back(reconstructionComparisonNormalized);
+				result.push_back(reconstructionComparison);
+			}
 		}
 		
 		Export::Csv(reconstructionPoints, pathExport + "_normal.csv");
