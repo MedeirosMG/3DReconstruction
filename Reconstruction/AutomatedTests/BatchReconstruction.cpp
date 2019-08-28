@@ -264,10 +264,10 @@ namespace AutomatedTests {
 			system("cls");
 		}
 
-		Export::Csv(resultBatchFFFP, ".\\Reports\\Unstructured\\Filter\\resultBatchFFFP.csv");
-		Export::Csv(resultBatchFF, ".\\Reports\\Unstructured\\Filter\\resultBatchFF.csv");
-		Export::Csv(resultBatchFP, ".\\Reports\\Unstructured\\Filter\\resultBatchFP.csv");
-		Export::Csv(resultBatchDefault, ".\\Reports\\Unstructured\\Filter\\resultBatchDefault.csv");
+		Export::Csv(resultBatchFFFP, ".\\Reports\\Unstructured2\\resultBatchFFFP.csv");
+		Export::Csv(resultBatchFF, ".\\Reports\\Unstructured2\\resultBatchFF.csv");
+		Export::Csv(resultBatchFP, ".\\Reports\\Unstructured2\\resultBatchFP.csv");
+		Export::Csv(resultBatchDefault, ".\\Reports\\Unstructured2\\resultBatchDefault.csv");
 	}
 
 #pragma endregion	
