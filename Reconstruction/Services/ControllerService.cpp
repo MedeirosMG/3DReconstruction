@@ -226,7 +226,7 @@ namespace Services {
 		{
 			cout << endl << "=== Init Sift ===" << endl << endl;
 			for (int i = 0; i < _InterestRegionsFirstImage.size(); i++) {
-				_resultSiftOnMask.push_back(_siftService->Execute(_InterestRegionsFirstImage[i], _InterestRegionsSecondImage[i], _siftThreshold));
+				_resultSiftOnMask.push_back(_siftService->Execute(_firstImage, _secondImage, _InterestRegionsFirstImage[i], _InterestRegionsSecondImage[i], _siftThreshold));
 				_visualizer->Show(_resultSiftOnMask[i], _visualizerName);
 			}
 

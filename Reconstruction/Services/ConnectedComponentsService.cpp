@@ -176,7 +176,7 @@ namespace Services {
 
 			_openCv->ConnectedComponentsAlgorithm(regions[i], contours, hierarchy, CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE);
 			resultRegions.push_back(DrawFiltering(contours, hierarchy, img, 5));
-			resultRegions[i] = _openCv->Erode(resultRegions[i], 2);
+			resultRegions[i] = _openCv->Dilate(resultRegions[i], 2);
 		}
 		
 

@@ -261,12 +261,12 @@ namespace AutomatedTests {
 		cout << "======= Start Test using firefly and sift filter ======= " << endl;
 		
 		ControllerService* controller = new ControllerService(img1, img2, _resultBatch);
-		controller->SetFireflyProperties(3, 100, 100);
+		controller->SetFireflyProperties(2, 100, 100);
 		controller->SetCannyProperties(50, 250, 3);
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0);
 		controller->SetSiftFilterProperties(500, 3);
-		controller->SetVisualizerProperties(false);
+		controller->SetVisualizerProperties(true);
 		controller->SetExportProperties(path_export_CSV, path_export_OBJ);
 		controller->SetCalibrationProperties(calibB, calibLambda, depth_map);
 		controller->LoadServices();
@@ -323,7 +323,7 @@ namespace AutomatedTests {
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0);
 		controller->SetSiftFilterProperties(20, 500);
-		controller->SetVisualizerProperties(false);
+		controller->SetVisualizerProperties(true);
 		controller->SetExportProperties(path_export_CSV, path_export_OBJ);
 		controller->SetCalibrationProperties(calibB, calibLambda, depth_map);
 		controller->LoadServices();
