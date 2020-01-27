@@ -68,7 +68,11 @@ namespace Services {
 		vector<Vec<Point3f, 4>> _resultDelaunay;
 
 		// Sift Properties
-		int _siftThreshold;
+		int _siftFeatures;
+		int _siftLayers;
+		double _siftContrastThresh;
+		double _siftEdgeThresh;
+		double _siftSigma;
 		int _minDist;
 		int _minY;
 		SiftResult _resultSift;
@@ -132,7 +136,7 @@ namespace Services {
 		bool ReadImages(string pathFirstImage, string pathSecondImage);
 
 		void SetCannyProperties(double cannyLowThresh, double cannyHighTresh, int cannyKernelSize);
-		void SetSiftProperties(int siftThreshold);
+		void SetSiftProperties(int features = 0, int layers = 3, double contrast = 0.04, double edge = 10.0, double sigma = 1.6);
 		void SetSiftFilterProperties(int minY, int minDist);
 		void SetCalibrationProperties(float calibrationB = 0, float calibrationLambda = 0, int calibrationK = 0);
 		void SetCalibrationProperties(string path, string pathDisparity);

@@ -23,8 +23,8 @@ namespace Services {
 			SiftService();
 			SiftService(OpenCV* openCv);
 			~SiftService();
-			SiftResult Execute(Mat img1, Mat img2, int threshold);
-			SiftResult Execute(Mat img1, Mat img2, Mat mask1, Mat mask2, int threshold);
+			SiftResult Execute(Mat img1, Mat img2, int features, int layers, double contrast, double edge, double sigma);
+			SiftResult Execute(Mat img1, Mat img2, Mat mask1, Mat mask2, int features, int layers, double contrast, double edge, double sigma);
 	};
 	
 }

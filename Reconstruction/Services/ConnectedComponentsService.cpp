@@ -170,6 +170,7 @@ namespace Services {
 				}
 			}
 		}
+
 		for (int i = 0; i < regions.size(); i++) {
 			vector<vector<Point>> contours;
 			vector<Vec4i> hierarchy;

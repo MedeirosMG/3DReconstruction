@@ -208,7 +208,7 @@ namespace Services {
 		{
 			cout << endl << "=== Init Sift ===" << endl << endl;
 
-			_resultSift = _siftService->Execute(_firstImage, _secondImage, _siftThreshold);
+			_resultSift = _siftService->Execute(_firstImage, _secondImage, _siftFeatures, _siftLayers, _siftContrastThresh, _siftEdgeThresh, _siftSigma);
 			_visualizer->Show(_resultSift, _visualizerName);
 
 			return true;
@@ -226,7 +226,8 @@ namespace Services {
 		{
 			cout << endl << "=== Init Sift ===" << endl << endl;
 			for (int i = 0; i < _InterestRegionsFirstImage.size(); i++) {
-				_resultSiftOnMask.push_back(_siftService->Execute(_firstImage, _secondImage, _InterestRegionsFirstImage[i], _InterestRegionsSecondImage[i], _siftThreshold));
+				_resultSiftOnMask.push_back(_siftService->Execute(_firstImage, _secondImage, _InterestRegionsFirstImage[i], _InterestRegionsSecondImage[i], 
+					_siftFeatures, _siftLayers, _siftContrastThresh, _siftEdgeThresh, _siftSigma));
 				_visualizer->Show(_resultSiftOnMask[i], _visualizerName);
 			}
 
@@ -347,9 +348,13 @@ namespace Services {
 		_cannyKernelSize = cannyKernelSize;
 	}
 
-	void ControllerService::SetSiftProperties(int siftThreshold = 400)
+	void ControllerService::SetSiftProperties(int features, int layers, double contrast, double edge, double sigma)
 	{
-		_siftThreshold = siftThreshold;
+		_siftFeatures = features;
+		_siftLayers = layers;
+		_siftContrastThresh = contrast;
+		_siftEdgeThresh = edge;
+		_siftSigma = sigma;
 	}
 
 	void ControllerService::SetSiftFilterProperties(int minY, int minDist)

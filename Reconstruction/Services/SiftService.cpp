@@ -18,10 +18,10 @@ namespace Services {
 	}
 
 	//Detect fiducial points on the image
-	SiftResult SiftService::Execute(Mat img1, Mat img2, int threshold) 
+	SiftResult SiftService::Execute(Mat img1, Mat img2, int features, int layers, double contrast, double edge, double sigma)
 	{
 		//Sift Detector
-		cv::SiftFeatureDetector detector(threshold);
+		cv::SiftFeatureDetector detector(features, layers, contrast, edge, sigma);
 
 		//Key points of images
 		vector<KeyPoint> firstImgKeyPoints, secondImgKeyPoints;
@@ -74,13 +74,13 @@ namespace Services {
 		return result;
 	}
 
-	SiftResult SiftService::Execute(Mat img1, Mat img2, Mat mask1, Mat mask2, int threshold)
+	SiftResult SiftService::Execute(Mat img1, Mat img2, Mat mask1, Mat mask2, int features, int layers, double contrast, double edge, double sigma)
 	{
 		//Sift Detector
-		cv::SiftFeatureDetector detector(threshold);
+		cv::SiftFeatureDetector detector(features, layers, contrast, edge, sigma);
 
 		//Key points of images
-		vector<KeyPoint> firstImgKeyPoints, secondImgKeyPoints, points1, points2;
+		vector<KeyPoint> firstImgKeyPoints, secondImgKeyPoints;
 
 		//Description of images
 		Mat firstImgDescription, secondImgDescription;
@@ -99,25 +99,12 @@ namespace Services {
 		//Clear keypoints and matches vector
 		firstImgKeyPoints.clear();
 		secondImgKeyPoints.clear();
-		points1.clear();
-		points2.clear();
 		matches.clear();
 
 		//Finding images keypoints
-		points1 = _openCv->SiftDetector(&detector, img1);
-		points2 = _openCv->SiftDetector(&detector, img2);
-		for (int i = 0; i < points1.size(); i++) {
-			int x = points1[i].pt.x;
-			int y = points1[i].pt.y;
-			if (mask1.at<char>(y, x) != 0)
-				firstImgKeyPoints.push_back(points1[i]);
-		}
-		for (int i = 0; i < points2.size(); i++) {
-			int x = points2[i].pt.x;
-			int y = points2[i].pt.y;
-			if (mask2.at<char>(y, x) != 0)
-				secondImgKeyPoints.push_back(points2[i]);
-		}
+		firstImgKeyPoints = _openCv->SiftDetector(&detector, img1);
+		secondImgKeyPoints = _openCv->SiftDetector(&detector, img2);
+		
 		//Describing the images
 		firstImgDescription = _openCv->SiftDescriptor(img1, firstImgKeyPoints);
 		secondImgDescription = _openCv->SiftDescriptor(img2, secondImgKeyPoints);
@@ -129,15 +116,21 @@ namespace Services {
 		FlannBasedMatcher matcher;
 		matcher.match(firstImgDescription, secondImgDescription, matches);
 
+		for (int i = 0; i < matches.size(); i++) {
+			if (mask1.at<Vec3b>(firstImgKeyPoints[matches[i].queryIdx].pt.y, firstImgKeyPoints[matches[i].queryIdx].pt.x) != Vec3b(0, 0, 0)
+				&& mask2.at<Vec3b>(secondImgKeyPoints[matches[i].trainIdx].pt.y, secondImgKeyPoints[matches[i].trainIdx].pt.x) != Vec3b(0, 0, 0)){
+			// && result.Matches[i].distance < filterDist * min_dist) {
+				result.Matches.push_back(matches[i]);
+			}
+		}
 
 		result.detector = detector;
 		result.firstImgDescription = firstImgDescription;
 		result.secondImgDescription = secondImgDescription;
-		result.Matches = matches;
 		result.FirstImageKeyPoints = firstImgKeyPoints;
 		result.SecondImageKeyPoints = secondImgKeyPoints;
 
-		drawMatches(img1, firstImgKeyPoints, img2, secondImgKeyPoints, matches, result.siftImg, Scalar::all(-1), Scalar::all(-1),
+		drawMatches(mask1, firstImgKeyPoints, mask2, secondImgKeyPoints, result.Matches, result.siftImg, Scalar::all(-1), Scalar::all(-1),
 			vector<char>(), DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS);
 		return result;
 	}

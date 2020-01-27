@@ -220,7 +220,7 @@ namespace AutomatedTests {
 			cout << "Progress: " + to_string(frameNo) + " | " + to_string(paths_base_left.size()) << endl;
 			cout << "--------------------------------------------------------------------" << endl << endl << endl << endl;
 
-			testService->Reconstruction_FP(
+			testService->ReconstructionFF_FP(
 				imgLeft,
 				imgRight,
 				disparityMap,
