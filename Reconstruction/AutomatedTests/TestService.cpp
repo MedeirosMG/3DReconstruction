@@ -17,7 +17,7 @@ namespace AutomatedTests {
 		cout << "======= Start Test using firefly and sift filter ======= " << endl;
 
 		ControllerService* controller = new ControllerService(path_img1, path_img2, _resultBatch);
-		controller->SetFireflyProperties(3, 100, 100);
+		controller->SetFireflyProperties(4, 100, 100);
 		controller->SetCannyProperties(100, 250, 3);
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0);
@@ -49,7 +49,7 @@ namespace AutomatedTests {
 		cout << "======= Start Test using firefly ======= " << endl;
 		
 		ControllerService* controller = new ControllerService(path_img1, path_img2, _resultBatch);
-		controller->SetFireflyProperties(3, 100, 100);
+		controller->SetFireflyProperties(4, 100, 100);
 		controller->SetCannyProperties(100, 250, 3);
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0);
@@ -144,7 +144,7 @@ namespace AutomatedTests {
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0);
 		controller->SetSiftFilterProperties(20, 500);
-		controller->SetVisualizerProperties(true);
+		controller->SetVisualizerProperties(false);
 		controller->SetExportProperties(path_export_CSV, path_export_OBJ);
 		if (calibB != 0 || calibLambda != 0)
 			controller->SetCalibrationProperties(calibB, calibLambda);
@@ -160,8 +160,8 @@ namespace AutomatedTests {
 		controller->SiftOnMaskFilterApply();
 		controller->ConvertSiftApply();
 		controller->CalibrationApply();
-		controller->DelaunayApply();
-		controller->RenderApply();
+		//controller->DelaunayApply();
+		//controller->RenderApply();
 
 		cout << "======== End Test ======== " << endl;
 	}
@@ -232,7 +232,7 @@ namespace AutomatedTests {
 		cout << "======= Start Test using firefly ======= " << endl;
 
 		ControllerService* controller = new ControllerService(img1, img2, _resultBatch);
-		controller->SetFireflyProperties(3, 100, 100);
+		controller->SetFireflyProperties(4, 100, 100);
 		controller->SetCannyProperties(100, 250, 3);
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0);
@@ -260,7 +260,7 @@ namespace AutomatedTests {
 	{
 		cout << "======= Start Test using firefly and sift filter ======= " << endl;
 		
-		ControllerService* controller = new ControllerService(img1, img2, _resultBatch);
+		ControllerService* controller = new ControllerService(img1, img2, _resultBatch, frameNo);
 		controller->SetFireflyProperties(2, 100, 100);
 		controller->SetCannyProperties(100, 250, 3);
 		controller->SetGeneralProperties();
@@ -290,7 +290,7 @@ namespace AutomatedTests {
 		cout << "======= Start Test using firefly ======= " << endl;
 
 		ControllerService* controller = new ControllerService(img1, img2, _resultBatch);
-		controller->SetFireflyProperties(2, 100, 100);
+		controller->SetFireflyProperties(4, 100, 100);
 		controller->SetCannyProperties(100, 250, 3);
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0, 3, 0.03, 25);
@@ -318,7 +318,7 @@ namespace AutomatedTests {
 		cout << "======= Start Test using firefly ======= " << endl;
 
 		ControllerService* controller = new ControllerService(img1, img2, _resultBatch);
-		controller->SetFireflyProperties(2, 100, 100);
+		controller->SetFireflyProperties(4, 100, 100);
 		controller->SetCannyProperties(100, 250, 3);
 		controller->SetGeneralProperties();
 		controller->SetSiftProperties(0, 3, 0.03, 25);
@@ -345,10 +345,10 @@ namespace AutomatedTests {
 		cout << "======= Start Test using firefly ======= " << endl;
 
 		ControllerService* controller = new ControllerService(img1, img2, _resultBatch);
-		controller->SetFireflyProperties(2, 100, 100);
+		controller->SetFireflyProperties(3, 100, 100);
 		controller->SetCannyProperties(100, 250, 3);
 		controller->SetGeneralProperties();
-		controller->SetSiftProperties(0, 3, 0.03, 25);
+		controller->SetSiftProperties(0, 4, 0.03, 25);
 		controller->SetSiftFilterProperties(20, 500);
 		controller->SetVisualizerProperties(false);
 		controller->SetExportProperties(path_export_CSV, path_export_OBJ);
@@ -396,6 +396,10 @@ namespace AutomatedTests {
 		// _time->Run(std::bind(&ControllerService::RenderApply, controller), "RenderApply");
 
 		cout << "======== End Test ======== " << endl;
+	}
+	void TestService::setframeNo(int no)
+	{
+		frameNo = no;
 	}
 }
 

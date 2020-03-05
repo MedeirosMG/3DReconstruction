@@ -104,7 +104,7 @@ namespace Services {
 		int _thresholds;
 		int _number_fireflies;
 		int _number_generations;
-
+		int frameNo;
 		// Visualizer properties
 		string _visualizerName;
 		bool _visualizerExecute;
@@ -116,7 +116,7 @@ namespace Services {
 	public:
 		ControllerService();
 		ControllerService(map<string, double>* resultBatch);
-		ControllerService(Mat firstImage, Mat secondImage, map<string, double>* resultBatch = NULL);
+		ControllerService(Mat firstImage, Mat secondImage, map<string, double>* resultBatch = NULL, int frameNo = 0);
 		ControllerService(string pathFirstImage, string pathSecondImage, map<string, double>* resultBatch = NULL);
 		~ControllerService();
 

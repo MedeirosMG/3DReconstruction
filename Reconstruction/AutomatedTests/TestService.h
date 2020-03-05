@@ -16,7 +16,7 @@ namespace AutomatedTests {
 	{
 		private:
 			Time* _time;
-
+			int frameNo;
 		public:
 			TestService();
 			~TestService();
@@ -36,6 +36,7 @@ namespace AutomatedTests {
 			void Reconstruction_Default(Mat img1, Mat img2, Mat depth_map, string path_export_CSV, string path_export_OBJ, map<string, double>* _resultBatch, int calibB, int calibLambda);
 
 			void ReconstructionWithTimeExecution(string path_calib, string path_img1, string path_img2, string path_disparity, string path_export);
+			void setframeNo(int);
 	};
 
 }

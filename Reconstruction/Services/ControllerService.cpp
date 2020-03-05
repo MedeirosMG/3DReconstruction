@@ -17,12 +17,13 @@ namespace Services {
 		_resultBatch = resultBatch;
 	}
 
-	ControllerService::ControllerService(Mat firstImage, Mat secondImage, map<string, double>* resultBatch)
+	ControllerService::ControllerService(Mat firstImage, Mat secondImage, map<string, double>* resultBatch, int no)
 	{
 		_openCv = new OpenCV();
 
 		_firstImage = _openCv->Resize(firstImage, _screenSize);
 		_secondImage = _openCv->Resize(secondImage, _screenSize);
+		frameNo = no;
 		//_firstImage = firstImage;
 		//_secondImage = secondImage;
 
@@ -125,9 +126,15 @@ namespace Services {
 			_InterestRegionsFirstImage = _connectedComponentsService->Execute(_firstImageModified);
 			_InterestRegionsSecondImage = _connectedComponentsService->Execute(_secondImageModified);
 
+			string path = "resultImage2\\cc_img";
+
 			for (int i = 0; i < _InterestRegionsFirstImage.size(); i++) {
 				_visualizer->Show(_InterestRegionsFirstImage[i], _visualizerName);
 				_visualizer->Show(_InterestRegionsSecondImage[i], _visualizerName);
+
+
+				imwrite(path + to_string(i) + "left"  + to_string(frameNo) + ".png", _InterestRegionsFirstImage[i]);
+				imwrite(path + to_string(i) + "right" + to_string(frameNo) + ".png", _InterestRegionsSecondImage[i]);
 			}
 
 
@@ -165,9 +172,17 @@ namespace Services {
 			_InterestRegionsFirstImage = _findRegionsService->Execute(_InterestRegionsFirstImage, _firstImage);
 			_InterestRegionsSecondImage = _findRegionsService->Execute(_InterestRegionsSecondImage, _secondImage);
 
+
+			string path = "resultImage2\\mask_img";
+
 			for (int i = 0; i < _InterestRegionsFirstImage.size(); i++) {
 				_visualizer->Show(_InterestRegionsFirstImage[i], _visualizerName);
 				_visualizer->Show(_InterestRegionsSecondImage[i], _visualizerName);
+
+
+
+				imwrite(path + to_string(i) + "left"  + to_string(frameNo) + ".png", _InterestRegionsFirstImage[i]);
+				imwrite(path + to_string(i) + "right" + to_string(frameNo) + ".png", _InterestRegionsSecondImage[i]);
 			}
 
 			return true;
@@ -225,10 +240,17 @@ namespace Services {
 		try
 		{
 			cout << endl << "=== Init Sift ===" << endl << endl;
+			
+			string path = "resultImage2\\sift" + to_string(frameNo) + "_img";
+
 			for (int i = 0; i < _InterestRegionsFirstImage.size(); i++) {
 				_resultSiftOnMask.push_back(_siftService->Execute(_firstImage, _secondImage, _InterestRegionsFirstImage[i], _InterestRegionsSecondImage[i], 
 					_siftFeatures, _siftLayers, _siftContrastThresh, _siftEdgeThresh, _siftSigma));
 				_visualizer->Show(_resultSiftOnMask[i], _visualizerName);
+
+
+				imwrite(path + to_string(i) + ".png", _resultSiftOnMask[i].siftImg);
+
 			}
 
 			return true;
@@ -266,9 +288,16 @@ namespace Services {
 		{
 			PointUtilities utilities;
 			cout << endl << "=== Init SiftFilter ===" << endl << endl;
+
+			string path = "resultImage\\siftFilter" + to_string(frameNo) + "_img";
+
+
 			for (int i = 0; i < _InterestRegionsFirstImage.size(); i++) {
 				_resultSiftOnMask[i] = utilities.FilterKeyPoints(_resultSiftOnMask[i], _minY, _minDist, _InterestRegionsFirstImage[i], _InterestRegionsSecondImage[i]);
 				_visualizer->Show(_resultSiftOnMask[i], _visualizerName);
+
+
+				imwrite(path + to_string(i) + ".png", _resultSiftOnMask[i].siftImg);
 			}
 
 			return true;
@@ -304,6 +333,9 @@ namespace Services {
 			
 			_firstImageModified = _fireflyService->Execute(_firstImage, _thresholds, _number_fireflies, _number_generations);
 			_secondImageModified = _fireflyService->Execute(_secondImage, _thresholds, _number_fireflies, _number_generations);
+			
+			imwrite("resultImage\\fireflyImgLeft" + to_string(frameNo) + ".png", _firstImageModified);
+			imwrite("resultImage\\fireflyImgRight" + to_string(frameNo) + ".png", _secondImageModified);
 
 			_visualizer->Show(_firstImageModified, _visualizerName);
 			_visualizer->Show(_secondImageModified, _visualizerName);

@@ -101,7 +101,7 @@ namespace Services {
 			ReconstructionComparison reconstructionComparison;
 			//double Z = calib.B *(calib.f / (mapImageResult.at<float>((int)point.y, (int)point.x) + calib.doffs));
 			double Z = mapImageResult.at<float>((int)point.y, (int)point.x);
-			if (Z != 0) {
+			if (Z >= 0) {
 				float mapZ = Mathematic::Normalize(Z, minPointMap, maxPointMap); // (Z - minPointMap) / (maxPointMap - minPointMap);
 				reconstructionComparisonNormalized.Map.z = mapZ < 0 ? 0 : mapZ;
 				reconstructionComparisonNormalized.Reconstruction.z = Mathematic::Normalize(point.z, minPointReconstruction, maxPointReconstruction); //(point.z - minPointReconstruction) / (maxPointReconstruction - minPointReconstruction);

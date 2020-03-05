@@ -167,6 +167,7 @@ namespace AutomatedTests {
 
 		for (int frameNo = 0; frameNo < paths_base_left.size(); frameNo++)
 		{
+			testService->setframeNo(frameNo);
 			pathDisparityMap = "";
 			Mat imgLeft = openCv.ReadImage(paths_base_left[frameNo]);
 			Mat imgRight = openCv.ReadImage(paths_base_right[frameNo]);
@@ -229,7 +230,7 @@ namespace AutomatedTests {
 				&resultBatchFFFP,
 				camera.B,
 				camera.Lambda);
-			
+			/*
 			testService->Reconstruction_FF(
 				imgLeft,
 				imgRight,
@@ -259,7 +260,7 @@ namespace AutomatedTests {
 				&resultBatchDefault,
 				camera.B,
 				camera.Lambda);
-				
+				*/
 			//system("PAUSE");
 			system("cls");
 		}
